@@ -70,3 +70,5 @@ Note that the *writematrix* function doesn't work with **.csv* files, but only *
 So, all of these files are scripts, and so, when you import another script, the read/write commands are executed wrt the original script. So, everywhere, the imports/exports are wrt "./Sensor_Modelling" or "./". Note that './' mean the current directory. While '../' means the parent directory.
 
 #7: The resources folder contains the files created by Matlab for the Project definitions. DO NOT DELETE this folder. The Project can be accessed via the Matlab Interface by double-clicking on STADSMatlab.prj
+
+#8: These notes have been added to Github [here](https://github.com/Student-Satellite-IITB/STADS/blob/master/Sensor_Modelling/Notes.md). These have been converted to markdown [here](http://euangoddard.github.io/clipboard2markdown/).
