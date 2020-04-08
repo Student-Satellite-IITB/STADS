@@ -3,10 +3,11 @@ Volume serial number is A0B5-6B46
 C:.
 |   level.mat
 |   main.m
+|   MATLAB.gitignore
 |   README.md
+|   STADS - Matlab Graph.svg
 |   STADSMatlab.prj
 |   tree.txt
-|   tree_2.txt
 |   
 +---Catalogue
 |       HYG.csv
@@ -50,8 +51,10 @@ C:.
 |               
 +---Sensor_Modelling
 |   |   level.mat
+|   |   Notes.md
 |   |   README.md
 |   |   se.mat
+|   |   se_main.asv
 |   |   se_main.m
 |   |   se_variables.mat
 |   |   
@@ -65,10 +68,14 @@ C:.
 |   |       
 |   +---Preprocessing
 |   |       HYG.csv
+|   |       se_preprocessing.asv
 |   |       se_preprocessing.m
 |   |       
 |   \---Processing
+|           se_celestial2lens.asv
+|           se_celestial2lens.m
 |           se_edit_input_data.m
+|           se_load_csv.asv
 |           se_load_csv.m
 |           Simulation_HYG.csv
 |           

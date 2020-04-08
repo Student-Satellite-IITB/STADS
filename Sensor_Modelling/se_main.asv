@@ -34,7 +34,7 @@ end
 % Load the csv file into mat file
 se_load_csv;
 
-% Convert star coordinates from celestial frame to lens frame
+% Convert star coordinates from celestial 
 se_celestial2lens;
 
 %'SE Main: Success';
