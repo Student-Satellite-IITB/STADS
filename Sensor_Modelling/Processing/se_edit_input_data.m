@@ -7,8 +7,10 @@ load('level.mat', 'level');
 % Add to Path - Inputs
 if (level == 1)
     addpath(genpath('./Inputs/'));
+    addpath(genpath('./Functions/'));
 elseif (level == 0)
     addpath(genpath('./Sensor_Modelling/Inputs/'));
+    addpath(genpath('./Sensor_Modelling/Functions/'));
 else
     error('Error: level.mat file missing or incorrect path');
 end

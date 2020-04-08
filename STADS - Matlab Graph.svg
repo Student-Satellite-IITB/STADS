@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN'
+          'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-opacity:1; color-rendering:auto; color-interpolation:auto; text-rendering:auto; stroke:black; stroke-linecap:square; stroke-miterlimit:10; shape-rendering:auto; stroke-opacity:1; fill:black; stroke-dasharray:none; font-weight:normal; stroke-width:1; font-family:'Dialog'; font-style:normal; stroke-linejoin:miter; font-size:12px; stroke-dashoffset:0; image-rendering:auto;" xmlns="http://www.w3.org/2000/svg"
+><!--STADS - Matlab Graph--><defs id="genericDefs"
+  /><g
+  ><defs id="defs1"
+    ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath1"
+      ><path d="M0 0 L640 0 L640 471 L0 471 L0 0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath2"
+      ><path d="M-174.1398 -696.5594 L2358.8032 -696.5594 L2358.8032 1167.5284 L-174.1398 1167.5284 L-174.1398 -696.5594 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath3"
+      ><path d="M0 -0 L0 33 L250.0001 33 L250.0001 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath4"
+      ><path d="M0 -0 L0 21 L229.9999 21 L229.9999 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath5"
+      ><path d="M-0 -0 L-0 33 L251 33 L251 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath6"
+      ><path d="M-0 -0 L-0 21 L200 21 L200 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath7"
+      ><path d="M0 -0 L0 24 L24 24 L24 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath8"
+      ><path d="M-2 -2 L-2 22 L22 22 L22 -2 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath9"
+      ><path d="M-0 -0 L-0 33 L249.9999 33 L249.9999 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath10"
+      ><path d="M0.0001 -0 L0.0001 21 L199.9999 21 L199.9999 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath11"
+      ><path d="M0.0001 -0 L0.0001 24 L24 24 L24 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath12"
+      ><path d="M-1.9999 -2 L-1.9999 22 L22 22 L22 -2 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath13"
+      ><path d="M0.0001 -0 L0.0001 33 L250 33 L250 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath14"
+      ><path d="M-0 -0 L-0 21 L229.9999 21 L229.9999 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath15"
+      ><path d="M-0 -0 L-0 33 L250 33 L250 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath16"
+      ><path d="M0 -0 L0 21 L230 21 L230 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath17"
+      ><path d="M-0 -0 L-0 21 L230 21 L230 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath18"
+      ><path d="M0 -0 L0 33 L250 33 L250 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath19"
+      ><path d="M-0 -0 L-0 24 L24 24 L24 -0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath20"
+      ><path d="M-0 0 L-0 33 L251 33 L251 0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath21"
+      ><path d="M-0 0 L-0 21 L200 21 L200 0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath22"
+      ><path d="M0 0 L0 24 L24 24 L24 0 Z"
+      /></clipPath
+      ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath23"
+      ><path d="M0 -0 L0 21 L200 21 L200 -0 Z"
+      /></clipPath
+      ><image width="20" id="image1" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAD2UlEQVR42qWTS2wb
+VRSGs0BsqISQANEKtqwRAhaIBQihVqJSN7AIUiVWFJAISpyH8wDTJG0Rapu2pAUr
+BKX4kTo0uLYcaJyElDqPOikpdvAzfsePscfjGY8zfic/dyapZSd0A0f6dOfOXH06
+95wzTU17YbAmFbM2Bg6nD4Hu5xH87DEJ39C7sAV5TN2nccUUweBEAIqRPyHr1sQ7
+O8ePND0qrB5W8WBhHr7z7yDY+gQYkwILmmHovvgYfuVJxGIJBKg8vDEBM4t+yOSa
+IpGaWzs1rzWIALxEOEYO33DN34S35RD0bcex6bgPbyCJZbMZ7NwFlIs8drAbDlcU
+7b030Dv0O7rOGDXtctWb9cL2LbtBF/1DE/Rqe+BueRIjHZ/C+dt15Ck3CuUyeGEL
+SSaNVJqGIAi7wj4dvvzeiq4BA7m+WiuTq199KPyRGj7q87Y9XRFlwZbHEek5gkjv
+C6Bvn0OGZREIBrC0vATLggXhcBiejQS+OvtLjW6FDh296hmVauiwKDxVZsJK47jR
+KWYmyvKbD1Di4igXeJS3t1GoVJAvlZAvFlGuVlGqVJHK5ndh89Cb1nD6zFhBox2O
+icIPCZfcukG7se0oRvtPI51KIj3VD0p5AkmjArFECmrdImwjrWDv/QSaXH3NbpOg
+2Sx+nbGj/+wYiBCisH923mFe/uYkNd/6CrnCJKkVB25Fg/jltxFSvIiAth367mZ4
+rsvAu2aR4bLw+gISGV44INRcvjYd1cnex2rfG1ImDMsjEE7Bo+rYnUcyRuGLb4Hz
+LmCrUEAmyyOepCX4fOmgUHn1piQMKT8gNaogGXJi9No49D3NCHc9g5D8OcRtc0hR
+UcQTCbg9bqlBIokUg6n9Qv/FY0T4HtRjJlT5JDbPvQx327Og9H3IWVVS50Pyw+Ad
+02SMqsgVKsgKRQmutA3jfmH8wuvR1e8+x+rfcZRKeVDWScQsKkTXLYj57GBWf5aI
+bdhJdl6s/WWrEctkYagXprWn7GntR3bHnVvJ9UgOxZ0dcGR42VwOdIYFzbAQCiUJ
+8TkUicJDmuHcI0Ga0iAUsxNstyYWXdzy3HoGApk7KsMgTkYjnqJrxRdhOB5cTgBN
+1hDZi9CkKYZ9V75K+ER9JzGhtVDgyQDfW7HWil6PizQjFAlL612yFwmTpuwXPkU4
+9PVkaEB7l0K+skP+3VKt6PVkSDOYYhVpsqa2ikjxRbLfbhQ+jAGdXyEKydkGBEJ2
+D47A1lMgFAHD9COE3+o3pCGtx0Qw/BtmuyQy3LbjinL2oHBQ528eGF1aET/8F85f
++qFRKIZaPXxcfPl/+Afcg7RVzysH9QAAAABJRU5ErkJggg=="
+      /><image width="20" id="image2" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAADt0lEQVR42qWT/W9T
+VRjH+2/MRDABE0yMkigqGF8XDIRhUAyKM8REf1GJuLGOlg32RqmZg8mARcCwLW3X
+zvEyNoiusMDYSkM3t67krr3durXr7cttb3u7trcve/HruZe2wWD3g57kk5Ock3zy
+nOf5Hpkst9T6mTq1YRZ56rQ0lM29UFXWQ1fTgmbNo8Jdw8UxVCm0/upq/TOyYksU
+dhq9mPElJX79ncJptRpXDu8B1VYFatIJhzsGmknCOOpC1RFNRq7UGSuqu14rKuy+
+6wMXT8NMeVB/uhut332Bh5WvItReDn78ATKLcSyvAo+mGciP6lF7agjKpn5dlULz
+7lPCJh1dd66Pxs3hKcibdfhs11doLdsKe8XLCLfsBGPoQpLxY4kIbaKwxoD6djMU
+jX2QK7TdhxXaLZJo3C2UaMbDJUqd46cf2u6h/Jsf8ea2/TiwYTM0pS9grmILuBOl
+mFXVIDY9jSwpkaIDaFBdLXD0uAFypfa2RtNaIpsKCL7OiYjv0LW5+EdqI3btlWPH
+htchX/cc+j/YBK98K/jGd2D/ei+Cd4wQYnEkMysI8SkECYFoCtcG/kTjiY60TnfG
+Jxuw86gd9OJTDY0dJ+9g5ydKHHh2E1o2rse93S/Cr9iGSNPboPa9BfflC+Bd80iv
+AMIykMxx02hDk+oyiBAy/VSk/qwpQFf00thX24sv3/8cx9eth/6VjbCWk4GcLEOw
+43tQdQfhbD8DdsJakCUIccLAk0Kpj4xw7OytGfpIgx7n9nyM3954HuYPX4KrcjuY
+S4dAD/Vgsv8KrF0dmH9gRjiWgJflJCJC9mlhPjYdPWNw6i/AoyxFsOY9LJz/FraB
+ToyaTBIjg4OwWSxw0M7CmTcURf9gEaFhiPSHdSBz/yCEu41IOoeRSCYQS2XBk0qi
+ybS086llcMkswoksIunV4sKeYR8EYRGUmTzv/nVYLSOwOxzwB1n4AiwoB43JKRsm
+8lhtYLg4bhQX+pFaWsGcewFOMk2RuQUGbIQHy/FweRg4ZudhzzFN8MeE4kKDKCTB
+DXJR+EKcBMM+RhwAyycQjpP8RRPwBDnME4Lk2X1rCePpLB5axgpNfxIHTcPtWZCG
+MiIOadQENxtdWygs/UWaTgZAmh8hjedyhMVdHEaK/BISxACpLLCYRSi1urYwH1iR
+xSUgJpIFeEKUECFwGSBMCKUf0/dHEeH5q7T0jfKIgRUjkedGDrEiUSJyndD2y+1/
+Efa49qsumSzixX/hVOvFfwrFpdX+XCYe/h/+BiFAVdLz7XNDAAAAAElFTkSuQmCC
+"
+      /><image width="20" id="image3" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABAklEQVR42mNgGAU0
+A5mZFYJpaQWSIBpZPCkpiRcknpFRIhYaGspMtIEpGQULUjMKnqZmFixsaGhgAomB
+6JSM/GKweHrB+ZSUfHGiDUxLyzcHalwGxC9AhsfFZQunpufXAdk3gGIn07IK3RIS
+EjhI8TVjWlqeI9jQ9IJPQJd2Qw3bn5aZFwWSJycoGaEu3Z2WWfgN5LLkNLBhpIPk
+5EKhpKQcKZBXs7JKJdIyCs+lpOe7giIFJA4KP3Ii5QmIBmlMyMqSKCws5KQ4UoAu
+ew6LlLSMgtrBFykZGYVmoEhJzSj8DnZZJpmRgurSAklQmIG8Sa7LUAAoUlLy88VJ
+DbNRQB4AAA6EjjZUajxlAAAAAElFTkSuQmCC"
+      /><image width="20" id="image4" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACZklEQVR42sXVSUwT
+URgH8N48aLQn5eBdTx7ViyyKovGoHkxcEk0wkdQLHbpQnNIioaHGKlqUGg7GEKFC
+wAISTEolVlOKXRioYElbWrsm0zZSl7aHvzMTJF1TrQdf8j9N3m/evPd9b3i8rSFu
+E5ISkRCVIhUJx8ViYSOv0qCcTpKillAp+pEXYUlb65CEII4JBIIdZcF0Ok1mMhlU
+yue1Ncy8ngqPj42OyMkOpVQkaiIIoqZqkE0ymYTT4cDj/odQKsgJsZg4vQ3x5fX8
+XeSpvfbAam8gHkFhQokY6M0kmBdyWCqVAk3TiEajeG9+h3t3eyEVC+Xb4G7Zcc0e
+WYN1v/Ls14Oq8yhM3aNmKGefMmiCA9+ajOjuUjDphELegXapKB/kyxr8TL4zQanU
+yJtQy6DBRJQDw6FQicOi8kBuYr32BlpfaSCa7EPLmApCgwaNT1q4Zwd6zsFPhznQ
+Qq+j32uEzmfCTGQJ4W8JZLPZYvDy0G0Y3VZEN2msxnyY99jRrL9TBE6EbLhkH8BJ
+ixrXnYOwxb2lwUPqi+ic1eH3UJue4/D9q0VghFmRIWTHFbsOR81dMMZc/wZOh524
+ST3DhY9aHDEry4PXhhWYW1+EK+rhYtlY5vYyF7THfdB/WcCAbw59njeo/dBTHmQP
+gJh8wCFs2qe1OKO7VQB6OazbbcDgxjzqyoABpg5//EnZsPv3MrgAlXsKo0ErCNcw
+HAlfPsgWNjNxkS1sdiWFYTFFTmGXSv4KmdbbKT2xz+b/pGY/qzDsyljs51brVQSr
+uRz+D0hRTnKZ6ctqspLby3/7Cyj5W8i5bX4BFLzx2+gNWXoAAAAASUVORK5CYII="
+      /><image width="20" id="image5" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAADoElEQVR42rXU+0+T
+VxwGcP5FN03MTOZiRNR1qbO4uQsr2Aqlt7QlYG3B9U5LC4hFLDpUCjLp/UagA6Gi
+gKNXlSGBto/f854Sxe1H9ybPD2+bfvI95zynTa0DQXyOXBkI+pvYw14C0RwW1otH
+8zyPhdwmApEs2uwzCC/GkVkJIbM8g8xffyCTvYv00jDSiy447t85CjLgX0+9CtT+
+IXQdHa5ZVMoZ1N5FUNudQW1nErW3I6i+dqBaMWFyzvcBlPRP0zSF/wAPCHxLYA4d
+zhkCUwSGCZwmMEBfDRNoJ/AmAnNeSA7By6Yp+lH+E6xO2B4NWUZmbQVS+yNUSgkC
+52nox4RNoPbGR6CNQCPuPXGDHA6K+ybpR9tHsfo+6jRdvZpH5tkS2n5/gEqRLXeO
+wCkC/QR6CLOgWu7FRNAJcjgoMowjvbrF90xY5l4DK9DrBtLLafxsnkC58JTAYGP/
+RlF77SKwH9VSD8Yf2yDS+zl4UTuK1PJz4QAgQGVhMobV91eRykZx1TiGUj7Ip9sZ
+p+m8jeXexEFRD//ULVzQjnKwRenB2HQYyWyWskhZQHIpRYkjuRjC2KOH+F7vxZPI
+PSQy40ikR5BIuRBP3kI80Yt4TAuzz4QW5RAHmzsdEGvdaNUPNeL5KG76bhDnupy4
+rHPRuxOtOgfFQjFS9JDoNBCpjGjudHLwzDULZqNBlIpJlAoJSowSoiXOobQ9jdnw
+XVxSW7G2OoLSlgfFTTuKG2YUXvYgv67B9qoKrtu9OCOzcPAbqRmx9ENeWtYzVg12
+mrt8z2LJMYiV/ShuuekgWJEHhJM9KGqxv63Gu00VfHcMOC01c/DrX/oQTU7wG8BK
+y3ombP6kcACxuAffdd5AYcPawPoI02E/r8beKxV2XyoxNKoDORw89aMekfhwAwjw
+0rKesWrQaUajNnx7zYDCC1NjMoZpCFNjd0OFnXUl3D4NTv2g5+BJiRrhiEO4m+w6
+sRvASiv0jKoRDptwXqqh/TLwZQqTfcDerHXD6VHhpETDwRNiBUKhfn7R2d0U+mXh
+paWehecNaP5Vgb9zamHPhGUeYrluVJ4pYHcpcELcxcHjIjnmn/YI/xoMYHeTLY3d
+AFba0J8qnL0qx6sVlXAAbM8OJ2NYKauA1X4dx0UyDn5xsR1aYxcGfcpGuikKDHrp
+M28ntDfk+OpSOwZscjgGKS457E45bHYZrDYZLFYZfrregS8vtHPw2Hmp/7Okpe23
+pv/jeQ8L1H91BDGeKwAAAABJRU5ErkJggg=="
+      /><image width="20" id="image6" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAClUlEQVR42r3VbUgT
+cQDHcd/1tsjMJIjoRSVCEUFBSY+jZwisoCcIlBWEYbbbbSu7ta3hIyMfUtSylMKm
+qSNFnaZmboaUut3ELElxbXPD6bJVTl/8uht1eN3FyBcdfF/e5/5/7v8QFfXrUchl
+lJKUIVIqUtagUMgORkV6aJuNomk7IlVjrPYo5TeeKgkiMTU1ddlfwVAoRM3PzyNS
+H0ZG0NLc5Gmoe25UUxlaFUkeIggidskgWyAQgG1wECXFhdBqKJNCQRzmoGhV4hq2
+Aef7HOf0JMRyzfgwF5oLY8FgEH6/H16vF1ZLDwx5OVApZGoOXH5rn4ttrfbY7Kas
+UxBrd2EKg3rD4KuuDuh1GqY70KgzcFNFCkBozGVodHSLpjWXY2NmEib8njDocbtF
+fhbNB3XmB6jsa0RORxX0bRVMD8N1fXyLpqHXHFg/2ouC4WYUj3Vwjc5OYmFhgQ+m
+NeSF23nvElbdlmBFxn5szTuHst56HmgYMOHKmzJcczzhGpwZF4Imexesn2wgX+Rj
+c/ZpxFASpJsM6Bt38EDfFz8+B3xwzU5xBX98F4IlllqoW0pxvDwN2S8fI55B1+lO
+ILezigdertFjS2kKdtQSXJ0TdiG4p0iK7YaL2KA/GUblzEjZKUuNOmQxH/gNnqlU
+ItaQhPVVUq7W8XdCUGq8i8z2R9C3VyC/uxq9Y3aUWuvwrN+Moh4jB54tJrD6+gHE
+kUe4mmmLEGSXBjs1sXSLls2F3HTEJG3DyqMJXE2WdgHoZmMXNvuiWLsKkuGa9uLq
+fQoJyRLEn9/L1dbXzQejKUkcW//EcC47CrFYjN16vpkpOL1uOCddXF+/BfngUg6H
+P/s/IE3bKAezL5fS0OK9/K9XgOi1sOi0+QlIfef07EsbagAAAABJRU5ErkJggg=="
+    /></defs
+    ><g style="fill:white; font-size:15px; font-family:'Segoe UI'; stroke:white;"
+    ><rect x="0" y="0" width="640" style="clip-path:url(#clipPath1); stroke:none;" height="471"
+    /></g
+    ><g style="fill:white; text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:white;"
+    ><rect x="0" y="0" width="640" style="clip-path:url(#clipPath1); stroke:none;" height="471"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176)" style="font-size:15px; fill:rgb(230,177,115); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(230,177,115); stroke-width:3;"
+    ><path d="M1240.6 171 C1240.6 281 315 364 315 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M317.6552 463.765 L312.9249 450.1406 L328.4122 454.1584 L317.6552 463.765" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1240.6 171 C1240.6 281 731 206 731 316" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M732.595 305.9443 L730.6465 291.6543 L745.0364 298.6496 L732.595 305.9443" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1251 329 C1251 439 939 364 939 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M939.9766 463.9443 L935.7321 450.1608 L951.0673 454.725 L939.9766 463.9443" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M2031 329 C2031 439 1875 364 1875 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M1875.9855 463.5671 L1869.1494 450.868 L1885.0785 452.3726 L1875.9855 463.5671" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1240.6 13 C1240.6 123 1240.6 48 1240.6 158" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M1240.6 147.8047 L1232.6 135.8047 L1248.6 135.8047 L1240.6 147.8047" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M731 329 C731 439 315 364 315 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M316.3021 463.9443 L313.2924 449.8396 L328.1642 455.7413 L316.3021 463.9443" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1240.6 171 C1240.6 281 2031 206 2031 316" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M2028.5261 305.9443 L2014.9139 301.179 L2027.6893 291.5464 L2028.5261 305.9443" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1240.6 171 C1240.6 281 1875 364 1875 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M1873.1802 463.765 L1863.203 453.3507 L1878.9559 450.5498 L1873.1802 463.765" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M731 329 C731 439 1875 364 1875 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M1871.4193 463.9443 L1857.1672 461.7354 L1867.9767 449.939 L1871.4193 463.9443" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1240.6 171 C1240.6 281 1251 206 1251 316" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M1250.6953 305.9512 L1242.3353 294.1991 L1258.328 293.7142 L1250.6953 305.9512" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1251 329 C1251 439 1251 364 1251 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M1251 463.8047 L1243 451.8047 L1259 451.8047 L1251 463.8047" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M2031 329 C2031 439 2187 364 2187 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M2186.0146 463.5671 L2176.9214 452.3726 L2192.8506 450.868 L2186.0146 463.5671" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1251 329 C1251 439 627 364 627 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M628.9531 463.9443 L628.2168 449.5409 L641.9653 457.7248 L628.9531 463.9443" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M731 329 C731 439 3 364 3 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M5.2786 463.9443 L5.5526 449.5247 L18.6944 458.6512 L5.2786 463.9443" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1251 329 C1251 439 1563 364 1563 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M1562.0234 463.9443 L1550.9327 454.725 L1566.2679 450.1608 L1562.0234 463.9443" style="clip-path:url(#clipPath2); stroke:none;"
+      /><path d="M1251 329 C1251 439 1875 364 1875 474" style="fill:none; clip-path:url(#clipPath2);"
+      /><path d="M1873.0469 463.9443 L1860.0347 457.7248 L1873.7832 449.5409 L1873.0469 463.9443" style="clip-path:url(#clipPath2); stroke:none;"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1438,464)" style="fill:rgb(230,177,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,177,115);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath3); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1438,464)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath3); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1438,464)" style="fill:rgb(230,177,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,177,115);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath3); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath3);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1452,470)"
+    ><use style="clip-path:url(#clipPath4);" xlink:href="#image1"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath4); stroke:none;"
+      >se_check_mag_lim.m</text
+    ></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1115,148)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath5); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1115,148)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath5); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1115,148)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath5); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath5);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1129,154)"
+    ><use style="clip-path:url(#clipPath6);" xlink:href="#image2"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath6); stroke:none;"
+      >se_main.m</text
+    ></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1335,152) matrix(1,0,0,1,2,2)"
+    ><use style="clip-path:url(#clipPath8);" xlink:href="#image3"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1906,306)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath9); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1906,306)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath9); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1906,306)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath9); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath9);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1920,312)"
+    ><use style="clip-path:url(#clipPath10);" xlink:href="#image2"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath10); stroke:none;"
+      >se_load_csv.m</text
+    ></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(2126,310) matrix(1,0,0,1,2,2)"
+    ><use style="clip-path:url(#clipPath12);" xlink:href="#image3"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(2062,464)" style="fill:rgb(152,230,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(152,230,115);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath13); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(2062,464)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath13); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(2062,464)" style="fill:rgb(152,230,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(152,230,115);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath13); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath13);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(2076,470)"
+    ><use style="clip-path:url(#clipPath14);" xlink:href="#image4"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath14); stroke:none;"
+      >Simulation_HYG.csv</text
+    ></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(190,464)" style="fill:rgb(115,230,161); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(115,230,161);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(190,464)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(190,464)" style="fill:rgb(115,230,161); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(115,230,161);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath15);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(204,470)"
+    ><use style="clip-path:url(#clipPath16);" xlink:href="#image5"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath16); stroke:none;"
+      >se_variables.mat</text
+    ></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(814,464)" style="fill:rgb(228,115,230); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(228,115,230);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(814,464)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(814,464)" style="fill:rgb(228,115,230); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(228,115,230);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath15);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(828,470)"
+    ><use style="clip-path:url(#clipPath17);" xlink:href="#image6"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath17); stroke:none;"
+      >se_inputs.xls</text
+    ></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1750,464)" style="fill:rgb(115,230,161); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(115,230,161);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1750,464)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1750,464)" style="fill:rgb(115,230,161); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(115,230,161);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath18);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1764,470)"
+    ><use style="clip-path:url(#clipPath14);" xlink:href="#image5"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath14); stroke:none;"
+      >level.mat</text
+    ></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(606,306)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(606,306)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(606,306)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath15);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(620,312)"
+    ><use style="clip-path:url(#clipPath6);" xlink:href="#image2"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath6); stroke:none;"
+      >se_preprocessing.m</text
+    ></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(826,310) matrix(1,0,0,1,2,2)"
+    ><use style="clip-path:url(#clipPath8);" xlink:href="#image3"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1126,464)" style="fill:rgb(228,115,230); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(228,115,230);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1126,464)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1126,464)" style="fill:rgb(228,115,230); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(228,115,230);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath18);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1140,470)"
+    ><use style="clip-path:url(#clipPath16);" xlink:href="#image6"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath16); stroke:none;"
+      >se_ig_inputs.xls</text
+    ></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1115,-10)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath20); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1115,-10)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath20); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1115,-10)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath20); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath20);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1129,-4)"
+    ><use style="clip-path:url(#clipPath21);" xlink:href="#image2"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath21); stroke:none;"
+      >main.m</text
+    ></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1335,-6) matrix(1,0,0,1,2,2)"
+    ><use style="clip-path:url(#clipPath8);" xlink:href="#image3"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(502,464)" style="fill:rgb(228,115,230); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(228,115,230);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(502,464)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(502,464)" style="fill:rgb(228,115,230); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(228,115,230);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath18);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(516,470)"
+    ><use style="clip-path:url(#clipPath17);" xlink:href="#image6"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath17); stroke:none;"
+      >se_op_inputs.xls</text
+    ></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1126,306)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1126,306)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(1126,306)" style="fill:rgb(230,225,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(230,225,115);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath18); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath18);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1140,312)"
+    ><use style="clip-path:url(#clipPath23);" xlink:href="#image2"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath23); stroke:none;"
+      >se_edit_input_data.m</text
+    ></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(1346,310) matrix(1,0,0,1,2,2)"
+    ><use style="clip-path:url(#clipPath8);" xlink:href="#image3"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(-122,464)" style="fill:rgb(152,230,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(152,230,115);"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(-122,464)" style="font-size:15px; fill-opacity:0.702; fill:rgb(255,255,255); text-rendering:optimizeLegibility; font-family:'Segoe UI'; stroke:rgb(255,255,255); stroke-opacity:0.702;"
+    ><rect x="1" y="1" width="247" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+    /></g
+    ><g transform="matrix(0.2527,0,0,0.2527,44,176) translate(-122,464)" style="fill:rgb(152,230,115); text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI'; stroke:rgb(152,230,115);"
+    ><rect x="1" y="1" width="8" style="clip-path:url(#clipPath15); stroke:none;" height="30"
+      /><rect x="1" y="1" width="247" style="fill:none; clip-path:url(#clipPath15);" height="30"
+    /></g
+    ><g style="text-rendering:optimizeLegibility; font-size:15px; font-family:'Segoe UI';" transform="matrix(0.2527,0,0,0.2527,44,176) translate(-108,470)"
+    ><use style="clip-path:url(#clipPath17);" xlink:href="#image4"
+      /><text x="24" xml:space="preserve" y="17" style="clip-path:url(#clipPath17); stroke:none;"
+      >HYG.csv</text
+    ></g
+  ></g
+></svg
+>

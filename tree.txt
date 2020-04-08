@@ -1,0 +1,105 @@
+Folder PATH listing
+Volume serial number is A0B5-6B46
+C:.
+|   level.mat
+|   main.m
+|   README.md
+|   STADSMatlab.prj
+|   tree.txt
+|   tree_2.txt
+|   
++---Catalogue
+|       HYG.csv
+|       
++---Estimation
+|   |   level.mat
+|   |   README.md
+|   |   
+|   +---Functions
+|   |   |   empty.txt
+|   |   |   
+|   |   \---QuEST
+|   |           empty.txt
+|   |           
+|   \---Output
+|           empty.txt
+|           
++---Feature_Extraction
+|   |   level.mat
+|   |   README.md
+|   |   
+|   +---Functions
+|   |       empty.txt
+|   |       
+|   \---Output
+|           empty.txt
+|           
++---Inputs
+|       level.mat
+|       README.md
+|       
++---Optics
+|   |   level.mat
+|   |   README.md
+|   |   
+|   +---Functions
+|   |       empty.txt
+|   |       
+|   \---Output
+|           empty.txt
+|               
++---Sensor_Modelling
+|   |   level.mat
+|   |   README.md
+|   |   se.mat
+|   |   se_main.m
+|   |   se_variables.mat
+|   |   
+|   +---Functions
+|   |       se_check_mag_lim.m
+|   |       
+|   +---Inputs
+|   |       se_ig_inputs.xls
+|   |       se_inputs.xls
+|   |       se_op_inputs.xls
+|   |       
+|   +---Preprocessing
+|   |       HYG.csv
+|   |       se_preprocessing.m
+|   |       
+|   \---Processing
+|           se_edit_input_data.m
+|           se_load_csv.m
+|           Simulation_HYG.csv
+|           
++---Star_Matching
+|   +---Functions
+|   |   \---Geometric_Voting
+|   +---Output
+|   \---Preprocessing
++---System_Dynamics
+|       level.mat
+|       README.md
+|       
+\---Utils
+    |   level.mat
+    |   README.md
+    |   
+    +---misc
+    |       empty.txt
+    |       
+    +---to_es
+    |       empty.txt
+    |       
+    +---to_fe
+    |       empty.txt
+    |       
+    +---to_op
+    |       empty.txt
+    |       
+    +---to_se
+    |       empty.txt
+    |       
+    \---to_st
+            empty.txt
+            

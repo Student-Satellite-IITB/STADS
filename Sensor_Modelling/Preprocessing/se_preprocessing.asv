@@ -37,9 +37,8 @@ if (se_debug_run == 1); disp('Preprocessing: Catalogue Successfully Modified'); 
 % using the RA, Dec, Roll fields (Independent of Boresight Input)
 Simulation_HYG.RA = (Simulation_HYG.RA) .* 360 / 24;
 Simulation_HYG.x1 = - cosd(Simulation_HYG.Dec) .* sind(Simulation_HYG.RA);
-Simulation_HYG.y1 = + sind(Simulation_HYG.Dec);
+Simulation_HYG.y1 = - sind(Simulation_HYG.Dec);
 Simulation_HYG.z1 = - cosd(Simulation_HYG.Dec) .* cosd(Simulation_HYG.RA);
-if (se_debug_run == 1); disp('Preprocessing: Succesfully Converted to Cartesian Coordinates'); end
 
 % Store the Simulation_HYG table into '../Simulation_HYG.csv'
 if (level == 1)
