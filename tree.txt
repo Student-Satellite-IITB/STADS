@@ -10,7 +10,7 @@ C:.
 |   tree.txt
 |   
 +---Catalogue
-|       HYG.csv
+|       hygdata_v3.csv
 |       
 +---Estimation
 |   |   level.mat
@@ -62,22 +62,27 @@ C:.
 |   |       se_check_mag_lim.m
 |   |       
 |   +---Inputs
-|   |       se_ig_inputs.xls
-|   |       se_inputs.xls
-|   |       se_op_inputs.xls
+|   |       se_ig_inputs.xlsx
+|   |       se_inputs.xlsx
+|   |       se_op_inputs.xlsx
 |   |       
 |   +---Preprocessing
-|   |       HYG.csv
+|   |       hygdata_v3.csv
 |   |       se_preprocessing.asv
 |   |       se_preprocessing.m
 |   |       
-|   \---Processing
-|           se_celestial2lens.asv
-|           se_celestial2lens.m
-|           se_edit_input_data.m
-|           se_load_csv.asv
-|           se_load_csv.m
-|           Simulation_HYG.csv
+|   +---Processing
+|   |       se_ang_dist.asv
+|   |       se_ang_dist.m
+|   |       se_celestial2lens.asv
+|   |       se_celestial2lens.m
+|   |       se_edit_input_data.m
+|   |       se_load_csv.m
+|   |       Simulation_HYG.csv
+|   |       
+|   \---Temporary - Testing
+|           testing.asv
+|           timing_and_angle.m
 |           
 +---Star_Matching
 |   +---Functions
