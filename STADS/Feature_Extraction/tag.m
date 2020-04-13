@@ -1,12 +1,12 @@
 function [arr_sums, arr_merge] = tag(arr_in_img)
-    load('constants_feature_extraction.mat');
+    load('constants_feature_extraction.mat', NUM_MERGE, NUM_REGIONS, THRESHOLD);
     [length,breadth] = size(arr_in_img);
     arr_out_img = zeros(length+2, breadth+2, 2);
     arr_out_img(2:length+1, 2:breadth+1, 1) = arr_in_img;
     tag_num = 1;
     merge_num = 1;
-    arr_sums = zeros(20,3);
-    arr_merge = zeros(20, 2);
+    arr_sums = zeros(NUM_REGIONS,3);
+    arr_merge = zeros(NUM_MERGE, 2);
     for i_tag = 2:length+1
         for j_tag = 2:breadth+1
             if arr_out_img(i_tag, j_tag, 1) > THRESHOLD
