@@ -1,5 +1,6 @@
 \documentclass[a4paper, oneside,11pt]{article}
 \usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{natbib}
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
 \usepackage{graphicx}
@@ -71,7 +72,7 @@ This function is used to get the \emph{sum of the coordinates} (see the numerato
 
 \textbf{Formula \& References:}
 
-The algorithm basically tags connected pixels with the same tag (which is the index of the array where the sums of coordinates  and the number of pixels corresponding to that region are stored) and noting where two regions with different tags meet so that they can be merged.\cite{image_seg}
+The algorithm basically tags connected pixels with the same tag (which is the index of the array where the sums of coordinates  and the number of pixels corresponding to that region are stored) and noting where two regions with different tags meet so that they can be merged\cite{image_seg}.
 
 
 \textbf{Input parameters:}
@@ -91,5 +92,5 @@ The return value/s of the function must be written. If the function merely acts 
 
 
 \bibliographystyle{unsrt}
-\bibliography{references}
+\bibliography{references.bib}
 \end{document}
