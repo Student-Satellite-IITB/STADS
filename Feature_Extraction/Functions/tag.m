@@ -20,11 +20,11 @@ function [arr_sums, arr_merge] = tag(arr_in_img)
                             arr_sums(tag) = arr_sums(tag, :) + [i_tag, j_tag, 1];   % add the location and the weight to the  sums array
                         else  % if both left and right are bright, and they have different tags
                             tag_left = arr_out_img(i_tag-1, j_tag, 2);  % set the tag of the left pixel as "tag_left"
-                            tag_above = arr_out_img(i_tag, j_tag-1, 2); % set the tag of pixel as "tag_above"
+                            tag_above = arr_out_img(i_tag, j_tag-1, 2); % set the tag of pixel above as "tag_above"
                             arr_merge(merge_num, :) = [min(tag_left, tag_above), max(tag_left, tag_above)]; % add both to the merge array, smaller one first at merge counter
                             merge_num = merge_num +1;   % increment merge counter
-                            arr_out_img(i_tag, j_tag, 2) = tag_left;    % tag current pixel with tag of pixel to the left
-                            arr_sums(tag_left) = arr_sums(tag_left) + [i_tag, j_tag, 1];    % add the coordinates to the corresponding element in the sums array
+                            arr_out_img(i_tag, j_tag, 2) = tag_above;    % tag current pixel with tag of pixel above
+                            arr_sums(tag_above) = arr_sums(tag_above) + [i_tag, j_tag, 1];    % add the coordinates to the corresponding element in the sums array
                         end
                     else % if the pixel to the left is bright, but the one above isn't
                         tag = arr_out_img(i_tag-1, j_tag, 2);   % set "tag" as the tag of the pixel to the left
@@ -37,9 +37,15 @@ function [arr_sums, arr_merge] = tag(arr_in_img)
                         arr_out_img(i_tag, j_tag, 2) = tag; % set the tag of the current pixel as "tag"
                         arr_sums(tag, :) = arr_sums(tag, :) + [i_tag, j_tag, 1];    % add the coordinates and weight to the sums array
                     else    % if both the pixel above and the pixel to the left are not bright enough
-                        arr_out_img(i_tag, j_tag, 2) = tag_num; % tag the current pixel with the tag counter
-                        arr_sums(tag_num) = [i_tag, j_tag, 1];  % add the coordinates and the weight to the corresponding element of the sums array
-                        tag_num = tag_num +1;   % increment the tag counter
+                        if arr_out_img(i_tag +1, j_tag, 1) >THRESHOLD && arr_out_img(i_tag+1, j_tag-1, 1) >THRESHOLD    % if both the pixel to the right and the pixel above that are bright
+                            tag = arr_out_img(i_tag+1, j_tag-1, 2);     % set "tag" as the tag of the pixel to the right and above
+                            arr_out_img(i_tag, j_tag, 2) = tag; % tag the current pixel with "tag"
+                            arr_sums(tag, :) = arr_sums(tag, :) + [i_tag, j_tag, 1];    % update the corresponding entry in the sums array
+                        else
+                            arr_out_img(i_tag, j_tag, 2) = tag_num; % tag the current pixel with the tag counter
+                            arr_sums(tag_num) = arr_sums(tag_num, :) + [i_tag, j_tag, 1];  % add the coordinates and the weight to the corresponding element of the sums array
+                            tag_num = tag_num +1;   % increment the tag counter
+                        end
                     end
                 end
             end
