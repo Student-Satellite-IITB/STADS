@@ -17,7 +17,7 @@ function [arr_sums, arr_merge] = tag(arr_in_img)
                         if arr_out_img(i_tag-1, j_tag, 2) == arr_out_img(i_tag, j_tag-1, 2) % if both left and right are bright, and they have the same tag
                             tag = arr_out_img(i_tag, j_tag-1, 2);   % set the common tag as "tag"
                             arr_out_img(i_tag, j_tag, 2) = tag; % tag the current pixel with the common tag
-                            arr_sums(tag) = arr_sums(tag, :) + [i_tag, j_tag, 1];   % add the location and the weight to the  sums array
+                            arr_sums(tag, :) = arr_sums(tag, :) + [i_tag, j_tag, 1];   % add the location and the weight to the  sums array
                         else  % if both left and right are bright, and they have different tags
                             tag_left = arr_out_img(i_tag-1, j_tag, 2);  % set the tag of the left pixel as "tag_left"
                             tag_above = arr_out_img(i_tag, j_tag-1, 2); % set the tag of pixel above as "tag_above"
