@@ -2,7 +2,7 @@
 %   se.mat contains the table containing all relevant data for Sensor
 %   Modelling
 
-% Load level.mat to get file level
+% Load level.mat to get the variable 'level'
 load('level.mat', 'level');
 
 % Add to Path - Inputs

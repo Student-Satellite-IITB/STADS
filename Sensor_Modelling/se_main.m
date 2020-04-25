@@ -1,9 +1,6 @@
 % Main Function for Sensor Modelling Block
 %   Detailed explanation goes here
 
-% Clear all Workspace Variables
-% clear all;
-
 % Add everything to path
 load('level.mat', 'level');
 if (level == 1)
@@ -24,6 +21,9 @@ se_edit_input_data;
 % Load se_pp from se_variables.mat
 load('se_variables.mat', 'se_pp', 'se_debug_run');
 
+% Temporary - to be removed after  debugging
+% if (se_debug_run == 1); se_pp = 1; end
+
 % Preprocessing of the HYG Database, if se_pp != 0
 if (se_pp == 1)
     se_preprocessing; 
@@ -34,6 +34,11 @@ end
 % Load the csv file into mat file
 se_load_csv;
 
+% Convert star coordinates from celestial frame to lens frame
+se_celestial2lens;
+
+% Calculate the angular distance and trim the database to within FOV
+se_ang_dist;
+
 %'SE Main: Success';
-
-
+disp('Sensor Modelling Main: Success');

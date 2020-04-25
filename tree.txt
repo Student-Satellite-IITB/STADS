@@ -1,0 +1,117 @@
+Folder PATH listing
+Volume serial number is A0B5-6B46
+C:.
+|   level.mat
+|   main.m
+|   MATLAB.gitignore
+|   README.md
+|   STADS - Matlab Graph.svg
+|   STADSMatlab.prj
+|   tree.txt
+|   
++---Catalogue
+|       hygdata_v3.csv
+|       
++---Estimation
+|   |   level.mat
+|   |   README.md
+|   |   
+|   +---Functions
+|   |   |   empty.txt
+|   |   |   
+|   |   \---QuEST
+|   |           empty.txt
+|   |           
+|   \---Output
+|           empty.txt
+|           
++---Feature_Extraction
+|   |   level.mat
+|   |   README.md
+|   |   
+|   +---Functions
+|   |       empty.txt
+|   |       
+|   \---Output
+|           empty.txt
+|           
++---Inputs
+|       level.mat
+|       README.md
+|       
++---Optics
+|   |   level.mat
+|   |   README.md
+|   |   
+|   +---Functions
+|   |       empty.txt
+|   |       
+|   \---Output
+|           empty.txt
+|               
++---Sensor_Modelling
+|   |   level.mat
+|   |   Notes.md
+|   |   README.md
+|   |   se.mat
+|   |   se_main.asv
+|   |   se_main.m
+|   |   se_variables.mat
+|   |   
+|   +---Functions
+|   |       se_check_mag_lim.m
+|   |       
+|   +---Inputs
+|   |       se_ig_inputs.xlsx
+|   |       se_inputs.xlsx
+|   |       se_op_inputs.xlsx
+|   |       
+|   +---Preprocessing
+|   |       hygdata_v3.csv
+|   |       se_preprocessing.asv
+|   |       se_preprocessing.m
+|   |       
+|   +---Processing
+|   |       se_ang_dist.asv
+|   |       se_ang_dist.m
+|   |       se_celestial2lens.asv
+|   |       se_celestial2lens.m
+|   |       se_edit_input_data.m
+|   |       se_load_csv.m
+|   |       Simulation_HYG.csv
+|   |       
+|   \---Temporary - Testing
+|           testing.asv
+|           timing_and_angle.m
+|           
++---Star_Matching
+|   +---Functions
+|   |   \---Geometric_Voting
+|   +---Output
+|   \---Preprocessing
++---System_Dynamics
+|       level.mat
+|       README.md
+|       
+\---Utils
+    |   level.mat
+    |   README.md
+    |   
+    +---misc
+    |       empty.txt
+    |       
+    +---to_es
+    |       empty.txt
+    |       
+    +---to_fe
+    |       empty.txt
+    |       
+    +---to_op
+    |       empty.txt
+    |       
+    +---to_se
+    |       empty.txt
+    |       
+    \---to_st
+            empty.txt
+            
