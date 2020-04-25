@@ -9,8 +9,8 @@ We currently use the SKY2000 Star Catalogue.
 The following data fields of the SKY2000 Catalogue are used:
 
 1. SKY2000 - *Identifier based on J2000 position*
-1. RAJ2000 - *Right ascension (J2000) hours - ("h:m:s")*
-1. DEJ2000 - *Declination degrees (J2000) - ("d:m:s")*
+1. RAJ2000 - *Right ascension (J2000) hours - ("h - m - s")*
+1. DEJ2000 - *Declination degrees (J2000) - ("d - m - s")*
 1. pmRA - *Proper motion in RA (J2000) - second per year*
 1. pmDE - *Proper motion in Dec (J2000) - second of arc per year*
 1. Vmag - *Photometric magnitude - (Optical V band between 500 and 600 nm)*
