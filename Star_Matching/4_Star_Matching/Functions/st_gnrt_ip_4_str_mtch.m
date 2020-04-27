@@ -1,29 +1,34 @@
-function [c_img_AngDst, c_fe_IDs] = sm_gnrt_ip_4_str_mtch(sm_bi, n_fe_strs)
+function [c_img_AngDst, c_fe_IDs] = st_gnrt_ip_4_str_mtch(st_bi, n_fe_strs)
     % Generates the input for 4-Star Matching Algorithm, using the 
-    % body-frame vectors of the idetified stars from the image
+    % body-frame vectors of the identified stars from the image
     % Parameters:
     % -----------
-    % sm_bi: (N,4) - Matrix
-    %   The body frame vectors of the identified stars
+    % st_bi: ( (N,4) - Matrix )
+    %   The body-frame vector of each corresponding star. It is a 
+    % unit-vector represented in $(X,Y,Z)$ format, with the origin at the 
+    % center of the sensor and positive z-axis pointing out of the lens. 
+    % The first column corresponds to the index of the star as denoted in 
+    % fe_output
     % n_fe_strs: (Integer)
     %   The number of stars identified by feature extraction
     %   <<< NOTE: (n_fe_strs) >= 4 !! >>>
     % Returns:
     % --------
-    % c_img_AngDst: (6,1) - Matrix
-    %   Has the angular distances ( in cos(theta) ) between those of four
+    % c_img_AngDst: ( (6,1) - Matrix )
+    %   Has the angular distances ( in $\cos(\theta)$ ) between those of four
     %   stars in the following order:
-    %   (S1, S2) ; (S1, S3) ; (S1, S4); (S2, S3); (S2, S4); (S3, S4);
+    %   $(S_1, S_2) ; (S_1, S_3) ; (S_1, S_4); (S_2, S_3); (S_2, S_4); 
+    %   (S_3, S_4);$
     %   <<< NOTE: THE ABOVE ORDER IS IMPORTANT, AND SHOULD BE FOLLOWED! >>>
-    % c_fe_IDs: (4,1) - Matrix
+    % c_fe_IDs: ( (4,1) - Matrix )
     %   Has the Feature Extraction IDs of stars that are used to generate
     %   c_img_AngDst, in the following order:
-    %   [S1 ; S2 ; S3 ; S4]
+    %   $[S_1 ; S_2 ; S_3 ; S_4]$
     
     %% Code
 
     if n_fe_strs < 4
-        %% Check length of sm_BF_vec
+        %% Check length of st_BF_vec
         error('Minimum four stars required: %s', n_fe_strs);
     end
 
@@ -37,8 +42,8 @@ function [c_img_AngDst, c_fe_IDs] = sm_gnrt_ip_4_str_mtch(sm_bi, n_fe_strs)
                 %% Calculate Angular Distance
                 
                 % Extract unit vectors
-                si = sm_bi(i_idx, 2:4); 
-                sj = sm_bi(j_idx, 2:4);
+                si = st_bi(i_idx, 2:4); 
+                sj = st_bi(j_idx, 2:4);
                 
                 % Dot product of the two body-frame vectors
                 str_AngDst = dot(si, sj); 
@@ -50,6 +55,6 @@ function [c_img_AngDst, c_fe_IDs] = sm_gnrt_ip_4_str_mtch(sm_bi, n_fe_strs)
         end
     end
     
-    c_fe_IDs = sm_bi(1:4, 1); % Store Feature Extraction IDs
+    c_fe_IDs = st_bi(1:4, 1); % Store Feature Extraction IDs
 
 end
