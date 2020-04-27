@@ -1,6 +1,6 @@
 %% NOTE:
 % -----
-% This script should be run only by <<< sm_constants_4_str_mtch >>> !!!!
+% This script should be run only by <<< st_constants_4_str_mtch >>> !!!!
 % The script will throw an error if run by itself.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Read Preprocessed Star Catalogue
@@ -16,7 +16,7 @@ c_AngDst_cos = PP_SC(:,3);
 %% Construct K-Vector
 
 % Construct the K-Vector
-[K_Vec, sm_M, sm_Q, ~] = sm_gnrt_K_Vec(c_AngDst_cos, sm_M_EPS, true); 
+[K_Vec, st_M, st_Q, ~] = st_gnrt_K_Vec(c_AngDst_cos, st_M_EPS, true); 
 
 %% Create Reference Star Catalogue
 RF_SC = [PP_SC(:, 1:2) , K_Vec]; % Append columns to Reference catalogue
