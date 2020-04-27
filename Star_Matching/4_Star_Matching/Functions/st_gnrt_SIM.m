@@ -41,7 +41,7 @@ function SIM = st_gnrt_SIM (c_img_AngDst, st_RF_SC, n_rw_GC, st_M, st_Q, st_DELT
         str_AngDst = c_img_AngDst(j_idx); % Angular distance of (j-th) pair
              
         % Determine candidate star pair array
-        [CSPA, ~] = st_gnrt_CSPA(str_AngDst, st_DELTA, st_Q, st_M, st_RF_SC);
+        [CSPA, ~] = st_gnrt_CSPA(str_AngDst, st_DELTA, st_M, st_Q, st_RF_SC);
         
         for i_idx = 1:length(CSPA)
             SSP_ID = CSPA(i_idx); % Possible SSP_ID
