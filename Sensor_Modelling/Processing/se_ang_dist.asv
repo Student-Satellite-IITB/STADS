@@ -1,0 +1,25 @@
+% Trims the Star Catalogue to within FOV and stores them in se.mat
+%   ...
+
+% Load se.mat to get table T
+load('se_SKY2000.mat', 'se_SKY2000');
+se_T = se_SKY2000;
+
+% Defining an anonymous function - 
+se_func_ang_dist = @(r0) rad2deg(atan2(norm(cross(se_r0,r0)), dot(se_r0,r0)));
+if (se_debug_run == 1); 
+% Add angular ditance wrt boresight
+se_T = [se_T rowfun(se_func_ang_dist, se_T, 'InputVariables', 'r0', 'OutputVariableName', 'Angular_Distance')];
+if (se_debug_run == 1); disp('Angular Distance: Angular Distance Successfully Added'); end
+
+% Copy the stars with Magnitude less than se_magnitude_limit to
+% Simulation_HYG
+se_T = se_T(se_T.Angular_Distance <= se_FOV_circular, :);
+if (se_debug_run == 1); disp('Angular Distance: Catalogue Successfully Modified'); end
+
+% Save the table T into se.mat
+save('./Sensor_Modelling/se.mat', 'se_T');
+
+% Display Sucess
+disp('Angular Distance: Database Successfully Loaded to se.mat');
+
