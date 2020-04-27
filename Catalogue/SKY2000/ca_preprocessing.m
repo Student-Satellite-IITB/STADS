@@ -39,10 +39,10 @@ sz = size(M_SC);
 N = sz(1); % Number of rows in Master Star Catalogue
 
 % Declination to degrees conversion
-tmp1 = rowfun(@DMS2degrees, M_SC, 'InputVariables', [5,6,7], 'OutputVariableNames', {'DE'});
+tmp1 = rowfun(@ca_DMS2degrees, M_SC, 'InputVariables', [5,6,7], 'OutputVariableNames', {'DE'});
 
 % Right-Ascension to degrees conversion
-tmp2 = rowfun(@HMS2degrees, M_SC, 'InputVariables', [2,3,4], 'OutputVariableNames', {'RA'});
+tmp2 = rowfun(@ca_HMS2degrees, M_SC, 'InputVariables', [2,3,4], 'OutputVariableNames', {'RA'});
 
 SSP_SC = [M_SC(:,1), tmp2, tmp1, M_SC(:, 8:11)]; % Append all columns
 SSP_SC = sortrows(SSP_SC,'Vmag','ascend'); % Sort based on VMag column
