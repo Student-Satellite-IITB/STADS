@@ -10,13 +10,13 @@ GD_SC = readmatrix('.\Catalogue\SKY2000\Catalogues\Guide_Star_Catalogue.csv');
 % Read - Preprocessed Star Catalogue (which contains the star pairs)
 PP_SC = readmatrix('.\Catalogue\SKY2000\Catalogues\Preprocessed_Star_Catalogue.csv');
 
-% Extract 'Angular distance' from Preprocessed catalogue
-c_ANG_DST = PP_SC(:,3); 
+% Extract 'Angular distance - in cos(thetha)' from Preprocessed catalogue
+c_AngDst_cos = PP_SC(:,3); 
 
 %% Construct K-Vector
 
 % Construct the K-Vector
-[K_Vec, sm_M, sm_Q, ~] = sm_gnrt_K_Vec(c_ANG_DST, M_EPS, true); 
+[K_Vec, sm_M, sm_Q, ~] = sm_gnrt_K_Vec(c_AngDst_cos, sm_M_EPS, true); 
 
 %% Create Reference Star Catalogue
 RF_SC = [PP_SC(:, 1:2) , K_Vec]; % Append columns to Reference catalogue

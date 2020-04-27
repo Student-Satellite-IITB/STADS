@@ -1,4 +1,4 @@
-function [K_Vec, sm_M, sm_Q, I_Vec] = sm_gnrt_K_Vec (c_y, M_EPS, is_sorted)
+function [K_Vec, sm_M, sm_Q, I_Vec] = sm_gnrt_K_Vec (c_y, sm_M_EPS, is_sorted)
     % Generates the K-Vector for a given array 
     % Reference:
     % ---------- 
@@ -6,21 +6,21 @@ function [K_Vec, sm_M, sm_Q, I_Vec] = sm_gnrt_K_Vec (c_y, M_EPS, is_sorted)
     % (2000). k-Vector Range Searching Technique.105. 
     % Paramaters:
     % -----------
-    % c_y: column array
+    % c_y: (N, 1) - Matrix
     %     The array for which k-vector has to be generated
-    % M_EPS: double
-    %     The value of machine epsilon
+    % sm_M_EPS: Float
+    %     The machine epsilon of the platform where the algorithm will be executed
     % is_sorted : boolean
     %     If true - implies the array is sorted
     % Returns:
     % --------
-    % K_Vec: column vector
+    % K_Vec: (N, 1) - Matrix
     %     The K-vector of the given array
     % sm_M: double
-    %     Slope of Z-Vector line
+    %     The slope of the Z-vector line
     % sm_Q: double
-    %     Coefficient of Z-Vector line    
-    % I_Vec: column vector
+    %     The y-intercept of the Z-vector line  
+    % I_Vec: (N, 1) - Matrix
     %     The integer vector associated with sorting    
     %% Create S & I vectors
     N = length(c_y); % Length of given array
@@ -34,8 +34,8 @@ function [K_Vec, sm_M, sm_Q, I_Vec] = sm_gnrt_K_Vec (c_y, M_EPS, is_sorted)
     %% Calculate constants
     y_min = S_VEC(1); y_max = S_VEC(N); % Store min & max values
        
-    sm_M = (y_max - y_min + 2*M_EPS)/(N-1); % Calculate slope of Z-Vector line
-    sm_Q = y_min - sm_M - M_EPS; % Calculate coefficient of Z-Vector line
+    sm_M = (y_max - y_min + 2*sm_M_EPS)/(N-1); % Calculate slope of Z-Vector line
+    sm_Q = y_min - sm_M - sm_M_EPS; % Calculate coefficient of Z-Vector line
     
     %% Initialize K-vector
     K_Vec = zeros(N, 1); % Column vector    
