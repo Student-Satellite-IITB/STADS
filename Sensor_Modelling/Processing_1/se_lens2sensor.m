@@ -10,8 +10,8 @@ load('se_variables.mat', 'se_focal_length');
 % Converting the unit vectors in the lens frame to 2D cartesian coordinates
 % in the sensor frame
 % Defining an anonymous function - 
-se_func_lens2sensor_y = @(r3) r3(1) * se_focal_length / r3(1);
-se_func_lens2sensor_z = @(r3) r3(2) * se_focal_length / r3(1);
+se_func_lens2sensor_y = @(r3) r3(2) * se_focal_length / r3(1);
+se_func_lens2sensor_z = @(r3) r3(3) * se_focal_length / r3(1);
 se_T = [se_T rowfun(se_func_lens2sensor_y, se_T, 'InputVariables', 'r3', 'OutputVariableName', 'Sensor_y')...
     rowfun(se_func_lens2sensor_z, se_T, 'InputVariables', 'r3', 'OutputVariableName', 'Sensor_z')];
 if (se_debug_run == 1); disp('Lens to Sensor: Conversion Successful'); end

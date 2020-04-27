@@ -48,8 +48,8 @@ if (se_debug_run == 1); disp('Preprocessing: Succesfully Converted to Cartesian 
 %% Save Star Catalogue
 % Store a copy of the SKY2000 table into '../se_SKY2000.mat' and
 % '../se_SKY2000.csv'
-save('./Sensor_Modelling/Processing/se_SKY2000.mat', 'se_T');
-if (se_debug_run == 1); writetable(se_T, './Sensor_Modelling/Processing/se_SKY2000.csv'); end
+save('./Sensor_Modelling/Processing_1/se_SKY2000.mat', 'se_T');
+if (se_debug_run == 1); writetable(se_T, './Sensor_Modelling/Processing_1/se_SKY2000.csv'); end
 if (se_debug_run == 1); disp('Preprocessing: Modified Catalogue Successfully Saved'); end
 
 % Clear Preprocessing variables from workspace

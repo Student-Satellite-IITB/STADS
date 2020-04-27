@@ -38,10 +38,12 @@ if (se_debug_run == 1); disp('Edit Input Data: Boresight Input Read Successfully
 % Optics Inputs:
 % se_FOV_length =     se_op_inputs(1);
 % se_FOV_width =      se_op_inputs(2);
-se_CMOS_length =    se_op_inputs(3);
-se_CMOS_width =     se_op_inputs(4);
+se_CMOS_length_pix =  se_op_inputs(3);
+se_CMOS_width_pix =   se_op_inputs(4);
 se_focal_length =   se_op_inputs(5);
 se_pixel_size =     se_op_inputs(6);
+se_CMOS_length = se_CMOS_length_pix * se_pixel_size;
+se_CMOS_width = se_CMOS_width_pix * se_pixel_size;
 % Calculations:
 % Diametrical FOV, in Degrees
 se_FOV_circular =   sqrt(se_op_inputs(1) ^ 2 + se_op_inputs(2) ^ 2);   
@@ -63,7 +65,7 @@ if (se_debug_run == 1); clear('se_inputs', 'se_ig_inputs', 'se_op_inputs'); end
 
 %% Save Variables
 % Save all relevant workspace variables to 'se_variables.mat'
-save('./Sensor_Modelling/se_variables.mat', 'se_debug_run', 'se_magnitude_limit', 'se_pp', 'se_RA', 'se_Dec', 'se_Roll', 'se_FOV_circular', 'se_CMOS_length', 'se_CMOS_width', 'se_focal_length', 'se_pixel_size', 'se_sigma', 'se_check_radius');
+save('./Sensor_Modelling/se_variables.mat', 'se_debug_run', 'se_magnitude_limit', 'se_pp', 'se_RA', 'se_Dec', 'se_Roll', 'se_FOV_circular', 'se_CMOS_length_pix', 'se_CMOS_width_pix', 'se_CMOS_length', 'se_CMOS_width', 'se_focal_length', 'se_pixel_size', 'se_sigma', 'se_check_radius');
 if (se_debug_run == 1); disp('Edit Input Data: Input Data Saved Successfully'); end
 
 % Display Success

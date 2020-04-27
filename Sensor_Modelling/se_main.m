@@ -5,7 +5,7 @@
 %% Load Input Data
 se_load_input_data;
 
-%% Load se_pp & se_debug_run from se_variables.mat
+%% Load Variables
 load('se_variables.mat', 'se_pp', 'se_debug_run');
 
 % Temporary - to be removed after  debugging
@@ -26,6 +26,9 @@ se_icrs2lens;
 
 %% Lens Frame to Sensor Frame
 se_lens2sensor;
+
+%% Trim to Sensor Frame
+se_trim_sensor;
 
 % Display Success Message;
 fprintf('Sensor Modelling Main: Success \n \n');

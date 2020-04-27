@@ -5,7 +5,7 @@
 % Load se.mat to get table T
 load('se.mat', 'se_T');
 
-%% Approach 1: ICRS to Lens
+%% Approach 1: ICRS to Lens - Without Robotics Toolbox
 % Approach 1: Using 3 Rotations Matrices
 % Define Rotation Matrices
 se_Rx = [1 0 0; 0 cosd(se_Roll) -sind(se_Roll); 0 sind(se_Roll) cosd(se_Roll)];
@@ -27,7 +27,7 @@ if (se_debug_run == 1); disp('Celestial to Lens: 2nd Euler Rotation Sucessful');
 se_T.r3 = se_T.r2 * se_Rx';
 if (se_debug_run == 1); disp('Celestial to Lens: 3rd Euler Rotation Sucessful'); end
 
-%% Approach 2: ICRS to Lens
+%% Approach 2: ICRS to Lens - With Robotics Toolbox
 % Approach 2: Using Matlab to generate Rotation Matrix from the Euler
 % angles
 % se_euler_rotation = eul2rotm([deg2rad(se_RA), deg2rad(-se_Dec), deg2rad(-se_Roll)], 'ZYX');
