@@ -1,4 +1,4 @@
-function deg = HMS2degrees(H, M, S)
+function deg = ca_HMS2degrees(H, M, S)
     % Converts the angle from H:M:S to degrees format 
     % Parameters:
     % -----------

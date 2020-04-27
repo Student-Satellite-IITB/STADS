@@ -1,4 +1,4 @@
-function deg = DMS2degrees(D, M, S)
+function deg = ca_DMS2degrees(D, M, S)
     % Converts the angle from D:M:S to degrees format 
     % Parameters:
     % -----------

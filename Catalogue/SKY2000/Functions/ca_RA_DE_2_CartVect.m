@@ -1,4 +1,4 @@
-function [X, Y, Z] = RA_DE_2_CartVect(RA, DE)
+function [X, Y, Z] = ca_RA_DE_2_CartVect(RA, DE)
     % Converts a given Right-Ascension and Declination coordinate to a unit
     % vector in a rectilinear coordinate system - (X, Y, Z).
     % The (X, Y, Z) coordinate system definition corresponds to the
