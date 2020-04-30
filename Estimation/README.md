@@ -1,2 +1,13 @@
-# STADS
-This repository contains codes for open- and closed- loops for STADS (Star Tracker based Attitude Determination System)
+# Student Satellite Project - Indian Institude of Technology, Bombay
+
+## Star Tracker-based Attitude Determination System (STADS)
+
+### Author - Mitalee Oza, Shashank Singh 
+
+This repository contains the code for the Star Matching - block of STADS.
+Currently three algorithms are used - q-Davenport, QuEST-1, QuEST-2
+
+***Refer:***
+
+Fundamentals of Spacecraft Attitude Determination and Control
+Authors: Markley, F. Landis, Crassidis, John L.
