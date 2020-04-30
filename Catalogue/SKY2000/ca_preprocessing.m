@@ -29,7 +29,7 @@ tmp5 =  SKY_C(skip:end,[4,5,7]);
 M_SC = [tmp1, tmp2, tmp3, tmp4, tmp5];
 
 % Write Table
-%writetable(M_SC, '.\Catalogue\SKY2000\Catalogues\Master_Star_Catalogue.csv');
+writetable(M_SC, '.\Catalogue\SKY2000\Catalogues\Master_Star_Catalogue.csv');
 
 %% Create SSP Star Catalogue
 
@@ -54,4 +54,4 @@ SSP_ID = array2table(val, 'VariableNames', {'SSP_ID'});
 SSP_SC = [SSP_ID, SSP_SC]; % Append Column
 
 % Write Table
-%writetable(SSP_SC, '.\Catalogue\SKY2000\Catalogues\SSP_Star_Catalogue.csv');
+writetable(SSP_SC, '.\Catalogue\SKY2000\Catalogues\SSP_Star_Catalogue.csv');

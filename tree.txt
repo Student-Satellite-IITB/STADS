@@ -1,19 +1,37 @@
-Folder PATH listing
-Volume serial number is A0B5-6B46
-C:.
-|   level.mat
+Folder PATH listing for volume Prajwal
+Volume serial number is DA5F-0E6A
+E:.
+|   .gitignore
 |   main.m
-|   MATLAB.gitignore
 |   README.md
 |   STADS - Matlab Graph.svg
 |   STADSMatlab.prj
 |   tree.txt
 |   
 +---Catalogue
-|       hygdata_v3.csv
-|       
+|   |   README.md
+|   |   
+|   \---SKY2000
+|       |   ca_guide_star_catalogue.m
+|       |   ca_preprocessing.m
+|       |   ca_sm_preprocessing.m
+|       |   README.md
+|       |   RM_Star_Catalogue_Preprocessing.pdf
+|       |   SKY2000_README.pdf
+|       |   
+|       +---Catalogues
+|       |       Guide_Star_Catalogue.csv
+|       |       Master_Star_Catalogue.csv
+|       |       Preprocessed_Star_Catalogue.csv
+|       |       SKY2000.csv
+|       |       SSP_Star_Catalogue.csv
+|       |       
+|       \---Functions
+|               ca_DMS2degrees.m
+|               ca_HMS2degrees.m
+|               ca_RA_DE_2_CartVect.m
+|               
 +---Estimation
-|   |   level.mat
 |   |   README.md
 |   |   
 |   +---Functions
@@ -22,11 +40,14 @@ C:.
 |   |   \---QuEST
 |   |           empty.txt
 |   |           
+|   +---Input
+|   |       es_input.mat
+|   |       README.md
+|   |       
 |   \---Output
 |           empty.txt
 |           
 +---Feature_Extraction
-|   |   level.mat
 |   |   README.md
 |   |   
 |   +---Functions
@@ -36,25 +57,302 @@ C:.
 |           empty.txt
 |           
 +---Inputs
-|       level.mat
 |       README.md
 |       
 +---Optics
-|   |   level.mat
-|   |   README.md
-|   |   
 |   +---Functions
 |   |       empty.txt
 |   |       
 |   \---Output
 |           empty.txt
+|           
++---resources
+|   \---project
+|       |   Project.xml
+|       |   ProjectData.type.Info.xml
+|       |   uuid-8b8c54bd-ed81-401f-b45a-fa1b17adebdd.xml
+|       |   
+|       +---Extensions.type.Root
+|       |   \---DependencyAnalysis.type.Extension
+|       |           ExternalFiles.type.Extension.xml
+|       |           
+|       +---Root.type.Categories
+|       |   |   FileClassCategory.type.Category.xml
+|       |   |   
+|       |   \---FileClassCategory.type.Category
+|       |           artifact.type.Label.xml
+|       |           convenience.type.Label.xml
+|       |           derived.type.Label.xml
+|       |           design.type.Label.xml
+|       |           none.type.Label.xml
+|       |           other.type.Label.xml
+|       |           test.type.Label.xml
+|       |           
+|       +---Root.type.Files
+|       |   |   .gitignore.type.File.xml
+|       |   |   Catalogue.type.File.xml
+|       |   |   Estimation.type.File.xml
+|       |   |   Feature_Extraction.type.File.xml
+|       |   |   Inputs.type.File.xml
+|       |   |   main.m.type.File.xml
+|       |   |   Optics.type.File.xml
+|       |   |   README.md.type.File.xml
+|       |   |   Sensor_Modelling.type.File.xml
+|       |   |   STADS - Matlab Graph.svg.type.File.xml
+|       |   |   Star_Matching.type.File.xml
+|       |   |   System_Dynamics.type.File.xml
+|       |   |   tree.txt.type.File.xml
+|       |   |   Utils.type.File.xml
+|       |   |   
+|       |   +---Catalogue.type.File
+|       |   |   |   1.type.DIR_SIGNIFIER.xml
+|       |   |   |   README.md.type.File.xml
+|       |   |   |   SKY2000.type.File.xml
+|       |   |   |   
+|       |   |   \---SKY2000.type.File
+|       |   |       |   1.type.DIR_SIGNIFIER.xml
+|       |   |       |   Catalogues.type.File.xml
+|       |   |       |   ca_guide_star_catalogue.m.type.File.xml
+|       |   |       |   ca_preprocessing.m.type.File.xml
+|       |   |       |   ca_sm_preprocessing.m.type.File.xml
+|       |   |       |   Functions.type.File.xml
+|       |   |       |   README.md.type.File.xml
+|       |   |       |   RM_Star_Catalogue_Preprocessing.pdf.type.File.xml
+|       |   |       |   SKY2000_README.pdf.type.File.xml
+|       |   |       |   
+|       |   |       +---Catalogues.type.File
+|       |   |       |       1.type.DIR_SIGNIFIER.xml
+|       |   |       |       Guide_Star_Catalogue.csv.type.File.xml
+|       |   |       |       Master_Star_Catalogue.csv.type.File.xml
+|       |   |       |       Preprocessed_Star_Catalogue.csv.type.File.xml
+|       |   |       |       SKY2000.csv.type.File.xml
+|       |   |       |       SSP_Star_Catalogue.csv.type.File.xml
+|       |   |       |       
+|       |   |       \---Functions.type.File
+|       |   |               1.type.DIR_SIGNIFIER.xml
+|       |   |               ca_DMS2degrees.m.type.File.xml
+|       |   |               ca_HMS2degrees.m.type.File.xml
+|       |   |               ca_RA_DE_2_CartVect.m.type.File.xml
+|       |   |               
+|       |   +---Estimation.type.File
+|       |   |   |   1.type.DIR_SIGNIFIER.xml
+|       |   |   |   Functions.type.File.xml
+|       |   |   |   Input.type.File.xml
+|       |   |   |   Output.type.File.xml
+|       |   |   |   README.md.type.File.xml
+|       |   |   |   
+|       |   |   +---Functions.type.File
+|       |   |   |   |   1.type.DIR_SIGNIFIER.xml
+|       |   |   |   |   empty.txt.type.File.xml
+|       |   |   |   |   QuEST.type.File.xml
+|       |   |   |   |   
+|       |   |   |   \---QuEST.type.File
+|       |   |   |           1.type.DIR_SIGNIFIER.xml
+|       |   |   |           empty.txt.type.File.xml
+|       |   |   |           
+|       |   |   +---Input.type.File
+|       |   |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |   |       es_input.mat.type.File.xml
+|       |   |   |       README.md.type.File.xml
+|       |   |   |       
+|       |   |   \---Output.type.File
+|       |   |           1.type.DIR_SIGNIFIER.xml
+|       |   |           empty.txt.type.File.xml
+|       |   |           
+|       |   +---Feature_Extraction.type.File
+|       |   |   |   1.type.DIR_SIGNIFIER.xml
+|       |   |   |   Functions.type.File.xml
+|       |   |   |   Output.type.File.xml
+|       |   |   |   README.md.type.File.xml
+|       |   |   |   
+|       |   |   +---Functions.type.File
+|       |   |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |   |       empty.txt.type.File.xml
+|       |   |   |       
+|       |   |   \---Output.type.File
+|       |   |           1.type.DIR_SIGNIFIER.xml
+|       |   |           empty.txt.type.File.xml
+|       |   |           
+|       |   +---Inputs.type.File
+|       |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |       README.md.type.File.xml
+|       |   |       
+|       |   +---Optics.type.File
+|       |   |   |   1.type.DIR_SIGNIFIER.xml
+|       |   |   |   Functions.type.File.xml
+|       |   |   |   Output.type.File.xml
+|       |   |   |   
+|       |   |   +---Functions.type.File
+|       |   |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |   |       empty.txt.type.File.xml
+|       |   |   |       
+|       |   |   \---Output.type.File
+|       |   |           1.type.DIR_SIGNIFIER.xml
+|       |   |           empty.txt.type.File.xml
+|       |   |           
+|       |   +---Sensor_Modelling.type.File
+|       |   |   |   1.type.DIR_SIGNIFIER.xml
+|       |   |   |   Functions.type.File.xml
+|       |   |   |   Inputs.type.File.xml
+|       |   |   |   Notes.md.type.File.xml
+|       |   |   |   Preprocessing.type.File.xml
+|       |   |   |   Processing.type.File.xml
+|       |   |   |   README.md.type.File.xml
+|       |   |   |   se.mat.type.File.xml
+|       |   |   |   se_main.m.type.File.xml
+|       |   |   |   se_variables.mat.type.File.xml
+|       |   |   |   Temporary - Testing.type.File.xml
+|       |   |   |   
+|       |   |   +---Functions.type.File
+|       |   |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |   |       se_check_mag_lim.m.type.File.xml
+|       |   |   |       
+|       |   |   +---Inputs.type.File
+|       |   |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |   |       se_ig_inputs.xlsx.type.File.xml
+|       |   |   |       se_inputs.xlsx.type.File.xml
+|       |   |   |       se_op_inputs.xlsx.type.File.xml
+|       |   |   |       
+|       |   |   +---Preprocessing.type.File
+|       |   |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |   |       se_preprocessing.asv.type.File.xml
+|       |   |   |       se_preprocessing.m.type.File.xml
+|       |   |   |       
+|       |   |   +---Processing.type.File
+|       |   |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |   |       se_ang_dist.asv.type.File.xml
+|       |   |   |       se_ang_dist.m.type.File.xml
+|       |   |   |       se_celestial2lens.m.type.File.xml
+|       |   |   |       se_edit_input_data.asv.type.File.xml
+|       |   |   |       se_edit_input_data.m.type.File.xml
+|       |   |   |       se_lens2sensor.asv.type.File.xml
+|       |   |   |       se_lens2sensor.m.type.File.xml
+|       |   |   |       se_SKY2000.csv.type.File.xml
+|       |   |   |       se_SKY2000.mat.type.File.xml
+|       |   |   |       
+|       |   |   \---Temporary - Testing.type.File
+|       |   |           1.type.DIR_SIGNIFIER.xml
+|       |   |           testing.asv.type.File.xml
+|       |   |           timing_and_angle.m.type.File.xml
+|       |   |           
+|       |   +---Star_Matching.type.File
+|       |   |   |   1.type.DIR_SIGNIFIER.xml
+|       |   |   |   4_Star_Matching.type.File.xml
+|       |   |   |   README.md.type.File.xml
+|       |   |   |   
+|       |   |   \---4_Star_Matching.type.File
+|       |   |       |   1.type.DIR_SIGNIFIER.xml
+|       |   |       |   Functions.type.File.xml
+|       |   |       |   Input.type.File.xml
+|       |   |       |   Output.type.File.xml
+|       |   |       |   Preprocessing.type.File.xml
+|       |   |       |   README.md.type.File.xml
+|       |   |       |   RM_4_Star_Matching_Algorithm.pdf.type.File.xml
+|       |   |       |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf.type.File.xml
+|       |   |       |   st_main_4SM.m.type.File.xml
+|       |   |       |   st_main_4SM_v2.m.type.File.xml
+|       |   |       |   st_pseudo_input.m.type.File.xml
+|       |   |       |   
+|       |   |       +---Functions.type.File
+|       |   |       |       1.type.DIR_SIGNIFIER.xml
+|       |   |       |       st_4SM.m.type.File.xml
+|       |   |       |       st_check_ID_err.m.type.File.xml
+|       |   |       |       st_gnrt_bi.m.type.File.xml
+|       |   |       |       st_gnrt_CSPA.m.type.File.xml
+|       |   |       |       st_gnrt_ip_4SM.m.type.File.xml
+|       |   |       |       st_gnrt_K_Vec.m.type.File.xml
+|       |   |       |       st_gnrt_op_4SM.m.type.File.xml
+|       |   |       |       st_gnrt_op_4SM_v2.m.type.File.xml
+|       |   |       |       st_gnrt_SIM.m.type.File.xml
+|       |   |       |       st_gnrt_SMM.m.type.File.xml
+|       |   |       |       st_update_match_matrix.m.type.File.xml
+|       |   |       |       
+|       |   |       +---Input.type.File
+|       |   |       |       1.type.DIR_SIGNIFIER.xml
+|       |   |       |       st_input.mat.type.File.xml
+|       |   |       |       
+|       |   |       +---Output.type.File
+|       |   |       |       1.type.DIR_SIGNIFIER.xml
+|       |   |       |       st_output.mat.type.File.xml
+|       |   |       |       
+|       |   |       \---Preprocessing.type.File
+|       |   |               1.type.DIR_SIGNIFIER.xml
+|       |   |               Reference_Star_Catalogue_4SM.csv.type.File.xml
+|       |   |               st_constants_4SM.m.type.File.xml
+|       |   |               st_constants_4SM.mat.type.File.xml
+|       |   |               st_RF_SC_4SM.m.type.File.xml
+|       |   |               
+|       |   +---System_Dynamics.type.File
+|       |   |       1.type.DIR_SIGNIFIER.xml
+|       |   |       README.md.type.File.xml
+|       |   |       
+|       |   \---Utils.type.File
+|       |       |   1.type.DIR_SIGNIFIER.xml
+|       |       |   misc.type.File.xml
+|       |       |   to_es.type.File.xml
+|       |       |   to_fe.type.File.xml
+|       |       |   to_op.type.File.xml
+|       |       |   to_se.type.File.xml
+|       |       |   to_st.type.File.xml
+|       |       |   
+|       |       +---misc.type.File
+|       |       |       1.type.DIR_SIGNIFIER.xml
+|       |       |       
+|       |       +---to_es.type.File
+|       |       |       1.type.DIR_SIGNIFIER.xml
+|       |       |       
+|       |       +---to_fe.type.File
+|       |       |       1.type.DIR_SIGNIFIER.xml
+|       |       |       
+|       |       +---to_op.type.File
+|       |       |       1.type.DIR_SIGNIFIER.xml
+|       |       |       
+|       |       +---to_se.type.File
+|       |       |       1.type.DIR_SIGNIFIER.xml
+|       |       |       
+|       |       \---to_st.type.File
+|       |               1.type.DIR_SIGNIFIER.xml
+|       |               
+|       \---Root.type.ProjectPath
+|               150fab53-92ee-4a8d-aad5-37d8d9591693.type.Reference.xml
+|               18c749d1-8c38-444b-a0dd-d3763dbb4063.type.Reference.xml
+|               265aeb8a-5e76-4c36-a75f-7ce62ba68f45.type.Reference.xml
+|               347fccaf-09e7-4f8b-8d1e-7770fee7e166.type.Reference.xml
+|               3ebc8f12-b41f-4abd-898c-0a88f06b4acb.type.Reference.xml
+|               46950344-3d77-4dc3-9e7c-fdd075232cdc.type.Reference.xml
+|               486e13a2-c3ce-41ee-9274-e873c7376910.type.Reference.xml
+|               4b262d22-c352-48a2-b1f6-963c333e3a3f.type.Reference.xml
+|               53770c7a-e71f-49bc-956d-daceb7fca7e0.type.Reference.xml
+|               5c61f208-3260-4e15-b995-ffe40fa47be0.type.Reference.xml
+|               6a75a1fd-55d3-4bb3-81c3-fda493e0d61e.type.Reference.xml
+|               6eb6b4f0-8139-4c9b-88ec-6a785800c93b.type.Reference.xml
+|               7359e41b-bcc8-4572-a481-e062b466987e.type.Reference.xml
+|               7768b786-fea8-48d6-8d35-24da4ba34ab4.type.Reference.xml
+|               79097c09-6348-47b2-ae85-eecd5568b626.type.Reference.xml
+|               7e809e6e-0e39-45af-ba4c-ad0cdcc4c2f1.type.Reference.xml
+|               7e856fe6-17f9-4043-aaf3-7f1a57662629.type.Reference.xml
+|               9b37d148-34da-4f04-b378-4758e5d4235b.type.Reference.xml
+|               a3172199-3304-485b-b605-6d887afd63e7.type.Reference.xml
+|               a9ea4ecb-465d-4828-bc95-3b07d472aea3.type.Reference.xml
+|               aa1ba69f-a5ce-4522-87bb-76aaccb669df.type.Reference.xml
+|               b36813e1-1db1-49a6-9121-98a6ac62a359.type.Reference.xml
+|               b416619a-1260-4065-ab23-f0a9d5fbca49.type.Reference.xml
+|               b8d9b8d8-6b5a-404a-a65c-b49910f236fd.type.Reference.xml
+|               c170bd80-6b03-4552-a55b-3c848bd875de.type.Reference.xml
+|               c246d6bd-34c8-4906-afc5-d535b7ebc340.type.Reference.xml
+|               c75cba1a-d026-4652-a9a2-d767b5bb1ec1.type.Reference.xml
+|               c910ba88-6acb-4d1c-8601-b23bc7f7feb3.type.Reference.xml
+|               cdc2e795-0f72-4cab-99da-1597bfd1f3f8.type.Reference.xml
+|               d26084e1-ac25-4bf0-b334-72c1847de0a1.type.Reference.xml
+|               e9a7afca-17db-4c38-9903-acb8851815a5.type.Reference.xml
+|               eb2b0f84-5bb8-455d-a1e6-8193101c05ad.type.Reference.xml
+|               f185298f-2933-4845-b390-6c4577433725.type.Reference.xml
+|               f925fbfa-543e-4763-a6dc-db28659fcfa2.type.Reference.xml
 |               
 +---Sensor_Modelling
-|   |   level.mat
 |   |   Notes.md
 |   |   README.md
 |   |   se.mat
-|   |   se_main.asv
 |   |   se_main.m
 |   |   se_variables.mat
 |   |   
@@ -67,51 +365,63 @@ C:.
 |   |       se_op_inputs.xlsx
 |   |       
 |   +---Preprocessing
-|   |       hygdata_v3.csv
-|   |       se_preprocessing.asv
 |   |       se_preprocessing.m
 |   |       
 |   +---Processing
-|   |       se_ang_dist.asv
 |   |       se_ang_dist.m
-|   |       se_celestial2lens.asv
-|   |       se_celestial2lens.m
-|   |       se_edit_input_data.m
-|   |       se_load_csv.m
-|   |       Simulation_HYG.csv
+|   |       se_icrs2lens.m
+|   |       se_lens2sensor.m
+|   |       se_load_input_data.m
+|   |       se_SKY2000.csv
+|   |       se_SKY2000.mat
 |   |       
 |   \---Temporary - Testing
 |           testing.asv
 |           timing_and_angle.m
 |           
 +---Star_Matching
-|   +---Functions
-|   |   \---Geometric_Voting
-|   +---Output
-|   \---Preprocessing
+|   |   README.md
+|   |   
+|   \---4_Star_Matching
+|       |   README.md
+|       |   RM_4_Star_Matching_Algorithm.pdf
+|       |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf
+|       |   st_main_4SM.m
+|       |   st_main_4SM_v2.m
+|       |   st_pseudo_input.m
+|       |   
+|       +---Functions
+|       |       st_4SM.m
+|       |       st_check_ID_err.m
+|       |       st_gnrt_bi.m
+|       |       st_gnrt_CSPA.m
+|       |       st_gnrt_ip_4SM.m
+|       |       st_gnrt_K_Vec.m
+|       |       st_gnrt_op_4SM.m
+|       |       st_gnrt_op_4SM_v2.m
+|       |       st_gnrt_SIM.m
+|       |       st_gnrt_SMM.m
+|       |       st_update_match_matrix.m
+|       |       
+|       +---Input
+|       |       st_input.mat
+|       |       
+|       +---Output
+|       |       st_output.mat
+|       |       
+|       \---Preprocessing
+|               Reference_Star_Catalogue_4SM.csv
+|               st_constants_4SM.m
+|               st_constants_4SM.mat
+|               st_RF_SC_4SM.m
+|               
 +---System_Dynamics
-|       level.mat
 |       README.md
 |       
 \---Utils
-    |   level.mat
-    |   README.md
-    |   
     +---misc
-    |       empty.txt
-    |       
     +---to_es
-    |       empty.txt
-    |       
     +---to_fe
-    |       empty.txt
-    |       
     +---to_op
-    |       empty.txt
-    |       
     +---to_se
-    |       empty.txt
-    |       
     \---to_st
-            empty.txt
-            

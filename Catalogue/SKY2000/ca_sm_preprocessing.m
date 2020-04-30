@@ -43,4 +43,4 @@ PP_SC_table = array2table(tmp, 'VariableNames', {'SSP_ID_1', 'SSP_ID_2', 'AngDst
 PP_SC_table = sortrows(PP_SC_table,'AngDst_cos','ascend'); % Sort based on AngDst_cos column
 
 % Write Table
-%writetable(PP_SC_table, '.\Catalogue\SKY2000\Catalogues\Preprocessed_Star_Catalogue.csv');
+writetable(PP_SC_table, '.\Catalogue\SKY2000\Catalogues\Preprocessed_Star_Catalogue.csv');
