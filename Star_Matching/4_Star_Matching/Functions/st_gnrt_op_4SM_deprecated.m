@@ -1,4 +1,4 @@
-function [st_op_bi, st_op_ri, n_st_strs] = st_gnrt_op_4SM(st_SMM, st_bi, st_GD_SC)
+function [st_op_bi, st_op_ri, n_st_strs] = st_gnrt_op_4SM_deprecated(st_SMM, st_bi, st_GD_SC)
     % Evaluates the Star Matched Matrix, to generate the output in the 
     % format required by Estimation - Body-frame vectors, and 
     % Inertial-frame vectors of the matched stars
