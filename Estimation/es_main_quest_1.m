@@ -6,14 +6,14 @@ addpath(genpath('Estimation'));
 load('.\Input\es_input.mat');
 
 %weights(currently taken each as 1)
-es_a = ones(n_st_strs, 1);
+v_a = ones(n_st_strs, 1);
 
 %input epsilon(measure accepted value of Lost function)
 epsilon = readmatrix('.\Input\es_epsilon');
 
 %%algorithm Quest1
 %Common part for QuEST
-[m_B, v_z, lamnot] = es_quest_common(st_op_bi, st_op_ri , es_a);
+[m_B, v_z, lamnot] = es_quest_common(st_op_bi, st_op_ri , v_a);
 
 %finding largest eigenvalue
 lam = es_quest_newton(m_B, v_z, lamnot, epsilon);
