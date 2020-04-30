@@ -15,5 +15,9 @@ The input variables for this function are as follows:
 * **es_a:** ((N, 1) - Matrix) 
 	The weights of the corresponding matched stars
   
-* **es_q_bi** ((4, 1) - Matrix) 
+* **es_q_bi:** ((4, 1) - Matrix) 
 	The final estimated quaternion using either of the algorithm 
+
+The output variables for this function are as follows:
+* **L:** (Float)
+	The value of the calculated Lost function 
