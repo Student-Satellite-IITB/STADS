@@ -1,7 +1,18 @@
-function [SMM, mtch_rows] = st_gnrt_SMM(st_SIM, n_rw_GC, c_fe_IDs) 
+    function [st_SMM, st_mtch_rows] = st_gnrt_SMM(st_SIM, n_rw_GC, st_c_fe_ID) 
     % Evaluates the Star Identification Matrix to identify the stars that 
     % have been matched through the 4-Star Matching Algorithm to generate 
-    % the Star Matched Matrix (SMM)
+    % the Star Matched Matrix (SMM).
+    % Of the four stars that are provided as input to the 4-Star Matching 
+    % Algorithm, the $S_i$ star is said to have been matched, if only one 
+    % such row of the Star Identification Matrix as given below is present:
+    %   $S_1 - [1, 1, 1 ,0, 0, 0]$
+    %   $S_2 - [1, 0, 0, 1, 1, 0]$
+    %   $S_3 - [0, 1, 0, 1, 0, 1]$
+    %   $S_4 - [0, 0, 1, 0, 1, 1]$
+    % This pattern arises out of the fact that angular distances that are 
+    % provided as input follow the order:
+    % $(S_1, S_2) ; (S_1, S_3) ; (S_1, S_4) ; (S_2, S_3) ; (S_2, S_4) ; 
+    % (S_3, S_4)$
     % Reference:
     % ----------
     % Refer 2. '4-Star Matching Strategy' - Dong, Ying & Xing, Fei & You, 
@@ -13,65 +24,68 @@ function [SMM, mtch_rows] = st_gnrt_SMM(st_SIM, n_rw_GC, c_fe_IDs)
     % st_SIM: ( (n_rw_GC, 6) - Matrix )
     %   The Star Identification Matrix    
     % n_rw_GC: (Integer)
-    %   The size (number of rows) of the Guide Catalogue
-    % c_fe_IDs: ( (4,1) - Matrix )
+    %   The number of stars (= number of rows) in the Guide Star Catalogue
+    % st_c_fe_ID: ( (4,1) - Matrix )
     %   Has the Feature Extraction IDs of stars that are used to generate 
     %   c_img_AngDst, in the following order: 
     %   $[S_1 ; S_2 ; S_3 ; S_4]$
     % Returns:
     % --------
-    % SMM: ( (4,3) - Matrix )
+    % st_SMM: ( (4,3) - Matrix )
     %   The Star Matched Matrix. The first column consists of the Feature
     %   Extraction IDs of the stars, the second column consists of matched
     %   SSP-ID (if there is no match: $0$ is updated), and the third column
     %   consists of the number of rows in SIM that matched the condition of 
-    %   $S_i^{th}$ star
-    % mtch_rows: ( (4, X) - Cell Array )
-    %   $i^{th}$ element consists of a (X,1) - Matrix, that stores the 
-    %   SSP-IDs of the rows that match the $i^{th}$ condition
-
+    %   $S_i$ star
+    % st_mtch_rows: ( (4, 2) - Cell Array )
+    %   The columns of the cell array are as follows:
+    %   $1^{st}$ column - Feature Extraction ID
+    %   $2^{nd}$ column - $i^{th}$ element consists of a (X,1) - Matrix, 
+    %   that stores the SSP-IDs that matched the $i^{th}$ condition
+    
     %% Code
     
     %% Initialize Variables
-    SMM = zeros(4,3); % Initialize SMM
-    SMM(:, 1) = c_fe_IDs; % Append Feature Extraction IDs
+    st_SMM = zeros(4,3); % Initialize SMM
+    st_SMM(:, 1) = st_c_fe_ID; % Append Feature Extraction IDs
     
-    Check_Conditions = [1, 1, 1 ,0, 0, 0;
-                 1, 0, 0, 1, 1, 0;
-                 0, 1, 0, 1, 0, 1;
-                 0, 0, 1, 0, 1, 1]; % Check conditions
+    st_Check_Conditions = [1, 1, 1 ,0, 0, 0;...
+                         1, 0, 0, 1, 1, 0;...
+                         0, 1, 0, 1, 0, 1;...
+                         0, 0, 1, 0, 1, 1]; % Check conditions
 
     % Stores the indices of the rows that match the (i-th) condition
     mtch_idx = boolean(zeros(n_rw_GC, 1)); 
     
-    mtch_rows = {0; 0; 0; 0}; % Initialize variable
+    st_mtch_rows = {0; 0; 0; 0}; % Initialize variable
 
     for i_idx = 1:4
-             Cond_i = Check_Conditions(i_idx, :); % Store the (i-th) row
+             Cond_i = st_Check_Conditions(i_idx, :); % Store the (i-th) row
 
              for j_idx = 1:n_rw_GC
                  rw = st_SIM(j_idx, :); % Extract (j-th) row of SIM
 
                  if rw == Cond_i
-                     mtch_idx(j_idx) = true; % Update boolean value
+                     mtch_idx(j_idx) = 1; % Update boolean value
                  else
-                     mtch_idx(j_idx) = false; % Update boolean value
+                     mtch_idx(j_idx) = 0; % Update boolean value
                  end
              end
              
              % Find the indices of all non-zero elements
              mtch_rows_i = find(mtch_idx); 
-             mtch_rows{i_idx} = mtch_rows_i; % Append matched indices
+             st_mtch_rows{i_idx, 1} = st_SMM(i_idx, 1); % Append Feature Extraction ID
+             st_mtch_rows{i_idx, 2} = mtch_rows_i; % Append matched indices
              
              % Number of rows that match (i-th) condition
              N = length(mtch_rows_i); 
-             SMM(i_idx, 3) = N; % Append number of matched rows
+             st_SMM(i_idx, 3) = N; % Append number of matched rows
              
              if N == 1
                  % Append the index of the matched row
-                 SMM(i_idx, 2) = mtch_rows_i; 
+                 st_SMM(i_idx, 2) = mtch_rows_i; 
              else
-                 SMM(i_idx, 2) = 0;
+                 st_SMM(i_idx, 2) = 0;
              end
     end
 end
