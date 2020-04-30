@@ -80,6 +80,7 @@ E:.
 |       |   |   FileClassCategory.type.Category.xml
 |       |   |   
 |       |   \---FileClassCategory.type.Category
+|       |           35d72f27-ac9d-49e9-a0bd-3ef667d7490a.type.Label.xml
 |       |           artifact.type.Label.xml
 |       |           convenience.type.Label.xml
 |       |           derived.type.Label.xml
@@ -249,7 +250,7 @@ E:.
 |       |   |       |   README.md.type.File.xml
 |       |   |       |   RM_4_Star_Matching_Algorithm.pdf.type.File.xml
 |       |   |       |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf.type.File.xml
-|       |   |       |   st_main_4SM.m.type.File.xml
+|       |   |       |   st_main_4SM_deprecated.m.type.File.xml
 |       |   |       |   st_main_4SM_v2.m.type.File.xml
 |       |   |       |   st_pseudo_input.m.type.File.xml
 |       |   |       |   
@@ -261,7 +262,7 @@ E:.
 |       |   |       |       st_gnrt_CSPA.m.type.File.xml
 |       |   |       |       st_gnrt_ip_4SM.m.type.File.xml
 |       |   |       |       st_gnrt_K_Vec.m.type.File.xml
-|       |   |       |       st_gnrt_op_4SM.m.type.File.xml
+|       |   |       |       st_gnrt_op_4SM_deprecated.m.type.File.xml
 |       |   |       |       st_gnrt_op_4SM_v2.m.type.File.xml
 |       |   |       |       st_gnrt_SIM.m.type.File.xml
 |       |   |       |       st_gnrt_SMM.m.type.File.xml
@@ -386,7 +387,7 @@ E:.
 |       |   README.md
 |       |   RM_4_Star_Matching_Algorithm.pdf
 |       |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf
-|       |   st_main_4SM.m
+|       |   st_main_4SM_deprecated.m
 |       |   st_main_4SM_v2.m
 |       |   st_pseudo_input.m
 |       |   
@@ -397,7 +398,7 @@ E:.
 |       |       st_gnrt_CSPA.m
 |       |       st_gnrt_ip_4SM.m
 |       |       st_gnrt_K_Vec.m
-|       |       st_gnrt_op_4SM.m
+|       |       st_gnrt_op_4SM_deprecated.m
 |       |       st_gnrt_op_4SM_v2.m
 |       |       st_gnrt_SIM.m
 |       |       st_gnrt_SMM.m
