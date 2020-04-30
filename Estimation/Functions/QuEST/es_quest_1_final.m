@@ -1,4 +1,4 @@
-function q_bi = es_quest_1_final(lam, m_B, v_z)
+function q_bi = es_quest_1_final(m_B, v_z, lam)
 %UNTITLED This function calculates the final quaternion using quest1
 %   input: (lam, B)
 %   ouput: q (the final quaternion)
