@@ -19,7 +19,7 @@ epsilon = readmatrix('.\Input\es_epsilon');
 lam = es_quest_newton(m_B, v_z, lamnot, epsilon);
 
 %finding the quaternion
-q_bi = es_quest_1_final(lam, m_B, v_z);
+q_bi = es_quest_1_final(m_B, v_z, lam);
 
 %%Output from Estimation
 writematrix(q_bi, '.\Output\es_q_bi.csv');
