@@ -15,4 +15,4 @@ unit_vect = rowfun(@ca_RA_DE_2_CartVect, tmp, 'InputVariables', [3,4], 'OutputVa
 GD_SC = [tmp(:, 1), unit_vect]; % Append Columns
 
 % Write Table
-%writetable(GD_SC, '.\Catalogue\SKY2000\Catalogues\Guide_Star_Catalogue.csv');
+writetable(GD_SC, '.\Catalogue\SKY2000\Catalogues\Guide_Star_Catalogue.csv');

@@ -1,12 +1,12 @@
-n_fe_strs = 20; % Number of stars idetified by feature extraction
+fe_n_str = 20; % Number of stars idetified by feature extraction
 
-centroids = rand(n_fe_strs,2); % Generate pseudo-centroids
+centroids = rand(fe_n_str,2); % Generate pseudo-centroids
 
-idx = transpose(1:n_fe_strs); % Index of identified stars
+idx = transpose(1:fe_n_str); % Index of identified stars
 
 fe_output = [idx, centroids]; % Append columns
 
 save('.\Star_Matching\4_Star_Matching\Input\st_input.mat', ...
-'fe_output', 'n_fe_strs');
+'fe_output', 'fe_n_str');
 
 disp('Done: Generate Pseudo-Input');

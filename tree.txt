@@ -1,19 +1,35 @@
-Folder PATH listing
-Volume serial number is A0B5-6B46
-C:.
-|   level.mat
+.
+|   .gitignore
 |   main.m
-|   MATLAB.gitignore
 |   README.md
 |   STADS - Matlab Graph.svg
 |   STADSMatlab.prj
 |   tree.txt
 |   
 +---Catalogue
-|       hygdata_v3.csv
-|       
+|   |   README.md
+|   |   
+|   \---SKY2000
+|       |   ca_guide_star_catalogue.m
+|       |   ca_preprocessing.m
+|       |   ca_sm_preprocessing.m
+|       |   README.md
+|       |   RM_Star_Catalogue_Preprocessing.pdf
+|       |   SKY2000_README.pdf
+|       |   
+|       +---Catalogues
+|       |       Guide_Star_Catalogue.csv
+|       |       Master_Star_Catalogue.csv
+|       |       Preprocessed_Star_Catalogue.csv
+|       |       SKY2000.csv
+|       |       SSP_Star_Catalogue.csv
+|       |       
+|       \---Functions
+|               ca_DMS2degrees.m
+|               ca_HMS2degrees.m
+|               ca_RA_DE_2_CartVect.m
+|               
 +---Estimation
-|   |   level.mat
 |   |   README.md
 |   |   
 |   +---Functions
@@ -22,11 +38,14 @@ C:.
 |   |   \---QuEST
 |   |           empty.txt
 |   |           
+|   +---Input
+|   |       es_input.mat
+|   |       README.md
+|   |       
 |   \---Output
 |           empty.txt
 |           
 +---Feature_Extraction
-|   |   level.mat
 |   |   README.md
 |   |   
 |   +---Functions
@@ -36,25 +55,20 @@ C:.
 |           empty.txt
 |           
 +---Inputs
-|       level.mat
 |       README.md
 |       
 +---Optics
-|   |   level.mat
-|   |   README.md
-|   |   
 |   +---Functions
 |   |       empty.txt
 |   |       
 |   \---Output
 |           empty.txt
+|           
 |               
 +---Sensor_Modelling
-|   |   level.mat
 |   |   Notes.md
 |   |   README.md
 |   |   se.mat
-|   |   se_main.asv
 |   |   se_main.m
 |   |   se_variables.mat
 |   |   
@@ -67,51 +81,63 @@ C:.
 |   |       se_op_inputs.xlsx
 |   |       
 |   +---Preprocessing
-|   |       hygdata_v3.csv
-|   |       se_preprocessing.asv
 |   |       se_preprocessing.m
 |   |       
 |   +---Processing
-|   |       se_ang_dist.asv
 |   |       se_ang_dist.m
-|   |       se_celestial2lens.asv
-|   |       se_celestial2lens.m
-|   |       se_edit_input_data.m
-|   |       se_load_csv.m
-|   |       Simulation_HYG.csv
+|   |       se_icrs2lens.m
+|   |       se_lens2sensor.m
+|   |       se_load_input_data.m
+|   |       se_SKY2000.csv
+|   |       se_SKY2000.mat
 |   |       
 |   \---Temporary - Testing
 |           testing.asv
 |           timing_and_angle.m
 |           
 +---Star_Matching
-|   +---Functions
-|   |   \---Geometric_Voting
-|   +---Output
-|   \---Preprocessing
+|   |   README.md
+|   |   
+|   \---4_Star_Matching
+|       |   README.md
+|       |   RM_4_Star_Matching_Algorithm.pdf
+|       |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf
+|       |   st_main_4SM_deprecated.m
+|       |   st_main_4SM_v2.m
+|       |   st_pseudo_input.m
+|       |   
+|       +---Functions
+|       |       st_4SM.m
+|       |       st_check_ID_err.m
+|       |       st_gnrt_bi.m
+|       |       st_gnrt_CSPA.m
+|       |       st_gnrt_ip_4SM.m
+|       |       st_gnrt_K_Vec.m
+|       |       st_gnrt_op_4SM_deprecated.m
+|       |       st_gnrt_op_4SM_v2.m
+|       |       st_gnrt_SIM.m
+|       |       st_gnrt_SMM.m
+|       |       st_update_match_matrix.m
+|       |       
+|       +---Input
+|       |       st_input.mat
+|       |       
+|       +---Output
+|       |       st_output.mat
+|       |       
+|       \---Preprocessing
+|               Reference_Star_Catalogue_4SM.csv
+|               st_constants_4SM.m
+|               st_constants_4SM.mat
+|               st_RF_SC_4SM.m
+|               
 +---System_Dynamics
-|       level.mat
 |       README.md
 |       
 \---Utils
-    |   level.mat
-    |   README.md
-    |   
     +---misc
-    |       empty.txt
-    |       
     +---to_es
-    |       empty.txt
-    |       
     +---to_fe
-    |       empty.txt
-    |       
     +---to_op
-    |       empty.txt
-    |       
     +---to_se
-    |       empty.txt
-    |       
     \---to_st
-            empty.txt
-            
