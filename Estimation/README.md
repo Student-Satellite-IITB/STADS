@@ -9,5 +9,6 @@ Currently three algorithms are used - q-Davenport, QuEST-1, QuEST-2
 
 ***Refer:***
 
+**Chapter 5**
 Fundamentals of Spacecraft Attitude Determination and Control
 Authors: Markley, F. Landis, Crassidis, John L.
