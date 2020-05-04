@@ -34,7 +34,7 @@ st_flag_circshift = 0;
 
 for st_iter_total = 1:st_ITER_MAX_4SM % Total number of iterations allowed for Star-Matching
     
-    if (st_N_UnMatch >= 4) && (st_N_Match <= es_N_EST)
+    if (st_N_UnMatch >= 4)
         % Extract first four stars from UnMatch matrix
         st_4SM_input = st_UnMatch(1:4, :); 
         
@@ -62,8 +62,9 @@ for st_iter_total = 1:st_ITER_MAX_4SM % Total number of iterations allowed for S
             st_update_match_matrix(st_result, st_Match, st_UnMatch, st_N_Match, st_N_UnMatch);
         end
         
-    elseif (st_N_UnMatch == 0)
-        % If all the stars have been matched, break the Star-Matching
+    elseif (st_N_Match >= es_N_EST) || (st_N_UnMatch == 0)
+        % If all the numbers of stars matched exceed es_N_EST, or there are
+        % no more stars to be matched, break out of Star-Matching 
         % interation
         break;
     
