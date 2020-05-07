@@ -1,6 +1,5 @@
 function [arr_sums, tag_num, final_tag_num] = tag_2(arr_in_img)
-    load('constants_feature_extraction_2.mat', "NUM_FINAL_TAGS", "NUM_TAGS_PER_REGION", "NUM_REGIONS");    % Loading constants
-    THRESHOLD=0;
+    load('constants_feature_extraction_2.mat', "THRESHOLD", "NUM_FINAL_TAGS", "NUM_TAGS_PER_REGION", "NUM_REGIONS");    % Loading constants
     [rows,columns] = size(arr_in_img);    % setting the size of the array
     arr_out_img = zeros(rows+1, columns+1, 2, 'int32');    % adding a layer of zeros to the i_left and top to account for edge cases and another component for tags
     arr_out_img(2:rows+1, 2:columns+1, 1) = arr_in_img;   % setting the first component at every pixel as the reading, thus making two layers for the image, one for the image and one for tags
