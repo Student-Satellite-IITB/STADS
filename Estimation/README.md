@@ -4,7 +4,7 @@
 
 ### Author - Mitalee Oza, Shashank Singh 
 
-This repository contains the code for the Star Matching - block of STADS.
+This repository contains the code for the Estimation - block of STADS.
 Currently three algorithms are used - q-Davenport, QuEST-1, QuEST-2
 
 ***Refer:***
