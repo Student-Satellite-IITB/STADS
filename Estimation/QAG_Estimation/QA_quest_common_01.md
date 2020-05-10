@@ -28,7 +28,7 @@ es_quest_common.m
 
 
 **QA suggestions:**
-> Any modifications/additions/deletions to be made to the code. It also includes any flaws/mistakes that need to be corrected in the code
+
 1. Note that the input to the estimation block consists of 2 matrices of size (N,4). The first column consists of star ids. The input to this algorithm is assumed to consist of (N,3) matrices. Therefore changes need to be made either in the main script by removing the first column of the iput matrices to feed into this function or changes need to be made in this function. The former seems more convinient, so I am QA.ing the rest of the code according to that.
 
 2. line 2: matrix K is not being calculated by this function
