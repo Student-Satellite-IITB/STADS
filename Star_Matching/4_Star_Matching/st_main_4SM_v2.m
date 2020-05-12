@@ -3,7 +3,7 @@
 load('.\Star_Matching\4_Star_Matching\Preprocessing\st_constants_4SM.mat');
 
 % Read - Guide Star Catalogue
-st_GD_SC = readmatrix('.\Catalogue\SKY2000\Catalogues\Guide_Star_Catalogue.csv');
+st_GD_SC = readmatrix('.\Catalogue\SKY2000\Catalogues\Star_Matching\Guide_Star_Catalogue.csv');
 
 % Read - Reference Star Catalogue 
 st_RF_SC = readmatrix('.\Star_Matching\4_Star_Matching\Preprocessing\Reference_Star_Catalogue_4SM.csv');

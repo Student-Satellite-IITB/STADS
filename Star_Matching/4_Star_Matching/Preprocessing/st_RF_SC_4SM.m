@@ -5,10 +5,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Read Preprocessed Star Catalogue
 % Read Guide Star Catalogue
-st_GD_SC = readmatrix('.\Catalogue\SKY2000\Catalogues\Guide_Star_Catalogue.csv');
+st_GD_SC = readmatrix('.\Catalogue\SKY2000\Catalogues\Star_Matching\Guide_Star_Catalogue.csv');
 
 % Read - Preprocessed Star Catalogue (which contains the star pairs)
-st_PP_SC = readmatrix('.\Catalogue\SKY2000\Catalogues\Preprocessed_Star_Catalogue.csv');
+st_PP_SC = readmatrix('.\Catalogue\SKY2000\Catalogues\Star_Matching\Preprocessed_Star_Catalogue.csv');
 
 % Extract 'Angular distance - in cos(thetha)' from Preprocessed catalogue
 c_AngDst_cos = st_PP_SC(:,3); 
