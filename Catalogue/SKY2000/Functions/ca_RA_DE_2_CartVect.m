@@ -13,10 +13,18 @@ function [X, Y, Z] = ca_RA_DE_2_CartVect(RA, DE)
     % (1999). 
     % Parameters:
     % -----------
-    % RA: Float
+    % RA: (Float)
     %   Right-Ascension component - in degrees
-    % DE: Float
+    % DE: (Float)
     %   Declination component - in degrees
+    % Returns:
+    % --------
+    % X: (Float)
+    %   X-component of the unit vector
+    % Y: (Float)
+    %   Y-component of the unit vector
+    % Z: (Float)
+    %   Z-component of the unit vector
 
     %% Code
     X = cosd(RA) * cosd(DE);

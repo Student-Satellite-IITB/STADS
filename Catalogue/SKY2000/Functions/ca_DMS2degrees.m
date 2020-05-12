@@ -2,15 +2,15 @@ function deg = ca_DMS2degrees(D, M, S)
     % Converts the angle from D:M:S to degrees format 
     % Parameters:
     % -----------
-    % D: Float
+    % D: (Float)
     %   Degree component 
-    % M: Float
+    % M: (Float)
     %   Minute component 
-    % S: Float
+    % S: (Float)
     %   Second component 
     % Returns:
     % --------
-    % deg: Float
+    % deg: (Float)
     %   Angle in degrees
 
     %% Code

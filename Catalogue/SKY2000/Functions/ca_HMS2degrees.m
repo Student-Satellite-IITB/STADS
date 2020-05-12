@@ -2,15 +2,15 @@ function deg = ca_HMS2degrees(H, M, S)
     % Converts the angle from H:M:S to degrees format 
     % Parameters:
     % -----------
-    % H: Float
+    % H: (Float)
     %   Hour component 
-    % M: Float
+    % M: (Float)
     %   Minute component 
-    % S: Float
+    % S: (Float)
     %   Second component 
     % Returns:
     % --------
-    % deg: Float
+    % deg: (Float)
     %   Angle in degrees
 
     %% Code
