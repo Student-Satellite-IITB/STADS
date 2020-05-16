@@ -14,7 +14,7 @@ This repository contains codes for open- and closed- loops for STADS (Star Track
     
 OR
 
-1. Load the Project file:
+2. Load the Project file:
    **STADSMatlab.prj**
    * This will load all the directories added to the project path previously into the path.
    * In case a directory is not added to path, go to the **Projects** tab and add the folders to path.
