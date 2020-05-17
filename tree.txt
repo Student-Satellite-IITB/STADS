@@ -10,9 +10,9 @@ STADS
 |   |   README.md
 |   |   
 |   +---QAG_Catalogue
-|   |       QAG_ca_DMS2Degrees.m.md
-|   |       QAG_ca_HMS2Degrees.m.md
-|   |       QAG_ca_preprocssing.m.md
+|   |       QA_ca_DMS2Degrees.m.md
+|   |       QA_ca_HMS2Degrees.m.md
+|   |       QA_ca_preprocssing.m.md
 |   |       
 |   \---SKY2000
 |       |   ca_guide_star_catalogue.m
@@ -177,13 +177,6 @@ STADS
 |               st_constants_4SM.mat
 |               st_RF_SC_4SM.m
 |               
-+---System_Dynamics
-|       README.md
-|       
-\---Utils
-    +---misc
-    +---to_es
-    +---to_fe
-    +---to_op
-    +---to_se
-    \---to_st
+\---System_Dynamics
+        README.md
+        
