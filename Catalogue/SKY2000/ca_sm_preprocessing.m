@@ -8,7 +8,7 @@ len = (N * (N-1) )/2; % N C 2 - number of possible combinations
 PP_SC = zeros(len,4);
 
 k_idx = 1; % Counter Variable
-
+tic
 % Outer for-loop iterates from i = 1:(N-1), while inner for-loop iterates
 % over j = (i+1):N
 % This ensures that for each star in the catalogue, the angular distance
@@ -21,16 +21,15 @@ for i_idx = 1 : (N-1)
         v_j = GD_SC(j_idx, 2:4); %$ (j-th) unit vector
         
         res1 = dot(v_i, v_j); % Dot Product
-        res2 = acosd(res1); % Cos inverse of dot product - in degrees
-        
-        
+        res2 = rad2deg( atan2( norm( cross(v_i, v_j) ), res1) ); % Angluar Distance in degrees      
+                
         k_rw = [i_idx, j_idx, res1, res2]; % (k-th) row of Preprocessed Star Catalogue        
         PP_SC(k_idx, :) = k_rw; % Update (k-th) row of Preprocessed Star Catalogue
         
         k_idx = k_idx + 1; % Update k-index variable
     end 
 end
-
+toc
 %% Ignore Star-Pairs that lie outside the Field-of-View
 
 FOV_Circular = 16; % Circular FOV - in degrees

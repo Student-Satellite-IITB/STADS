@@ -40,7 +40,7 @@ function [st_c_img_AngDst, st_c_fe_ID] = st_gnrt_ip_4SM(st_4SM_input)
                 sj = st_4SM_input(j_idx, 2:4);
                 
                 % Dot product of the two body-frame vectors
-                str_AngDst = dot(si, sj); 
+                str_AngDst = abs( dot(si, sj) ); 
                 
                 % Append angular distance value
                 st_c_img_AngDst(k_idx) = str_AngDst; 

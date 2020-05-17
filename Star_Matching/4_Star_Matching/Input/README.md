@@ -3,7 +3,7 @@ This repository contains codes for open- and closed- loops for STADS (Star Track
 
 ## Star-Matching Input
 
-The output of Star-Matching is saved in this folder, as **st_input.mat**
+The output of Feature Extraction is saved in this folder, as **st_input.mat**
 
 The variables stored are as follows:
 * **fe_n_str** : (Integer) - The number of stars identified by *Feature Extraction block*
