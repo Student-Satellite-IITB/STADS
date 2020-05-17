@@ -1,4 +1,4 @@
-.
+STADS
 |   .gitignore
 |   main.m
 |   README.md
@@ -9,6 +9,11 @@
 +---Catalogue
 |   |   README.md
 |   |   
+|   +---QAG_Catalogue
+|   |       QAG_ca_DMS2Degrees.m.md
+|   |       QAG_ca_HMS2Degrees.m.md
+|   |       QAG_ca_preprocssing.m.md
+|   |       
 |   \---SKY2000
 |       |   ca_guide_star_catalogue.m
 |       |   ca_preprocessing.m
@@ -58,6 +63,16 @@
 |   |       es_q_bi.csv
 |   |       README.md
 |   |       
+|   +---QAG_Estimation
+|   |       QA_es_main_qdp_01.md
+|   |       QA_es_main_quest_1_01.md
+|   |       QA_es_main_quest_2_01.md
+|   |       QA_es_qdp_01.md
+|   |       QA_es_quest_1_final_01.md
+|   |       QA_es_quest_2_final_01.md
+|   |       QA_es_quest_common_01.md
+|   |       QA_es_quest_newton_01.md
+|   |       
 |   \---Quest Testing
 |           es_lost_function.m
 |           README.md
@@ -80,37 +95,50 @@
 |   |       
 |   \---Output
 |           empty.txt
-|
-|               
-+---Sensor_Modelling
-|   |   Notes.md
+|           
++---Sensor_Model
 |   |   README.md
-|   |   se.mat
-|   |   se_main.m
-|   |   se_variables.mat
+|   |   se_main.mlx
 |   |   
-|   +---Functions
-|   |       se_check_mag_lim.m
-|   |       
 |   +---Inputs
+|   |       se_boresight_inputs.xlsx
+|   |       se_er_inputs.xlsx
 |   |       se_ig_inputs.xlsx
+|   |       se_inputs.mat
 |   |       se_inputs.xlsx
 |   |       se_op_inputs.xlsx
 |   |       
-|   +---Preprocessing
-|   |       se_preprocessing.m
-|   |       
-|   +---Processing
-|   |       se_ang_dist.m
-|   |       se_icrs2lens.m
-|   |       se_lens2sensor.m
-|   |       se_load_input_data.m
+|   +---Preprocessed_Catalogue
 |   |       se_SKY2000.csv
 |   |       se_SKY2000.mat
 |   |       
-|   \---Temporary - Testing
-|           testing.asv
-|           timing_and_angle.m
+|   +---Preprocessing
+|   |       se_PP_1_load_constants.m
+|   |       se_PP_2_catalogue.m
+|   |       se_pp_load_constants_mlx.mlx
+|   |       
+|   +---Processing
+|   |   |   se_PR_1_Trim2FOV.m
+|   |   |   se_PR_2a_ICRS2Lens.m
+|   |   |   se_PR_2b_ICRS2Lens.m
+|   |   |   se_PR_3_Lens2Sensor.m
+|   |   |   se_PR_4_Trim2Sensor.m
+|   |   |   se_PR_5_Image_Generation.m
+|   |   |   se_PR_6_Noise_Model.m
+|   |   |   se_PR_Main.m
+|   |   |   
+|   |   \---se_PR_6_Noise_Model
+|   |           se_PR_0_PLS.m
+|   |           se_PR_6_1_Photon_Shot_Noise.m
+|   |           se_PR_6_2_PRNU.m
+|   |           se_PR_6_3_Dark_Noise.m
+|   |           se_PR_6_4_Fixed_Pattern_Noise.m
+|   |           se_PR_6_5_Read_Noise.m
+|   |           se_PR_6_6_PSNL.m
+|   |           
+|   \---Testing
+|           _Centroiding.m
+|           _Image_Generation.m
 |           
 +---Star_Matching
 |   |   README.md
