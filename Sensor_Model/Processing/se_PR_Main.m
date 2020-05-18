@@ -1,7 +1,7 @@
 function [se_Image_Mat, se_T] = se_PR_Main(se_T, se_bo, se_op, se_ig, se_er, se_in)
     % Sensor Model - Processing - Main Function % [se_Image, se_Image_Mat, se_T]
-    %   This is the main function for Sensor Model, and calls all the other
-    %   functions for the Sensor Model
+    %   This is the main function for Sensor Model - Processing, and calls all the other
+    %   functions for the Sensor Model in Processing
     %
     % -----------
     % Parameters:
@@ -43,8 +43,8 @@ function [se_Image_Mat, se_T] = se_PR_Main(se_T, se_bo, se_op, se_ig, se_er, se_
     %
     %   - se_op.Lens (Structure)
     %       Lens Related Values
-    %       - se_op.Lens.Focal_Length
-    %       - se_op.Lens.Diameter
+    %       - se_op.Lens.Focal_Length (Double, in Metres)
+    %       - se_op.Lens.Diameter (Double, in Metres)
     %
     %   - se_op.FOV (Structure)
     %       FOV Values (Double, In Degrees)
@@ -77,13 +77,14 @@ function [se_Image_Mat, se_T] = se_PR_Main(se_T, se_bo, se_op, se_ig, se_er, se_
     %       Constant in # Photoelectrons = C_1 * C_2 ^ (-Magnitude)
     %   - se_ig.C_2                     (Double)
     %       Constant in # Photoelectrons = C_1 * C_2 ^ (-Magnitude)
+    %       
     %
     % se_er: (Structure)
     %   The Sensor Model Error Constants. MUST contain:
     %   - se_er.DTN     (Double)
     %       Dark Temporal Noise
     %   - se_er.FPN     (Double)
-    %       Fixed PAttern Noise
+    %       Fixed Pattern Noise
     %   - se_er.PLS     (Double)
     %       Parasitic Light Sensitivity
     %   - se_er.PRNU    (Double)
@@ -99,7 +100,7 @@ function [se_Image_Mat, se_T] = se_PR_Main(se_T, se_bo, se_op, se_ig, se_er, se_
     %
     % se_in: (Structure)
     %   The Sensor Model Constants. MUST contain:
-    %   - se_in.Debug_Run           (Boolean)
+    %   - se_in.Debug_Run           (Double)
     %       Whether or not to display Debug Messages.
     %   - se_in.Magnitude_Limit     (Double)
     %       Magnitude Limit for Sensor Model
@@ -109,19 +110,17 @@ function [se_Image_Mat, se_T] = se_PR_Main(se_T, se_bo, se_op, se_ig, se_er, se_
     % --------
     % Returns:
     % --------
-    % se_T_Final: (Table (n_1, m_3))
+    % se_T: (Table (n_1, m_3))
     %   The Final Table - Trimmed to hold only necessary values. 
     %   Comments:
     %   - n_1 - # stars in the catalogue
     %   - m_3 - # fields (Updated)
     %   - Variable Names -  SSP_ID, RA, Dec, Magnitude, pm_RA, pm_Dec ...
     %
-    % se_Image_Mat: (Array (1024, 1280))
+    % se_Image_Mat: (Array (se_op.CMOS.Width_Pix, se_op.CMOS.Length_Pix))
     %   Comments:
     %   - Each pixel value is 10 Bits, i.e. 0 to 1023
     %
-    % se_Image: (Gray type Image (1024, 1280)
-    %   - Generated from se_Image_Mat
     
     % =====
     % Code:

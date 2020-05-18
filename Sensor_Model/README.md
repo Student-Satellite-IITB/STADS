@@ -58,6 +58,7 @@ This contains the Sensor Model for the STADS System
 * [x] Image Generation
 * [x] Sensor Noise Model
 * [ ] Readme
+* [ ] Using Proper Motion
 * [ ] Slew Model
 * [ ] Dynamics Model for generating Boresight Inputs
 
