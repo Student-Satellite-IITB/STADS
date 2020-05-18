@@ -1,7 +1,7 @@
 function [arr_sums, tag_num, final_tag_num] = tag_2(arr_in_img)
     load('constants_feature_extraction_2.mat', "THRESHOLD", "NUM_FINAL_TAGS", "NUM_TAGS_PER_REGION", "NUM_REGIONS");    % Loading constants
     [rows,columns] = size(arr_in_img);    % setting the size of the array
-    arr_out_img = zeros(rows+1, columns+1, 2, 'int32');    % adding a layer of zeros to the i_left and top to account for edge cases and another component for tags
+    arr_out_img = zeros(rows+1, columns+2, 2, 'int32');    % adding a layer of zeros to the i_left and top to account for edge cases and another component for tags
     arr_out_img(2:rows+1, 2:columns+1, 1) = arr_in_img;   % setting the first component at every pixel as the reading, thus making two layers for the image, one for the image and one for tags
     tag_num = 1;    % counter for generating new tags
     final_tag_num = 1;      % counter for adding elements to the final tag array
@@ -97,9 +97,9 @@ function [arr_sums, tag_num, final_tag_num] = tag_2(arr_in_img)
                                     arr_out_img(j_tag, i_tag, 2) = tag;     % tag the current pixel with tag
                                     arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_tag, intensity*j_tag, intensity, 1, 0];  % update the corresponding row in arr_sums
                                 else
-                                    arr_sums(tag_num, :) = [intensity*i_tag, intensity*j_tag, intensity, 1, 0];     % set the row corresponding to tag_num as the parameters of the current pixel
-                                    arr_out_img(j_tag, i_tag, 2) = tag_num; % tag the current pixel with tag_num
-                                    tag_num = tag_num +1;   % increment tag_num
+                                arr_sums(tag_num, :) = [intensity*i_tag, intensity*j_tag, intensity, 1, 0];     % set the row corresponding to tag_num as the parameters of the current pixel
+                                arr_out_img(j_tag, i_tag, 2) = tag_num; % tag the current pixel with tag_num
+                                tag_num = tag_num +1;   % increment tag_num
                                 end
                             end
                         end
