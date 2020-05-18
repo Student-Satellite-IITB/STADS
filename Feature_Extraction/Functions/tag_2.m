@@ -1,4 +1,4 @@
-function [arr_sums, tag_num, final_tag_num] = tag_2(arr_in_img)
+function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, final_tag_num] = tag_2(arr_in_img)
     load('constants_feature_extraction_2.mat', "THRESHOLD", "NUM_FINAL_TAGS", "NUM_TAGS_PER_REGION", "NUM_REGIONS");    % Loading constants
     [rows,columns] = size(arr_in_img);    % setting the size of the array
     arr_out_img = zeros(rows+1, columns+2, 2, 'int32');    % adding a layer of zeros to the i_left and top to account for edge cases and another component for tags
@@ -106,4 +106,9 @@ function [arr_sums, tag_num, final_tag_num] = tag_2(arr_in_img)
                 end
         end
     end
+    arr_sums_x = arr_sums(:, 1);
+    arr_sums_y  = arr_sums(:, 2);
+    arr_weights = arr_sums(:, 3);
+    arr_num = arr_sums(:, 4);
+    arr_flags = arr_sums(:, 5);
 end
