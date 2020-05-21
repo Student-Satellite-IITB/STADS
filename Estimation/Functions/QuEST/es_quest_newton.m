@@ -22,8 +22,6 @@ funcprm = @(x) 2 * x * (2 * x ^ 2 - 2 * trace(m_B) ^ 2 + k - norm(v_z) ^ 2) - (v
 %%Iterating using Newton Raphson to find the value of x for which func is
 %%closest to zero
 
-%Introducing small error to x to make it more robust(This is step is NOT mandatory)
-x = lamnot + epsilon;
 
 %iteration
     while func(x) > epsilon
