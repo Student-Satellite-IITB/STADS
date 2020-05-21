@@ -1,0 +1,98 @@
+\documentclass[a4paper, oneside,11pt]{article}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage[english]{babel}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+\graphicspath{{/}}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{titlesec}
+\usepackage{enumitem}  
+\usepackage{comment} 
+\usepackage{upgreek}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\setlength{\parindent}{0pt}.
+
+
+\begin{table}[h]
+		\begin{adjustbox}{width = \linewidth}
+			\begin{tabular}{c c c}
+				\multirow{5}{*}{ \includegraphics[width=0.13\textwidth]{iitb_logo.png}} \hfill &  \large{{Student Satellite Project}}  & \hfill \multirow{5}{*}{ \includegraphics[width=0.13\textwidth]{IITB - SSP.jpeg}} \\
+				& {Indian Institute of Technology, Bombay} &\\
+				& {Powai, Mumbai - 400076, INDIA} &\\
+				&{} &\\
+				& Website: {www.aero.iitb.ac.in/satlab} &\\
+				\\
+				&\large{\textbf{README - tag\_2.m}}&\\
+				&Electrical Subsystem&\\
+				\hline
+			\end{tabular}
+		\end{adjustbox}
+\end{table}
+
+
+\section*{tag\_2.m()}
+\textbf{Code author:} Millen Kanabar
+
+
+\textbf{Created on:} 03/04/2020
+
+
+\textbf{Last modified:} 18/05/2020
+
+
+\textbf{Reviwed by:} -
+
+
+\textbf{Description:} 
+
+This function is used to get the \emph{sum of the coordinates} (see the numerator of the expression defining the centroid) and \emph{sizes} of unmerged regions along with the \textit{number of tags and final tags} from a gray-scale image. (The connectivity referred to here is 4-connectivity.) The unmerged centroids are then taken along with the scalars to give out the final coordinates of the centroids of regions (stars) in the input image. The centroid is defined as 
+\begin{align*}
+    (x_{centroid}, y_{centroid}) = \left(\frac{\sum_{p \in region} I_px_{p}}{n_{pixels}}, \frac{\sum_{p \in region}I_py_{p}}{n_{pixels}}\right)
+\end{align*}where $I_p$ is the intensity of the pixel and $(x_p, y_p)$ are the coordinates of the pixel.
+
+
+\textbf{Formula \& References:}
+
+The algorithm we are referring to basically tags connected pixels with the same tag (which is the index of the array where the sums of coordinates  and the number of pixels corresponding to that region are stored) and noting which tagged regions with different tags meet so that they can be merged\cite{image_seg}. The algorithm has been modified because we do not need the regions, we only need the centroids. We also include some extra conditions to reduce the complexity and memory requirements. We have five arrays and two scalars as output.
+
+\textbf{Input parameters:}
+\begin{enumerate}
+    \item \textbf{arr\_in\_img} : (matrix) - input image, with pixel location wrt the top left corner as indices\\([i, j]); and the reading at the corresponding pixel as the value stored at [i, j]
+\end{enumerate} 
+
+
+\textbf{Output:}
+\begin{enumerate}
+    \item \textbf{arr\_sum\_x:} array containing the weighted sum of the x coordinates of each unmerged region
+    \item \textbf{arr\_sum\_y:} array containing the weighted sum of the y coordinates of each unmerged region
+    \item \textbf{arr\_weights:} array containing the sum of the weights for an unmerged region
+    \item \textbf{arr\_num:} array containing the number of pixels in each unmerged region
+    \item \textbf{arr\_flags:} array containing the corresponding final tag of the unmerged region
+    \item \textbf{tag\_num:} number of tags generated + 1
+    \item \textbf{final\_tag\_num:} number of final tags generated + 1
+\end{enumerate}
+
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
