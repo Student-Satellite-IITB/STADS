@@ -1,13 +1,20 @@
 function [m_B, v_z, lamnot] = es_quest_common(b_m, m_r, v_a)
-%	This function calculates K , B and z vector
-%   input type: (b,r,a)
-%   where b: [b1;b2;b3]
-%   where r: [r1;r2;r3]
-%   where a: [a1;a2;a2]
-%   output: [B, z, lamnot]
+%	This function calculates B Matrix, z vector and lamnot value
+%   input: (b_m,m_r,v_a)
+%   where b_m((n,3) double matrix): [b1;b2;b3]
+%   where m_r((n,3) double matrix): [r1;r2;r3]
+%   where v_a((n,1) double vector): [a1;a2;a2]
+%   output: [m_B, v_z, lamnot]
+%   where m_B((3,3) double matrix)
+%   where v_z((3,1) double vector)
+%   where lamnot(Float)
 
 %%Calculating the required matrices
+
 %Size of input
+%here v_p(1) represents the number of matched stars
+%v_p(2) will always be equal to 3
+%v_p(2) is used instead 3 at places to increase generality
 v_p = size(b_m);
 
 %Calculating B matrix
@@ -29,7 +36,7 @@ v_z = v_z' ;
 %Calculating value of lambda-not
 lamnot = 0;
 for i_rw = 1 : v_p(1)
-    lamnot = lamnot + v_a(i_rw);
+    lamnot = lamnot + v_a(i_rw, 1);
 end
 
 end

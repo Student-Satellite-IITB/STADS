@@ -1,13 +1,18 @@
 function q_bi = es_qdp(b_m, m_r, v_a)
 % This function calculates quaternion using q-Davenport method
-% input: (b,r,a)
-%   where b: [b1;b2;b3]
-%   where r: [r1;r2;r3]
-%   where a: [a1;a2;a2]
-% output: q(quaternion)
+% input: (b_m,m_r,v_a)
+%   where b_m((n,3) double matrix): [b1;b2;b3]
+%   where m_r((n,3) double matrix): [r1;r2;r3]
+%   where v_a((n,1) double vector): [a1;a2;a2]
+%        where n: number of matched stars
+% output: q((4,1) double vector):quaternion
 
 %%Calculating required matrices
+
 %size of input
+%here v_p(1) represents the the number of matched stars
+%v_p(2) will always be equal to 3
+%v_p(2) is used instead 3 at places to increase generality
 v_p = size(b_m);
 
 %Calculating B matrix
@@ -43,7 +48,6 @@ v_q = [adjoint(o * eye(v_p(2)) - m_S) * v_z ; det(o * eye(v_p(2)) - m_S)];
 
 %normalizing the quaternion
 w = norm(v_q);
-
 q_bi = v_q / w;
 
 end
