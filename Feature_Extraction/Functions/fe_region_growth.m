@@ -13,7 +13,8 @@ function centroids = fe_region_growth(filename)
     x_sum = zeros(50, 1);
     y_sum = zeros(50, 1);
     pixel_sum = zeros(50, 1);
-    centroid_data = table(x_sum, y_sum, pixel_sum);
+    num_pixels = zeros(50, 1);
+    centroid_data = table(x_sum, y_sum, pixel_sum, num_pixels);
     % keeping track of the star number
     star_num = 1;
     for i = 2 : n : x_size - 1
