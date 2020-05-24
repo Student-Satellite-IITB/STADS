@@ -1,4 +1,4 @@
-function centroids = fe_region_growth(arr_in_img)
+function centroids_st = fe_region_growth(arr_in_img)
     %% pad and get constants
     % put a padding of zeroes all around
     arr_out_img = padarray(arr_in_img, [1, 1], 0, 'both');
@@ -15,22 +15,22 @@ function centroids = fe_region_growth(arr_in_img)
     y_sum = zeros(50, 1);
     pixel_sum = zeros(50, 1);
     num_pixels = zeros(50, 1);
-    centroid_data = table(x_sum, y_sum, pixel_sum, num_pixels);
+    centroid_data_st = table(x_sum, y_sum, pixel_sum, num_pixels);
     
     %% iterating through image
     star_num = 1; % counter for star number
-    for i = 2 : n : x_size - 1
-        for j = 2 : n : y_size-1
-            if arr_out_img(i, j) > 9 % arbitrary threshold for now
-                [arr_out_img, centroid_data] = fe_get_data(arr_out_img, i, j, star_num, centroid_data);
+    for i_region_growth = 2 : n : x_size - 1
+        for j_region_growth = 2 : n : y_size-1
+            if arr_out_img(i_region_growth, j_region_growth) > 9 % arbitrary threshold for now
+                [arr_out_img, centroid_data_st] = fe_get_data(arr_out_img, i_region_growth, j_region_growth, star_num, centroid_data_st);
                 star_num  = star_num + 1;
             end
         end
     end
     
     %% getting the final required data
-    x_cen = centroid_data{1:star_num-1, 'x_sum'}./centroid_data{1:star_num-1, 'pixel_sum'};
-    y_cen = centroid_data{1:star_num-1, 'y_sum'}./centroid_data{1:star_num-1, 'pixel_sum'};
-    centroids = [x_cen, y_cen];
+    c_x_cen = centroid_data_st{1:star_num-1, 'x_sum'}./centroid_data_st{1:star_num-1, 'pixel_sum'};
+    c_y_cen = centroid_data_st{1:star_num-1, 'y_sum'}./centroid_data_st{1:star_num-1, 'pixel_sum'};
+    centroids_st = [c_x_cen, c_y_cen];
     
 end
