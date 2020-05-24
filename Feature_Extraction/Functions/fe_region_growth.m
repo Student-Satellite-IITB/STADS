@@ -1,7 +1,7 @@
 function centroids_st = fe_region_growth(arr_in_img)
     %% pad and get constants
     % load all constants
-    load('fe_constants_feature_extraction.mat');
+    load('fe_constants_region_growth.mat');
     % put a padding of zeroes all around
     arr_out_img = padarray(arr_in_img, [1, 1], 0, 'both');
     % get the x and y sizes respectively for iterating across the image

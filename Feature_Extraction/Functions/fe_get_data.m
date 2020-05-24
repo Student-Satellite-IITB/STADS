@@ -1,6 +1,6 @@
 function [arr_img, centroid_data_st] = fe_get_data(arr_img, i_region_growth, j_region_growth, star_num, centroid_data_st)
     %% loading constants
-    load('fe_constants_feature_extraction.mat', 'THRESHOLD');
+    load('fe_constants_region_growth.mat', 'THRESHOLD');
     %% base case
     if arr_img(i_region_growth, j_region_growth) <= THRESHOLD
         return;
