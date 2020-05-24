@@ -1,10 +1,10 @@
 function [img, centroid_data] = fe_get_data(img, i, j, star_num, centroid_data)
-    % base case
+    %% base case
     if img(i, j) <= 9 % arbitrary threshold
         return;
     end
     
-    % changing the data in centroid_data accordingly
+    %% updating centroid_data
     % -2 is there so that it matches with the output of python generated
     % images
     centroid_data{star_num, 'x_sum'} = centroid_data{star_num, 'x_sum'} + img(i, j) * (i - 2);
@@ -14,7 +14,7 @@ function [img, centroid_data] = fe_get_data(img, i, j, star_num, centroid_data)
     % setting to 0 so that i does not go into infinite loop
     img(i, j) = 0;
     
-    % calling its four neighbours recursively
+    %% recursive call to 4 neighbours
     [img, centroid_data] = fe_get_data(img, i - 1, j, star_num, centroid_data);
     [img, centroid_data] = fe_get_data(img, i + 1, j, star_num, centroid_data);
     [img, centroid_data] = fe_get_data(img, i, j - 1, star_num, centroid_data);
