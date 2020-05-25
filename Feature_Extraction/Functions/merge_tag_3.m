@@ -10,9 +10,9 @@ input consisting of
 6. Count of number of final tags
 %}
 
-function [arr_star_coordinates, num_stars] = merge_tag_5(arr_sums, num_tags, num_final_tags)
-    
-    load('constants_feature_extraction_2.mat', "NUM_REGIONS", "MIN_PIXELS", "MAX_PIXELS", "LENGTH", "BREADTH");    %loading constants
+function [arr_star_coordinates, num_pixels, num_stars] = for_testing_merge_tag_5(arr_sums, num_tags, num_final_tags)
+
+    load('constants_feature_extraction_2.mat', "MIN_PIXELS", "MAX_PIXELS", "NUM_REGIONS");    %loading constants
     
     %declaring arrays for ease of use
     sum_x = arr_sums(1:NUM_REGIONS,1);
@@ -20,6 +20,10 @@ function [arr_star_coordinates, num_stars] = merge_tag_5(arr_sums, num_tags, num
     weights = arr_sums(1:NUM_REGIONS,3);
     num_pixels = arr_sums(1:NUM_REGIONS,4);
     final_tag = arr_sums(1:NUM_REGIONS,5);
+    
+    %correcting values
+    num_tags = num_tags - 1;
+    num_final_tags = num_final_tags - 1;
     
     %an array defined to contain the position of centroids of a star
     arr_star_coordinates = zeros(NUM_REGIONS,2);    %(k,1)=pos_x  (k,2)=pos_y
@@ -51,8 +55,8 @@ function [arr_star_coordinates, num_stars] = merge_tag_5(arr_sums, num_tags, num
             num_single_tag_stars = num_single_tag_stars + 1;
             num_stars = num_stars + 1;
             %updating values of centroid
-            arr_star_coordinates(num_final_tags + num_single_tag_stars,1) = (sum_x(I)/weights(I) - 1) - LENGTH/2;
-            arr_star_coordinates(num_final_tags + num_single_tag_stars,2) = -1*(sum_y(I)/weights(I) - 1) - BREADTH/2;
+            arr_star_coordinates(num_final_tags + num_single_tag_stars,1) = (1.0*sum_x(I)/weights(I) - 1);
+            arr_star_coordinates(num_final_tags + num_single_tag_stars,2) = (1.0*sum_y(I)/weights(I) - 1);
         %if region has multiple tags
         else
             %update summation variables
@@ -68,8 +72,8 @@ function [arr_star_coordinates, num_stars] = merge_tag_5(arr_sums, num_tags, num
         %if number of pixels in region is within range and with positive weight
         if (tot_pixels(I) > MIN_PIXELS && tot_pixels(I) < MAX_PIXELS && tot_weights(I) > 0)
             %updating values of centroid
-            arr_star_coordinates(I - num_zero_rows,1) = (tot_sum_x(I)/tot_weights(I) - 1) - LENGTH/2;
-            arr_star_coordinates(I - num_zero_rows,2) = -1*(tot_sum_y(I)/tot_weights(I) - 1) - BREADTH/2;
+            arr_star_coordinates(I - num_zero_rows,1) = (1.0*tot_sum_x(I)/tot_weights(I) - 1);
+            arr_star_coordinates(I - num_zero_rows,2) = (1.0*tot_sum_y(I)/tot_weights(I) - 1);
             %incrementing number of stars by 1
             num_stars = num_stars + 1;
         %if number of pixels in region is out of range or with zero weight
