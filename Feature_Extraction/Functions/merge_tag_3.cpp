@@ -52,8 +52,8 @@ for(i=0; i<num_tags; i++)
         if (num_pixels[i] < MIN_PIXELS || num_pixels[i] > MAX_PIXELS)
             continue;
 
-        arr_star_coordinates[num_final_tags + num_single_tag_stars][0] = sum_x[i]/weights[i];
-        arr_star_coordinates[num_final_tags + num_single_tag_stars][1] = sum_y[i]/weights[i];
+        arr_star_coordinates[num_final_tags + num_single_tag_stars][0] = (sum_x[i] - LENGTH/2)/weights[i];
+        arr_star_coordinates[num_final_tags + num_single_tag_stars][1] = -1*(sum_y[i] - BREADTH/2)/weights[i];
 
         num_single_tag_stars++;
         num_stars++;
@@ -80,8 +80,8 @@ for(i=0; i<num_final_tags; i++)
 
     if (tot_pixels[i] > MIN_PIXELS && tot_pixels[i] < MAX_PIXELS && tot_weights[i] > 0)
         {
-        arr_star_coordinates[i - num_zero_rows][0] = tot_sum_x[i]/tot_weights[i];
-        arr_star_coordinates[i - num_zero_rows][1] = tot_sum_y[i]/tot_weights[i];
+        arr_star_coordinates[i - num_zero_rows][0] = (tot_sum_x[i] - LENGTH/2)/tot_weights[i];
+        arr_star_coordinates[i - num_zero_rows][1] = -1*(tot_sum_y[i] - BREADTH/2)/tot_weights[i];
 
         num_stars++;
         }
