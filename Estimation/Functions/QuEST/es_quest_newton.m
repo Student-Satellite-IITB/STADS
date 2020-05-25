@@ -14,18 +14,18 @@ m_S = m_B + m_B';
 k = trace(adjoint(m_S));
 
 %Characteristic equation
-func = @(x) (x ^ 2 - trace(m_B) ^ 2 + k) * (x ^ 2 - trace(m_B) ^ 2 - norm(v_z) ^ 2) - (x - trace(m_B)) * (v_z' * m_S * v_z + det(m_S)) - v_z' * m_S ^ 2 * v_z;
+func = [1 0 (k - 2*(trace(m_B)^2) - (norm(v_z,2)^2)) -((v_z')*m_S*v_z + det(m_S)) ((trace(m_B)^4) + ((norm(v_z,2)^2) - k)*(trace(m_B)^2) - k*(norm(v_z,2)^2) + trace(m_B)*((v_z')*m_S*v_z + det(m_S)) - (v_z')*(m_S^2)*v_z)];
 
 %Derivative of characteristic equation
-funcprm = @(x) 2 * x * (2 * x ^ 2 - 2 * trace(m_B) ^ 2 + k - norm(v_z) ^ 2) - (v_z' * m_S * v_z + det(m_S));
+funcprm = [4 0 (2*(k - 2*(trace(m_B)^2) - (norm(v_z,2)^2))) -((v_z')*m_S*v_z + det(m_S))];
 
 %%Iterating using Newton Raphson to find the value of x for which func is
 %%closest to zero
-
+x = lamnot;
 
 %iteration
-    while func(x) > epsilon
-        x = x - func(x) / funcprm(x);
+    while polyval(func,x) > epsilon
+        x = x - polyval(func,x) / polyval(funcprm,x);
     end
 
 %%Defining lambda

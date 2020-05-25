@@ -13,19 +13,17 @@ function [m_B, v_z, lamnot] = es_quest_common(b_m, m_r, v_a)
 
 %Size of input
 %here v_p(1) represents the number of matched stars
-%v_p(2) will always be equal to 3
-%v_p(2) is used instead 3 at places to increase generality
 v_p = size(b_m);
 
 %Calculating B matrix
-m_B = zeros(v_p(2));
+m_B = zeros(3);
 
 for i_rw = 1 : v_p(1)
-    m_B = m_B + v_a(i_rw, 1) * b_m(i_rw, :)' * m_r(i_rw, :); 
+    m_B = m_B + v_a(i_rw, 1) * (b_m(i_rw, :)') * m_r(i_rw, :); 
 end
 
 %Calculating z matrix
-v_z = zeros(1, v_p(2)) ;
+v_z = zeros(1, 3) ;
 
 for i_rw = 1 : v_p(1)
     v_z = v_z + v_a(i_rw, 1) * cross(b_m(i_rw, :), m_r(i_rw, :));
