@@ -1,54 +1,85 @@
-#include<iostream>
+/*function to output the position of centroids of stars found in an image*/
+
+//fstream header file for ifstream, ofstream and fstream classes
+
+#include<fstream>
 using namespace std;
 
-struct Pixels
+/*
+input consisting of
+1. An array of sums of coordinates along x and y
+2. An array of weights
+3. Count of number of final tags
+4. An array of tags corresponding to final tags where the first column corresponds to the number of tags associated
+with that particular final tag and the subsequent columns correspond to tags
+*/
+
+void merge_centroid(float sum_x[], float sum_y[], float weights[], int final_tag_num, int arr_final_tags[][])
 {
 
-int value, tag;
+//a structure defined to contain the position of centroids of a star before writing on an external file
 
-};
-
-void insertion(int a[], int b)
+struct centroid
 {
 
-//insertion sort
+int pos_x,pos_y;
 
-}
-void centroid(int sum_x[50], int sum_y[50], int no_of_pixels[50], int n, Pixels pixel[30][30], int diff_tag[100][2])    //diff_tag[a][0]=x    diff_tag[a][1]=y
-{                                                                                                                       //n=no of double tagged pixels
+}star_coordinates;
 
-int i=0, tags[10][10], new_tag_1, new_tag_2, j=0, k=0, a[10][10];
-for(;i<n;i++)
+//creation of fstream class object
+
+fstream fout;
+
+//open external file to output the position of centroids of stars
+
+fout.open("file_centroids.dat", ios::out | ios::binary);
+
+//initialise iteration variables
+
+int i,j;
+
+//loop to find position of centroids of stars with single tagged region
+
+for(i=1;i<arr_final_tag[0][0];i++)
     {
-    x = diff_tag[i][0];
-    y = diff_tag[i][1];
-    new_tag_2 = pixel[x][y].tag;
-    new_tag_1 = pixel[x-1][y].tag;
-    for(j=0;j<k;j++)
-        if ( new_tag_2 == tags[j] )
-            {
-            insertion(tags[t][10], new_tag_1);
-            break;
-            }
-        else if( new_tag_1 == tags[j] )
-            {
-            insertion(tags[t][10], new_tag_2);
-            break;
-            }
-        else
-            t++;
+    star_coordinates.pos_x=sum_x[arr_final_tag[0][i]]/weights[arr_final_tag[0][i]];
+    star_coordinates.pos_y=sum_y[arr_final_tag[0][i]]/weights[arr_final_tag[0][i]];
+
+    //write the position of centroid of star to external file
+
+    fout.write((char*) &star, sizeof(star));
     }
-for(i=1;i<t;i++)
-    for(j=0;j<i;j++)
-        if (intersection(tags[j],tags[i]) != NULL)
-            merge(tags[j],tags[i]);
-for(i=0;i<no(tags);i++)
-    for(j=0;j<no(tags[i]);j++)
+
+//variables to sum the values of different tagged regions of the same star
+
+float tot_sum_x=0,tot_sum_y=0,tot_weights=0;
+
+//loop to find position of centroids of stars with more than one tagged regions
+
+for(i=1;i<final_tag_num;i++)
+    {
+    for(j=0;j<arr_final_tag[i][0];j++)
         {
-        sum_x += sum_x[tags[i][j]];
-        sum_y += sum_y[tags[i][j]];
+        tot_sum_x+=sum_x[arr_final_tag[i][j]];
+        tot_sum_y+=sum_y[arr_final_tag[i][j]];
+        tot_weights+=weights[arr_final_tag[i][j]];
         }
-    cout<<sum_x/no<<' '<<sum_y/no;
+    star_coordinates.pos_x=tot_sum_x/tot_weights;
+    star_coordinates.pos_y=tot_sum_y/tot_weights;
+
+    //write the position of centroid of star to external file
+
+    fout.write((char*) &star, sizeof(star));
+
+    tot_sum_x=0,tot_sum_y=0,tot_weights=0;
+    }
+
+//close external file
+
+fout.close;
+
+//end of function
+
 }
 
 int main()
