@@ -10,7 +10,7 @@ input consisting of
 6. Count of number of final tags
 %}
 
-function [arr_star_coordinates, num_stars] = merge_tag_5(sum_x, sum_y, weights, num_pixels, final_tag, num_tags, num_final_tags)
+function [arr_star_coordinates, num_stars] = merge_tag_3(sum_x, sum_y, weights, num_pixels, final_tag, num_tags, num_final_tags)
     
     load('constants_feature_extraction_2.mat', "NUM_REGIONS", "MIN_PIXELS", "MAX_PIXELS", "LENGTH", "BREADTH");    %loading constants
 
