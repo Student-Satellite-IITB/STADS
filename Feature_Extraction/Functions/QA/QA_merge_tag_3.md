@@ -24,10 +24,10 @@ Code_name.m
 
 
 **QA suggestions:**
-- The length of the star coordinates array is bounded to be under num_tag, so it should be alloted memory appropriately
+- The length of the star coordinates array is bounded to be under num_tag, so it should be alloted memory appropriately.
 - The iterator variable in both loops should be renamed to appropriately prefixed iterator variables, like i_find_centroids.
-- All arrays should have an `arr_` prefix
-- The loop to remove the zero rows should start from the first row and end at the (num_stars+num_zero_rows)th row of star_coordinates
+- All arrays should have an `arr_` prefix.
+- Include explanation of the indexing of the loop that removes zeros and the loop that finds the centroids of regions with multiple tags.
 
 
 
