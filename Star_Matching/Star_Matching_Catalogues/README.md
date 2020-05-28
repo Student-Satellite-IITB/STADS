@@ -6,7 +6,7 @@
 
 ### Author - KT Prajwal Prathiksh
 
-This repository contains the code to generate the Star Catalogues required for **Star Matching** - block of STADS.
+This folder contains the code to generate the Star Catalogues required for **Star Matching** - block of STADS.
 
 We currently use the SKY2000 Star Catalogue.
 
