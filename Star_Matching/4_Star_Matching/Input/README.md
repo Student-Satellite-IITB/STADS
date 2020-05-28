@@ -1,9 +1,10 @@
-# STADS
-This repository contains codes for open- and closed- loops for STADS (Star Tracker based Attitude Determination System)
+# Student Satellite Project - Indian Institude of Technology, Bombay
 
-## Star-Matching Input
+## Star Tracker-based Attitude Determination System (STADS)
 
-The output of Star-Matching is saved in this folder, as **st_input.mat**
+### Star-Matching Input
+
+The output of Feature Extraction is saved in this folder, as **st_input.mat**
 
 The variables stored are as follows:
 * **fe_n_str** : (Integer) - The number of stars identified by *Feature Extraction block*
