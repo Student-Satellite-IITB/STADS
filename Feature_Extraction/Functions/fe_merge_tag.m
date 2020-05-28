@@ -10,7 +10,7 @@ input consisting of
 6. Count of number of final tags
 %}
 
-function [arr_star_coordinates, num_stars] = merge_tag_3(sum_x, sum_y, weights, num_pixels, final_tag, num_tags, num_final_tags)
+function [arr_star_coordinates, num_stars] = merge_tag_3(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags)
     
     load('constants_feature_extraction_2.mat', "NUM_REGIONS", "MIN_PIXELS", "MAX_PIXELS", "LENGTH", "BREADTH");    %loading constants
 
@@ -39,24 +39,24 @@ function [arr_star_coordinates, num_stars] = merge_tag_3(sum_x, sum_y, weights, 
     %loop to find position of centroids of stars with single tagged region and update values of summation variables for multi tagged stars
     for i_centroids_single=1:num_tags
         %if region is singly tagged
-        if (final_tag(i_centroids_single) == 0)
+        if (arr_final_tag(i_centroids_single) == 0)
             %if number of pixels in region is out of range
-            if (num_pixels(i_centroids_single) < MIN_PIXELS || num_pixels(i_centroids_single) > MAX_PIXELS)
+            if (arr_num_pixels(i_centroids_single) < MIN_PIXELS || arr_num_pixels(i_centroids_single) > MAX_PIXELS)
                 continue;   %skip this iteration of loop
             end
             %incrementing number of stars and single tagged stars by 1
             num_single_tag_stars = num_single_tag_stars + 1;
             num_stars = num_stars + 1;
             %updating values of centroid
-            arr_star_coordinates(num_final_tags + num_single_tag_stars, 1) = (sum_x(i_centroids_single)/weights(i_centroids_single) - 1) - LENGTH/2;
-            arr_star_coordinates(num_final_tags + num_single_tag_stars, 2) = -1*(sum_y(i_centroids_single)/weights(i_centroids_single) - 1) + BREADTH/2;
+            arr_star_coordinates(num_final_tags + num_single_tag_stars, 1) = (arr_sum_x(i_centroids_single)/arr_weights(i_centroids_single) - 1) - LENGTH/2;
+            arr_star_coordinates(num_final_tags + num_single_tag_stars, 2) = -1*(arr_sum_y(i_centroids_single)/arr_weights(i_centroids_single) - 1) + BREADTH/2;
         %if region has multiple tags
         else
             %update summation variables
-            arr_tot_sum_x(final_tag(i_centroids_single)) = arr_tot_sum_x(final_tag(i_centroids_single)) + sum_x(i_centroids_single);
-            arr_tot_sum_y(final_tag(i_centroids_single)) = arr_tot_sum_y(final_tag(i_centroids_single)) + sum_y(i_centroids_single);
-            arr_tot_weights(final_tag(i_centroids_single)) = arr_tot_weights(final_tag(i_centroids_single)) + weights(i_centroids_single);
-            arr_tot_pixels(final_tag(i_centroids_single)) = arr_tot_pixels(final_tag(i_centroids_single)) + num_pixels(i_centroids_single);
+            arr_tot_sum_x(arr_final_tag(i_centroids_single)) = arr_tot_sum_x(arr_final_tag(i_centroids_single)) + arr_sum_x(i_centroids_single);
+            arr_tot_sum_y(arr_final_tag(i_centroids_single)) = arr_tot_sum_y(arr_final_tag(i_centroids_single)) + arr_sum_y(i_centroids_single);
+            arr_tot_weights(arr_final_tag(i_centroids_single)) = arr_tot_weights(arr_final_tag(i_centroids_single)) + arr_weights(i_centroids_single);
+            arr_tot_pixels(arr_final_tag(i_centroids_single)) = arr_tot_pixels(arr_final_tag(i_centroids_single)) + arr_num_pixels(i_centroids_single);
         end
     end
     
