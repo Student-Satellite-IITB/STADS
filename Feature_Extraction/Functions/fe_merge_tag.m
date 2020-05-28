@@ -93,7 +93,7 @@ end
 
 %{
 output consisting of
-1. centroids of stars (arr_star_coordiantes)
+1. centroids of stars (arr_star_coordiantes) in a frame of reference where x+ is rightwards and y+ is upwards centered at the middle of the image
 2. number of stars (num_stars)
 %}
 
