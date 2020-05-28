@@ -14,6 +14,11 @@ function deg = ca_HMS2degrees(H, M, S)
     %   Angle in degrees
 
     %% Code
+    
+    % Assert values of M and S
+    assert(M <= 60, 'Invalid Value: ' + string(M));
+    assert(S <= 60, 'Invalid Value: ' + string(S));
+    
     total_sec = H*3600 + M*60 + S;
     deg = (total_sec*360)/86400; % Conversion Formula
 end
