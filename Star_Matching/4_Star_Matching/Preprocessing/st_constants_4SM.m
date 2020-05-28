@@ -3,6 +3,7 @@
 st_DELTA = 0.0001; % Value of Delta Constant
 st_M_EPS = 2.22*10e-16; % Machine epsilon
 Focal_Length = 25; % Focal Length of optics system - in mm
+st_verify_tol = 2; % Verification Step - Tolerance Value
 
 % Number of body and inertial frame vectors required by Estimation block to
 % provide attitude with the required accuracy
@@ -20,7 +21,7 @@ st_RF_SC_4SM;
 % Save constants
 save ('.\Star_Matching\4_Star_Matching\Preprocessing\Output\st_constants_4SM.mat',...
 'Focal_Length', 'st_M_EPS', 'st_n_GC', 'st_n_RC', 'st_DELTA', 'st_M', 'st_Q',...
-'es_N_EST', 'st_ITER_MAX_4SM'); 
+'es_N_EST', 'st_ITER_MAX_4SM', 'st_verify_tol'); 
 
 % save ('.\Star_Matching\4_Star_Matching\Preprocessing\st_constants_4SM.mat',...
 % 'Focal_Length', 'st_M_EPS', 'st_n_GC', 'st_n_RC', 'st_M', 'st_Q',...
