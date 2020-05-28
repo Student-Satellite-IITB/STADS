@@ -20,7 +20,6 @@ The following data fields of the SKY2000 Catalogue are used:
 1. pmRA - *Proper motion in RA (J2000) - second per year*
 1. pmDE - *Proper motion in Dec (J2000) - second of arc per year*
 1. Vmag - *Photometric magnitude - (Optical V band between 500 and 600 nm)*
-1. B-V - *Color index or magnitude difference - (Optical V band between 500 and 600 nm; Optical B band between 400 and 500 nm)*
 
 The catalogues are classified as follows:
 
