@@ -1,4 +1,5 @@
-function [N_FOV_str, FOV_SC] = st_gnrt_FOV_SC (st_SSP_SC, v_boresight, FOV_Circular, Magnitude_Limit)
+function [st_N_FOV_str, st_FOV_SC] = st_gnrt_FOV_SC (st_SSP_SC, ...
+    st_v_boresight, FOV_Circular, Magnitude_Limit)
     % Returns the truncated SPP Star Catalogue that consists of only
     % those stars that lie within the circular Field-Of-View from the 
     % boresight vector, and have an apparent magnitude less than that of
@@ -8,7 +9,7 @@ function [N_FOV_str, FOV_SC] = st_gnrt_FOV_SC (st_SSP_SC, v_boresight, FOV_Circu
     % st_SSP_SC: ( (:, 10) - Table )
     %   The SSP Star Catalogue which contains the following columns:
     %   [SSP_ID, SKY2000_ID, RA, DE, Vmag, pmRA, pmDE, X, Y, Z]
-    % v_boresight: ( (2, 1) - Matrix )
+    % st_v_boresight: ( (2, 1) - Matrix )
     %   The boresight vector which contains the following:
     %   [RA, DE] - in degrees
     % FOV_Circular: (Float)
@@ -19,9 +20,9 @@ function [N_FOV_str, FOV_SC] = st_gnrt_FOV_SC (st_SSP_SC, v_boresight, FOV_Circu
     %   star we are capable of detecting by our system
     % Returns:
     % --------
-    % N_FOV_str: (Integer)
+    % st_N_FOV_str: (Integer)
     %   Number of stars present within the given Field-Of-View
-    % FOV_SC: ( (N_FOV_str, 8) - Table )
+    % st_FOV_SC: ( (N_FOV_str, 8) - Table )
     %   The truncated SPP Star Catalogue that consists of only those stars 
     %   that lie within the circular Field-Of-View. The columns of the
     %   table are as follows:
@@ -39,7 +40,7 @@ function [N_FOV_str, FOV_SC] = st_gnrt_FOV_SC (st_SSP_SC, v_boresight, FOV_Circu
     N = sz(1);
     
     % Convert Boresight vector into a Cartesian Unit Vector
-    [X, Y, Z] = ca_RA_DE_2_CartVect(v_boresight(1), v_boresight(2));
+    [X, Y, Z] = ca_RA_DE_2_CartVect(st_v_boresight(1), st_v_boresight(2));
 
     % Append Cartesian Unit Vector to tmp_SSP_SSC
     boresight_X = array2table(ones(N, 1)*X, 'VariableNames', {'Boresight_X'});
@@ -58,10 +59,10 @@ function [N_FOV_str, FOV_SC] = st_gnrt_FOV_SC (st_SSP_SC, v_boresight, FOV_Circu
     cond = tmp_SSP_SC.AngDst_deg <= FOV_Circular; % Set up condition
     
     % Generate FOV_SC
-    FOV_SC = tmp_SSP_SC(cond, [1, 3:5, 8:10, 14]);
-    FOV_SC = sortrows(FOV_SC,'AngDst_deg','ascend');
+    st_FOV_SC = tmp_SSP_SC(cond, [1, 3:5, 8:10, 14]);
+    st_FOV_SC = sortrows(st_FOV_SC,'AngDst_deg','ascend');
     
     % Calculate nuumber of stars within the Field-Of-View
-    sz = size(FOV_SC);
-    N_FOV_str = sz(1);
+    sz = size(st_FOV_SC);
+    st_N_FOV_str = sz(1);
 end
