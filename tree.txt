@@ -15,17 +15,13 @@ STADS
 |   |       QA_ca_preprocssing.m.md
 |   |       
 |   \---SKY2000
-|       |   ca_guide_star_catalogue.m
 |       |   ca_preprocessing.m
-|       |   ca_sm_preprocessing.m
 |       |   README.md
 |       |   RM_Star_Catalogue_Preprocessing.pdf
 |       |   SKY2000_README.pdf
 |       |   
 |       +---Catalogues
-|       |       Guide_Star_Catalogue.csv
 |       |       Master_Star_Catalogue.csv
-|       |       Preprocessed_Star_Catalogue.csv
 |       |       SKY2000.csv
 |       |       SSP_Star_Catalogue.csv
 |       |       
@@ -95,8 +91,6 @@ STADS
 |   |       
 |   \---Output
 |           empty.txt
-|           
-+---Sensor_Model
 |   |   README.md
 |   |   se_main.mlx
 |   |   
@@ -143,39 +137,64 @@ STADS
 +---Star_Matching
 |   |   README.md
 |   |   
-|   \---4_Star_Matching
+|   +---4_Star_Matching
+|   |   |   README.md
+|   |   |   RM_4_Star_Matching_Algorithm.pdf
+|   |   |   st_main_4SM_deprecated.m
+|   |   |   st_main_4SM_v2.m
+|   |   |   st_pseudo_input.m
+|   |   |   st_test_main_4SM_v2.m
+|   |   |   st_test_main_4SM_v2_plot.m
+|   |   |   
+|   |   +---Functions
+|   |   |       st_4SM.m
+|   |   |       st_calc_AngDst_deg.m
+|   |   |       st_check_ID_err.m
+|   |   |       st_gnrt_bi.m
+|   |   |       st_gnrt_centroids.m
+|   |   |       st_gnrt_CSPA.m
+|   |   |       st_gnrt_FOV_SC.m
+|   |   |       st_gnrt_ip_4SM.m
+|   |   |       st_gnrt_K_Vec.m
+|   |   |       st_gnrt_op_4SM_deprecated.m
+|   |   |       st_gnrt_op_4SM_v2.m
+|   |   |       st_gnrt_rand_FOV_SC.m
+|   |   |       st_gnrt_SIM.m
+|   |   |       st_gnrt_SMM.m
+|   |   |       st_update_match_matrix.m
+|   |   |       st_verify_4SM.m
+|   |   |       
+|   |   +---Input
+|   |   |   |   README.md
+|   |   |   |   st_input.mat
+|   |   |   |   
+|   |   |   \---Test_Cases
+|   |   |           st_input.mat
+|   |   |           
+|   |   +---Output
+|   |   |       st_output.mat
+|   |   |       
+|   |   \---Preprocessing
+|   |       |   README.md
+|   |       |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf
+|   |       |   st_constants_4SM.m
+|   |       |   st_RF_SC_4SM.m
+|   |       |   
+|   |       \---Output
+|   |               st_constants_4SM.mat
+|   |               st_Reference_Star_Catalogue_4SM.csv
+|   |               
+|   \---Star_Matching_Catalogues
 |       |   README.md
-|       |   RM_4_Star_Matching_Algorithm.pdf
-|       |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf
-|       |   st_main_4SM_deprecated.m
-|       |   st_main_4SM_v2.m
-|       |   st_pseudo_input.m
+|       |   RM_Star_Matching_Star_Catalogue_Preprocessing.pdf
+|       |   st_guide_star_catalogue.m
+|       |   st_preprocessed_star_catalogue.m
+|       |   st_SSP_star_catalogue.m
 |       |   
-|       +---Functions
-|       |       st_4SM.m
-|       |       st_check_ID_err.m
-|       |       st_gnrt_bi.m
-|       |       st_gnrt_CSPA.m
-|       |       st_gnrt_ip_4SM.m
-|       |       st_gnrt_K_Vec.m
-|       |       st_gnrt_op_4SM_deprecated.m
-|       |       st_gnrt_op_4SM_v2.m
-|       |       st_gnrt_SIM.m
-|       |       st_gnrt_SMM.m
-|       |       st_update_match_matrix.m
-|       |       
-|       +---Input
-|       |       README.md
-|       |       st_input.mat
-|       |       
-|       +---Output
-|       |       st_output.mat
-|       |       
-|       \---Preprocessing
-|               Reference_Star_Catalogue_4SM.csv
-|               st_constants_4SM.m
-|               st_constants_4SM.mat
-|               st_RF_SC_4SM.m
+|       \---Catalogues
+|               st_Guide_Star_Catalogue.csv
+|               st_Preprocessed_Star_Catalogue.csv
+|               st_SSP_Star_Catalogue.csv
 |               
 \---System_Dynamics
         README.md
