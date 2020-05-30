@@ -30,7 +30,6 @@ M_SC = [tmp1, tmp2, tmp3, tmp4, tmp5];
 writetable(M_SC, '.\Catalogue\SKY2000\Catalogues\Master_Star_Catalogue.csv');
 
 %% Create SSP Star Catalogue
-
 % Read Master Star Catalogue
 M_SC = readtable('.\Catalogue\SKY2000\Catalogues\Master_Star_Catalogue.csv');
 N = height(M_SC); % Number of rows in Master Star Catalogue
