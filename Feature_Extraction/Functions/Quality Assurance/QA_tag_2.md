@@ -22,6 +22,8 @@ tag_2.m
 
 1. https://github.com/TheWeepingSage/STADS/blob/master/Feature_Extraction/Functions/tag_2.m 
 
+2. https://github.com/TheWeepingSage/STADS/blob/master/Feature_Extraction/Functions/README_tag_2.pdf
+
 **QA suggestions:**
 
 1. Include an explanation for the columns of arr_sums
