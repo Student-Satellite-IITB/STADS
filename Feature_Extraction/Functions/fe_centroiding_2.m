@@ -1,4 +1,4 @@
-function [arr_centroids] = fe_centroiding(img_path)
+function [arr_centroids] = fe_centroiding_2(img_path)
     % reading in the image, converting it to grayscale
     arr_img = rgb2gray(imread(img_path));
     % getting interediate output from tag_2 and merge_tag_3
