@@ -27,3 +27,5 @@ codegen/
 # Octave session info
 octave-workspace
 *.csv
+*.ods
+*.txt
