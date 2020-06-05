@@ -197,9 +197,10 @@ function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, fina
     end
     
    % formatting outputs
+    arr_flags = arr_sums(:, 5);
+    arr_sums = double(arr_sums);
     arr_sums_x = arr_sums(:, 1);
     arr_sums_y  = arr_sums(:, 2);
     arr_weights = arr_sums(:, 3);
     arr_num = arr_sums(:, 4);
-    arr_flags = arr_sums(:, 5);
 end
