@@ -3,79 +3,75 @@ function tests = test_centroiding
 tests = functiontests(localfunctions);
 end
 
-%find rms and max error values required for the star matching and estimation team
-function [rms, max] = find_rms(abs_error)
-    rms = 0;
-    max = 0;
-    for I=1:size(abs_error,1)
-        m = abs_error(I,1)^2 + abs_error(I,2)^2;
-        if max < m 
-            max = m;
-        end
-        rms = rms + m;
+%{
+%find mean, standard deviation and maximum value of r
+function [mean_r, sd_r, max_r] = find_stats(arr_r)
+    sum_r = 0;
+    for I=1: size(arr_r)
+        sum_r = sum_r + arr_r(I);
     end
-    rms = rms/size(abs_error,1);
-    rms = sqrt(rms);
+    mean_r = sum_r/size(arr_r);
+    sq_sum_r = 0;
+    max_r = 0;
+    for I=1: size(arr_r)
+        if max_r < abs(mean_r - arr_r(I))
+            max_r = (mean_r - arr_r(I));
+        end
+        sq_sum_r = sum_r + (mean_r - arr_r(I))^2;
+    end
+    sd_r = sqrt(sq_sum_r/size(arr_r));
 end
 
-%find number and centroid of stars within circle radius r about x0,y0
-function [centroids_in_r, num_in_r] = find_in_r(arr_centroids,x0,y0,r)
-    centroids_in_r = zeros(size(arr_centroids,1),size(arr_centroids,2));
-    num_in_r=0;
-    for I=1:size(arr_centroids,1)
-        m = (arr_centroids(I,1)-x0)^2 + (arr_centroids(I,2)-y0)^2;
-        if m<r
-            num_in_r = num_in_r +1;
-            centroids_in_r(num_in_r,:) = arr_centroids(I,:);
-        end
-    end
+%find radial distance between (x0,y0) and (x,y)
+function [r] = find_r(x0,y0,x,y)
+    r = sqrt((x-x0)^2 + (y-y0)^2);
 end
 
-function [coordinate] = search_centroid(arr_centroids,x0,y0)
-    r = 10^-1;    %set radius
-    coordinate = [0,0];
-    for I=1:size(arr_centroids,1)
-        m = (arr_centroids(I,1)-x0)^2 + (arr_centroids(I,2)-y0)^2;
-        if m<r
-            coordinate=arr_centroids(I,:);
-            break;
-        end
-    end
-end
-
-function [a] = sort_yx (a)
-    for I=1:size(a,1)-1
-        for J=1:size(a,1)-I-1
-            if a(J,1)<a(J+1,1)
-                t=a(J,:);
-                a(J,:)=a(J+1,:)
-                a(J+1,:)=t;
+%function to sort
+function [arr_sorted] = sort_yx(arr_sorted)
+    for I=1:size(arr_sorted,1) - 1
+        for J=1:size(arr_sorted,1) - I - 1
+            if arr_sorted(J,1) < arr_sorted(J+1,1)
+                t = arr_sorted(J, :);
+                arr_sorted(J, :) = arr_sorted(J+1, :)
+                arr_sorted(J+1, :) = t;
             end
         end
     end
-    for I=1:size(a,1)-1
-        for J=1:size(a,1)-I-1
-            if a(J,2)>a(J+1,2)
-                t=a(J,:);
-                a(J,:)=a(J+1,:)
-                a(J+1,:)=t;
+    for I=1: size(arr_sorted,1) - 1
+        for J=1: size(arr_sorted,1) - I - 1
+            if arr_sorted(J,2) > arr_sorted(J+1,2)
+                t = arr_sorted(J, :);
+                arr_sorted(J, :) = arr_sorted(J+1, :)
+                arr_sorted(J+1, :) = t;
             end
         end
     end
 end
+%}
 
+
+%function to tabulate
+%input testCase from /Simulation/
+%Add THRESHOLD to fe_tag.m and MIN_PIXELS to fe_merge_tag.m
 function testCentroids(testCase)
-    n = 10; %number of test cases
-    allowed_error = 10^-6; %allowed error
-    imgpath = "C:/";
-    outpath = "C:/";
+clc
+    n = 1; %number of test cases
+    r_allowed =1; %allowed error
     for I = 1: n
-        test_case_1 = load(imgpath);    %loading input of test case
+        "IMAGE "+I  %output test case number
+        imgpath = "C:/Users/aravi/OneDrive/Documents/MATLAB/Simulation_3/Image_"+I+"/se_Image_"+I+".mat";   %input path
+        outpath = "C:/Users/aravi/OneDrive/Documents/MATLAB/Simulation_3/Image_"+I+"/se_Verification_"+I+".mat";    %output path
+        test_case = load(imgpath);    %loading input of test case
+        test_case = test_case.se_Image_Mat; %changing struct to double
         arr_exp_centroids = load(outpath);  %loading expected output of test case
-        [arr_centroids] = centroiding(test_case_1); %simulating the function with given input
-        arr_centroids = arr_centroids(:,2:3);
-        abs_error = abs(arr_exp_centroids - arr_centroids); %finding the absolute error between the two outputs
-        verifyLessThan(testCase, abs_error, allowed_error);    %successful if error is less than allowed error the width of a pixel
-        %sort by brightness?
+        arr_exp_centroids = arr_exp_centroids.se_T_Verification;    %changing struct to double
+        arr_exp_centroids = table2array(arr_exp_centroids); %changing table to array
+        [arr_centroids] = centroiding(test_case); %simulating the function with given input
+        num_stars = size(arr_centroids, 1); %num_stars = number of stars according to the code
+        [num_stars, size(arr_exp_centroids,1)]   %size(arr_exp_centroids, 1) = number of stars according to the test case
+        [arr_final, r_values] = test_centroiding_shrink(arr_centroids, arr_exp_centroids, r_allowed, num_stars);
+        arr_final;
+        ["size", "mean", "std", "max"; size(r_values,1), mean(r_values), std(r_values), max(r_values)] 
     end
 end
