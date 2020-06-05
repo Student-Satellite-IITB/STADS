@@ -48,8 +48,8 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
             num_single_tag_stars = num_single_tag_stars + 1;
             num_stars = num_stars + 1;
             %updating values of centroid
-            arr_star_coordinates(num_final_tags + num_single_tag_stars, 1) = (arr_sum_x(i_centroids_single)/arr_weights(i_centroids_single) - 1) - LENGTH/2;
-            arr_star_coordinates(num_final_tags + num_single_tag_stars, 2) = -1*(arr_sum_y(i_centroids_single)/arr_weights(i_centroids_single) - 1) + BREADTH/2;
+            arr_star_coordinates(num_final_tags + num_single_tag_stars, 1) = (arr_sum_x(i_centroids_single)/arr_weights(i_centroids_single) - 1) - (LENGTH/2 + 0.5);
+            arr_star_coordinates(num_final_tags + num_single_tag_stars, 2) = -1*((arr_sum_y(i_centroids_single)/arr_weights(i_centroids_single) - 1) - (BREADTH/2 + 0.5));
         %if region has multiple tags
         else
             %update summation variables
@@ -65,8 +65,8 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
         %if number of pixels in region is within range and with positive weight
         if (arr_tot_pixels(i_centroids_multi) > MIN_PIXELS && arr_tot_pixels(i_centroids_multi) < MAX_PIXELS && arr_tot_weights(i_centroids_multi) > 0)
             %updating values of centroid
-            arr_star_coordinates(i_centroids_multi - num_zero_rows, 1) = (arr_tot_sum_x(i_centroids_multi)/arr_tot_weights(i_centroids_multi) - 1) - LENGTH/2;
-            arr_star_coordinates(i_centroids_multi - num_zero_rows, 2) = -1*(arr_tot_sum_y(i_centroids_multi)/arr_tot_weights(i_centroids_multi) - 1) + BREADTH/2;
+            arr_star_coordinates(i_centroids_multi - num_zero_rows, 1) = (arr_tot_sum_x(i_centroids_multi)/arr_tot_weights(i_centroids_multi) - 1) - (LENGTH/2 + 0.5);
+            arr_star_coordinates(i_centroids_multi - num_zero_rows, 2) = -1*((arr_tot_sum_y(i_centroids_multi)/arr_tot_weights(i_centroids_multi) - 1) - (BREADTH/2 + 0.5));
             %incrementing number of stars by 1
             num_stars = num_stars + 1;
         %if number of pixels in region is out of range or with zero weight
