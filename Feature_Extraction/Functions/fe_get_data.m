@@ -7,10 +7,9 @@ function [arr_img, centroid_data_st] = fe_get_data(arr_img, i_region_growth, j_r
     end
     
     %% updating centroid_data
-    % -2 is there so that it matches with the output of python generated
-    % images
-    centroid_data_st{star_num, 'x_sum'} = centroid_data_st{star_num, 'x_sum'} + arr_img(i_region_growth, j_region_growth) * (i_region_growth - 2);
-    centroid_data_st{star_num, 'y_sum'} = centroid_data_st{star_num, 'y_sum'} + arr_img(i_region_growth, j_region_growth) * (j_region_growth - 2);
+    % -1 because of the padding added
+    centroid_data_st{star_num, 'x_sum'} = centroid_data_st{star_num, 'x_sum'} + arr_img(i_region_growth, j_region_growth) * (i_region_growth - 1);
+    centroid_data_st{star_num, 'y_sum'} = centroid_data_st{star_num, 'y_sum'} + arr_img(i_region_growth, j_region_growth) * (j_region_growth - 1);
     centroid_data_st{star_num, 'pixel_sum'} = centroid_data_st{star_num, 'pixel_sum'} + arr_img(i_region_growth, j_region_growth);
     centroid_data_st{star_num, 'num_pixels'} = centroid_data_st{star_num, 'num_pixels'} + 1;
     % setting to 0 so that i does not go into infinite loop
