@@ -31,8 +31,9 @@ function centroids_st = fe_region_growth(arr_in_img)
     %% getting the final required data
     mask = (centroid_data_st{:, 'num_pixels'} <= STAR_MIN_PIXEL) | (centroid_data_st{:, 'num_pixels'} > STAR_MAX_PIXEL);
     centroid_data_st(mask, :) = [];
-    c_x_cen = centroid_data_st{:, 'x_sum'}./centroid_data_st{:, 'pixel_sum'};
-    c_y_cen = centroid_data_st{:, 'y_sum'}./centroid_data_st{:, 'pixel_sum'};
-    centroids_st = [c_x_cen, c_y_cen];
+    c_x_cen = -1*(centroid_data_st{:, 'x_sum'}./centroid_data_st{:, 'pixel_sum'} - ((x_size - 2)/2 + 0.5));
+    c_y_cen = centroid_data_st{:, 'y_sum'}./centroid_data_st{:, 'pixel_sum'} - ((y_size - 2)/2 + 0.5);
+    c_stars = size(c_x_cen, 1);
+    centroids_st = [reshape(1:c_stars, c_stars, 1), c_y_cen, c_x_cen];
     
 end
