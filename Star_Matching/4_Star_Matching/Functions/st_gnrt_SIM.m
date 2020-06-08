@@ -1,4 +1,4 @@
-function SIM = st_gnrt_SIM (st_c_img_AngDst, st_RF_SC, st_4SM_constants)
+function st_SIM = st_gnrt_SIM (st_c_img_AngDst, st_RF_SC, st_4SM_constants)
     % Generates the Star Identification Matrix (SIM) from a given array of
     % angular distances between those of four stars, using the Reference
     % Star Catalogue and the Guide Star Catalogue
@@ -18,7 +18,7 @@ function SIM = st_gnrt_SIM (st_c_img_AngDst, st_RF_SC, st_4SM_constants)
     %   [st_n_GC, st_M, st_Q, st_DELTA]
     % Returns:
     % --------
-    % SIM: ( (st_n_GC, 6) - Matrix )
+    % st_SIM: ( (st_n_GC, 6) - Matrix )
     %   The Star Identification Matrix (SIM). The $i^{th}$ row of the 
     %   matrix corresponds to the $i^{th}$ SSP-ID star. There are thus as 
     %   many rows in SIM as there are in the Guide Star Catalogue = 
@@ -33,7 +33,7 @@ function SIM = st_gnrt_SIM (st_c_img_AngDst, st_RF_SC, st_4SM_constants)
     st_DELTA = st_4SM_constants(4); 
     
     %% Generate Star Identification Matrix
-    SIM = zeros(st_n_GC, 6); % Initialize Star Identification Matrix
+    st_SIM = zeros(st_n_GC, 6); % Initialize Star Identification Matrix
 
     for j_idx = 1:6
         %% Update (j-th) column of SIM for stars found in CSPA
@@ -52,7 +52,7 @@ function SIM = st_gnrt_SIM (st_c_img_AngDst, st_RF_SC, st_4SM_constants)
             %SIM(SSP_ID, j_idx) = SIM(SSP_ID, j_idx) + 1; 
             
             % Updating value
-            SIM(SSP_ID, j_idx) = 1; 
+            st_SIM(SSP_ID, j_idx) = 1; 
         end
     end
 end

@@ -14,7 +14,7 @@ st_RF_SC = readmatrix('.\Star_Matching\4_Star_Matching\Preprocessing\Output\st_R
 %load ('.\Star_Matching\4_Star_Matching\Input\st_input.mat');
 
 % Load test cases
-load ('.\Star_Matching\4_Star_Matching\Input\Test_Cases\st_input.mat');
+load ('.\Star_Matching\4_Star_Matching\Input\Test_Cases\st_test_input.mat');
 % Modify Constants
 st_DELTA = st_DELTA_new;
 es_N_EST = es_N_EST_new;
@@ -149,4 +149,4 @@ save('.\Star_Matching\4_Star_Matching\Output\st_output.mat', 'st_iter_total',...
     'st_op_ri', 'st_N_Fail', 'st_Fail', 'st_N_Verify', 'st_Verify');
 
 % Write Input for Estimation
-save('.\Estimation\Input\es_input.mat', 'st_N_Match', 'st_op_bi', 'st_op_ri'); 
+save('.\Estimation\Input\es_input.mat', 'st_N_Verify', 'st_op_bi', 'st_op_ri'); 
