@@ -13,9 +13,9 @@ function [X, Y, Z] = ca_RA_DE_2_CartVect(RA, DE)
     % (1999). 
     % Parameters:
     % -----------
-    % RA: Float
+    % RA: (Double)
     %   Right-Ascension component - in degrees
-    % DE: Float
+    % DE: (Double)
     %   Declination component - in degrees
 
     %% Code

@@ -29,7 +29,9 @@ function  [st_CSPA, st_INDEX] = st_gnrt_CSPA(st_AngDst, st_DELTA, st_M, st_Q, st
     % st_INDEX: ( (1,2) - Matrix )
     %     The start and stop indices of possible matches generated for given angular distance
     %% Calculate constants
-    K_Vec = st_RF_SC(:, 3); % Extract K-Vector from Reference catalogue
+    K_Vec = st_RF_SC(:, 3); % Extract K-Vector from Reference catalogue    
+    sz = size(st_RF_SC);
+    st_n_RC = sz(1);   
     
     % Calculate sin(theta) value of the given angular distance 
     tmp = sqrt( 1- st_AngDst^2 ); 
@@ -37,6 +39,10 @@ function  [st_CSPA, st_INDEX] = st_gnrt_CSPA(st_AngDst, st_DELTA, st_M, st_Q, st
     k_bot = floor( (st_AngDst*cos(st_DELTA) - tmp*sin(st_DELTA) - st_Q) / st_M ); % Lower value
     k_top = ceil( (st_AngDst*cos(st_DELTA) + tmp*sin(st_DELTA) - st_Q) / st_M ); % Upper value
 
+    if (k_top < 0) || (k_bot < 0) || (k_bot > st_n_RC) || (k_top > st_n_RC)
+        error('Wrong Indices:  %d,   %d', k_top, k_bot);
+    end
+    
     start = K_Vec(k_bot) + 1; % Lower index
     stop = K_Vec(k_top); % Upper index
     st_INDEX = [start, stop]; % Generate INDEX

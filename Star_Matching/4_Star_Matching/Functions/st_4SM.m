@@ -35,7 +35,7 @@ function [st_n_match, st_result] = st_4SM(st_4SM_input, st_RF_SC, st_4SM_constan
     
     % Generate input in the format required by 4-Star Matching Algorithm
     [st_c_img_AngDst, st_c_fe_ID] = st_gnrt_ip_4SM(st_4SM_input);
-    
+  
     % Upack constants
     st_n_GC = st_4SM_constants(1);
     
