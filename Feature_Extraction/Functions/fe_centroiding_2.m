@@ -1,4 +1,4 @@
-function [arr_centroids] = fe_centroiding_2(arr_img)
+function [arr_centroids, num_stars] = fe_centroiding_2(arr_img)
     % reading in the image, converting it to grayscale
     % arr_img = rgb2gray(imread(img_path));
     % getting interediate output from tag_2 and merge_tag_3
@@ -7,5 +7,5 @@ function [arr_centroids] = fe_centroiding_2(arr_img)
     % adding star ids and formatting the output
     arr_centroids = zeros(num_stars, 3);
     arr_centroids(:, 1) = 1:num_stars;
-    arr_centroids(:, 2:3) = arr_star_coordinates(1:num_stars, :);
+    arr_centroids(:, 2:3) = arr_star_coordinates(1:num_stars, :) * 4.8e-3;
 end
