@@ -50,6 +50,6 @@ function se_Image_Mat = se_PR_6_3_Dark_Noise(se_Image_Mat, se_ig, se_er)
     
     % Add Dark Noise to the image
     se_Image_Mat = se_Image_Mat + se_ig.Gain * round((se_er.DTN * ones(size(se_Image_Mat)) + (se_er.DS * se_ig.Exposure_Time) * randn(size(se_Image_Mat))));
-    % Notice the rounding - as # Eletcrons can't be fractional
+    % Notice the rounding - as # Electrons can't be fractional
 end
 
