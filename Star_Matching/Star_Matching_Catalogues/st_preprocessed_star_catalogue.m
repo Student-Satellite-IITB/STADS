@@ -34,6 +34,7 @@ toc
 %% Ignore Star-Pairs that lie outside the Field-of-View
 
 FOV_Circular = 17.89; % Circular FOV - in degrees
+FOV_Circular = FOV_Circular * (1 + 0.05); % Account for 5% safety factor
 
 tmp = st_PP_SC( st_PP_SC(:, 4) <= FOV_Circular , : ); % Ignore star-pairs with ang_dst greater than FOV_Circular
 
