@@ -1,4 +1,3 @@
-STADS
 |   .gitignore
 |   main.m
 |   README.md
@@ -75,10 +74,415 @@ STADS
 |           
 +---Feature_Extraction
 |   |   README.md
+|   |   RM_fe_get_data.pdf
+|   |   RM_fe_region_growth.pdf
 |   |   
 |   +---Functions
-|   |       empty.txt
-|   |       
+|   |   |   centroiding_2.png
+|   |   |   centroiding_3.png
+|   |   |   constants_feature_extraction.m
+|   |   |   constants_feature_extraction.mat
+|   |   |   constants_feature_extraction_2.m
+|   |   |   constants_feature_extraction_2.mat
+|   |   |   empty.txt
+|   |   |   fe_centroiding_2.m
+|   |   |   fe_constants_region_growth.m
+|   |   |   fe_constants_region_growth.mat
+|   |   |   fe_get_data.m
+|   |   |   fe_merge_tag.m
+|   |   |   fe_region_growth.m
+|   |   |   fe_tag_2.m
+|   |   |   README_merge_tag.pdf
+|   |   |   README_tag_2.pdf
+|   |   |   tag.m
+|   |   |   
+|   |   +---QA
+|   |   |       QA_fe_region_growth.pdf
+|   |   |       QA_tag_2.md
+|   |   |       
+|   |   +---Quality Assurance
+|   |   |       QA_merge_tag_3.md
+|   |   |       QA_merge_tag_3.pdf
+|   |   |       
+|   |   +---README_tag_2
+|   |   |       IITB - SSP.jpeg
+|   |   |       iitb_logo.png
+|   |   |       references.bib
+|   |   |       RM_tag_2.aux
+|   |   |       RM_tag_2.bbl
+|   |   |       RM_tag_2.blg
+|   |   |       RM_tag_2.log
+|   |   |       RM_tag_2.out
+|   |   |       RM_tag_2.pdf
+|   |   |       RM_tag_2.synctex.gz
+|   |   |       RM_tag_2.tex
+|   |   |       
+|   |   +---testing_centroids
+|   |   |       image_10_centroids.mat
+|   |   |       image_11_centroids.mat
+|   |   |       image_12_centroids.mat
+|   |   |       image_13_centroids.mat
+|   |   |       image_14_centroids.mat
+|   |   |       image_15_centroids.mat
+|   |   |       image_1_centroids.mat
+|   |   |       image_2_centroids.mat
+|   |   |       image_3_centroids.mat
+|   |   |       image_4_centroids.mat
+|   |   |       image_5_centroids.mat
+|   |   |       image_6_centroids.mat
+|   |   |       image_7_centroids.mat
+|   |   |       image_8_centroids.mat
+|   |   |       image_9_centroids.mat
+|   |   |       
+|   |   +---testing_images
+|   |   |   +---Image_1
+|   |   |   |       Image_1.png
+|   |   |   |       se_Centroids_1.mat
+|   |   |   |       se_Image_1.mat
+|   |   |   |       se_Table_1.mat
+|   |   |   |       se_Verification_1.mat
+|   |   |   |       
+|   |   |   +---Image_10
+|   |   |   |       Image_10.png
+|   |   |   |       se_Centroids_10.mat
+|   |   |   |       se_Image_10.mat
+|   |   |   |       se_Table_10.mat
+|   |   |   |       se_Verification_10.mat
+|   |   |   |       
+|   |   |   +---Image_11
+|   |   |   |       Image_11.png
+|   |   |   |       se_Centroids_11.mat
+|   |   |   |       se_Image_11.mat
+|   |   |   |       se_Table_11.mat
+|   |   |   |       se_Verification_11.mat
+|   |   |   |       
+|   |   |   +---Image_12
+|   |   |   |       Image_12.png
+|   |   |   |       se_Centroids_12.mat
+|   |   |   |       se_Image_12.mat
+|   |   |   |       se_Table_12.mat
+|   |   |   |       se_Verification_12.mat
+|   |   |   |       
+|   |   |   +---Image_13
+|   |   |   |       Image_13.png
+|   |   |   |       se_Centroids_13.mat
+|   |   |   |       se_Image_13.mat
+|   |   |   |       se_Table_13.mat
+|   |   |   |       se_Verification_13.mat
+|   |   |   |       
+|   |   |   +---Image_14
+|   |   |   |       Image_14.png
+|   |   |   |       se_Centroids_14.mat
+|   |   |   |       se_Image_14.mat
+|   |   |   |       se_Table_14.mat
+|   |   |   |       se_Verification_14.mat
+|   |   |   |       
+|   |   |   +---Image_15
+|   |   |   |       Image_15.png
+|   |   |   |       se_Centroids_15.mat
+|   |   |   |       se_Image_15.mat
+|   |   |   |       se_Table_15.mat
+|   |   |   |       se_Verification_15.mat
+|   |   |   |       
+|   |   |   +---Image_2
+|   |   |   |       Image_2.png
+|   |   |   |       se_Centroids_2.mat
+|   |   |   |       se_Image_2.mat
+|   |   |   |       se_Table_2.mat
+|   |   |   |       se_Verification_2.mat
+|   |   |   |       
+|   |   |   +---Image_3
+|   |   |   |       Image_3.png
+|   |   |   |       se_Centroids_3.mat
+|   |   |   |       se_Image_3.mat
+|   |   |   |       se_Table_3.mat
+|   |   |   |       se_Verification_3.mat
+|   |   |   |       
+|   |   |   +---Image_4
+|   |   |   |       Image_4.png
+|   |   |   |       se_Centroids_4.mat
+|   |   |   |       se_Image_4.mat
+|   |   |   |       se_Table_4.mat
+|   |   |   |       se_Verification_4.mat
+|   |   |   |       
+|   |   |   +---Image_5
+|   |   |   |       Image_5.png
+|   |   |   |       se_Centroids_5.mat
+|   |   |   |       se_Image_5.mat
+|   |   |   |       se_Table_5.mat
+|   |   |   |       se_Verification_5.mat
+|   |   |   |       
+|   |   |   +---Image_6
+|   |   |   |       Image_6.png
+|   |   |   |       se_Centroids_6.mat
+|   |   |   |       se_Image_6.mat
+|   |   |   |       se_Table_6.mat
+|   |   |   |       se_Verification_6.mat
+|   |   |   |       
+|   |   |   +---Image_7
+|   |   |   |       Image_7.png
+|   |   |   |       se_Centroids_7.mat
+|   |   |   |       se_Image_7.mat
+|   |   |   |       se_Table_7.mat
+|   |   |   |       se_Verification_7.mat
+|   |   |   |       
+|   |   |   +---Image_8
+|   |   |   |       Image_8.png
+|   |   |   |       se_Centroids_8.mat
+|   |   |   |       se_Image_8.mat
+|   |   |   |       se_Table_8.mat
+|   |   |   |       se_Verification_8.mat
+|   |   |   |       
+|   |   |   \---Image_9
+|   |   |           Image_9.png
+|   |   |           se_Centroids_9.mat
+|   |   |           se_Image_9.mat
+|   |   |           se_Table_9.mat
+|   |   |           se_Verification_9.mat
+|   |   |           
+|   |   +---test_cases
+|   |   |   |   test_cases.zip
+|   |   |   |   
+|   |   |   +---test_0
+|   |   |   |       constants.csv
+|   |   |   |       output_coordinates.csv
+|   |   |   |       output_num.csv
+|   |   |   |       sums.csv
+|   |   |   |       
+|   |   |   +---test_1
+|   |   |   |       constants.csv
+|   |   |   |       output_coordinates.csv
+|   |   |   |       output_num.csv
+|   |   |   |       sums.csv
+|   |   |   |       
+|   |   |   +---test_2
+|   |   |   |       constants.csv
+|   |   |   |       output.csv
+|   |   |   |       output_coordinates.csv
+|   |   |   |       sums.csv
+|   |   |   |       
+|   |   |   +---test_3
+|   |   |   |       constants.csv
+|   |   |   |       output_coordinates.csv
+|   |   |   |       output_num.csv
+|   |   |   |       sums.csv
+|   |   |   |       
+|   |   |   +---test_4
+|   |   |   |       constants.csv
+|   |   |   |       output_coordinates.csv
+|   |   |   |       output_num.csv
+|   |   |   |       sums.csv
+|   |   |   |       
+|   |   |   +---test_5
+|   |   |   |       constants.csv
+|   |   |   |       output_coordinates.csv
+|   |   |   |       output_num.csv
+|   |   |   |       sums.csv
+|   |   |   |       
+|   |   |   +---test_6
+|   |   |   |       constants.csv
+|   |   |   |       output_coordinates.csv
+|   |   |   |       output_num.csv
+|   |   |   |       sums.csv
+|   |   |   |       
+|   |   |   +---test_7
+|   |   |   |       constants.csv
+|   |   |   |       output_coordinates.csv
+|   |   |   |       output_num.csv
+|   |   |   |       sums.csv
+|   |   |   |       
+|   |   |   \---test_8
+|   |   |           constants.csv
+|   |   |           output_coordinates.csv
+|   |   |           output_num.csv
+|   |   |           sums.csv
+|   |   |           
+|   |   \---Test_Feature_Extraction
+|   |       |   test_cases_tag_2_1.zip
+|   |       |   test_cases_tag_2_2.zip
+|   |       |   test_centroiding.m
+|   |       |   test_centroiding_shrink.m
+|   |       |   test_fe_region_growth.m
+|   |       |   test_merge_tag_3.m
+|   |       |   test_rga_shrink.m
+|   |       |   test_tag_2.m
+|   |       |   
+|   |       +---easy
+|   |       |   +---test_case_1
+|   |       |   |       constants.csv
+|   |       |   |       input.csv
+|   |       |   |       input.ods
+|   |       |   |       output part 1.ods
+|   |       |   |       output part 2.ods
+|   |       |   |       README.txt
+|   |       |   |       sums.csv
+|   |       |   |       
+|   |       |   +---test_case_2
+|   |       |   |       constants.csv
+|   |       |   |       input.csv
+|   |       |   |       input.ods
+|   |       |   |       output part 1.ods
+|   |       |   |       output part 2.ods
+|   |       |   |       README.txt
+|   |       |   |       sums.csv
+|   |       |   |       
+|   |       |   +---test_case_3
+|   |       |   |       constants.csv
+|   |       |   |       input.csv
+|   |       |   |       input.ods
+|   |       |   |       output part 1.ods
+|   |       |   |       output part 2.ods
+|   |       |   |       README.txt
+|   |       |   |       sums.csv
+|   |       |   |       
+|   |       |   +---test_case_4
+|   |       |   |       constants.csv
+|   |       |   |       input.csv
+|   |       |   |       input.ods
+|   |       |   |       output part 1.ods
+|   |       |   |       output part 2.ods
+|   |       |   |       README.txt
+|   |       |   |       sums.csv
+|   |       |   |       
+|   |       |   +---test_case_5
+|   |       |   |       constants.csv
+|   |       |   |       input.csv
+|   |       |   |       input.ods
+|   |       |   |       output part 1.ods
+|   |       |   |       output part 2.ods
+|   |       |   |       README.txt
+|   |       |   |       sums.csv
+|   |       |   |       
+|   |       |   +---test_case_6
+|   |       |   |       constants.csv
+|   |       |   |       input.csv
+|   |       |   |       input.ods
+|   |       |   |       output part 1.ods
+|   |       |   |       output part 2.ods
+|   |       |   |       README.txt
+|   |       |   |       sums.csv
+|   |       |   |       
+|   |       |   +---test_case_7
+|   |       |   |       constants.csv
+|   |       |   |       input.csv
+|   |       |   |       input.ods
+|   |       |   |       output part 1.ods
+|   |       |   |       output part 2.ods
+|   |       |   |       README.txt
+|   |       |   |       sums.csv
+|   |       |   |       
+|   |       |   +---test_case_8
+|   |       |   |       constants.csv
+|   |       |   |       input.csv
+|   |       |   |       input.ods
+|   |       |   |       output part 1.ods
+|   |       |   |       output part 2.ods
+|   |       |   |       README.txt
+|   |       |   |       sums.csv
+|   |       |   |       
+|   |       |   \---test_case_9
+|   |       |           constants.csv
+|   |       |           input.csv
+|   |       |           input.ods
+|   |       |           output part 1.ods
+|   |       |           output part 2.ods
+|   |       |           README.txt
+|   |       |           sums.csv
+|   |       |           
+|   |       \---moderate
+|   |           |   readme.txt
+|   |           |   
+|   |           +---moderate_10x100
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       input_reference.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       readme.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           +---test_case_1
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       README.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           +---test_case_2
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       README.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           +---test_case_3
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       README.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           +---test_case_4
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       README.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           +---test_case_5
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       README.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           +---test_case_6
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       README.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           +---test_case_7
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       README.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           +---test_case_8
+|   |           |       constants.csv
+|   |           |       input.csv
+|   |           |       input.ods
+|   |           |       output part 1.ods
+|   |           |       output part 2.ods
+|   |           |       README.txt
+|   |           |       sums.csv
+|   |           |       
+|   |           \---test_case_9
+|   |                   constants.csv
+|   |                   input.csv
+|   |                   input.ods
+|   |                   output part 1.ods
+|   |                   output part 2.ods
+|   |                   README.txt
+|   |                   sums.csv
+|   |                   
 |   \---Output
 |           empty.txt
 |           
@@ -91,6 +495,8 @@ STADS
 |   |       
 |   \---Output
 |           empty.txt
+|               
++---Sensor_Model
 |   |   README.md
 |   |   se_main.mlx
 |   |   
@@ -130,6 +536,12 @@ STADS
 |   |           se_PR_6_5_Read_Noise.m
 |   |           se_PR_6_6_PSNL.m
 |   |           
+|   +---README
+|   |       README - Sensor Model - Main.pdf
+|   |       README - Sensor Model - Preprocessing.pdf
+|   |       
+|   +---Scripts
+|   +---Table_Functions
 |   \---Testing
 |           _Centroiding.m
 |           _Image_Generation.m
@@ -139,15 +551,19 @@ STADS
 |   |   
 |   +---4_Star_Matching
 |   |   |   README.md
-|   |   |   RM_4_Star_Matching_Algorithm.pdf
-|   |   |   st_main_4SM_deprecated.m
-|   |   |   st_main_4SM_v2.m
-|   |   |   st_pseudo_input.m
-|   |   |   st_test_main_4SM_v2.m
-|   |   |   st_test_main_4SM_v2_plot.m
+|   |   |   st_main_4SM_v3.m
+|   |   |   st_test_main_4SM_v3.m
+|   |   |   st_test_main_4SM_v3_plot.m
 |   |   |   
+|   |   +---Deprecated
+|   |   |       st_main_4SM_deprecated.m
+|   |   |       st_main_4SM_v2_deprecated.m
+|   |   |       st_pseudo_input_deprecated.m
+|   |   |       st_test_main_4SM_v2_deprecated.m
+|   |   |       
 |   |   +---Functions
 |   |   |       st_4SM.m
+|   |   |       st_4SM_main.m
 |   |   |       st_calc_AngDst_deg.m
 |   |   |       st_check_ID_err.m
 |   |   |       st_gnrt_bi.m
@@ -161,6 +577,7 @@ STADS
 |   |   |       st_gnrt_rand_FOV_SC.m
 |   |   |       st_gnrt_SIM.m
 |   |   |       st_gnrt_SMM.m
+|   |   |       st_movavgFilt.m
 |   |   |       st_update_match_matrix.m
 |   |   |       st_verify_4SM.m
 |   |   |       
@@ -169,21 +586,71 @@ STADS
 |   |   |   |   st_input.mat
 |   |   |   |   
 |   |   |   \---Test_Cases
-|   |   |           st_input.mat
+|   |   |           st_test_input.mat
 |   |   |           
+|   |   +---MILS
+|   |   |   |   st_MILS.m
+|   |   |   |   st_MILS_plot.m
+|   |   |   |   
+|   |   |   +---Input
+|   |   |   |       image_10_centroids.mat
+|   |   |   |       image_11_centroids.mat
+|   |   |   |       image_12_centroids.mat
+|   |   |   |       image_13_centroids.mat
+|   |   |   |       image_14_centroids.mat
+|   |   |   |       image_15_centroids.mat
+|   |   |   |       image_1_centroids.mat
+|   |   |   |       image_2_centroids.mat
+|   |   |   |       image_3_centroids.mat
+|   |   |   |       image_4_centroids.mat
+|   |   |   |       image_5_centroids.mat
+|   |   |   |       image_6_centroids.mat
+|   |   |   |       image_7_centroids.mat
+|   |   |   |       image_8_centroids.mat
+|   |   |   |       image_9_centroids.mat
+|   |   |   |       
+|   |   |   \---Output
+|   |   |       |   st_output_1.mat
+|   |   |       |   st_output_10.mat
+|   |   |       |   st_output_11.mat
+|   |   |       |   st_output_12.mat
+|   |   |       |   st_output_13.mat
+|   |   |       |   st_output_14.mat
+|   |   |       |   st_output_15.mat
+|   |   |       |   st_output_2.mat
+|   |   |       |   st_output_3.mat
+|   |   |       |   st_output_4.mat
+|   |   |       |   st_output_5.mat
+|   |   |       |   st_output_6.mat
+|   |   |       |   st_output_7.mat
+|   |   |       |   st_output_8.mat
+|   |   |       |   st_output_9.mat
+|   |   |       |   st_summary.mat
+|   |   |       |   
+|   |   |       \---DELTA - Analysis
+|   |   |               Delta1.png
+|   |   |               Delta2.png
+|   |   |               Delta3.png
+|   |   |               Delta4.png
+|   |   |               st_DELTA_summary.mat
+|   |   |               st_DELTA_summary_2.mat
+|   |   |               
 |   |   +---Output
 |   |   |       st_output.mat
 |   |   |       
-|   |   \---Preprocessing
-|   |       |   README.md
-|   |       |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf
-|   |       |   st_constants_4SM.m
-|   |       |   st_RF_SC_4SM.m
-|   |       |   
-|   |       \---Output
-|   |               st_constants_4SM.mat
-|   |               st_Reference_Star_Catalogue_4SM.csv
-|   |               
+|   |   +---Preprocessing
+|   |   |   |   README.md
+|   |   |   |   RM_4_Star_Matching_Algorithm_Preprocessing.pdf
+|   |   |   |   st_constants_4SM.m
+|   |   |   |   st_RF_SC_4SM.m
+|   |   |   |   
+|   |   |   \---Output
+|   |   |           st_constants_4SM.mat
+|   |   |           st_Reference_Star_Catalogue_4SM.csv
+|   |   |           
+|   |   \---README - Files
+|   |           RM_4_Star_Matching_Algorithm.pdf
+|   |           
 |   \---Star_Matching_Catalogues
 |       |   README.md
 |       |   RM_Star_Matching_Star_Catalogue_Preprocessing.pdf
@@ -196,6 +663,13 @@ STADS
 |               st_Preprocessed_Star_Catalogue.csv
 |               st_SSP_Star_Catalogue.csv
 |               
-\---System_Dynamics
-        README.md
-        
++---System_Dynamics
+|       README.md
+|       
+\---Utils
+    +---misc
+    +---to_es
+    +---to_fe
+    +---to_op
+    +---to_se
+    \---to_st
