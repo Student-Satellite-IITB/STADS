@@ -253,6 +253,7 @@ input consisting of
 4. An array of final tags corresponding to each tag
 5. Count of number of tags
 6. Count of number of final tags
+7. A placeholder array for star coordinates
 */
 
     //variable to count number of stars
@@ -329,8 +330,7 @@ input consisting of
 
 /*
 output consisting of
-1. centroids of stars (arr_star_coordiantes) in a frame of reference where x+ is rightwards and y+ is upwards centered at the middle of the image
-2. number of stars (num_stars)
+1. number of stars (num_stars)
 */
 
 return (num_stars);
