@@ -61,9 +61,9 @@ function [se_Image_Mat] = se_PR_5_Image_Generation(se_T, se_op, se_ig, se_in)
     
     % Change frames from the centre of the Frame to the first pixel and
     % flip along Y for calculations
-    y_c = y_c + se_op.CMOS.Length_Pix / 2 - 0.5;
-    z_c = -z_c + se_op.CMOS.Width_Pix / 2 - 0.5;
-    if (se_in.Debug_Run == 1); disp('Image Generation: Centroids shifted from the Centre Frame to (1,1) Frame (Flipped)'); end
+    y_c = y_c + se_op.CMOS.Length_Pix / 2 + 0.5;
+    z_c = -z_c + se_op.CMOS.Width_Pix / 2 + 0.5;
+    if (se_in.Debug_Run == 1); disp('Image Generation: Centroids shifted from the Centre Frame to (0, 0) Frame (Flipped)'); end
     
     % Define n to hold the number of stars
     n = size(y_c);
@@ -88,8 +88,8 @@ function [se_Image_Mat] = se_PR_5_Image_Generation(se_T, se_op, se_ig, se_in)
     % Generate Image Matrix
     se_Image_Mat =  sum(Pixel_Values, 3);
     
-    % Flip back the Matrix
-    se_Image_Mat = flip(se_Image_Mat, 1);
+    % Flip back the Matrix - NOT NEEDED
+    % se_Image_Mat = flip(se_Image_Mat, 1);
     if (se_in.Debug_Run == 1); disp('Image Generation: Image Matrix Generated'); end
     
     % Display Sucess
