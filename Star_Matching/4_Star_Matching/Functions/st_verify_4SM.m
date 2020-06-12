@@ -17,6 +17,10 @@ function [st_N_Verify, st_Verify, st_N_Fail, st_Fail] = ...
     % st_GD_SC: ( (n_rw_GC, 4) - Matrix )
     %   The Guide catalogue, which has the following columns:
     %   SSP_ID , X , Y , Z
+    % st_verify_tol : (Double)
+    %   The tolerance within which the angular distance (in $cos(\theta)$) 
+    %   of a pair of image stars should have match with the corresponding 
+    %   pair of stars from the Star Catalogue. Units - in percentage 
     % Returns:
     % --------
     % st_N_Verify: (Integer)
@@ -38,10 +42,7 @@ function [st_N_Verify, st_Verify, st_N_Fail, st_Fail] = ...
     %   $2^{nd}, 3^{rd}, 4^{th}$ columns - $(X, Y, Z)$ unit body-frame 
     %   vector
     %   $5^{th}$ column - The matched SSP-ID
-    %   $6^{th}$ column - Number of votes
-    % st_verify_tol : (Double)
-    %   The tolerance within which the angular distances of the images
-    %   stars have to match with the catalogue stars (in percentage)    
+    %   $6^{th}$ column - Number of votes   
     
     %% Code
     N = st_N_Match;

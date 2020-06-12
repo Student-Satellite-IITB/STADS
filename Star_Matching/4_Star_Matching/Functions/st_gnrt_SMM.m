@@ -1,4 +1,4 @@
-    function [st_SMM, st_mtch_rows] = st_gnrt_SMM(st_SIM, n_rw_GC, st_c_fe_ID) 
+    function [st_SMM, st_mtch_rows] = st_gnrt_SMM(st_SIM, st_n_GC, st_c_fe_ID) 
     % Evaluates the Star Identification Matrix to identify the stars that 
     % have been matched through the 4-Star Matching Algorithm to generate 
     % the Star Matched Matrix (SMM).
@@ -23,7 +23,7 @@
     % ----------
     % st_SIM: ( (n_rw_GC, 6) - Matrix )
     %   The Star Identification Matrix    
-    % n_rw_GC: (Integer)
+    % st_n_GC: (Integer)
     %   The number of stars (= number of rows) in the Guide Star Catalogue
     % st_c_fe_ID: ( (4,1) - Matrix )
     %   Has the Feature Extraction IDs of stars that are used to generate 
@@ -55,14 +55,14 @@
                          0, 0, 1, 0, 1, 1]; % Check conditions
 
     % Stores the indices of the rows that match the (i-th) condition
-    mtch_idx = boolean(zeros(n_rw_GC, 1)); 
+    mtch_idx = boolean(zeros(st_n_GC, 1)); 
     
     st_mtch_rows = {0; 0; 0; 0}; % Initialize variable
 
     for i_idx = 1:4
              Cond_i = st_Check_Conditions(i_idx, :); % Store the (i-th) row
 
-             for j_idx = 1:n_rw_GC
+             for j_idx = 1:st_n_GC
                  rw = st_SIM(j_idx, :); % Extract (j-th) row of SIM
 
                  if rw == Cond_i
