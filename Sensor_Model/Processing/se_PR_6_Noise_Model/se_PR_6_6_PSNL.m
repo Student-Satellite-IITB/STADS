@@ -62,7 +62,7 @@ function se_Image_Mat = se_PR_6_6_PSNL(se_Image_Mat, se_er, se_ig, se_op)
     % Calculate the PSNL Noise at each pixel
     row     = repmat(1:se_op.CMOS.Length_Pix, [se_op.CMOS.Width_Pix, 1]);
     column  = repmat((1:se_op.CMOS.Width_Pix)', [1, se_op.CMOS.Length_Pix]);
-    PSNL_Noise_Time = 10 * (floor(row / 8) * 8 + (se_op.CMOS.Width_Pix - column) * se_op.CMOS.Length_Pix / se_er.Read_Rate);
+    PSNL_Noise_Time = (row + (se_op.CMOS.Width_Pix - column) * se_op.CMOS.Length_Pix) / se_er.Read_Rate;
     PSNL_Noise = se_ig.Gain * round(se_er.PSNL * PSNL_Noise_Time);
     % Notice the rounding - as number of electrons can't be fractional
     
