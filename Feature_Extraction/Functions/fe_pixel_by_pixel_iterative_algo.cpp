@@ -49,182 +49,254 @@ void fe_tag(double arr_img[LENGTH][BREADTH], double arr_sums_x[NUM_REGIONS], dou
             for (int j_set_zeros = 0; j_set_zeros < NUM_TAGS_PER_REGION; j_set_zeros++)
                 arr_final_tags[i_set_zeros][j_set_zeros] = 0;
 
+    // initialising variables used in the loop
+    int i_left, i_above;
+    int tag_left;
+    int tag_above;
+    int tag;
+    int final_tag_above;
+    int final_tag_left;
+    int larger_final_tag, smaller_final_tag, num_iterations, num_skip;
+
     // looping over the input image
-    for j_set_tags = 2:rows+1
-        for i_set_tags = 2:columns+1
+    for (int j_set_tags = 1; j_set_tags < rows+1; j_set_tags++)
+        for (i_set_tags = 1; i_set_tags < columns+1; i_set_tags++)
 
-            % "intensity" is the value stored at [j_tag, i_tag]
-            intensity = arr_out_img(j_set_tags, i_set_tags, 1);
+                {
+                // "intensity" is the value stored at [j_tag, i_tag]
+                intensity = arr_out_img[j_set_tags][i_set_tags][0];
 
-                % if the pixel is bright,
-                if intensity > THRESHOLD
+                // if the pixel is bright,
+                if (intensity > THRESHOLD)
 
-                        % set the value of the pixel to the i_left as
-                        % i_left, set the value of the pixel to above as i_above
-                        i_left = arr_out_img(j_set_tags, i_set_tags-1, 1);
-                        i_above = arr_out_img(j_set_tags-1, i_set_tags, 1);
+                        {
+                        // set the value of the pixel to the i_left as
+                        // i_left, set the value of the pixel to above as i_above
+                        i_left = arr_out_img[j_set_tags][i_set_tags-1][0];
+                        i_above = arr_out_img[j_set_tags-1][i_set_tags][0];
 
-                        % sequence to be followed if the pixel to the left is bright
-                        if i_left>THRESHOLD
-                            % set "tag_left" as the tag of the pixel to the left
-                            tag_left = arr_out_img(j_set_tags, i_set_tags-1, 2);
+                        // sequence to be followed if the pixel to the left is bright
+                        if (i_left > THRESHOLD)
+                            {
+                            // set "tag_left" as the tag of the pixel to the left
+                            tag_left = arr_out_img[j_set_tags][i_set_tags-1][1];
 
-                            % if the pixel above is also bright
-                            if i_above>THRESHOLD
-                                % set "tag_above" as the tag of the pixel above
-                                tag_above = arr_out_img(j_set_tags-1, i_set_tags, 2);
+                            // if the pixel above is also bright
+                            if (i_above > THRESHOLD)
+                                {
+                                // set "tag_above" as the tag of the pixel above
+                                tag_above = arr_out_img[j_set_tags-1][i_set_tags][1];
 
-                                % if both left and above have the same tag
-                                if tag_above == tag_left
-                                    % update the tag
+                                // if both left and above have the same tag
+                                if (tag_above == tag_left)
+                                    {
+                                    // update the tag
                                     tag = tag_above;
-                                    arr_out_img(j_set_tags, i_set_tags, 2) = tag;
+                                    arr_out_img[j_set_tags][i_set_tags][1] = tag;
 
-                                    % update values in arr_sums
-                                    arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
+                                    // update values in arr_sums
+                                    arr_sums[tag][0] += intensity*(i_set_tags + 1);
+                                    arr_sums[tag][1] += intensity*(j_set_tags + 1);
+                                    arr_sums[tag][2] += intensity;
+                                    arr_sums[tag][3] += 1;
+                                    arr_sums[tag][4] += 0;
+                                    }
 
-                                % if both the pixel above and to the left are bright, and have different tags
+                                // if both the pixel above and to the left are bright, and have different tags
                                 else
 
-                                    % if tag of the pixel above is associated with a nonzero final tag
-                                    if arr_sums(tag_above, 5) >0
-                                        final_tag_above = arr_sums(tag_above, 5);
+                                    {
+                                    // if tag of the pixel above is associated with a nonzero final tag
+                                    if (arr_sums[tag_above][4] > 0)
+                                        {
+                                        final_tag_above = arr_sums[tag_above][4];
 
-                                        % if the tag of the pixel to the left is also associated with a nonzero final tag
-                                        if arr_sums(tag_left, 5) >0
-                                            final_tag_left = arr_sums(tag_left, 5);
+                                        // if the tag of the pixel to the left is also associated with a nonzero final tag
+                                        if arr_sums[tag_left][4] > 0
+                                            {
+                                            final_tag_left = arr_sums[tag_left][4];
 
-                                            % if the two final tags are equal
+                                            // if the two final tags are equal
                                             if final_tag_above == final_tag_left
-                                                % update values for the tag
-                                                % corresponding to the tag
-                                                % of the pixel above
+                                                {
+                                                // update values for the tag
+                                                // corresponding to the tag
+                                                // of the pixel above
                                                 tag = tag_above;
                                                 arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
                                                 arr_out_img(j_set_tags, i_set_tags, 2) = tag;
+                                                }
 
-                                            % if the tags of the pixel above and the pixel to the left are associated with different final tags,
+                                            // if the tags of the pixel above and the pixel to the left are associated with different final tags,
                                             else
-                                                % update the values
-                                                % corresponding to the tag
-                                                % of the pixel above
+                                                {
+                                                // update the values
+                                                // corresponding to the tag
+                                                // of the pixel above
                                                 tag = tag_above;
-                                                arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
+                                                arr_sums[tag][0] += intensity*(i_set_tags + 1);
+                                                arr_sums[tag][1] += intensity*(j_set_tags + 1);
+                                                arr_sums[tag][2] += intensity;
+                                                arr_sums[tag][3] += 1;
+                                                arr_sums[tag][4] += 0;
                                                 arr_out_img(j_set_tags, i_set_tags, 2) = tag;
 
-                                                % merge the data
-                                                % corresponding to the two
-                                                % final tags
+                                                // merge the data
+                                                // corresponding to the two
+                                                // final tags
                                                 larger_final_tag = max(final_tag_above, final_tag_left);
                                                 smaller_final_tag = min(final_tag_above, final_tag_left);
-                                                num_iterations = arr_final_tags(larger_final_tag, 1);
-                                                num_skip = arr_final_tags(smaller_final_tag, 1);
-                                                for i_final_tag_change  = 1:num_iterations
-                                                    arr_final_tags(smaller_final_tag, num_skip + 1 + i_final_tag_change) = arr_final_tags(larger_final_tag, i_final_tag_change+1);
-                                                    arr_sums(arr_final_tags(larger_final_tag, i_final_tag_change), 5) = smaller_final_tag;
-                                                    arr_final_tags(larger_final_tag, i_final_tag_change + 1) = 0;
-                                                end
-                                                arr_final_tags(larger_final_tag, 1) = 0;
-                                                arr_final_tags(smaller_final_tag, 1) = num_skip + num_iterations;
-                                            end
+                                                num_iterations = arr_final_tags[larger_final_tag][0];
+                                                num_skip = arr_final_tags[smaller_final_tag][0];
+                                                for (int i_final_tag_change  = 0; i_final_tag_change < num_iterations; i_final_tag_change++)
+                                                    {
+                                                    arr_final_tags[smaller_final_tag][num_skip + 1 + i_final_tag_change] = arr_final_tags[larger_final_tag][i_final_tag_change+1];
+                                                    arr_sums[arr_final_tags[larger_final_tag][i_final_tag_change]][4] = smaller_final_tag;
+                                                    arr_final_tags[larger_final_tag][i_final_tag_change + 1] = 0;
+                                                    }
+                                                arr_final_tags[larger_final_tag][0] = 0;
+                                                arr_final_tags[smaller_final_tag][0] = num_skip + num_iterations;
+                                                }
+                                            }
 
-                                        % if the final tag of the tag associated with the pixel to the left is zero, but that associated with the one above isn't
+                                        // if the final tag of the tag associated with the pixel to the left is zero, but that associated with the one above isn't
                                         else
-                                            % update the data of the tag
-                                            % of the pixel above
+                                            {
+                                            // update the data of the tag
+                                            // of the pixel above
                                             tag = tag_above;
-                                            arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
-                                            arr_out_img(j_set_tags, i_set_tags, 2) = tag;
-                                            % set final_tag as the final
-                                            % tag of the region that the
-                                            % pixel above is in, update
-                                            % corresponding data
-                                            final_tag = arr_sums(tag_above, 5);
-                                            arr_final_tags(final_tag, arr_final_tags(final_tag, 1)+2) = tag;
-                                            arr_sums(tag_left, 5) = final_tag;
-                                            arr_final_tags(final_tag, 1) = arr_final_tags(final_tag, 1) + 1;
-                                        end
+                                            arr_sums[tag][0] += intensity*(i_set_tags + 1);
+                                            arr_sums[tag][1] += intensity*(j_set_tags + 1);
+                                            arr_sums[tag][2] += intensity;
+                                            arr_sums[tag][3] += 1;
+                                            arr_sums[tag][4] += 0;
+                                            arr_out_img[j_set_tags][i_set_tags][1] = tag;
+                                            // set final_tag as the final
+                                            // tag of the region that the
+                                            // pixel above is in, update
+                                            // corresponding data
+                                            final_tag = arr_sums[tag_above][4];
+                                            arr_final_tags[final_tag][arr_final_tags[final_tag][0]+2] = tag;
+                                            arr_sums[tag_left][4] = final_tag;
+                                            arr_final_tags[final_tag][0] = arr_final_tags[final_tag][0] + 1;
+                                            }
+                                        }
 
-                                    % if the final tag of the tag of the pixel above is zero
+                                    // if the final tag of the tag of the pixel above is zero
                                     else
 
-                                        % if the final tag of the tag of the pixel to the left is nonzero
-                                        if arr_sums(tag_left, 5) >0
-                                            % update the data corresponding
-                                            % to the tag of the pixel above
+                                        {
+                                        // if the final tag of the tag of the pixel to the left is nonzero
+                                        if (arr_sums[tag_left][4] > 0)
+                                            {
+                                            // update the data corresponding
+                                            // to the tag of the pixel above
                                             tag = tag_above;
-                                            arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
-                                            arr_out_img(j_set_tags, i_set_tags, 2) = tag;
-                                            % add the tag of the pixel
-                                            % above to the final tag
-                                            % corresponding to the pixel to
-                                            % the left
-                                            final_tag = arr_sums(tag_left, 5);
-                                            arr_final_tags(final_tag, arr_final_tags(final_tag, 1) + 2) = tag;
-                                            arr_sums(tag_above, 5) = final_tag;
-                                            arr_final_tags(final_tag, 1) = arr_final_tags(final_tag, 1) + 1;
+                                            arr_sums[tag][0] += intensity*(i_set_tags + 1);
+                                            arr_sums[tag][1] += intensity*(j_set_tags + 1);
+                                            arr_sums[tag][2] += intensity;
+                                            arr_sums[tag][3] += 1;
+                                            arr_sums[tag][4] += 0;
+                                            arr_out_img[j_set_tags][i_set_tags][1] = tag;
+                                            // add the tag of the pixel
+                                            // above to the final tag
+                                            // corresponding to the pixel to
+                                            // the left
+                                            final_tag = arr_sums[tag_left][4];
+                                            arr_final_tags[final_tag][arr_final_tags[final_tag][1] + 2] = tag;
+                                            arr_sums[tag_above][4] = final_tag;
+                                            arr_final_tags[final_tag][0] = arr_final_tags[final_tag][0] + 1;
+                                            }
 
-                                        % if the final tags of both tag_left and tag_above are zero
+                                        // if the final tags of both tag_left and tag_above are zero
                                         else
-                                            % update data corresponding to
-                                            % the tag of the pixel above
+                                            {
+                                            // update data corresponding to
+                                            // the tag of the pixel above
                                             tag = tag_above;
-                                            arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
-                                            arr_out_img(j_set_tags, i_set_tags, 2) = tag;
-                                            % generate a new final tag,
-                                            % update correspooonding data
-                                            arr_final_tags(final_tag_num, 1) = 2;
-                                            arr_final_tags(final_tag_num, 2:3) = [tag_above, tag_left];
-                                            arr_sums(tag_above, 5) = final_tag_num;
-                                            arr_sums(tag_left, 5) = final_tag_num;
-                                            final_tag_num = final_tag_num+1;
-                                        end
-                                    end
-                                end
+                                            arr_sums[tag][0] += intensity*(i_set_tags + 1);
+                                            arr_sums[tag][1] += intensity*(j_set_tags + 1);
+                                            arr_sums[tag][2] += intensity;
+                                            arr_sums[tag][3] += 1;
+                                            arr_sums[tag][4] += 0;
+                                            arr_out_img[j_set_tags][i_set_tags][1] = tag;
+                                            // generate a new final tag,
+                                            // update correspooonding data
+                                            arr_final_tags[final_tag_num][0] = 2;
+                                            arr_final_tags[final_tag_num][1] = tag_above;
+                                            arr_final_tags[final_tag_num][2] = tag_left];
+                                            arr_sums[tag_above][4] = final_tag_num;
+                                            arr_sums[tag_left][4] = final_tag_num;
+                                            final_tag_num = final_tag_num + 1;
+                                            }
+                                        }
+                                    }
+                                }
 
-                             % if the pixel above is dim but the pixel to the left is bright
+                             // if the pixel above is dim but the pixel to the left is bright
                             else
-                                % update the data corresponding to the tag
-                                % of the pixel to the left
+                                {
+                                // update the data corresponding to the tag
+                                // of the pixel to the left
                                 tag = tag_left;
                                 arr_out_img(j_set_tags, i_set_tags, 2) = tag;
                                 arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
-                            end
+                                }
+                            }
                         else
-                            % if the pixel above is bright is bright but the pixel to the left is dim
-                            if i_above > THRESHOLD
-                                % update the data corresponding to the tag
-                                % of pixel above
-                                tag_above = arr_out_img(j_set_tags-1, i_set_tags, 2);
+                            {
+                            // if the pixel above is bright is bright but the pixel to the left is dim
+                            if (i_above > THRESHOLD)
+                                {
+                                // update the data corresponding to the tag
+                                // of pixel above
+                                tag_above = arr_out_img[j_set_tags - 1][i_set_tags][1];
                                 tag = tag_above;
-                                arr_out_img(j_set_tags, i_set_tags, 2) = tag;
-                                arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
+                                arr_out_img[j_set_tags][i_set_tags][1] = tag;
+                                arr_sums[tag][0] += intensity*(i_set_tags + 1);
+                                arr_sums[tag][1] += intensity*(j_set_tags + 1);
+                                arr_sums[tag][2] += intensity;
+                                arr_sums[tag][3] += 1;
+                                arr_sums[tag][4] += 0;
+                                }
 
-                            % if both the pixel above and to the left are dim
+                            // if both the pixel above and to the left are dim
                             else
 
-                                % if the pixel to the right and the one to the right and above are bright
-                                if arr_out_img(j_set_tags, i_set_tags+1, 1)>THRESHOLD && arr_out_img(j_set_tags-1, i_set_tags+1, 1)>THRESHOLD
-                                    % update the data corresponding to the
-                                    % tag of the pixel above the pixel to
-                                    % the right
-                                    tag = arr_out_img(j_set_tags-1, i_set_tags+1, 2);
-                                    arr_out_img(j_set_tags, i_set_tags, 2) = tag;
-                                    arr_sums(tag, :) = arr_sums(tag, :) + [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
+                                {
+                                // if the pixel to the right and the one to the right and above are bright
+                                if (arr_out_img[j_set_tags][i_set_tags + 1][0] > THRESHOLD && arr_out_img[j_set_tags - 1][i_set_tags + 1][0] > THRESHOLD)
+                                    {
+                                    // update the data corresponding to the
+                                    // tag of the pixel above the pixel to
+                                    // the right
+                                    tag = arr_out_img[j_set_tags - 1][i_set_tags + 1][1];
+                                    arr_out_img[j_set_tags][i_set_tags][1] = tag;
+                                    arr_sums[tag][0] += intensity*(i_set_tags + 1);
+                                    arr_sums[tag][1] += intensity*(j_set_tags + 1);
+                                    arr_sums[tag][2] += intensity;
+                                    arr_sums[tag][3] += 1;
+                                    arr_sums[tag][4] += 0;
+                                    }
 
-                                % if none of the conditions are satisfied,
-                                % generate a new tag, update the
-                                % corresponding data
+                                // if none of the conditions are satisfied,
+                                // generate a new tag, update the
+                                // corresponding data
                                 else
-                                arr_sums(tag_num, :) = [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
-                                arr_out_img(j_set_tags, i_set_tags, 2) = tag_num;
-                                tag_num = tag_num +1;
-                                end
-                            end
-                        end
-                end
-        end
-    end
+                                    {
+                                    arr_sums[tag][0] += intensity*(i_set_tags + 1);
+                                    arr_sums[tag][1] += intensity*(j_set_tags + 1);
+                                    arr_sums[tag][2] += intensity;
+                                    arr_sums[tag][3] += 1;
+                                    arr_sums[tag][4] += 0;
+                                    arr_out_img(j_set_tags, i_set_tags, 2) = tag_num;
+                                    tag_num = tag_num + 1;
+                                    }
+                                }
+                            }
+                        }
+                }
+
 
     //formatting outputs
     for (int i_format_out = 0; i_format_out < NUM_REGIONS; i_format_out++)
