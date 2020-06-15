@@ -1,7 +1,7 @@
 Quality Assurance Report
 ====
 
-se_PR_4_Fixed_Pattern_Noise
+se_PP_1_load_constants
 ----
 
 ### Iteration - 1
@@ -15,19 +15,22 @@ se_PR_4_Fixed_Pattern_Noise
 **Reviewer:** Aruja Khanna
 
 
-**Date of review:**	7/06/2020
+**Date of review:**	19/05/2020
 
 
 **Permanent Links:**
 
-1. 
+1. 1. https://github.com/Neilabh21/STADS_IITBSSP/blob/master/Sensor_Model/Preprocessing/se_PP_1_load_constants.m
 
 **QA suggestions:**
 > Any modifications/additions/deletions to be made to the code. It also includes any flaws/mistakes that need to be corrected in the code
 
+1.Line 10, Line 22, Line 55,Line 151, Line 172: The naming of a matrix follows with the prefix m_quantity.
 
-1. imnoise: A predefined function: https://in.mathworks.com/help/images/ref/imnoise.html#d120e138716
-2. Instead of fixed pixel noise it should be fixed pattern noise in line
+2. As the se_in.Debug_Run is a constant variable=1 everywhere, a simple display function of the action completed can suffice.May save code lines/variable
+space.
+
+
 **Implementation:**
 > The changes implemented as suggested by the review points will be documented
 *Eg:*1. All changes are implemented
