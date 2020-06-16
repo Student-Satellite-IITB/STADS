@@ -1,4 +1,3 @@
-
 %% Load Files
 % Load constants
 load('.\Star_Matching\4_Star_Matching\Preprocessing\Output\st_constants_4SM.mat');
