@@ -498,7 +498,7 @@
 |               
 +---Sensor_Model
 |   |   README.md
-|   |   se_main.mlx
+|   |   se_main.m
 |   |   
 |   +---Inputs
 |   |       se_boresight_inputs.xlsx
@@ -507,7 +507,290 @@
 |   |       se_inputs.mat
 |   |       se_inputs.xlsx
 |   |       se_op_inputs.xlsx
+|   |       Sim_No.mat
 |   |       
+|   +---Outputs
+|   |   +---Simulation_1
+|   |   |   |   Inputs_1.zip
+|   |   |   |   README.md
+|   |   |   |   
+|   |   |   +---Image_1
+|   |   |   |       Image_1.png
+|   |   |   |       se_Centroids_1.mat
+|   |   |   |       se_Image_1.mat
+|   |   |   |       se_Table_1.mat
+|   |   |   |       
+|   |   |   +---Image_10
+|   |   |   |       Image_10.png
+|   |   |   |       se_Centroids_10.mat
+|   |   |   |       se_Image_10.mat
+|   |   |   |       se_Table_10.mat
+|   |   |   |       
+|   |   |   +---Image_11
+|   |   |   |       Image_11.png
+|   |   |   |       se_Centroids_11.mat
+|   |   |   |       se_Image_11.mat
+|   |   |   |       se_Table_11.mat
+|   |   |   |       
+|   |   |   +---Image_12
+|   |   |   |       Image_12.png
+|   |   |   |       se_Centroids_12.mat
+|   |   |   |       se_Image_12.mat
+|   |   |   |       se_Table_12.mat
+|   |   |   |       
+|   |   |   +---Image_13
+|   |   |   |       Image_13.png
+|   |   |   |       se_Centroids_13.mat
+|   |   |   |       se_Image_13.mat
+|   |   |   |       se_Table_13.mat
+|   |   |   |       
+|   |   |   +---Image_14
+|   |   |   |       Image_14.png
+|   |   |   |       se_Centroids_14.mat
+|   |   |   |       se_Image_14.mat
+|   |   |   |       se_Table_14.mat
+|   |   |   |       
+|   |   |   +---Image_15
+|   |   |   |       Image_15.png
+|   |   |   |       se_Centroids_15.mat
+|   |   |   |       se_Image_15.mat
+|   |   |   |       se_Table_15.mat
+|   |   |   |       
+|   |   |   +---Image_2
+|   |   |   |       Image_2.png
+|   |   |   |       se_Centroids_2.mat
+|   |   |   |       se_Image_2.mat
+|   |   |   |       se_Table_2.mat
+|   |   |   |       
+|   |   |   +---Image_3
+|   |   |   |       Image_3.png
+|   |   |   |       se_Centroids_3.mat
+|   |   |   |       se_Image_3.mat
+|   |   |   |       se_Table_3.mat
+|   |   |   |       
+|   |   |   +---Image_4
+|   |   |   |       Image_4.png
+|   |   |   |       se_Centroids_4.mat
+|   |   |   |       se_Image_4.mat
+|   |   |   |       se_Table_4.mat
+|   |   |   |       
+|   |   |   +---Image_5
+|   |   |   |       Image_5.png
+|   |   |   |       se_Centroids_5.mat
+|   |   |   |       se_Image_5.mat
+|   |   |   |       se_Table_5.mat
+|   |   |   |       
+|   |   |   +---Image_6
+|   |   |   |       Image_6.png
+|   |   |   |       se_Centroids_6.mat
+|   |   |   |       se_Image_6.mat
+|   |   |   |       se_Table_6.mat
+|   |   |   |       
+|   |   |   +---Image_7
+|   |   |   |       Image_7.png
+|   |   |   |       se_Centroids_7.mat
+|   |   |   |       se_Image_7.mat
+|   |   |   |       se_Table_7.mat
+|   |   |   |       
+|   |   |   +---Image_8
+|   |   |   |       Image_8.png
+|   |   |   |       se_Centroids_8.mat
+|   |   |   |       se_Image_8.mat
+|   |   |   |       se_Table_8.mat
+|   |   |   |       
+|   |   |   \---Image_9
+|   |   |           Image_9.png
+|   |   |           se_Centroids_9.mat
+|   |   |           se_Image_9.mat
+|   |   |           se_Table_9.mat
+|   |   |           
+|   |   +---Simulation_2
+|   |   |   |   Inputs.zip
+|   |   |   |   README.md
+|   |   |   |   
+|   |   |   +---Image_1
+|   |   |   |       Image_1.png
+|   |   |   |       se_Centroids_1.mat
+|   |   |   |       se_Image_1.mat
+|   |   |   |       se_Table_1.mat
+|   |   |   |       
+|   |   |   +---Image_10
+|   |   |   |       Image_10.png
+|   |   |   |       se_Centroids_10.mat
+|   |   |   |       se_Image_10.mat
+|   |   |   |       se_Table_10.mat
+|   |   |   |       
+|   |   |   +---Image_11
+|   |   |   |       Image_11.png
+|   |   |   |       se_Centroids_11.mat
+|   |   |   |       se_Image_11.mat
+|   |   |   |       se_Table_11.mat
+|   |   |   |       
+|   |   |   +---Image_12
+|   |   |   |       Image_12.png
+|   |   |   |       se_Centroids_12.mat
+|   |   |   |       se_Image_12.mat
+|   |   |   |       se_Table_12.mat
+|   |   |   |       
+|   |   |   +---Image_13
+|   |   |   |       Image_13.png
+|   |   |   |       se_Centroids_13.mat
+|   |   |   |       se_Image_13.mat
+|   |   |   |       se_Table_13.mat
+|   |   |   |       
+|   |   |   +---Image_14
+|   |   |   |       Image_14.png
+|   |   |   |       se_Centroids_14.mat
+|   |   |   |       se_Image_14.mat
+|   |   |   |       se_Table_14.mat
+|   |   |   |       
+|   |   |   +---Image_15
+|   |   |   |       Image_15.png
+|   |   |   |       se_Centroids_15.mat
+|   |   |   |       se_Image_15.mat
+|   |   |   |       se_Table_15.mat
+|   |   |   |       
+|   |   |   +---Image_2
+|   |   |   |       Image_2.png
+|   |   |   |       se_Centroids_2.mat
+|   |   |   |       se_Image_2.mat
+|   |   |   |       se_Table_2.mat
+|   |   |   |       
+|   |   |   +---Image_3
+|   |   |   |       Image_3.png
+|   |   |   |       se_Centroids_3.mat
+|   |   |   |       se_Image_3.mat
+|   |   |   |       se_Table_3.mat
+|   |   |   |       
+|   |   |   +---Image_4
+|   |   |   |       Image_4.png
+|   |   |   |       se_Centroids_4.mat
+|   |   |   |       se_Image_4.mat
+|   |   |   |       se_Table_4.mat
+|   |   |   |       
+|   |   |   +---Image_5
+|   |   |   |       Image_5.png
+|   |   |   |       se_Centroids_5.mat
+|   |   |   |       se_Image_5.mat
+|   |   |   |       se_Table_5.mat
+|   |   |   |       
+|   |   |   +---Image_6
+|   |   |   |       Image_6.png
+|   |   |   |       se_Centroids_6.mat
+|   |   |   |       se_Image_6.mat
+|   |   |   |       se_Table_6.mat
+|   |   |   |       
+|   |   |   +---Image_7
+|   |   |   |       Image_7.png
+|   |   |   |       se_Centroids_7.mat
+|   |   |   |       se_Image_7.mat
+|   |   |   |       se_Table_7.mat
+|   |   |   |       
+|   |   |   +---Image_8
+|   |   |   |       Image_8.png
+|   |   |   |       se_Centroids_8.mat
+|   |   |   |       se_Image_8.mat
+|   |   |   |       se_Table_8.mat
+|   |   |   |       
+|   |   |   \---Image_9
+|   |   |           Image_9.png
+|   |   |           se_Centroids_9.mat
+|   |   |           se_Image_9.mat
+|   |   |           se_Table_9.mat
+|   |   |           
+|   |   \---Simulation_3
+|   |       |   README.md
+|   |       |   
+|   |       +---Image_1
+|   |       |       Image_1.png
+|   |       |       se_Image_1.mat
+|   |       |       se_Table_1.mat
+|   |       |       se_Verification_1.mat
+|   |       |       
+|   |       +---Image_10
+|   |       |       Image_10.png
+|   |       |       se_Image_10.mat
+|   |       |       se_Table_10.mat
+|   |       |       se_Verification_10.mat
+|   |       |       
+|   |       +---Image_11
+|   |       |       Image_11.png
+|   |       |       se_Image_11.mat
+|   |       |       se_Table_11.mat
+|   |       |       se_Verification_11.mat
+|   |       |       
+|   |       +---Image_12
+|   |       |       Image_12.png
+|   |       |       se_Image_12.mat
+|   |       |       se_Table_12.mat
+|   |       |       se_Verification_12.mat
+|   |       |       
+|   |       +---Image_13
+|   |       |       Image_13.png
+|   |       |       se_Image_13.mat
+|   |       |       se_Table_13.mat
+|   |       |       se_Verification_13.mat
+|   |       |       
+|   |       +---Image_14
+|   |       |       Image_14.png
+|   |       |       se_Image_14.mat
+|   |       |       se_Table_14.mat
+|   |       |       se_Verification_14.mat
+|   |       |       
+|   |       +---Image_15
+|   |       |       Image_15.png
+|   |       |       se_Image_15.mat
+|   |       |       se_Table_15.mat
+|   |       |       se_Verification_15.mat
+|   |       |       
+|   |       +---Image_2
+|   |       |       Image_2.png
+|   |       |       se_Image_2.mat
+|   |       |       se_Table_2.mat
+|   |       |       se_Verification_2.mat
+|   |       |       
+|   |       +---Image_3
+|   |       |       Image_3.png
+|   |       |       se_Image_3.mat
+|   |       |       se_Table_3.mat
+|   |       |       se_Verification_3.mat
+|   |       |       
+|   |       +---Image_4
+|   |       |       Image_4.png
+|   |       |       se_Image_4.mat
+|   |       |       se_Table_4.mat
+|   |       |       se_Verification_4.mat
+|   |       |       
+|   |       +---Image_5
+|   |       |       Image_5.png
+|   |       |       se_Image_5.mat
+|   |       |       se_Table_5.mat
+|   |       |       se_Verification_5.mat
+|   |       |       
+|   |       +---Image_6
+|   |       |       Image_6.png
+|   |       |       se_Image_6.mat
+|   |       |       se_Table_6.mat
+|   |       |       se_Verification_6.mat
+|   |       |       
+|   |       +---Image_7
+|   |       |       Image_7.png
+|   |       |       se_Image_7.mat
+|   |       |       se_Table_7.mat
+|   |       |       se_Verification_7.mat
+|   |       |       
+|   |       +---Image_8
+|   |       |       Image_8.png
+|   |       |       se_Image_8.mat
+|   |       |       se_Table_8.mat
+|   |       |       se_Verification_8.mat
+|   |       |       
+|   |       \---Image_9
+|   |               Image_9.png
+|   |               se_Image_9.mat
+|   |               se_Table_9.mat
+|   |               se_Verification_9.mat
+|   |               
 |   +---Preprocessed_Catalogue
 |   |       se_SKY2000.csv
 |   |       se_SKY2000.mat
@@ -542,7 +825,7 @@
 |   |       
 |   +---Scripts
 |   +---Table_Functions
-|   \---Testing
+|   \---Temporary
 |           _Centroiding.m
 |           _Image_Generation.m
 |           
