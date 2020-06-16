@@ -9,11 +9,11 @@ load('E:\IIT Bombay\SatLab\Star Tracker\Star Matching\STADS\Star_Matching\4_Star
 st_add_noise = 1e-3;
 
 % Modify 4SM Constants
-st_DELTA_new = 1e-4;
+st_DELTA_new = 42e-3;
 es_N_EST_new = 25;
 st_verify_tol_new = 5;
 
-N = 4; % Number of iterations
+N = 2; % Number of iterations
 
 % Result Arrays
 F_correct = zeros(1, N);
@@ -44,4 +44,4 @@ for I = 1:N
     F_false_fail(I) = sum( st_output.st_Fail(:,1) == st_output.st_Fail(:, 5) );   
     
 end
-st_test_main_4SM_v2_plot;
+st_test_main_4SM_v3_plot;
