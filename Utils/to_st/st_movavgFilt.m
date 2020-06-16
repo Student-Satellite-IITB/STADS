@@ -1,4 +1,4 @@
-function Out = movavgFilt (In, Len, Param)
+function Out = st_movavgFilt (In, Len, Param)
 % The moving average filter operates by averaging a number of points from the
 % input signal to produce each point in the output signal.  In equation form,
 % this is written:

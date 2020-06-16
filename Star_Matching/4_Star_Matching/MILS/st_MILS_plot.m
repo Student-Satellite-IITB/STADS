@@ -12,8 +12,8 @@ y2 = c_GreaterThanDelta * fact;
 
 i = 13;
 params = 'Center';
-c_TM = movavgFilt(y1', i, params);
-c_GD = movavgFilt(y2', i, params);
+c_TM = st_movavgFilt(y1', i, params);
+c_GD = st_movavgFilt(y2', i, params);
 
 %%
 figure();
