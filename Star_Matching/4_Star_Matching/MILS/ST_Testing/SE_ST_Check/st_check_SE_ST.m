@@ -31,7 +31,7 @@ for i = 1:15
     load(file_loc_ip);
     
     % Remove stars not there in Guide Star Catalogue
-    cond = se_T_Verification.SSP_ID <= 5060;
+    cond = se_T_Verification.SSP_ID <= st_consts_4SM.st_n_GC;
     se_T_Verification = se_T_Verification(cond, :);    
     
     %% Actual Centroids
