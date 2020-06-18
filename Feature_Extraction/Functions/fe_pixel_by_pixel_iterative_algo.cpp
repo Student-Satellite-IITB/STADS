@@ -486,10 +486,10 @@ int main()
 
 //double arr_centroids[NUM_TOT_STARS][3];
 
-int n=15;
+int n = 15;
 
 for(unsigned short img_num = 1; img_num <= n; img_num++)
-	{
+    {
     //input from external file
     ifstream file;
 
@@ -518,7 +518,6 @@ for(unsigned short img_num = 1; img_num <= n; img_num++)
 
     cout<<"Number of Stars: "<<num_stars<<"\tTime Taken: "<<duration.count()<<" ms"<<endl<<endl;
     file.close();
-    sum+=duration.count();
     }
 
 return 1;
