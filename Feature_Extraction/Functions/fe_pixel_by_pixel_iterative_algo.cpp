@@ -406,23 +406,25 @@ input consisting of
         //if number of pixels in region is out of range or with zero weight
         else
             num_zero_rows = num_zero_rows + 1;  //increment number of zero rows by 1
-
+num_stars++;
     //to remove possible zero rows present between dense rows
     //multi tagged regions have been written sequentially in the array beginning at index 1. Single tagged region have been written sequentially beginning at index <value of num_final_tags>
     //rows of coordinates of single tagged regions are adjusted to a lower index and the final couple of rows are overwritten to zero
     //if the number of zero rows between dense rows is positive
     if (num_zero_rows > 0)
+        {
         for (int i_remove_zero_rows = (num_final_tags - num_zero_rows); i_remove_zero_rows < num_stars; i_remove_zero_rows++)
             {
-            arr_star_coordinates[i_remove_zero_rows][0] = arr_star_coordinates[i_remove_zero_rows + num_zero_rows][0];
-            arr_star_coordinates[i_remove_zero_rows][1] = arr_star_coordinates[i_remove_zero_rows + num_zero_rows][1];
+            arr_star_coordinates[i_remove_zero_rows][0] = arr_star_coordinates[i_remove_zero_rows + num_zero_rows + 1][0];
+            arr_star_coordinates[i_remove_zero_rows][1] = arr_star_coordinates[i_remove_zero_rows + num_zero_rows + 1][1];
             }
         for (int i_overwrite_rows = (num_stars); i_overwrite_rows < (num_stars + num_zero_rows); i_overwrite_rows++)
             {
             arr_star_coordinates[i_overwrite_rows][0] = 0;
             arr_star_coordinates[i_overwrite_rows][1] = 0;
             }
-
+        }
+num_stars--;
 /*
 output consisting of
 1. number of stars (num_stars)
@@ -484,7 +486,9 @@ int main()
 
 //double arr_centroids[NUM_TOT_STARS][3];
 
-for(unsigned short img_num = 1; img_num <= 2; img_num++)
+int n=15;
+
+for(unsigned short img_num = 1; img_num <= n; img_num++)
 	{
     //input from external file
     ifstream file;
@@ -514,6 +518,7 @@ for(unsigned short img_num = 1; img_num <= 2; img_num++)
 
     cout<<"Number of Stars: "<<num_stars<<"\tTime Taken: "<<duration.count()<<" ms"<<endl<<endl;
     file.close();
+    sum+=duration.count();
     }
 
 return 1;
