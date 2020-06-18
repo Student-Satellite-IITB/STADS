@@ -9,7 +9,7 @@ load('.\Star_Matching\4_Star_Matching\Preprocessing\Output\st_constants_4SM.mat'
 PIXEL_WIDTH = 4.8e-3;
 
 %% Modify Constants
-st_consts_4SM.es_N_EST = 25;
+st_consts_4SM.es_N_EST = 500;
 st_consts_4SM.st_DELTA = 8.6e-5;
 Trim_Star_ID = st_consts_4SM.st_n_GC;
 
