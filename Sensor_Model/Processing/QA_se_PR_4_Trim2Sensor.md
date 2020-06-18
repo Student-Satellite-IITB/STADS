@@ -21,7 +21,7 @@ se_PR_4_Trim2Sensor
 
 **Permanent Links:**
 
-1. 
+1. https://github.com/arujakhanna/STADS/blob/master/Sensor_Model/Processing/se_PR_4_Trim2Sensor.m
 
 **QA suggestions:**
 > Any modifications/additions/deletions to be made to the code. It also includes any flaws/mistakes that need to be corrected in the code
@@ -30,7 +30,7 @@ se_PR_4_Trim2Sensor
 
 2. Line 37- should be returns se_T (Table (n2,m1))
 
-3. For the 2nd boresight input, i.e. when RA=101.2872, Dec=-16.7161,Roll=10 the table after running this function is a 0x14 table, i.e. no stars are captured here.
+3. For the 2nd boresight input, i.e. when RA=101.2872, Dec=-16.7161,Roll=10 the table after running this function is a 0x14 table, i.e. no stars are captured here. Though I could not see any error in the code, I just felt maybe this should be checked? 
 
 **Implementation:**
 > The changes implemented as suggested by the review points will be documented
