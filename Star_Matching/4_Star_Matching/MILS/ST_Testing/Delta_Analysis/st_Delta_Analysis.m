@@ -20,7 +20,8 @@ file_base_op = '.\Star_Matching\4_Star_Matching\MILS\ST_Testing\Delta_Analysis\'
 
 %% Check for different DELTA values
 N = 600;
-DELTA_arr = linspace(1e-5, 0.75, N);
+%DELTA_arr = linspace(1e-5, 0.75, N); %%%% For Coarse check
+DELTA_arr = linspace(1e-7, 1e-4, N); %%%% For Fine check
 
 c_TrackingMode = zeros(N,1);
 c_GreaterThanDelta = zeros(N,1);
@@ -76,7 +77,7 @@ for DELTA = DELTA_arr
     
 end
 %%
-file_loc_op = strcat(file_base_op , 'st_DELTA_summary_coarse.mat');
+file_loc_op = strcat(file_base_op , 'st_DELTA_summary_fine.mat');
 save(file_loc_op, 'DELTA_arr', 'c_GreaterThanDelta', 'c_TrackingMode');
 
 st_Delta_Analysis_plot;
