@@ -25,7 +25,9 @@ data_mat = zeros(15, 5);
 
 %% Run Star Matching
 tic
+st_textprogressbar('Run Star-Matching');
 for i = 1:15
+    st_textprogressbar(i*100/15);
     %% Input
     file_loc_ip = strcat(file_base_ip , num2str(i) , '\se_Verification_' ,  num2str(i) , '.mat');
     load(file_loc_ip);
@@ -55,6 +57,7 @@ for i = 1:15
     % Write data in matrix
     data_mat(i, :) = [fe_n_str, st_output.st_N_Match, st_output.st_N_Verify, st_N_True, st_output.st_iter_total];
 end
+st_textprogressbar('Done');
 toc
 %%
 data_table = array2table(data_mat, 'VariableNames', {'fe_n_str', 'st_N_Match', 'st_N_Verify', 'st_N_True', 'st_iter_total'});
