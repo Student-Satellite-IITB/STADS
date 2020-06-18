@@ -10,7 +10,7 @@ PIXEL_WIDTH = 4.8e-3;
 Focal_Length = 25;
 
 % Modify Constants
-st_consts_4SM.st_DELTA = 42e-3;
+st_consts_4SM.st_DELTA = 8.6e-5;
 % st_consts_4SM.es_N_EST = 10;
 % st_consts_4SM.st_verify_tol = st_verify_tol_new;
 
