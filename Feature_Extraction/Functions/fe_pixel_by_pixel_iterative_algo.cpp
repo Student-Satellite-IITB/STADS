@@ -15,10 +15,10 @@ using namespace std::chrono;
 #define PIXEL_WIDTH 0.0048
 #define NUM_TOT_STARS 100
 
-unsigned short int arr_image[LENGTH][BREADTH];
+unsigned short int arr_image[BREADTH][LENGTH];
 unsigned short int arr_out_img[BREADTH + 1][LENGTH + 2][2];
 
-void fe_tag(unsigned short int arr_in_img[LENGTH][BREADTH], double arr_sums_x[NUM_REGIONS], double arr_sums_y[NUM_REGIONS], double arr_weights[NUM_REGIONS], int arr_num[NUM_REGIONS], int arr_flags[NUM_REGIONS], int& tag_num, int& final_tag_num)
+void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], double arr_sums_x[NUM_REGIONS], double arr_sums_y[NUM_REGIONS], double arr_weights[NUM_REGIONS], int arr_num[NUM_REGIONS], int arr_flags[NUM_REGIONS], int& tag_num, int& final_tag_num)
 {
 
     int rows = BREADTH;
@@ -319,13 +319,13 @@ void fe_tag(unsigned short int arr_in_img[LENGTH][BREADTH], double arr_sums_x[NU
     //formatting outputs
     for (int i_format_out = 0; i_format_out < NUM_REGIONS; i_format_out++)
         {
-        arr_flags[i_format_out] = arr_sums[i_format_out][4];
         arr_sums_x[i_format_out] = arr_sums[i_format_out][0];
         arr_sums_y[i_format_out] = arr_sums[i_format_out][1];
         arr_weights[i_format_out] = arr_sums[i_format_out][2];
         arr_num[i_format_out] = arr_sums[i_format_out][3];
+        arr_flags[i_format_out] = arr_sums[i_format_out][4];
         }
-cout<<tag_num<<' '<<final_tag_num<<endl;
+cout<<"Number of tags: "<<tag_num<<"\tNumber of final tags: "<<final_tag_num<<endl;
 return;
 
 }
@@ -431,7 +431,9 @@ return (num_stars);
 
 }
 
-int fe_centroiding(unsigned short int arr_img[LENGTH][BREADTH], double arr_centroids[NUM_TOT_STARS][3])
+int img_num_global=1;
+
+int fe_centroiding(unsigned short int arr_img[BREADTH][LENGTH], double arr_centroids[NUM_TOT_STARS][3])
 {
 
 //initialising variables for fe_tag()
@@ -457,16 +459,19 @@ double arr_star_coordinates[NUM_TOT_STARS][2];    //(k, 1)=pos_x  (k, 2)=pos_y
         arr_centroids[i_set_star_id][2] = arr_star_coordinates[i_set_star_id][1];
         //cout<<arr_centroids[i_set_star_id][0]<<"\t\t"<<int(arr_centroids[i_set_star_id][1])<<"\t\t"<<int(arr_centroids[i_set_star_id][2])<<endl;
         }
-/*
+
 //output to external file
+char filename[25];
+    sprintf(filename, "centroids_%i.csv", img_num_global);
+img_num_global++;
 ofstream cen;
-	cen.open("centroids.csv");
-	cen<<"ID, x_cen, y_cen\n";
+	cen.open(filename);
+	//cen<<"ID, x_cen, y_cen\n";
 	for(int k = 0; k < num_stars; k++)
 		cen<<arr_centroids[k][0]<<","<<arr_centroids[k][1]<<","<<arr_centroids[k][2]<<"\n";
 
 	cen.close();
-*/
+
 return (num_stars);
 
 }
@@ -476,18 +481,37 @@ int main()
 
 double arr_centroids[NUM_TOT_STARS][3];
 
-//input from external file
-ifstream file;
-file.open("image_1.txt");
-for(int i = 0; i < BREADTH; i++)
-    for(int j = 0; j < LENGTH; j++)
-        file >> arr_image[i][j];
-//cout<<arr_image[0][0]<<endl;
-//Feature Extraction start
-int num_stars = fe_centroiding(arr_image, arr_centroids);
-//Feature Extraction end
+for(unsigned short img_num = 1; img_num <= 1; img_num++)
+	{
+    //input from external file
+    ifstream file;
 
-file.close();
+    cout<<"Image: "<<img_num<<endl;
+
+    char filename[25];
+    sprintf(filename, "image_%i.txt", img_num);
+
+    file.open(filename);
+    for(int i = 0; i < BREADTH; i++)
+        for(int j = 0; j < LENGTH; j++)
+            file >> arr_image[i][j];
+
+    //Start time
+    auto start = high_resolution_clock::now();
+
+    //Feature Extraction start
+    int num_stars = fe_centroiding(arr_image, arr_centroids);
+    //Feature Extraction end
+
+    //End time
+    auto stop = high_resolution_clock::now();
+
+    //Calculate time
+    auto duration = duration_cast<milliseconds>(stop - start);
+
+    cout<<"Number of Stars: "<<num_stars<<"\tTime Taken: "<<duration.count()<<" ms"<<endl<<endl;
+    file.close();
+    }
 
 return 1;
 
