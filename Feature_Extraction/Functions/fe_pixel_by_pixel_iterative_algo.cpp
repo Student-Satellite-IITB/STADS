@@ -18,6 +18,9 @@ using namespace std::chrono;
 unsigned short int arr_image[BREADTH][LENGTH];
 unsigned short int arr_out_img[BREADTH + 1][LENGTH + 2][2];
 
+double arr_sums[NUM_REGIONS][5];
+double arr_centroids[NUM_TOT_STARS][3];
+
 void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], double arr_sums_x[NUM_REGIONS], double arr_sums_y[NUM_REGIONS], double arr_weights[NUM_REGIONS], int arr_num[NUM_REGIONS], int arr_flags[NUM_REGIONS], int& tag_num, int& final_tag_num)
 {
 
@@ -46,7 +49,7 @@ void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], double arr_sums_x[NU
     // the first column is sum_intensity_times_x, the second column is
     // sum_intensity_times_y, the third column is sum_intensity, the fourth
     // is num_pixels and the fifth is final_tag
-    double arr_sums[NUM_REGIONS][5];
+    //double arr_sums[NUM_REGIONS][5];
     for (int i_set_zeros = 0; i_set_zeros < NUM_REGIONS; i_set_zeros++)
         for (int j_set_zeros = 0; j_set_zeros < 5; j_set_zeros++)
             arr_sums[i_set_zeros][j_set_zeros] = 0;
@@ -302,11 +305,11 @@ void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], double arr_sums_x[NU
                                 // corresponding data
                                 else
                                     {
-                                    arr_sums[tag][0] += intensity*(i_set_tags + 1);
-                                    arr_sums[tag][1] += intensity*(j_set_tags + 1);
-                                    arr_sums[tag][2] += intensity;
-                                    arr_sums[tag][3] += 1;
-                                    arr_sums[tag][4] += 0;
+                                    arr_sums[tag_num][0] = intensity*(i_set_tags + 1);
+                                    arr_sums[tag_num][1] = intensity*(j_set_tags + 1);
+                                    arr_sums[tag_num][2] = intensity;
+                                    arr_sums[tag_num][3] = 1;
+                                    arr_sums[tag_num][4] = 0;
                                     arr_out_img[j_set_tags][i_set_tags][1] = tag_num;
                                     tag_num = tag_num + 1;
                                     }
@@ -479,9 +482,9 @@ return (num_stars);
 int main()
 {
 
-double arr_centroids[NUM_TOT_STARS][3];
+//double arr_centroids[NUM_TOT_STARS][3];
 
-for(unsigned short img_num = 1; img_num <= 1; img_num++)
+for(unsigned short img_num = 1; img_num <= 2; img_num++)
 	{
     //input from external file
     ifstream file;
