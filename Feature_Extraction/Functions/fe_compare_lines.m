@@ -31,7 +31,7 @@ function [arr_region_data, arr_regions, num_regions, num_merge_regions, arr_merg
 %       number of nonempty rows in arr_merge_regions
 
     % loading constants
-    load("constants_feature_extraction_3.mat", "NUM_REGIONS_LINE", "NUM_MERGE_LINE", "NUM_TAGS_MERGE");
+    load("constants_feature_extraction_3.mat", "NUM_REGIONS", "NUM_MERGE_LINE", "NUM_TAGS_MERGE");
     % initializing variables and arrays
     counter_int = 1;
     num_regions = 0;
@@ -46,7 +46,7 @@ function [arr_region_data, arr_regions, num_regions, num_merge_regions, arr_merg
         match_flag = 0;
         
         % looping over the remaining ranges in the previous row
-        for counter_int = counter_int:num_prev
+        for counter_int = counter_int_start:num_prev
             [start_prev, end_prev] = arr_line_prev(counter_int, 2:3);
             
             % break and store the tag if one intersecting range is found
@@ -75,7 +75,7 @@ function [arr_region_data, arr_regions, num_regions, num_merge_regions, arr_merg
                 % intersect, and set the tag of the last intersecting range
                 % in the previous row to the tag of the current range
                 if not(fe_compare_ranges(start_range, end_range, arr_line_prev(counter_int, 2), arr_line_prev(counter_int, 3)))
-                    counter_int = counter_int-1; %#ok<FXSET>
+                    counter_int_start = counter_int-1;
                     arr_line_prev(counter_int, 1) = tag_prev;
                     break
                 end
