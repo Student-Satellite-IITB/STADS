@@ -1,43 +1,45 @@
 function [arr_region_data, arr_regions, num_regions, num_merge_regions, arr_merge_regions] = fe_compare_lines(arr_line_prev, arr_line, num_prev, num_line)
-% input: 
-% arr_line_prev: 
-%       array containing start, end and tag of each range in the
-%       previous row
-% -arr_line:
-%       the first column is weighted sum of x values, the second is sum of
-%       weights, the third is number of pixels, the fourth and fifth are the
-%       start and end pixels for each range
-% -num_prev:
-%       the number of ranges in the previous line
-% -num_line
-%       the number of ranges in the current line
-% returns:
-% -arr_region_data: 
-%       the first column is the weighted sum of x values, the second
-%       is the sum of weights, the third is the number of pixels
-%       for each region tag, with the tag being the index in this array and
-%       the fourth is the row in which it is stored for merging in
-%       arr_merge_regions
-% -arr_regions:
-%       one dimensional array containing the regions that ranges in the
-%       current row have been tagged with
-% -num_regions:
-%       number of regions ranges in the new row have been tagged with
-% -arr_merge_regions:
-%       array containing region tags in the final array to be merged, with
-%       each row containing tags corresponding to a connected region, the
-%       first element indicates the number of tags
-% -num_merge_regions:
-%       number of nonempty rows in arr_merge_regions
-
+%{
+input: 
+arr_line_prev: 
+      array containing start, end and tag of each range in the
+      previous row
+-arr_line:
+      the first column is weighted sum of x values, the second is sum of
+      weights, the third is number of pixels, the fourth and fifth are the
+      start and end pixels for each range
+-num_prev:
+      the number of ranges in the previous line
+-num_line
+      the number of ranges in the current line
+returns:
+-arr_region_data: 
+      the first column is the weighted sum of x values, the second
+      is the sum of weights, the third is the number of pixels
+      for each region tag, with the tag being the index in this array and
+      the fourth is the row in which it is stored for merging in
+      arr_merge_regions
+-arr_regions:
+      one dimensional array containing the regions that ranges in the
+      current row have been tagged with
+-num_regions:
+      number of regions ranges in the new row have been tagged with
+-arr_merge_regions:
+      array containing region tags in the final array to be merged, with
+      each row containing tags corresponding to a connected region, the
+      first element indicates the number of tags
+-num_merge_regions:
+      number of nonempty rows in arr_merge_regions
+%}
+      
     % loading constants
     load("constants_feature_extraction_3.mat", "NUM_REGIONS", "NUM_MERGE_LINE", "NUM_TAGS_MERGE");
     % initializing variables and arrays
-    counter_int = 1;
+    counter_int_start = 1;
     num_regions = 0;
     num_merge_regions = 0;
     arr_region_data = zeros(NUM_REGIONS, 4);
-    arr_regions = zeros(NUM_REGIONS, 1);
+    arr_regions = zeros(num_line, 1);
     arr_merge_regions = zeros(NUM_MERGE_LINE, NUM_TAGS_MERGE);
     
     % looping over the ranges in the current row
@@ -64,7 +66,7 @@ function [arr_region_data, arr_regions, num_regions, num_merge_regions, arr_merg
             % store the data in the tag of the first region
             if arr_region_data(tag_prev, 3) == 0
                 num_regions = num_regions+1;
-                arr_regions(num_regions) = tag_prev;
+                arr_regions(i_range) = tag_prev;
             end
             arr_region_data(tag_prev, 1:3) = arr_region_data(tag_prev, 1:3) + arr_line(i_range, 1:3);
             
@@ -120,6 +122,9 @@ function [arr_region_data, arr_regions, num_regions, num_merge_regions, arr_merg
                                 merge_row_from = arr_region_data(tag_new, 4);
                                 num_offset  = arr_merge_regions(merge_row_to, 1)+1;
                                 num_move = arr_merge_regions(merge_row_from, 1);
+                                for i_merge = 2:num_move+1
+                                    arr_region_data(arr_merge_regions(merge_row_from, i_merge), 4) = merge_row_to;
+                                end
                                 arr_merge_regions(merge_row_to, num_offset+1:num_offset + num_move+1) = arr_merge_regions(merge_row_from, 2:num_move+1);
                                 arr_merge_regions(merge_row_from, :) = 0;
                             end
