@@ -495,10 +495,10 @@
 |   |       
 |   \---Output
 |           empty.txt
-|               
+|              
 +---Sensor_Model
 |   |   README.md
-|   |   se_main.mlx
+|   |   se_main.m
 |   |   
 |   +---Inputs
 |   |       se_boresight_inputs.xlsx
@@ -507,7 +507,290 @@
 |   |       se_inputs.mat
 |   |       se_inputs.xlsx
 |   |       se_op_inputs.xlsx
+|   |       Sim_No.mat
 |   |       
+|   +---Outputs
+|   |   +---Simulation_1
+|   |   |   |   Inputs_1.zip
+|   |   |   |   README.md
+|   |   |   |   
+|   |   |   +---Image_1
+|   |   |   |       Image_1.png
+|   |   |   |       se_Centroids_1.mat
+|   |   |   |       se_Image_1.mat
+|   |   |   |       se_Table_1.mat
+|   |   |   |       
+|   |   |   +---Image_10
+|   |   |   |       Image_10.png
+|   |   |   |       se_Centroids_10.mat
+|   |   |   |       se_Image_10.mat
+|   |   |   |       se_Table_10.mat
+|   |   |   |       
+|   |   |   +---Image_11
+|   |   |   |       Image_11.png
+|   |   |   |       se_Centroids_11.mat
+|   |   |   |       se_Image_11.mat
+|   |   |   |       se_Table_11.mat
+|   |   |   |       
+|   |   |   +---Image_12
+|   |   |   |       Image_12.png
+|   |   |   |       se_Centroids_12.mat
+|   |   |   |       se_Image_12.mat
+|   |   |   |       se_Table_12.mat
+|   |   |   |       
+|   |   |   +---Image_13
+|   |   |   |       Image_13.png
+|   |   |   |       se_Centroids_13.mat
+|   |   |   |       se_Image_13.mat
+|   |   |   |       se_Table_13.mat
+|   |   |   |       
+|   |   |   +---Image_14
+|   |   |   |       Image_14.png
+|   |   |   |       se_Centroids_14.mat
+|   |   |   |       se_Image_14.mat
+|   |   |   |       se_Table_14.mat
+|   |   |   |       
+|   |   |   +---Image_15
+|   |   |   |       Image_15.png
+|   |   |   |       se_Centroids_15.mat
+|   |   |   |       se_Image_15.mat
+|   |   |   |       se_Table_15.mat
+|   |   |   |       
+|   |   |   +---Image_2
+|   |   |   |       Image_2.png
+|   |   |   |       se_Centroids_2.mat
+|   |   |   |       se_Image_2.mat
+|   |   |   |       se_Table_2.mat
+|   |   |   |       
+|   |   |   +---Image_3
+|   |   |   |       Image_3.png
+|   |   |   |       se_Centroids_3.mat
+|   |   |   |       se_Image_3.mat
+|   |   |   |       se_Table_3.mat
+|   |   |   |       
+|   |   |   +---Image_4
+|   |   |   |       Image_4.png
+|   |   |   |       se_Centroids_4.mat
+|   |   |   |       se_Image_4.mat
+|   |   |   |       se_Table_4.mat
+|   |   |   |       
+|   |   |   +---Image_5
+|   |   |   |       Image_5.png
+|   |   |   |       se_Centroids_5.mat
+|   |   |   |       se_Image_5.mat
+|   |   |   |       se_Table_5.mat
+|   |   |   |       
+|   |   |   +---Image_6
+|   |   |   |       Image_6.png
+|   |   |   |       se_Centroids_6.mat
+|   |   |   |       se_Image_6.mat
+|   |   |   |       se_Table_6.mat
+|   |   |   |       
+|   |   |   +---Image_7
+|   |   |   |       Image_7.png
+|   |   |   |       se_Centroids_7.mat
+|   |   |   |       se_Image_7.mat
+|   |   |   |       se_Table_7.mat
+|   |   |   |       
+|   |   |   +---Image_8
+|   |   |   |       Image_8.png
+|   |   |   |       se_Centroids_8.mat
+|   |   |   |       se_Image_8.mat
+|   |   |   |       se_Table_8.mat
+|   |   |   |       
+|   |   |   \---Image_9
+|   |   |           Image_9.png
+|   |   |           se_Centroids_9.mat
+|   |   |           se_Image_9.mat
+|   |   |           se_Table_9.mat
+|   |   |           
+|   |   +---Simulation_2
+|   |   |   |   Inputs.zip
+|   |   |   |   README.md
+|   |   |   |   
+|   |   |   +---Image_1
+|   |   |   |       Image_1.png
+|   |   |   |       se_Centroids_1.mat
+|   |   |   |       se_Image_1.mat
+|   |   |   |       se_Table_1.mat
+|   |   |   |       
+|   |   |   +---Image_10
+|   |   |   |       Image_10.png
+|   |   |   |       se_Centroids_10.mat
+|   |   |   |       se_Image_10.mat
+|   |   |   |       se_Table_10.mat
+|   |   |   |       
+|   |   |   +---Image_11
+|   |   |   |       Image_11.png
+|   |   |   |       se_Centroids_11.mat
+|   |   |   |       se_Image_11.mat
+|   |   |   |       se_Table_11.mat
+|   |   |   |       
+|   |   |   +---Image_12
+|   |   |   |       Image_12.png
+|   |   |   |       se_Centroids_12.mat
+|   |   |   |       se_Image_12.mat
+|   |   |   |       se_Table_12.mat
+|   |   |   |       
+|   |   |   +---Image_13
+|   |   |   |       Image_13.png
+|   |   |   |       se_Centroids_13.mat
+|   |   |   |       se_Image_13.mat
+|   |   |   |       se_Table_13.mat
+|   |   |   |       
+|   |   |   +---Image_14
+|   |   |   |       Image_14.png
+|   |   |   |       se_Centroids_14.mat
+|   |   |   |       se_Image_14.mat
+|   |   |   |       se_Table_14.mat
+|   |   |   |       
+|   |   |   +---Image_15
+|   |   |   |       Image_15.png
+|   |   |   |       se_Centroids_15.mat
+|   |   |   |       se_Image_15.mat
+|   |   |   |       se_Table_15.mat
+|   |   |   |       
+|   |   |   +---Image_2
+|   |   |   |       Image_2.png
+|   |   |   |       se_Centroids_2.mat
+|   |   |   |       se_Image_2.mat
+|   |   |   |       se_Table_2.mat
+|   |   |   |       
+|   |   |   +---Image_3
+|   |   |   |       Image_3.png
+|   |   |   |       se_Centroids_3.mat
+|   |   |   |       se_Image_3.mat
+|   |   |   |       se_Table_3.mat
+|   |   |   |       
+|   |   |   +---Image_4
+|   |   |   |       Image_4.png
+|   |   |   |       se_Centroids_4.mat
+|   |   |   |       se_Image_4.mat
+|   |   |   |       se_Table_4.mat
+|   |   |   |       
+|   |   |   +---Image_5
+|   |   |   |       Image_5.png
+|   |   |   |       se_Centroids_5.mat
+|   |   |   |       se_Image_5.mat
+|   |   |   |       se_Table_5.mat
+|   |   |   |       
+|   |   |   +---Image_6
+|   |   |   |       Image_6.png
+|   |   |   |       se_Centroids_6.mat
+|   |   |   |       se_Image_6.mat
+|   |   |   |       se_Table_6.mat
+|   |   |   |       
+|   |   |   +---Image_7
+|   |   |   |       Image_7.png
+|   |   |   |       se_Centroids_7.mat
+|   |   |   |       se_Image_7.mat
+|   |   |   |       se_Table_7.mat
+|   |   |   |       
+|   |   |   +---Image_8
+|   |   |   |       Image_8.png
+|   |   |   |       se_Centroids_8.mat
+|   |   |   |       se_Image_8.mat
+|   |   |   |       se_Table_8.mat
+|   |   |   |       
+|   |   |   \---Image_9
+|   |   |           Image_9.png
+|   |   |           se_Centroids_9.mat
+|   |   |           se_Image_9.mat
+|   |   |           se_Table_9.mat
+|   |   |           
+|   |   \---Simulation_3
+|   |       |   README.md
+|   |       |   
+|   |       +---Image_1
+|   |       |       Image_1.png
+|   |       |       se_Image_1.mat
+|   |       |       se_Table_1.mat
+|   |       |       se_Verification_1.mat
+|   |       |       
+|   |       +---Image_10
+|   |       |       Image_10.png
+|   |       |       se_Image_10.mat
+|   |       |       se_Table_10.mat
+|   |       |       se_Verification_10.mat
+|   |       |       
+|   |       +---Image_11
+|   |       |       Image_11.png
+|   |       |       se_Image_11.mat
+|   |       |       se_Table_11.mat
+|   |       |       se_Verification_11.mat
+|   |       |       
+|   |       +---Image_12
+|   |       |       Image_12.png
+|   |       |       se_Image_12.mat
+|   |       |       se_Table_12.mat
+|   |       |       se_Verification_12.mat
+|   |       |       
+|   |       +---Image_13
+|   |       |       Image_13.png
+|   |       |       se_Image_13.mat
+|   |       |       se_Table_13.mat
+|   |       |       se_Verification_13.mat
+|   |       |       
+|   |       +---Image_14
+|   |       |       Image_14.png
+|   |       |       se_Image_14.mat
+|   |       |       se_Table_14.mat
+|   |       |       se_Verification_14.mat
+|   |       |       
+|   |       +---Image_15
+|   |       |       Image_15.png
+|   |       |       se_Image_15.mat
+|   |       |       se_Table_15.mat
+|   |       |       se_Verification_15.mat
+|   |       |       
+|   |       +---Image_2
+|   |       |       Image_2.png
+|   |       |       se_Image_2.mat
+|   |       |       se_Table_2.mat
+|   |       |       se_Verification_2.mat
+|   |       |       
+|   |       +---Image_3
+|   |       |       Image_3.png
+|   |       |       se_Image_3.mat
+|   |       |       se_Table_3.mat
+|   |       |       se_Verification_3.mat
+|   |       |       
+|   |       +---Image_4
+|   |       |       Image_4.png
+|   |       |       se_Image_4.mat
+|   |       |       se_Table_4.mat
+|   |       |       se_Verification_4.mat
+|   |       |       
+|   |       +---Image_5
+|   |       |       Image_5.png
+|   |       |       se_Image_5.mat
+|   |       |       se_Table_5.mat
+|   |       |       se_Verification_5.mat
+|   |       |       
+|   |       +---Image_6
+|   |       |       Image_6.png
+|   |       |       se_Image_6.mat
+|   |       |       se_Table_6.mat
+|   |       |       se_Verification_6.mat
+|   |       |       
+|   |       +---Image_7
+|   |       |       Image_7.png
+|   |       |       se_Image_7.mat
+|   |       |       se_Table_7.mat
+|   |       |       se_Verification_7.mat
+|   |       |       
+|   |       +---Image_8
+|   |       |       Image_8.png
+|   |       |       se_Image_8.mat
+|   |       |       se_Table_8.mat
+|   |       |       se_Verification_8.mat
+|   |       |       
+|   |       \---Image_9
+|   |               Image_9.png
+|   |               se_Image_9.mat
+|   |               se_Table_9.mat
+|   |               se_Verification_9.mat
+|   |               
 |   +---Preprocessed_Catalogue
 |   |       se_SKY2000.csv
 |   |       se_SKY2000.mat
@@ -542,10 +825,11 @@
 |   |       
 |   +---Scripts
 |   +---Table_Functions
+|   +---Temporary
+|   |       _Centroiding.m
+|   |       _Image_Generation.m
+|   |       
 |   \---Testing
-|           _Centroiding.m
-|           _Image_Generation.m
-|           
 +---Star_Matching
 |   |   README.md
 |   |   
@@ -577,7 +861,6 @@
 |   |   |       st_gnrt_rand_FOV_SC.m
 |   |   |       st_gnrt_SIM.m
 |   |   |       st_gnrt_SMM.m
-|   |   |       st_movavgFilt.m
 |   |   |       st_update_match_matrix.m
 |   |   |       st_verify_4SM.m
 |   |   |       
@@ -592,6 +875,116 @@
 |   |   |   |   st_MILS.m
 |   |   |   |   st_MILS_plot.m
 |   |   |   |   
+|   |   |   +---Expected_Input
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-1.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-10.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-11.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-12.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-13.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-14.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-15.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-2.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-3.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-4.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-5.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-6.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-7.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-8.mat
+|   |   |   |   |   EXP-OUT-SIM-3-IMAGE-9.mat
+|   |   |   |   |   
+|   |   |   |   \---Simulation_3
+|   |   |   |       |   README.md
+|   |   |   |       |   
+|   |   |   |       +---Image_1
+|   |   |   |       |       Image_1.png
+|   |   |   |       |       se_Image_1.mat
+|   |   |   |       |       se_Table_1.mat
+|   |   |   |       |       se_Verification_1.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_10
+|   |   |   |       |       Image_10.png
+|   |   |   |       |       se_Image_10.mat
+|   |   |   |       |       se_Table_10.mat
+|   |   |   |       |       se_Verification_10.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_11
+|   |   |   |       |       Image_11.png
+|   |   |   |       |       se_Image_11.mat
+|   |   |   |       |       se_Table_11.mat
+|   |   |   |       |       se_Verification_11.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_12
+|   |   |   |       |       Image_12.png
+|   |   |   |       |       se_Image_12.mat
+|   |   |   |       |       se_Table_12.mat
+|   |   |   |       |       se_Verification_12.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_13
+|   |   |   |       |       Image_13.png
+|   |   |   |       |       se_Image_13.mat
+|   |   |   |       |       se_Table_13.mat
+|   |   |   |       |       se_Verification_13.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_14
+|   |   |   |       |       Image_14.png
+|   |   |   |       |       se_Image_14.mat
+|   |   |   |       |       se_Table_14.mat
+|   |   |   |       |       se_Verification_14.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_15
+|   |   |   |       |       Image_15.png
+|   |   |   |       |       se_Image_15.mat
+|   |   |   |       |       se_Table_15.mat
+|   |   |   |       |       se_Verification_15.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_2
+|   |   |   |       |       Image_2.png
+|   |   |   |       |       se_Image_2.mat
+|   |   |   |       |       se_Table_2.mat
+|   |   |   |       |       se_Verification_2.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_3
+|   |   |   |       |       Image_3.png
+|   |   |   |       |       se_Image_3.mat
+|   |   |   |       |       se_Table_3.mat
+|   |   |   |       |       se_Verification_3.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_4
+|   |   |   |       |       Image_4.png
+|   |   |   |       |       se_Image_4.mat
+|   |   |   |       |       se_Table_4.mat
+|   |   |   |       |       se_Verification_4.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_5
+|   |   |   |       |       Image_5.png
+|   |   |   |       |       se_Image_5.mat
+|   |   |   |       |       se_Table_5.mat
+|   |   |   |       |       se_Verification_5.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_6
+|   |   |   |       |       Image_6.png
+|   |   |   |       |       se_Image_6.mat
+|   |   |   |       |       se_Table_6.mat
+|   |   |   |       |       se_Verification_6.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_7
+|   |   |   |       |       Image_7.png
+|   |   |   |       |       se_Image_7.mat
+|   |   |   |       |       se_Table_7.mat
+|   |   |   |       |       se_Verification_7.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_8
+|   |   |   |       |       Image_8.png
+|   |   |   |       |       se_Image_8.mat
+|   |   |   |       |       se_Table_8.mat
+|   |   |   |       |       se_Verification_8.mat
+|   |   |   |       |       
+|   |   |   |       \---Image_9
+|   |   |   |               Image_9.png
+|   |   |   |               se_Image_9.mat
+|   |   |   |               se_Table_9.mat
+|   |   |   |               se_Verification_9.mat
+|   |   |   |               
 |   |   |   +---Input
 |   |   |   |       image_10_centroids.mat
 |   |   |   |       image_11_centroids.mat
@@ -609,31 +1002,130 @@
 |   |   |   |       image_8_centroids.mat
 |   |   |   |       image_9_centroids.mat
 |   |   |   |       
-|   |   |   \---Output
-|   |   |       |   st_output_1.mat
-|   |   |       |   st_output_10.mat
-|   |   |       |   st_output_11.mat
-|   |   |       |   st_output_12.mat
-|   |   |       |   st_output_13.mat
-|   |   |       |   st_output_14.mat
-|   |   |       |   st_output_15.mat
-|   |   |       |   st_output_2.mat
-|   |   |       |   st_output_3.mat
-|   |   |       |   st_output_4.mat
-|   |   |       |   st_output_5.mat
-|   |   |       |   st_output_6.mat
-|   |   |       |   st_output_7.mat
-|   |   |       |   st_output_8.mat
-|   |   |       |   st_output_9.mat
-|   |   |       |   st_summary.mat
-|   |   |       |   
-|   |   |       \---DELTA - Analysis
-|   |   |               Delta1.png
-|   |   |               Delta2.png
-|   |   |               Delta3.png
-|   |   |               Delta4.png
-|   |   |               st_DELTA_summary.mat
-|   |   |               st_DELTA_summary_2.mat
+|   |   |   +---Output
+|   |   |   |   |   st_output_1.mat
+|   |   |   |   |   st_output_10.mat
+|   |   |   |   |   st_output_11.mat
+|   |   |   |   |   st_output_12.mat
+|   |   |   |   |   st_output_13.mat
+|   |   |   |   |   st_output_14.mat
+|   |   |   |   |   st_output_15.mat
+|   |   |   |   |   st_output_2.mat
+|   |   |   |   |   st_output_3.mat
+|   |   |   |   |   st_output_4.mat
+|   |   |   |   |   st_output_5.mat
+|   |   |   |   |   st_output_6.mat
+|   |   |   |   |   st_output_7.mat
+|   |   |   |   |   st_output_8.mat
+|   |   |   |   |   st_output_9.mat
+|   |   |   |   |   st_summary.mat
+|   |   |   |   |   
+|   |   |   |   \---DELTA - Analysis
+|   |   |   |           Delta1.png
+|   |   |   |           Delta2.png
+|   |   |   |           Delta3.png
+|   |   |   |           Delta4.png
+|   |   |   |           st_DELTA_summary.mat
+|   |   |   |           st_DELTA_summary_2.mat
+|   |   |   |           
+|   |   |   \---ST_Testing
+|   |   |       +---Angular_Distance
+|   |   |       |       st_check_angular_distance.m
+|   |   |       |       st_output_1.mat
+|   |   |       |       st_output_10.mat
+|   |   |       |       st_output_11.mat
+|   |   |       |       st_output_12.mat
+|   |   |       |       st_output_13.mat
+|   |   |       |       st_output_14.mat
+|   |   |       |       st_output_15.mat
+|   |   |       |       st_output_2.mat
+|   |   |       |       st_output_3.mat
+|   |   |       |       st_output_4.mat
+|   |   |       |       st_output_5.mat
+|   |   |       |       st_output_6.mat
+|   |   |       |       st_output_7.mat
+|   |   |       |       st_output_8.mat
+|   |   |       |       st_output_9.mat
+|   |   |       |       st_summary_Angular_Distance.mat
+|   |   |       |       
+|   |   |       +---Body_Frame_Vectors
+|   |   |       |       st_check_body_frame_vectors.m
+|   |   |       |       st_output_1.mat
+|   |   |       |       st_output_10.mat
+|   |   |       |       st_output_11.mat
+|   |   |       |       st_output_12.mat
+|   |   |       |       st_output_13.mat
+|   |   |       |       st_output_14.mat
+|   |   |       |       st_output_15.mat
+|   |   |       |       st_output_2.mat
+|   |   |       |       st_output_3.mat
+|   |   |       |       st_output_4.mat
+|   |   |       |       st_output_5.mat
+|   |   |       |       st_output_6.mat
+|   |   |       |       st_output_7.mat
+|   |   |       |       st_output_8.mat
+|   |   |       |       st_output_9.mat
+|   |   |       |       st_summary_body_frame_vectors.mat
+|   |   |       |       
+|   |   |       +---Delta_Analysis
+|   |   |       |   |   st_Delta_Analysis.m
+|   |   |       |   |   st_Delta_Analysis_plot.m
+|   |   |       |   |   st_DELTA_summary_coarse.mat
+|   |   |       |   |   st_DELTA_summary_fine.mat
+|   |   |       |   |   
+|   |   |       |   \---Plots
+|   |   |       |           coarse_1.png
+|   |   |       |           coarse_2.png
+|   |   |       |           fine_1.png
+|   |   |       |           fine_2.png
+|   |   |       |           README.md
+|   |   |       |           
+|   |   |       +---FE_ST_Check
+|   |   |       |   |   st_check_FE_ST.m
+|   |   |       |   |   st_check_FE_ST_plot.m
+|   |   |       |   |   st_output_1.mat
+|   |   |       |   |   st_output_10.mat
+|   |   |       |   |   st_output_11.mat
+|   |   |       |   |   st_output_12.mat
+|   |   |       |   |   st_output_13.mat
+|   |   |       |   |   st_output_14.mat
+|   |   |       |   |   st_output_15.mat
+|   |   |       |   |   st_output_2.mat
+|   |   |       |   |   st_output_3.mat
+|   |   |       |   |   st_output_4.mat
+|   |   |       |   |   st_output_5.mat
+|   |   |       |   |   st_output_6.mat
+|   |   |       |   |   st_output_7.mat
+|   |   |       |   |   st_output_8.mat
+|   |   |       |   |   st_output_9.mat
+|   |   |       |   |   st_summary_FE_ST_check.mat
+|   |   |       |   |   
+|   |   |       |   \---Plots
+|   |   |       |           5060.png
+|   |   |       |           6000.png
+|   |   |       |           6500.png
+|   |   |       |           7000.png
+|   |   |       |           8000.png
+|   |   |       |           README.md
+|   |   |       |           
+|   |   |       \---SE_ST_Check
+|   |   |               st_check_SE_ST.m
+|   |   |               st_output_1.mat
+|   |   |               st_output_10.mat
+|   |   |               st_output_11.mat
+|   |   |               st_output_12.mat
+|   |   |               st_output_13.mat
+|   |   |               st_output_14.mat
+|   |   |               st_output_15.mat
+|   |   |               st_output_2.mat
+|   |   |               st_output_3.mat
+|   |   |               st_output_4.mat
+|   |   |               st_output_5.mat
+|   |   |               st_output_6.mat
+|   |   |               st_output_7.mat
+|   |   |               st_output_8.mat
+|   |   |               st_output_9.mat
+|   |   |               st_summary_SE_ST_check.mat
 |   |   |               
 |   |   +---Output
 |   |   |       st_output.mat
@@ -673,3 +1165,6 @@
     +---to_op
     +---to_se
     \---to_st
+            st_movavgFilt.m
+            st_textprogressbar.m
+            
