@@ -4,7 +4,7 @@ set(0,'defaultTextInterpreter','latex');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Plots the summary result of st_MILS.m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-file_base_ip = '.\Star_Matching\4_Star_Matching\MILS\Output\Star_Matching\';
+file_base_ip = '.\Star_Matching\4_Star_Matching\MILS\Output\Star_Matching_Output\';
 file_base_op = '.\Star_Matching\4_Star_Matching\MILS\Output\Plots\';
 %% Input
 
