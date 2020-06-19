@@ -15,7 +15,8 @@ st_consts_4SM.es_N_EST = 500;
 
 %% Input
 % Folder - Feature Extraction Input
-file_base_ip = '.\Star_Matching\4_Star_Matching\MILS\Input\Image_';
+T_HOLD = 20;
+file_base_ip = strcat('.\Star_Matching\4_Star_Matching\MILS\Input\3b-threshold_', num2str(T_HOLD), '\Image_');
 file_base_op = '.\Star_Matching\4_Star_Matching\MILS\Output\';
 
 %% Create matrices to store data
@@ -70,6 +71,9 @@ data_table.TrackingMode = data_table.st_N_True >= 4;
 data_table.GreaterThanDelta = data_table.st_N_True >= 6;
 
 file_loc_op = strcat(file_base_op , 'Star_Matching\st_summary_ST.mat');
-save(file_loc_op, 'data_table', 'st_consts_4SM', 'st_consts_opt'); 
+save(file_loc_op, 'data_table', 'st_consts_4SM', 'st_consts_opt', 'T_HOLD'); 
 sum(data_table.TrackingMode)
 sum(data_table.GreaterThanDelta)
+
+%%%%% PLOT Results
+st_MILS_plot;
