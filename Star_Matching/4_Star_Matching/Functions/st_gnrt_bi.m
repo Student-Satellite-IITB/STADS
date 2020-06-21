@@ -47,4 +47,6 @@ function st_bi = st_gnrt_bi(fe_output, fe_n_str, Focal_Length)
         st_bi(idx, :) = tmp; % Append row
     end
     
+    % Shift body-frame vectors
+    st_bi(:, 2:4) = circshift(st_bi(:, 2:4), [0, 1]);
 end

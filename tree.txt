@@ -1,3 +1,4 @@
+.
 |   .gitignore
 |   main.m
 |   README.md
@@ -495,7 +496,7 @@
 |   |       
 |   \---Output
 |           empty.txt
-|              
+|               
 +---Sensor_Model
 |   |   README.md
 |   |   se_main.m
@@ -986,47 +987,233 @@
 |   |   |   |               se_Verification_9.mat
 |   |   |   |               
 |   |   |   +---Input
-|   |   |   |       image_10_centroids.mat
-|   |   |   |       image_11_centroids.mat
-|   |   |   |       image_12_centroids.mat
-|   |   |   |       image_13_centroids.mat
-|   |   |   |       image_14_centroids.mat
-|   |   |   |       image_15_centroids.mat
-|   |   |   |       image_1_centroids.mat
-|   |   |   |       image_2_centroids.mat
-|   |   |   |       image_3_centroids.mat
-|   |   |   |       image_4_centroids.mat
-|   |   |   |       image_5_centroids.mat
-|   |   |   |       image_6_centroids.mat
-|   |   |   |       image_7_centroids.mat
-|   |   |   |       image_8_centroids.mat
-|   |   |   |       image_9_centroids.mat
-|   |   |   |       
+|   |   |   |   +---3b-threshold_18
+|   |   |   |   |   +---Image_1
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_10
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_11
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_12
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_13
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_14
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_15
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_2
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_3
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_4
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_5
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_6
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_7
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_8
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   \---Image_9
+|   |   |   |   |           fe_exp_out.mat
+|   |   |   |   |           fe_in.mat
+|   |   |   |   |           
+|   |   |   |   +---3b-threshold_19
+|   |   |   |   |   +---Image_1
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_10
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_11
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_12
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_13
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_14
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_15
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_2
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_3
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_4
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_5
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_6
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_7
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   +---Image_8
+|   |   |   |   |   |       fe_exp_out.mat
+|   |   |   |   |   |       fe_in.mat
+|   |   |   |   |   |       
+|   |   |   |   |   \---Image_9
+|   |   |   |   |           fe_exp_out.mat
+|   |   |   |   |           fe_in.mat
+|   |   |   |   |           
+|   |   |   |   \---3b-threshold_20
+|   |   |   |       +---Image_1
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_10
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_11
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_12
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_13
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_14
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_15
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_2
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_3
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_4
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_5
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_6
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_7
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       +---Image_8
+|   |   |   |       |       fe_exp_out.mat
+|   |   |   |       |       fe_in.mat
+|   |   |   |       |       
+|   |   |   |       \---Image_9
+|   |   |   |               fe_exp_out.mat
+|   |   |   |               fe_in.mat
+|   |   |   |               
 |   |   |   +---Output
-|   |   |   |   |   st_output_1.mat
-|   |   |   |   |   st_output_10.mat
-|   |   |   |   |   st_output_11.mat
-|   |   |   |   |   st_output_12.mat
-|   |   |   |   |   st_output_13.mat
-|   |   |   |   |   st_output_14.mat
-|   |   |   |   |   st_output_15.mat
-|   |   |   |   |   st_output_2.mat
-|   |   |   |   |   st_output_3.mat
-|   |   |   |   |   st_output_4.mat
-|   |   |   |   |   st_output_5.mat
-|   |   |   |   |   st_output_6.mat
-|   |   |   |   |   st_output_7.mat
-|   |   |   |   |   st_output_8.mat
-|   |   |   |   |   st_output_9.mat
-|   |   |   |   |   st_summary.mat
-|   |   |   |   |   
-|   |   |   |   \---DELTA - Analysis
-|   |   |   |           Delta1.png
-|   |   |   |           Delta2.png
-|   |   |   |           Delta3.png
-|   |   |   |           Delta4.png
-|   |   |   |           st_DELTA_summary.mat
-|   |   |   |           st_DELTA_summary_2.mat
+|   |   |   |   +---Estimation_Input
+|   |   |   |   |       es_input_1.mat
+|   |   |   |   |       es_input_10.mat
+|   |   |   |   |       es_input_11.mat
+|   |   |   |   |       es_input_12.mat
+|   |   |   |   |       es_input_13.mat
+|   |   |   |   |       es_input_14.mat
+|   |   |   |   |       es_input_15.mat
+|   |   |   |   |       es_input_2.mat
+|   |   |   |   |       es_input_3.mat
+|   |   |   |   |       es_input_4.mat
+|   |   |   |   |       es_input_5.mat
+|   |   |   |   |       es_input_6.mat
+|   |   |   |   |       es_input_7.mat
+|   |   |   |   |       es_input_8.mat
+|   |   |   |   |       es_input_9.mat
+|   |   |   |   |       
+|   |   |   |   +---Plots
+|   |   |   |   |       no_ver_threshold_18.png
+|   |   |   |   |       no_ver_threshold_19.png
+|   |   |   |   |       no_ver_threshold_20.png
+|   |   |   |   |       README.md
+|   |   |   |   |       threshold_18.png
+|   |   |   |   |       threshold_19.png
+|   |   |   |   |       threshold_20.png
+|   |   |   |   |       
+|   |   |   |   \---Star_Matching_Output
+|   |   |   |           st_output_1.mat
+|   |   |   |           st_output_10.mat
+|   |   |   |           st_output_11.mat
+|   |   |   |           st_output_12.mat
+|   |   |   |           st_output_13.mat
+|   |   |   |           st_output_14.mat
+|   |   |   |           st_output_15.mat
+|   |   |   |           st_output_2.mat
+|   |   |   |           st_output_3.mat
+|   |   |   |           st_output_4.mat
+|   |   |   |           st_output_5.mat
+|   |   |   |           st_output_6.mat
+|   |   |   |           st_output_7.mat
+|   |   |   |           st_output_8.mat
+|   |   |   |           st_output_9.mat
+|   |   |   |           st_summary_ST.mat
 |   |   |   |           
 |   |   |   \---ST_Testing
 |   |   |       +---Angular_Distance
@@ -1167,4 +1354,3 @@
     \---to_st
             st_movavgFilt.m
             st_textprogressbar.m
-            
