@@ -1,79 +1,76 @@
-#include<iostream>
-#include<chrono>
-#include<fstream>
-using namespace std;
-using namespace std::chrono;
+#include<fe_pixel_by_pixel.h>
 
-#define THRESHOLD 10
-#define STAR_MIN_PIXEL 3
-#define STAR_MAX_PIXEL 150
-#define LENGTH 1280
-#define BREADTH 1024
-#define NUM_REGIONS 100
-#define NUM_FINAL_TAGS 40
-#define NUM_TAGS_PER_REGION 21
-#define PIXEL_WIDTH 0.0048
-#define NUM_TOT_STARS 100
-
+// initialising an array to accept Sensor Model Input in main()
 unsigned short int arr_image[BREADTH][LENGTH];
-unsigned short int arr_out_img[BREADTH + 1][LENGTH + 2][2];
 
-double arr_sums[NUM_REGIONS][5];
-double arr_centroids[NUM_TOT_STARS][3];
+//initialising the output array for main()
+float arr_centroids[NUM_TOT_STARS][3];
 
-void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], double arr_sums_x[NUM_REGIONS], double arr_sums_y[NUM_REGIONS], double arr_weights[NUM_REGIONS], int arr_num[NUM_REGIONS], int arr_flags[NUM_REGIONS], int& tag_num, int& final_tag_num)
+    // setting the "output" array with two layers, one for the tag, one for the original image, padding it to the left, right and top in fe_tag()
+    unsigned short int arr_out_img[BREADTH + 1][LENGTH + 2][2];
+
+    // initialising the output array for fe_tag()
+    // the first column is sum_intensity_times_x, the second column is
+    // sum_intensity_times_y, the third column is sum_intensity, the fourth
+    // is num_pixels and the fifth is final_tag
+    float arr_sums[NUM_REGIONS][5];
+
+    // initialising the array containing final tags and tags associated with them in fe_tag()
+    unsigned short int arr_final_tags[NUM_FINAL_TAGS][NUM_TAGS_PER_REGION];
+
+    //an array defined to contain the position of centroids of a star in fe_merge_tag() in fe_centroiding()
+    float arr_star_coordinates[NUM_TOT_STARS][2];    //(k, 1)=pos_x  (k, 2)=pos_y
+
+void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], float arr_sums_x[NUM_REGIONS], float arr_sums_y[NUM_REGIONS], float arr_weights[NUM_REGIONS], unsigned short int arr_num[NUM_REGIONS], unsigned short int arr_flags[NUM_REGIONS], unsigned short int& tag_num, unsigned short int& final_tag_num)
 {
+//function to output arr_sums, tag numbers and flag numbers
 
-    int rows = BREADTH;
-    int columns = LENGTH;
+/*
+Input consisting of
+1. An array of sums of coordinates along x and y
+2. Array pointers for arr_sums
+3. Reference variables to tag_num and final_tag_num
+*/
 
-    // setting the "output" array with two layers, one for the tag, one for the oriiginal image, padding it to the left, right and top
-    //unsigned short int arr_out_img[rows + 1][columns + 2][2];
-    for (int j_set_row = 0; j_set_row < columns + 2; j_set_row++)
+//arr_out_img, arr_sums and arr_final_tags have been declared in the global scope to prevent stack overflow
+
+    unsigned short int rows = BREADTH;
+    unsigned short int columns = LENGTH;
+
+    for (unsigned short int j_set_row = 0; j_set_row < columns + 2; j_set_row++)
         arr_out_img[0][j_set_row][0] = 0;
-    for (int i_set_col = 1; i_set_col < rows + 1; i_set_col++)
+    for (unsigned short int i_set_col = 1; i_set_col < rows + 1; i_set_col++)
         {
         arr_out_img[i_set_col][0][0] = 0;
         arr_out_img[i_set_col][columns + 1][0] = 0;
         }
 
-    for (int i_copy_img = 1; i_copy_img < rows + 1; i_copy_img++)
-        for (int j_copy_img = 1; j_copy_img < columns + 1; j_copy_img++)
+    for (unsigned short int i_copy_img = 1; i_copy_img < rows + 1; i_copy_img++)
+        for (unsigned short int j_copy_img = 1; j_copy_img < columns + 1; j_copy_img++)
             arr_out_img[i_copy_img][j_copy_img][0] = arr_in_img[i_copy_img - 1][j_copy_img - 1];
 
-    // initialising counters
-    //int tag_num = 0;
-    //int final_tag_num = 0;
-
-    // initialising the output array
-    // the first column is sum_intensity_times_x, the second column is
-    // sum_intensity_times_y, the third column is sum_intensity, the fourth
-    // is num_pixels and the fifth is final_tag
-    //double arr_sums[NUM_REGIONS][5];
-    for (int i_set_zeros = 0; i_set_zeros < NUM_REGIONS; i_set_zeros++)
-        for (int j_set_zeros = 0; j_set_zeros < 5; j_set_zeros++)
+    for (unsigned short int i_set_zeros = 0; i_set_zeros < NUM_REGIONS; i_set_zeros++)
+        for (unsigned short int j_set_zeros = 0; j_set_zeros < 5; j_set_zeros++)
             arr_sums[i_set_zeros][j_set_zeros] = 0;
 
-    // initialising the array containing final tags and tags associated with them
-    int arr_final_tags[NUM_FINAL_TAGS][NUM_TAGS_PER_REGION];
-        for (int i_set_zeros = 0; i_set_zeros < NUM_FINAL_TAGS; i_set_zeros++)
-            for (int j_set_zeros = 0; j_set_zeros < NUM_TAGS_PER_REGION; j_set_zeros++)
+        for (unsigned short int i_set_zeros = 0; i_set_zeros < NUM_FINAL_TAGS; i_set_zeros++)
+            for (unsigned short int j_set_zeros = 0; j_set_zeros < NUM_TAGS_PER_REGION; j_set_zeros++)
                 arr_final_tags[i_set_zeros][j_set_zeros] = 0;
 
     // initialising variables used in the loop
-    int intensity;
-    int i_left, i_above;
-    int tag_left;
-    int tag_above;
-    int tag;
-    int final_tag_above;
-    int final_tag_left;
-    int final_tag;
-    int larger_final_tag, smaller_final_tag, num_iterations, num_skip;
+    unsigned short int intensity;
+    unsigned short int i_left, i_above;
+    unsigned short int tag_left;
+    unsigned short int tag_above;
+    unsigned short int tag;
+    unsigned short int final_tag_above;
+    unsigned short int final_tag_left;
+    unsigned short int final_tag;
+    unsigned short int larger_final_tag, smaller_final_tag, num_iterations, num_skip;
 
     // looping over the input image
-    for (int j_set_tags = 1; j_set_tags < rows+1; j_set_tags++)
-        for (int i_set_tags = 1; i_set_tags < columns+1; i_set_tags++)
+    for (unsigned short int j_set_tags = 1; j_set_tags < rows+1; j_set_tags++)
+        for (unsigned short int i_set_tags = 1; i_set_tags < columns+1; i_set_tags++)
 
                 {
                 // "intensity" is the value stored at [j_tag, i_tag]
@@ -165,7 +162,7 @@ void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], double arr_sums_x[NU
                                                 smaller_final_tag = min(final_tag_above, final_tag_left);
                                                 num_iterations = arr_final_tags[larger_final_tag][0];
                                                 num_skip = arr_final_tags[smaller_final_tag][0];
-                                                for (int i_final_tag_change  = 0; i_final_tag_change < num_iterations; i_final_tag_change++)
+                                                for (unsigned short int i_final_tag_change  = 0; i_final_tag_change < num_iterations; i_final_tag_change++)
                                                     {
                                                     arr_final_tags[smaller_final_tag][num_skip + 1 + i_final_tag_change] = arr_final_tags[larger_final_tag][i_final_tag_change+1];
                                                     arr_sums[arr_final_tags[larger_final_tag][i_final_tag_change]][4] = smaller_final_tag;
@@ -320,7 +317,7 @@ void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], double arr_sums_x[NU
 
 
     //formatting outputs
-    for (int i_format_out = 0; i_format_out < NUM_REGIONS; i_format_out++)
+    for (unsigned short int i_format_out = 0; i_format_out < NUM_REGIONS; i_format_out++)
         {
         arr_sums_x[i_format_out] = arr_sums[i_format_out][0];
         arr_sums_y[i_format_out] = arr_sums[i_format_out][1];
@@ -328,44 +325,51 @@ void fe_tag(unsigned short int arr_in_img[BREADTH][LENGTH], double arr_sums_x[NU
         arr_num[i_format_out] = arr_sums[i_format_out][3];
         arr_flags[i_format_out] = arr_sums[i_format_out][4];
         }
-cout<<"Number of tags: "<<tag_num<<"\tNumber of final tags: "<<final_tag_num<<endl;
+
+/*
+Output consisting of
+1. Pointers to each column of arr_sums
+2. The altered values of reference variables
+*/
+
 return;
 
 }
 
-int fe_merge_tag(double arr_sum_x[], double arr_sum_y[], double arr_weights[], int arr_num_pixels[], int arr_final_tag[], int num_tags, int num_final_tags, double arr_star_coordinates[NUM_TOT_STARS][2])
+unsigned short int fe_merge_tag(float arr_sum_x[], float arr_sum_y[], float arr_weights[], unsigned short int arr_num_pixels[], unsigned short int arr_final_tag[], unsigned short int num_tags, unsigned short int num_final_tags)
 {
 
-//function to output the position of centroids of stars found in an image*/
+//function to output the position of centroids of stars found in an image
 
 /*
-input consisting of
+Input consisting of
 1. An array of sums of coordinates along x and y
 2. An array of weights
 3. An array of the count of number of pixels in each tagged region
 4. An array of final tags corresponding to each tag
 5. Count of number of tags
 6. Count of number of final tags
-7. A placeholder array for star coordinates
 */
 
+//arr_star_coordinates has been declared under the global scope to prevent stack overflow
+
     //variable to count number of stars
-    int num_stars=0;
+    unsigned short int num_stars=0;
 
     //variable to count number of singly tagged stars
-    int num_single_tag_stars=0;
+    unsigned short int num_single_tag_stars=0;
 
     //variable to count number of zero rows in arr_sums
-    int num_zero_rows=0;
+    unsigned short int num_zero_rows=0;
 
     //array of variables to sum the values of different tagged regions of the same star ("summation variables")
-    double arr_tot_sum_x[NUM_FINAL_TAGS];
-    double arr_tot_sum_y[NUM_FINAL_TAGS];
-    double arr_tot_weights[NUM_FINAL_TAGS];
-    double arr_tot_pixels[NUM_FINAL_TAGS];
+    float arr_tot_sum_x[NUM_FINAL_TAGS];
+    float arr_tot_sum_y[NUM_FINAL_TAGS];
+    float arr_tot_weights[NUM_FINAL_TAGS];
+    float arr_tot_pixels[NUM_FINAL_TAGS];
 
     //loop to find position of centroids of stars with single tagged region and update values of summation variables for multi tagged stars
-    for (int i_centroids_single = 0; i_centroids_single < num_tags; i_centroids_single++)
+    for (unsigned short int i_centroids_single = 0; i_centroids_single < num_tags; i_centroids_single++)
         {
         //if region is singly tagged
         if (arr_final_tag[i_centroids_single] == 0)
@@ -393,7 +397,7 @@ input consisting of
         }
 
     //loop to find position of centroids of stars with more than one tagged regions
-    for (int i_centroids_multi = 0; i_centroids_multi < num_final_tags; i_centroids_multi++)
+    for (unsigned short int i_centroids_multi = 0; i_centroids_multi < num_final_tags; i_centroids_multi++)
         //if number of pixels in region is within range and with positive weight
         if (arr_tot_pixels[i_centroids_multi] > STAR_MIN_PIXEL && arr_tot_pixels[i_centroids_multi] < STAR_MAX_PIXEL && arr_tot_weights[i_centroids_multi] > 0)
             {
@@ -406,28 +410,29 @@ input consisting of
         //if number of pixels in region is out of range or with zero weight
         else
             num_zero_rows = num_zero_rows + 1;  //increment number of zero rows by 1
-num_stars++;
+
     //to remove possible zero rows present between dense rows
     //multi tagged regions have been written sequentially in the array beginning at index 1. Single tagged region have been written sequentially beginning at index <value of num_final_tags>
     //rows of coordinates of single tagged regions are adjusted to a lower index and the final couple of rows are overwritten to zero
     //if the number of zero rows between dense rows is positive
     if (num_zero_rows > 0)
         {
-        for (int i_remove_zero_rows = (num_final_tags - num_zero_rows); i_remove_zero_rows < num_stars; i_remove_zero_rows++)
+        for (unsigned short int i_remove_zero_rows = (num_final_tags - num_zero_rows); i_remove_zero_rows < (num_stars + 1); i_remove_zero_rows++)
             {
             arr_star_coordinates[i_remove_zero_rows][0] = arr_star_coordinates[i_remove_zero_rows + num_zero_rows + 1][0];
             arr_star_coordinates[i_remove_zero_rows][1] = arr_star_coordinates[i_remove_zero_rows + num_zero_rows + 1][1];
             }
-        for (int i_overwrite_rows = (num_stars); i_overwrite_rows < (num_stars + num_zero_rows); i_overwrite_rows++)
+        for (unsigned short int i_overwrite_rows = (num_stars + 1); i_overwrite_rows < (num_stars + num_zero_rows + 1); i_overwrite_rows++)
             {
             arr_star_coordinates[i_overwrite_rows][0] = 0;
             arr_star_coordinates[i_overwrite_rows][1] = 0;
             }
         }
-num_stars--;
+
 /*
-output consisting of
-1. number of stars (num_stars)
+Output consisting of
+1. the number of stars
+2. the coordinates of stars detected in the image
 */
 
 return (num_stars);
@@ -436,47 +441,50 @@ return (num_stars);
 
 }
 
-int img_num_global=1;
+unsigned short int img_num_global=1;
 
-int fe_centroiding(unsigned short int arr_img[BREADTH][LENGTH], double arr_centroids[NUM_TOT_STARS][3])
+unsigned short int fe_centroiding(unsigned short int arr_img[BREADTH][LENGTH])
 {
 
-//initialising variables for fe_tag()
-double arr_sum_x[NUM_REGIONS], arr_sum_y[NUM_REGIONS], arr_weights[NUM_REGIONS];
-int arr_num_pixels[NUM_REGIONS], arr_final_tag[NUM_REGIONS];
-int num_tags = 0, num_final_tags = 0;
+/*Input consisting of
+1. An image
+*/
 
-//an array defined to contain the position of centroids of a star
-double arr_star_coordinates[NUM_TOT_STARS][2];    //(k, 1)=pos_x  (k, 2)=pos_y
-    // reading in the image, converting it to grayscale
-    // arr_img = rgb2gray(imread(img_path));
+//arr_star_coordinates has been declared under the global scope to prevent stack overflow
+
+//initialising placeholder variables for fe_tag()
+float arr_sum_x[NUM_REGIONS], arr_sum_y[NUM_REGIONS], arr_weights[NUM_REGIONS];
+unsigned short int arr_num_pixels[NUM_REGIONS], arr_final_tag[NUM_REGIONS];
+unsigned short int num_tags = 0, num_final_tags = 0;
 
     // getting interediate output from tag_2 and merge_tag_3
     fe_tag(arr_img, arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags);
-    int num_stars = fe_merge_tag(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags, arr_star_coordinates);
+    unsigned short int num_stars = fe_merge_tag(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags);
 
-    // adding star ids and formatting the output
-//cout<<num_stars<<"\nStar ID\t\tX\t\tY\n";
-    for(int i_set_star_id = 0; i_set_star_id < num_stars; i_set_star_id++)
+    for(unsigned short int i_set_star_id = 0; i_set_star_id < num_stars; i_set_star_id++)
         {
         arr_centroids[i_set_star_id][0] = i_set_star_id + 1;
         arr_centroids[i_set_star_id][1] = arr_star_coordinates[i_set_star_id][0];
         arr_centroids[i_set_star_id][2] = arr_star_coordinates[i_set_star_id][1];
-        //cout<<arr_centroids[i_set_star_id][0]<<"\t\t"<<int(arr_centroids[i_set_star_id][1])<<"\t\t"<<int(arr_centroids[i_set_star_id][2])<<endl;
         }
 
 //output to external file
+//courtesy SZ
 char filename[25];
     sprintf(filename, "centroids_%i.csv", img_num_global);
 img_num_global++;
 ofstream cen;
 	cen.open(filename);
 	//cen<<"ID, x_cen, y_cen\n";
-	for(int k = 0; k < num_stars; k++)
+	for(unsigned short int k = 0; k < num_stars; k++)
 		cen<<arr_centroids[k][0]<<","<<arr_centroids[k][1]<<","<<arr_centroids[k][2]<<"\n";
 
 	cen.close();
 
+/* Output consisting of
+1. A file "filename" with the centroids of stars detected in the image
+2. A scalar containing the number of stars
+*/
 return (num_stars);
 
 }
@@ -484,12 +492,14 @@ return (num_stars);
 int main()
 {
 
-//double arr_centroids[NUM_TOT_STARS][3];
+//arr_image and arr_centroids have been declared under the global scope to prevent stack overflow
 
-int n = 15;
+// Number of test cases
+unsigned short int n=15;
 
+//courtesy SZ
 for(unsigned short img_num = 1; img_num <= n; img_num++)
-    {
+	{
     //input from external file
     ifstream file;
 
@@ -499,15 +509,15 @@ for(unsigned short img_num = 1; img_num <= n; img_num++)
     sprintf(filename, "image_%i.txt", img_num);
 
     file.open(filename);
-    for(int i = 0; i < BREADTH; i++)
-        for(int j = 0; j < LENGTH; j++)
-            file >> arr_image[i][j];
+    for(unsigned short int i_file_in = 0; i_file_in < BREADTH; i_file_in++)
+        for(unsigned short int j_file_in = 0; j_file_in < LENGTH; j_file_in++)
+            file >> arr_image[i_file_in][j_file_in];
 
     //Start time
     auto start = high_resolution_clock::now();
 
     //Feature Extraction start
-    int num_stars = fe_centroiding(arr_image, arr_centroids);
+    unsigned short int num_stars = fe_centroiding(arr_image);
     //Feature Extraction end
 
     //End time
