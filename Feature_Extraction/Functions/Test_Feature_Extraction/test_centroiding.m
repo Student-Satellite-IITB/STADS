@@ -24,7 +24,7 @@ function testCentroids(testCase)
         arr_exp_centroids = arr_exp_centroids.se_T_Verification;    %changing struct to double
         arr_exp_centroids = table2array(arr_exp_centroids); %changing table to array
         
-        [arr_centroids] = centroiding(test_case); %simulating the function with given input
+        [arr_centroids] = fe_centroiding_2(test_case); %simulating the function with given input
         num_stars = size(arr_centroids, 1); %num_stars = number of stars identified by the code
         %[num_stars, size(arr_exp_centroids,1)]   %size(arr_exp_centroids, 1) = number of stars according to the test case
         [arr_final, r_values] = test_centroiding_shrink(arr_centroids, arr_exp_centroids, r_allowed, num_stars);
