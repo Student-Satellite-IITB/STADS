@@ -5,8 +5,8 @@
 se_T = readtable('SSP_Star_Catalogue.csv');
 if (se_in.Debug_Run == 1); disp('Preprocessing: Catalogue Successfully Read'); end
 
-% Remove the following columns - 'SKY2000_ID', B_V' - TEmporary - To be removed
-se_T = removevars(se_T,{'SKY2000_ID', 'B_V'});
+% Remove the following columns - 'SKY2000_ID'
+se_T = removevars(se_T,{'SKY2000_ID'});
 if (se_in.Debug_Run == 1); disp('Preprocessing: Catalogue Trimmed'); end
 
 % Trim Star Catalogue According to Star Magnitude

@@ -16,7 +16,7 @@ c_AngDst_cos = st_PP_SC(:,3);
 %% Construct K-Vector
 tic
 % Construct the K-Vector
-[K_Vec, st_M, st_Q, ~] = st_gnrt_K_Vec(c_AngDst_cos, st_M_EPS, true); 
+[K_Vec, st_M, st_Q, ~] = st_gnrt_K_Vec(c_AngDst_cos, st_consts_4SM.st_M_EPS, true); 
 toc
 
 %% Create Reference Star Catalogue

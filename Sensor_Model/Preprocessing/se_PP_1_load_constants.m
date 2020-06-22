@@ -8,9 +8,9 @@
 % The inputs are stored in the structure se_inputs_struct
 
 se_inputs_mat = readmatrix('se_inputs.xlsx','Range','B2:B10');
-se_in.Debug_Run =             se_inputs_mat(1); % Debug Run or Silent Run
-se_in.Magnitude_Limit =       se_inputs_mat(2); % Sensor Model Star Magnitude Limit
-se_in.No_Boresight_Inputs =   se_inputs_mat(3); % Number of Boresight Inputs in se_boresight_inputs.xlsx
+se_in.Debug_Run =              se_inputs_mat(1); % Debug Run or Silent Run
+se_in.Magnitude_Limit =        se_inputs_mat(2); % Sensor Model Star Magnitude Limit
+se_in.No_Boresight_Inputs =    se_inputs_mat(3); % Number of Boresight Inputs in se_boresight_inputs.xlsx      
 if (se_in.Debug_Run == 1); disp('Preprocessing: Sensor Model Inputs Read'); end
 
 % --------------------------------------
@@ -61,6 +61,7 @@ se_ig.Gain =            se_ig_inputs_mat(4);        % In LSB10 / electron
 se_ig.Exposure_Time =   se_ig_inputs_mat(5);        % Seconds
 se_ig.MTF =             se_ig_inputs_mat(6) / 100;  % In Decimals
 se_ig.Full_Well =       se_ig_inputs_mat(7);        % Electrons - May be used later
+se_ig.Lens_Eff =        se_ig_inputs_mat(8) / 100;  % In Decimals
 
 % Intermediate Values
 % Gaussian Function - Standard Deviation
@@ -136,7 +137,7 @@ se_ig.Gauss_Sigma =   (se_ig.Pixel_Spread * sqrt(2)) / 3;
 % 
 % $$C_2 = ^5\sqrt{100}$$
 
-se_ig.C_1 = 3640 * 1.51e7 * 0.16 * se_ig.Exposure_Time * (pi * se_op.Lens.Diameter ^ 2 / 4) * se_ig.MTF * se_ig.Eta;
+se_ig.C_1 = 3640 * 1.51e7 * 0.16 * se_ig.Exposure_Time * (pi * se_op.Lens.Diameter ^ 2 / 4) * se_ig.MTF * se_ig.Eta * se_ig.Lens_Eff;
 se_ig.C_2 = 100 ^ 0.2;
 if (se_in.Debug_Run == 1); disp('Preprocessing: Image Generation Inputs Read'); end
 
