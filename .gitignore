@@ -26,3 +26,8 @@ codegen/
 
 # Octave session info
 octave-workspace
+*.md
+*.csv
+*.mat
+*.ods
+*.xml
