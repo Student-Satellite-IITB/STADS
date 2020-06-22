@@ -20,8 +20,8 @@ returns:
       the fourth is the row in which it is stored for merging in
       arr_merge_regions
 -arr_regions:
-      one dimensional array containing the regions that ranges in the
-      current row have been tagged with
+      one dimensional array containing the regions that the corresponding
+      range has been tagged with
 -num_regions:
       number of regions ranges in the new row have been tagged with
 -arr_merge_regions:
@@ -39,8 +39,8 @@ returns:
     num_regions = 0;
     num_merge_regions = 0;
     arr_region_data = zeros(NUM_REGIONS, 4);
-    arr_regions = zeros(num_line, 1);
-    arr_merge_regions = zeros(NUM_MERGE_LINE, NUM_TAGS_MERGE);
+    arr_regions = int32(zeros(num_line, 1));
+    arr_merge_regions = int32(zeros(NUM_MERGE_LINE, NUM_TAGS_MERGE));
     
     % looping over the ranges in the current row
     for i_range = 1:num_line
@@ -82,7 +82,7 @@ returns:
                     break
                 end
                 
-                % sequence to be followed if the next row intersects but 
+                % sequence to be followed if the next range intersects but 
                 % does not share the same tag as the first intersecting range
                 if arr_line_prev(counter_int, 1) ~= tag_prev
                     tag_new = arr_line_prev(counter_int, 1);
@@ -95,6 +95,8 @@ returns:
                             num_merge_regions = num_merge_regions +1;
                             arr_merge_regions(num_merge_regions, 1) = 2;
                             arr_merge_regions(num_merge_regions, 2:3) = [tag_prev, tag_new];
+                            arr_region_data(tag_prev, 4) = num_merge_regions;
+                            arr_region_data(tag_new, 4) = num_merge_regions;
                         
                         % if the new tag has been merged before but not the
                         % first one
