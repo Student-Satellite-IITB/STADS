@@ -1,8 +1,27 @@
-function arr_line_prev = fe_line2prev(arr_line, num_line, arr_regions, arr_region_data, arr_merge_regions)
+function arr_line_prev = fe_line2prev(arr_line, num_line, arr_regions, arr_region_flags, arr_merge_regions)
+%{
+input:
+-arr_line:
+    array containing data (corresponding to the current row)
+    to be converted to the previous row data format
+-num_line:
+    number of rows in arr_line
+-arr_regions:
+    array containing the region corresponding to each row in arr_line
+-arr_region_flags:
+    array containing flags corresponding to each region, 0 if they have
+    none
+-arr_merge_regions:
+    array containing the merge information for the regions with flags
+
+output:
+-arr_line_prev:
+    array containing the data of the row in the required format
+%}
     arr_line_prev = zeros(num_line, 3);
     for i_convert = 1:num_line
         region = arr_regions(i_convert);
-        region_flag = arr_region_data(region, 4);
+        region_flag = arr_region_flags(region);
         if region_flag
             region = arr_merge_regions(region_flag, 2);
         end
