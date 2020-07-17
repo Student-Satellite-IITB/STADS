@@ -1,4 +1,4 @@
-function arr_centroid_data = fe_add_centroid_data(arr_centroid_data, arr_centroid_data_new, num_row)
+function arr_centroid_data = fe_add_centroid_data(arr_centroid_data, arr_centroid_data_new, i_row)
 %{
 input:
 -arr_centroid_data:
@@ -13,5 +13,5 @@ output:
 %}
     arr_centroid_data(:, 1) = arr_centroid_data(:, 1) + arr_centroid_data_new(:, 1);
     arr_centroid_data(:, 3:4) = arr_centroid_data(:, 3:4) + arr_centroid_data_new(:, 2:3);
-    arr_centroid_data(:, 2) = arr_centroid_data(:, 2) + arr_centroid_data_new(:, 2) * num_row;
+    arr_centroid_data(:, 2) = arr_centroid_data(:, 2) + arr_centroid_data_new(:, 2) * i_row;
 end
