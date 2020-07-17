@@ -3,6 +3,7 @@ function [arr_range_data, num_ranges]  = fe_extract_row_data(arr_row)
 input:
 -arr_row:
       a row of the input image
+output:
 -arr_range_data:
       array containing the sum of x value times the intensity of bright
       pixels in a range of bright pixels in the first column, sum of
