@@ -17,7 +17,9 @@ input:
                 merge_row_to = arr_merge_regions(i_merge, 2);
                 num_merge_regions = num_merge_regions-1;
                 for i_merge_row = 3:arr_merge_regions(i_merge, 1) + 1
-                    arr_centroids(merge_row_to, :) = arr_centroids(merge_row_to, :) + arr_centroids(arr_merge_regions(i_merge, i_merge_row), :);
+                    merge_row_from = arr_merge_regions(i_merge, i_merge_row);
+                    arr_centroids(merge_row_to, :) = arr_centroids(merge_row_to, :) + arr_centroids(merge_row_from, :);
+                    arr_centroids(merge_row_from, :) = zeros(1, 5);
                 end
             end
         end
