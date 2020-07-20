@@ -11,7 +11,13 @@ output:
 -arr_centroid_data:
     updated array containing consolidated data
 %}
+
+    % sum of x coordinate times intensity
     arr_centroid_data(:, 1) = arr_centroid_data(:, 1) + arr_centroid_data_new(:, 1);
+    
+    % sum of intensities and number of pixels
     arr_centroid_data(:, 3:4) = arr_centroid_data(:, 3:4) + arr_centroid_data_new(:, 2:3);
+    
+    % y*sum of intensities
     arr_centroid_data(:, 2) = arr_centroid_data(:, 2) + arr_centroid_data_new(:, 2) * i_row;
 end

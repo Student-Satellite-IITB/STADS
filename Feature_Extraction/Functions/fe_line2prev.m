@@ -18,13 +18,19 @@ output:
 -arr_line_prev:
     array containing the data of the row in the required format
 %}
+
     arr_line_prev = zeros(num_line, 3);
     for i_convert = 1:num_line
         region = arr_regions(i_convert);
         region_flag = arr_region_flags(region);
+        
+        % if the region is to be merged, change the tag to the one it is to
+        % be merged into
         if region_flag
             region = arr_merge_regions(region_flag, 2);
         end
+        
+        % add tags and start and end values to the final array
         arr_line_prev(i_convert, 1) = region;
         arr_line_prev(i_convert, 2:3) = arr_line(i_convert, 4:5);
     end
