@@ -11,7 +11,7 @@ output:
 
 
     % loading constants and initializing arrays for data and output
-    load("constants_feature_extraction_3.mat", "LENGTH", "NUM_REGIONS", "NUM_RANGES_ROW", "BREADTH", "STAR_MIN_PIXELS", "STAR_MAX_PIXELS");
+    load("constants_feature_extraction_3.mat", "LENGTH", "BREADTH", "NUM_REGIONS", "NUM_RANGES_ROW", "STAR_MIN_PIXELS", "STAR_MAX_PIXELS", "PIXEL_SIZE");
     arr_centroids = zeros(NUM_REGIONS, 3);
     arr_centroid_data = zeros(NUM_REGIONS, 4);
     
@@ -54,10 +54,21 @@ output:
     num_stars = 0;
     for i_centroid =  1:num_tags
         if arr_centroid_data(i_centroid, 4) > STAR_MIN_PIXELS && arr_centroid_data(i_centroid, 4) < STAR_MAX_PIXELS
+            
+            % find the centroid
             num_stars = num_stars+1;
             arr_centroids(num_stars, 2:3) = arr_centroid_data(i_centroid, 1:2)/arr_centroid_data(i_centroid, 3);
+            
+            % flipping the y-axis
+            arr_centroids(num_stars, 3) = -arr_centroids(num_stars, 3);
+            
+            % moving the origin and adding the offset
+            arr_centroids(num_stars, 2:3) = arr_centroids(num_stars, 2:3) - [LENGTH/2 + 0.5, -BREADTH/2 + 0.5];
         end
     end
+    
+    %scaling appropriately
+    arr_centroids(:, 2:3) = arr_centroids(:, 2:3)*PIXEL_SIZE;
     
     % adding star IDs
     arr_centroids(:, 1) = 1:num_stars;
