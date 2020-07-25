@@ -12,9 +12,8 @@ input consisting of
 
 function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags)
     
-    load('constants_feature_extraction_2.mat', "STAR_MIN_PIXEL", "STAR_MAX_PIXEL", "LENGTH", "BREADTH");    %loading constants
-    STAR_MIN_PIXEL = 3;
-    STAR_MAX_PIXEL = 50;
+    load('constants_feature_extraction_2.mat', "LENGTH", "BREADTH");    %loading constants
+    load('constants_feature_extraction_3.mat', "STAR_MIN_PIXEL", "STAR_MAX_PIXEL")
     %correcting values
     num_tags = num_tags - 1;
     num_final_tags = num_final_tags - 1;
