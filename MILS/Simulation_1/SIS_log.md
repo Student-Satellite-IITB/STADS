@@ -6,7 +6,7 @@
 * **Operator**: K T Prajwal Prathiksh
 * **Operator ID**: KTPP
 * **Date**: 27/07/2020
-* **Time**: 04:04:02.323
+* **Time**: 05:00:43.557
 * **Computer**: DESKTOP-644IPSL
 * **User**: prajw
 
@@ -27,4 +27,4 @@ Iter|Status|Time_Taken **(HH:MM:SS)**
 9|Done|00:00:00
 10|Done|00:00:00
 
-Total Time Taken: 00:00:01
+Total Time Taken: 00:00:00
