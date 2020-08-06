@@ -35,7 +35,7 @@ output:
             else
                 range_bool = 1;
                 num_ranges = num_ranges+1;
-                arr_range_data(num_ranges, 1:4) = arr_range_data(num_ranges, 1:3) + [intensity*i_row, intensity, 1, i_row];
+                arr_range_data(num_ranges, 1:4) = arr_range_data(num_ranges, 1:4) + [intensity*i_row, intensity, 1, i_row];
             end
             
         % if the pixel is dim, but the previous one was bright, end the
