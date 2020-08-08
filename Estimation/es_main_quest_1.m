@@ -29,5 +29,15 @@ lam = es_quest_newton(m_B, v_z, lamnot, epsilon);
 %finding the quaternion using the calculated eigenvalue
 q_bi = es_quest_1_final(m_B, v_z, lam);
 
+%if the value of the returned quaternion is [-1;-1;-1;-1] then quest has 
+%failed and we must use sequential rotation 
+if q_bi == [-1;-1;-1;-1]
+    q_bi = es_quest_1_seq_rot(st_op_bi_reduced, st_op_ri_reduced , v_a);
+end
+
+%saving the quaternion in the input folder also for the case when the 
+%(o * eye(3) - m_S) matrix is near zero
+writematrix(q_bi, '.\Estimation\Input\es_q_bi.csv');
+
 %%Output from Estimation
 writematrix(q_bi, '.\Estimation\Output\es_q_bi.csv');

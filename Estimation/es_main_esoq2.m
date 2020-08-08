@@ -16,29 +16,21 @@ v_a = ones(st_N_Match, 1);
 st_op_bi_reduced = st_op_bi(:,2:4);
 st_op_ri_reduced = st_op_ri(:,2:4);
 
-
 %input epsilon(measure accepted value of Lost function)
 epsilon = readmatrix('.\Estimation\Input\es_epsilon');
 
-%%algorithm Quest2
-%Common part for QuEST
-[m_B, v_z, lamnot] = es_quest_common(st_op_bi_reduced, st_op_ri_reduced , v_a);
-
-%finding largest eigenvalue
-lam = es_quest_newton(m_B, v_z, lamnot, epsilon);
+%%algorithm ESOQ2
+%First part for ESOQ2, which also includes finding the maximumx eigenvalue
+[m_B, v_z, lam] = es_esoq2_start(st_op_bi_reduced, st_op_ri_reduced , v_a, epsilon);
 
 %finding the quaternion using the calculated eigenvalue
-q_bi = es_quest_2_final(m_B, v_z, lam);
+q_bi = es_esoq2_final(m_B, v_z, lam);
 
 %if the value of the returned quaternion is [-1;-1;-1;-1] then quest has 
 %failed and we must use sequential rotation 
 if q_bi == [-1;-1;-1;-1]
-    q_bi = es_quest_2_seq_rot(st_op_bi_reduced, st_op_ri_reduced , v_a);
+    q_bi = es_esoq2_seq_rot(st_op_bi_reduced, st_op_ri_reduced , v_a, epsilon);
 end
-
-%saving the quaternion in the input folder also for the case when the 
-%(o * eye(3) - m_S) matrix is near zero
-writematrix(q_bi, '.\Estimation\Input\es_q_bi.csv');
 
 %%Output from Estimation
 writematrix(q_bi, '.\Estimation\Output\es_q_bi.csv');

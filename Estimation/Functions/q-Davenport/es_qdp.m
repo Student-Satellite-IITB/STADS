@@ -7,6 +7,9 @@ function q_bi = es_qdp(b_m, m_r, v_a)
 %        where n: number of matched stars
 % output: q((4,1) double vector):quaternion
 
+%input the maximum value to allow sequential rotation
+es_seq_error = readmatrix('.\Estimation\Input\es_seq_error');
+
 %%Calculating required matrices
 
 %size of input
@@ -42,19 +45,29 @@ m = max(eign);
 %%Finding the final quaternion
 o = m + trace(m_B);
 m_S = m_B + m_B';
-q_bi = [(adjoint(o * eye(3) - m_S)*v_z) ; det(o * eye(3) - m_S)];
 
-%normalizing the quaternion
-w = norm(q_bi,2);
+%%if (o * eye(3) - m_S) is singular we have to use sequential matrix
+check_value = det(o * eye(3) - m_S);
+if check_value < es_seq_error
+    %assigning the quaternion a dummy value so as to command the main
+    %script to do sequential rotation
+    q_bi = [-1;-1;-1;-1];
+else
+    q_bi = [(adjoint(o * eye(3) - m_S)*v_z) ; det(o * eye(3) - m_S)];
 
-if w~=0
-    q_bi = q_bi / w;
+    %normalizing the quaternion
+    w = norm(q_bi,2);
+
+    if w~=0
+        q_bi = q_bi / w;
     
-end
+    end
 
-%making the scaler component of the quaternion non-negative
-if q_bi(4)<0
-    q_bi = -q_bi;
+    %making the scaler component of the quaternion non-negative
+    if q_bi(4,1)<0
+        q_bi = -q_bi;
+    end
+    
 end
 
     

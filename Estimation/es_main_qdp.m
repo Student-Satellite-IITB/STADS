@@ -19,5 +19,15 @@ st_op_ri_reduced = st_op_ri(:,2:4);
 %%algorithm q-Davenport
 q_bi = es_qdp(st_op_bi_reduced, st_op_ri_reduced , v_a);
 
+%if the value of the returned quaternion is [-1;-1;-1;-1] then quest has 
+%failed and we must use sequential rotation 
+if q_bi == [-1;-1;-1;-1]
+    q_bi = es_qdp_seq_rot(st_op_bi_reduced, st_op_ri_reduced , v_a);
+end
+
+%saving the quaternion in the input folder also for the case when the 
+%(o * eye(3) - m_S) matrix is near zero
+writematrix(q_bi, '.\Estimation\Input\es_q_bi.csv');
+
 %%Output from Estimation
 writematrix(q_bi, '.\Estimation\Output\es_q_bi.csv');
