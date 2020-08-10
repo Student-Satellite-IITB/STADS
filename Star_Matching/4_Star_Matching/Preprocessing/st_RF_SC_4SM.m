@@ -27,7 +27,7 @@ st_RF_SC_table = array2table(st_RF_SC, 'VariableNames',...
                         {'SSP_ID_1', 'SSP_ID_2', 'K_Vec'});
 
 % Number of star pairs (Number of rows - Reference catalogue)
-sz = size(st_RF_SC); % Size of REF_CAT
+sz = size(st_RF_SC); % Size of REF_CAT, ~ 4.53 MB
 st_n_RC = sz(1); 
 
 % Number of guide stars (Number of rows - Guide catalogue)
