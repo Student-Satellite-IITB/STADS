@@ -1,4 +1,4 @@
-function q_bi = es_esoq2_seq_rot(b_m, m_r, v_a, epsilon)
+ function q_bi = es_esoq2_seq_rot(b_m, m_r, v_a, epsilon)
 % This function calculates quaternion using ESOQ2 after applying sequential rotation
 % input: (b_m,m_r,v_a)
 %   where b_m((n,3) double matrix): [b1;b2;b3]
