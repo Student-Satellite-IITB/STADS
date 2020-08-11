@@ -22,11 +22,12 @@ output:
     arr_line_prev = zeros(num_line, 3);
     if num_line>0
         for i_convert = 1:num_line
-            num_flags = size(arr_region_flags);
-            if 
-                region = arr_regions(i_convert);
-                region_flag = arr_region_flags(region);
-
+            if size(arr_merge_regions,1)>0
+                if arr_region_flags(i_convert)
+                    region = arr_regions(i_convert);
+                    region_flag = arr_region_flags(region);
+                end
+            end
             % if the region is to be merged, change the tag to the one it is to
             % be merged into
             if region_flag
