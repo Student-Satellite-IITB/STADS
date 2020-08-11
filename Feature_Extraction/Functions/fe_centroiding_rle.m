@@ -1,4 +1,4 @@
-function [arr_centroids, num_stars] = fe_centroiding_line(arr_image)
+function [arr_centroids, num_stars] = fe_centroiding_rle(arr_image)
 %{
 input:
 -arr_image:
