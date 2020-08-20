@@ -1,5 +1,32 @@
+% This is the Main Script for the Model In-Loop Simulation for the STADS
+% System.
 
+% ------------ %
+% Sensor Model %
+% ------------ %
 
-% Run addpath(genpath('./')) in the command window at root.
+% Don't include the Sensor Model in the Loop. The generated images are
+% stored in the Ouputs folder of the Sensor Model. This is because there is
+% a buffer between the Sensor Model and the Feature Extraction.
 
-se_main;
+% ------------------ %
+% Feature Extraction %
+% ------------------ %
+
+% Start here
+
+% ------------- %
+% Star Matching %
+% ------------- %
+
+% Start here
+
+% ---------- %
+% Estimation %
+% ---------- %
+
+% Start here
+
+% ---------- %
+% Completion %
+% ---------- %
