@@ -7,7 +7,7 @@ load('.\Estimation\Input\es_input.mat');
 %weights(currently taken each as 1)
 %v_a is a column vector with each element is weight for the corresponding
 %bi and ri
-v_a = ones(st_N_Match, 1);
+v_a = ones(st_N, 1);
 
 %%removing the first column in st_op_bi and st_op_ri
 %first column of st_op_bi are the feature extraction IDs and the first
