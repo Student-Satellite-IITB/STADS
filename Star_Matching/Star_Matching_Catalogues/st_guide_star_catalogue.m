@@ -11,7 +11,7 @@ tmp = SSP_SC(cond , :);
  
 
 % Generate cartesian unit vectors
-unit_vect = rowfun(@ca_RA_DE_2_CartVect, tmp, 'InputVariables', [3,4], 'OutputVariableNames', {'X', 'Y', 'Z'});
+unit_vect = rowfun(@ca_RA_DE_2_CartVect, tmp, 'InputVariables', {'RA', 'DE'}, 'OutputVariableNames', {'X', 'Y', 'Z'});
 
 st_GD_SC = [tmp(:, 1), unit_vect]; % Append Columns
 %%

@@ -1,6 +1,6 @@
 %% Read Guide Star Catalogue
 st_GD_SC = readmatrix('.\Star_Matching\Star_Matching_Catalogues\Catalogues\st_Guide_Star_Catalogue.csv');
-sz = size(st_GD_SC);
+sz = size(st_GD_SC); % 0.12 MB - Guide Catalogue
 N = sz(1); % Number of stars in Guide Catalogue
 
 %% Create Preprocessed Star Catalogue
@@ -33,9 +33,10 @@ end
 toc
 %% Ignore Star-Pairs that lie outside the Field-of-View
 
-FOV_Circular = 17.89; % Circular FOV - in degrees
+FOV_Circular = 12.47; % Circular FOV - in degrees
+FOV_Circular = FOV_Circular * (1 + 0.05); % Account for 5% safety factor
 
-tmp = st_PP_SC( st_PP_SC(:, 4) <= FOV_Circular*2 , : ); % Ignore star-pairs with ang_dst greater than FOV_Circular
+tmp = st_PP_SC( st_PP_SC(:, 4) <= FOV_Circular , : ); % Ignore star-pairs with ang_dst greater than FOV_Circular
 
 % Create Table
 st_PP_SC_table = array2table(tmp, 'VariableNames', {'SSP_ID_1', 'SSP_ID_2', 'AngDst_cos', 'AngDst_deg'});
