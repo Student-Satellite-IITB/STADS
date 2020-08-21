@@ -8,5 +8,5 @@ function [arr_centroids] = fe_centroiding_2(arr_img)
     % adding star ids and formatting the output
     arr_centroids = zeros(num_stars, 3);
     arr_centroids(:, 1) = 1:num_stars;
-    arr_centroids(:, 2:3) = arr_star_coordinates(1:num_stars, :);
+    arr_centroids(:, 2:3) = arr_star_coordinates(1:num_stars, :) * PIXEL_WIDTH;
 end
