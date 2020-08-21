@@ -1,6 +1,5 @@
 function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, final_tag_num] = fe_tag_2(arr_in_img)
-    load('constants_feature_extraction_2.mat', "NUM_FINAL_TAGS", "NUM_TAGS_PER_REGION", "NUM_REGIONS");    % Loading constants
-    load('constants_feature_extraction_3.mat', "THRESHOLD")
+    load('constants_feature_extraction_2.mat', "NUM_FINAL_TAGS", "NUM_TAGS_PER_REGION", "NUM_REGIONS", "THRESHOLD");    % Loading constants
     [rows,columns] = size(arr_in_img);
     
     % setting the "output" array with two layers, one for the tag, one for the oriiginal image, padding it to the left, right and top
