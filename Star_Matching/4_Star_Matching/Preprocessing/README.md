@@ -4,7 +4,7 @@
 
 ### Author - KT Prajwal Prathiksh
 
-This folder contains the code to generate the constants and the Reference Star Catalogue reuired for 4-Star Matching Algorithm.
+This folder contains the code to generate the constants and the Reference Star Catalogue required for 4-Star Matching Algorithm.
 
 ***Refer:***
 

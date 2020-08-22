@@ -10,13 +10,9 @@ input consisting of
 6. Count of number of final tags
 %}
 
-function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags, fe_const)
+function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags)
     
-    % load('constants_feature_extraction_2.mat', "MIN_PIXELS", "MAX_PIXELS", "LENGTH", "BREADTH");    %loading constants
-    MIN_PIXELS = fe_const.MIN_PIXELS;
-    MAX_PIXELS = fe_const.MAX_PIXELS;
-    LENGTH = fe_const.LENGTH;
-    BREADTH = fe_const.BREADTH;
+    load('constants_feature_extraction_2.mat', "LENGTH", "BREADTH", "STAR_MIN_PIXEL", "STAR_MAX_PIXEL");    %loading constants
     %correcting values
     num_tags = num_tags - 1;
     num_final_tags = num_final_tags - 1;
@@ -44,7 +40,7 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
         %if region is singly tagged
         if (arr_final_tag(i_centroids_single) == 0)
             %if number of pixels in region is out of range
-            if (arr_num_pixels(i_centroids_single) < MIN_PIXELS || arr_num_pixels(i_centroids_single) > MAX_PIXELS)
+            if (arr_num_pixels(i_centroids_single) <= STAR_MIN_PIXEL || arr_num_pixels(i_centroids_single) >= STAR_MAX_PIXEL)
                 continue;   %skip this iteration of loop
             end
             %incrementing number of stars and single tagged stars by 1
@@ -66,7 +62,7 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
     %loop to find position of centroids of stars with more than one tagged regions
     for i_centroids_multi=1: num_final_tags
         %if number of pixels in region is within range and with positive weight
-        if (arr_tot_pixels(i_centroids_multi) > MIN_PIXELS && arr_tot_pixels(i_centroids_multi) < MAX_PIXELS && arr_tot_weights(i_centroids_multi) > 0)
+        if (arr_tot_pixels(i_centroids_multi) > STAR_MIN_PIXEL && arr_tot_pixels(i_centroids_multi) < STAR_MAX_PIXEL && arr_tot_weights(i_centroids_multi) > 0)
             %updating values of centroid
             arr_star_coordinates(i_centroids_multi - num_zero_rows, 1) = (arr_tot_sum_x(i_centroids_multi)/arr_tot_weights(i_centroids_multi) - 1) - (LENGTH/2 + 0.5);
             arr_star_coordinates(i_centroids_multi - num_zero_rows, 2) = -1*((arr_tot_sum_y(i_centroids_multi)/arr_tot_weights(i_centroids_multi) - 1) - (BREADTH/2 + 0.5));
