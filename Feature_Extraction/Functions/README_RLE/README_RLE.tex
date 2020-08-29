@@ -1,0 +1,258 @@
+\documentclass[a4paper, oneside,11pt]{article}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage[english]{babel}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+\graphicspath{{/}}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{titlesec}
+\usepackage{enumitem}  
+\usepackage{comment} 
+\usepackage{upgreek}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \setlength{\parindent}{0pt}.
+    
+    
+    \begin{table}[h]
+        \begin{adjustbox}{width = \linewidth}
+            \begin{tabular}{c c c}
+                \multirow{5}{*}{ \includegraphics[width=0.13\textwidth]{iitb_logo.png}} \hfill &  \large{{Student Satellite Project}}  & \hfill \multirow{5}{*}{ \includegraphics[width=0.13\textwidth]{IITB - SSP.jpeg}} \\
+                & {Indian Institute of Technology, Bombay} &\\
+                & {Powai, Mumbai - 400076, INDIA} &\\
+                &{} &\\
+                & Website: {www.aero.iitb.ac.in/satlab} &\\
+                \\
+                &\large{\textbf{README - fe\_centroiding\_rle.m}}&\\
+                &Electrical Subsystem&\\
+                \hline
+            \end{tabular}
+        \end{adjustbox}
+    \end{table}
+    
+    
+    \section*{fe\_centroiding\_rle(arr\_img)}
+    \textbf{Code author:} Millen Kanabar
+    
+    
+    \textbf{Created on:} 
+    
+    
+    \textbf{Last modified:} 
+    
+    
+    \textbf{Reviewed by:} -
+    
+    
+    \textbf{Description:}
+    
+    This function is used to get the \emph{sum of the coordinates} (see the numerator of the expression defining the centroid) and \emph{sizes} of unmerged regions along with the \textit{number of tags and final tags} from a gray-scale image. (The connectivity referred to here is 4-connectivity.) The unmerged centroids are then taken along with the scalars to give out the final coordinates of the centroids of regions (stars) in the input image. The centroid is defined as 
+    \begin{align*}
+    (x_{centroid}, y_{centroid}) = \left(\frac{\sum_{p \in region} I_px_{p}}{n_{pixels}}, \frac{\sum_{p \in region}I_py_{p}}{n_{pixels}}\right)
+    \end{align*}where $I_p$ is the intensity of the pixel and $(x_p, y_p)$ are the coordinates of the pixel.
+    
+    
+    \textbf{Formula \& References:}
+    
+    The function uses the algorithm presented in \cite{5558171} to find the centroids of the connected sets of pixels in the image. The data is first extracted from a row. The contiguous ranges of pixels in that row are then compared with those in the previous one and the ranges in the current row are tagged accordingly. The ranges in the first row are given new tags. The data from this is added to the final data and the connected regions in the final data and the line data are also merged.
+
+    
+    \textbf{Input parameters:}
+    \begin{enumerate}
+        \item \textbf{arr\_img} : (matrix) - input image, with pixel location wrt the top left corner as indices\\([i, j]); and the reading at the corresponding pixel as the value stored at [i, j]
+    \end{enumerate} 
+    
+    
+    \textbf{Output:}
+    \begin{enumerate}
+        \item \textbf{arr\_centroids:} Array containing the centroids of the connected regions in the input image and their corresponding ids
+        \item \textbf{num\_stars:} Number of connected regions in the input image
+    \end{enumerate}
+    
+    
+\section*{fe\_extract\_row\_data(arr\_row)}
+\textbf{Code author:} Millen Kanabar
+
+
+\textbf{Created on:} 
+
+
+\textbf{Last modified:} 
+
+
+\textbf{Reviewed by:} -
+
+
+\textbf{Description:}    
+    Extracts data from a given row of the input image and outputs an array containing that data, along with the number of unbroken ranges of bright pixels
+    
+\textbf{Input:}
+\begin{enumerate}
+    \item \textbf{arr\_row:} a row from the input image
+\end{enumerate}
+
+\textbf{Output:}
+\begin{enumerate}
+    \item \textbf{arr\_row\_data:} array containing the sum of $ \sum_{p\in range} I_p x_p $ for a range of bright pixels in the first column, sum of intensities of those pixels in the second, the number of pixels in the third and the start and end pixel of the range in the fourth and fifth respectively\footnote{Defaults to an array of zeros if the row has no bright pixels}
+    \item \textbf{num\_ranges:} number of continuous ranges of bright pixels\footnote{defaults to 0  if the row has no bright pixels}
+\end{enumerate}
+
+
+    
+\section*{fe\_compare\_lines(arr\_line\_prev, arr\_line, num\_prev, num\_line, num\_tags)}
+\textbf{Code author:} Millen Kanabar
+
+
+\textbf{Created on:}
+
+
+\textbf{Last modified:}
+
+
+\textbf{Reviewed by:} -
+
+
+\textbf{Description:}
+    This function takes in the data from the current row, the previous row, the number of bright ranges in each row and the tags already allocated, compares the ranges in the current row and tags them with tags of the already tagged ranges in the previous row.
+    The tagging proceeds from the left to the right.
+    
+\textbf{Input:}
+\begin{enumerate}
+    \item \textbf{arr\_line\_prev:} array containing the first and last pixels of each range along with the corresponding tag for a distinct disjoint range in the previous row in each row. The ranges are ordered going from left to right
+    \item \textbf{arr\_line:} array containing data from the current row. The column-wise arrangement of the elements is as follows:
+    
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $ \sum_{p in range} I_p x_p $ & $ \sum_{p \in range} I_p $  & $\sum_{p \in region} 1 = n $  & $ p_{start} $  & $ p_{end} $ \\
+        \hline
+    \end{tabular}
+
+    \item \textbf{num\_prev:} The number of bright ranges in the previous row
+    \item \textbf{num\_line:} The number of bright ranges in the current row
+    \item \textbf{num\_tags:} The number of tags already allotted
+\end{enumerate}
+
+\textbf{Output:}
+\begin{enumerate}
+    \item \textbf{arr\_region\_data:} The array containing data for each tag in each row in the following format:
+    
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $ \sum_{p in range} I_p x_p $ & $\sum_{p \in range} I_p $ & $\sum_{p \in region} 1 = n $ & flag \\
+        \hline
+    \end{tabular}
+
+    This table is constructed for adding the data from the row to the final output array
+    
+    \item \textbf{arr\_regions:} This is a one-dimensional array that indicates the tag for every regions (the $ i^{th} $ element will indicate the tag of the $ i^{th} $ range from the left.)
+
+    \item  \textbf{arr\_merge\_regions:} Each row contains tags corresponding to a connected region, the first element indicating the number of tags in that row
+    
+    \item \textbf{num\_merge\_tags:} The number of nonempty rows in arr\_merge\_regions
+\end{enumerate}
+
+\section*{fe\_add\_centroid\_data(arr\_centroid\_data, arr\_centroid\_data\_new, i\_row)}
+\textbf{Code author:} Millen Kanabar
+
+
+\textbf{Created on:}
+
+
+\textbf{Last modified:}
+
+
+\textbf{Reviewed by:} -
+    
+\textbf{Description:}
+    This function takes the data generated by comparing two rows and adds it to the data generated from previous comparisons
+    
+\textbf{Input:}
+\begin{enumerate}
+    \item \textbf{arr\_centroid\_data:} Data generated from previous iterations over rows
+    \item \textbf{arr\_centroid\_data\_new:} New data to be added to arr\_centroid\_data
+    \item \textbf{i\_row:} The row number for the lower row (from which the data was generated)
+\end{enumerate}
+
+\textbf{Output:}
+\begin{enumerate}
+    \item \textbf{arr\_centroid\_data:} The updated array containing the data from all rows parsed so far
+\end{enumerate}
+
+\section*{fe\_merge\_regions(arr\_centroids, arr\_merge\_regions, num\_merge)}
+\textbf{Code author:} Millen Kanabar
+
+
+\textbf{Created on:}
+
+
+\textbf{Last modified:}
+
+
+\textbf{Reviewed by:} -
+
+\textbf{Description:}
+    This function merges the rows in arr\_centroids according to the tags mentioned in arr\_merge\_regions.
+    
+\textbf{Input:}
+\begin{enumerate}
+    \item \textbf{arr\_centroids:} The array containing the data to be worked upon. This is the pre-final data table after every row comparison
+    \item \textbf{arr\_merge\_regions:} The array containing the details of the tags to be merged. The first element is the number of tags to be merged into one. The subsequent ones are tags to be merged into one.
+\end{enumerate}
+
+\textbf{Output:}
+\begin{enumerate}
+    \item \textbf{arr\_centroids:} The updated array with merged tag data
+\end{enumerate}
+
+\newpage
+
+\section*{fe\_line2prev(arr\_line, num\_line, arr\_regions, arr\_merge\_regions, \\ num\_merge\_regions)}
+\textbf{Code author:} Millen Kanabar
+
+
+\textbf{Created on:}
+
+
+\textbf{Last modified:}
+
+
+\textbf{Reviwed by:} -
+
+\textbf{Description:}
+    This function moves data stored in the arr\_line format and converts it to the arr\_line\_prev format (see fe\_conpare\_lines(.) for a detailed description of these formats).
+    
+\textbf{Inputs:}
+\begin{enumerate}
+    \item \textbf{arr\_line:} array of the form specified in the input description of fe\_conpare\_lines
+    \item \textbf{num\_line:} number of non-trivial rows in arr\_line
+    \item \textbf{arr\_regions:} array containing the tag of each row in arr\_line
+    \item \textbf{arr\_merge\_regions:} The array containing the details of the tags to be merged. The first element is the number of tags to be merged into one. The subsequent ones are tags to be merged into one.
+\end{enumerate}
+
+\textbf{Output:}
+\begin{enumerate}
+    \item \textbf{arr\_lin\_prev:} Array of the form described in fe\_compare\_lines
+\end{enumerate}
+
+    \bibliographystyle{unsrt}
+    \bibliography{references_rle}
+\end{document}
