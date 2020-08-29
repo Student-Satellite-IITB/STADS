@@ -16,10 +16,10 @@ output:
     arr_centroid_data = zeros(NUM_REGIONS, 4);
     
     % parsing the first row and tagging all ranges separately
-    [arr_row, num_ranges] = fe_extract_row_data(arr_image(1, :));
-    arr_centroid_data(1:num_ranges, 1) = arr_row(1:num_ranges, 1);
-    arr_centroid_data(1:num_ranges, 3:4) = arr_row(1:num_ranges, 2:3);
-    arr_centroid_data(1:num_ranges, 2) = arr_row(1:num_ranges, 2);
+    [arr_row_data, num_ranges] = fe_extract_row_data(arr_image(1, :));
+    arr_centroid_data(1:num_ranges, 1) = arr_row_data(1:num_ranges, 1);
+    arr_centroid_data(1:num_ranges, 3:4) = arr_row_data(1:num_ranges, 2:3);
+    arr_centroid_data(1:num_ranges, 2) = arr_row_data(1:num_ranges, 2);
     num_tags = num_ranges;
     arr_regions = 1:num_ranges;
     
@@ -33,15 +33,15 @@ output:
         % converting the data from the previous row to the correct format
         % and merging tags in the current row
         
-        [num_prev, prev_row] = fe_line2prev(arr_row, num_ranges, arr_regions, arr_merge_regions, num_merge_regions);
+        [num_prev, prev_row] = fe_line2prev(arr_row_data, num_ranges, arr_regions, arr_merge_regions, num_merge_regions);
         
         % getting data from the new row
-        [arr_row, num_ranges] = fe_extract_row_data(arr_image(i_row, :));
+        [arr_row_data, num_ranges] = fe_extract_row_data(arr_image(i_row, :));
         
         % comparing the new row and the previous row, getting the data to
         % be added, the tags to be merged, tags for the ranges in the
         % current row and related data
-        [arr_region_data, arr_regions, num_tags, num_merge_regions, arr_merge_regions] = fe_compare_lines(prev_row, arr_row, num_prev, num_ranges, num_tags);
+        [arr_region_data, arr_regions, num_tags, num_merge_regions, arr_merge_regions] = fe_compare_lines(prev_row, arr_row_data, num_prev, num_ranges, num_tags);
         % adding the data to the accumulating table
         arr_centroid_data = fe_add_centroid_data(arr_centroid_data, arr_region_data, i_row);
         
