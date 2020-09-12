@@ -22,6 +22,7 @@ function sis_output = sis_main(sis_input, SIS_const, sis_pp_output, version)
         sis_Image_Mat = se_PR_5_Image_Generation(se_T, se_op, se_ig, se_in);
         
         %% Save Output
+        sis_output.attitude = sis_input.attitude;
         sis_output.image = sis_Image_Mat;
         sis_output.data_table = se_T;    
         sis_output.status = "Done";

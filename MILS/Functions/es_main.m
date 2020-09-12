@@ -5,7 +5,7 @@ function [es_output] = es_main(sis_output, sm_output, ES_const, algo)
     if algo == "Default Block"
         
         % You need to use sis_output not sis_input - fix this
-        q = eul2quat([deg2rad(sis_output.attitude(1)),deg2rad(-sis_input.attitude(2)),deg2rad(-sis_input.attitude(3))],'ZYX');
+        q = eul2quat([deg2rad(sis_output.attitude(1)),deg2rad(-sis_output.attitude(2)),deg2rad(-sis_output.attitude(3))],'ZYX');
         temp = q(1);
         q(1) = q(2);
         q(2) = q(3);
