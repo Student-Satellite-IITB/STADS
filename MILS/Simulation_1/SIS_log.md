@@ -6,7 +6,7 @@
 * **Operator**: K T Prajwal Prathiksh
 * **Operator ID**: KTPP
 * **Date**: 12/09/2020
-* **Time**: 18:58:37.150
+* **Time**: 20:09:07.569
 * **Computer**: DESKTOP-644IPSL
 * **User**: prajw
 
@@ -18,21 +18,23 @@
 
 ## Preprocessing - Details
 
-**Status|Time_Taken - (mm:ss.SS)**
-Done|00:00.85
+|Status|Time_Taken - (mm:ss.SS)
+|:---:|:---:|
+|Done|00:01.01|
 
 ## Simulation - Details
 
-**Iter|Status|Time_Taken - (mm:ss.SS)**
-1|Done|00:01.30
-2|Done|00:01.50
-3|Done|00:01.45
-4|Done|00:01.30
-5|Done|00:01.45
-6|Done|00:01.03
-7|Done|00:00.90
-8|Done|00:01.65
-9|Done|00:01.71
-10|Done|00:01.91
+|Iter|Status|Time_Taken - (mm:ss.SS)|
+|:---:|:---:|
+|1|Done|00:01.38|
+|2|Done|00:01.18|
+|3|Done|00:01.57|
+|4|Done|00:01.38|
+|5|Done|00:01.56|
+|6|Done|00:01.09|
+|7|Done|00:00.97|
+|8|Done|00:01.57|
+|9|Done|00:01.66|
+|10|Done|00:01.97|
 
-**Total Time Taken:** 00:16.71
+**Total Time Taken:** 00:16.47

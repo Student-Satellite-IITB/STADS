@@ -35,7 +35,7 @@ if ~exist('sim_log', 'var')
 end
 
 sim_log.SIS.preprocessing = true; % Enable pre-processing of SIS
-sim_log.SIS.version = "NONE"; % Version of SIS
+sim_log.SIS.version = "Default Block"; % Version of SIS
 
  
 % *Load Inputs & Constants*
@@ -148,7 +148,8 @@ else
     elseif sim_log.SIS.preprocessing == 1
         tic
         fprintf(SIS_logFile,'## Preprocessing - Details\n\n');
-        fprintf(SIS_logFile,'**Status|Time_Taken - (mm:ss.SS)**\n');
+        fprintf(SIS_logFile,'|Status|Time_Taken - (mm:ss.SS)\n');
+        fprintf(SIS_logFile, '|:---:|:---:|\n');
         
         %%% Run Preprocessing
         sim_log.PP_T1 = datetime(); % Time at which preprocessing starts
@@ -161,13 +162,14 @@ else
         save(sim_log.SIS.PP_outputFileName, 'sis_PP_output', 'sim_log'); % Save .mat file     
         
         % Write log-entry
-        fprintf(SIS_logFile,'Done|%s\n\n', sim_log.PP_dt);
+        fprintf(SIS_logFile,'|Done|%s|\n\n', sim_log.PP_dt);
         toc
     end
     
     % Simulation Details
     fprintf(SIS_logFile,'## Simulation - Details\n\n');
-    fprintf(SIS_logFile,'**Iter|Status|Time_Taken - (mm:ss.SS)**\n');
+    fprintf(SIS_logFile,'|Iter|Status|Time_Taken - (mm:ss.SS)|\n');
+    fprintf(SIS_logFile, '|:---:|:---:|:---:|\n');
     
     % Load SIS - Preprocessed Data
     load(sim_log.SIS.PP_outputFileName, 'sis_PP_output');
@@ -212,7 +214,7 @@ else
         save(iter_info.outputFileName, 'sis_input', 'sis_output', 'iter_info'); % Save .mat file   
         
         % Write log-entry
-        fprintf(SIS_logFile,'%d|%s|%s\n', round(iter_info.i), iter_info.status, iter_info.dt); % Write log file entry
+        fprintf(SIS_logFile,'|%d|%s|%s|\n', round(iter_info.i), iter_info.status, iter_info.dt); % Write log file entry
     end
     close(ProgBar); % Progress-bar GUI
     
@@ -242,12 +244,12 @@ end
 if ~exist('sim_log', 'var')
     error("SimulationError: Simulation Details Not Loaded! Re-load the details!")
 end
-sim_log.MILS.fe_data.algo = "Region Growth"; % Feature Extraction algorithm
+sim_log.MILS.fe_data.algo = "Default Block"; % Feature Extraction algorithm
 sim_log.MILS.sm_data.preprocessing = false; % Enable pre-processing of SIS
-sim_log.MILS.sm_data.LIS_algo = "4-Star Matching"; % Star-Matching (Lost-in-Space Mode) algorithm 
+sim_log.MILS.sm_data.LIS_algo = "Default Block"; % Star-Matching (Lost-in-Space Mode) algorithm 
 sim_log.MILS.sm_data.TM_algo =  "NONE"; % Star-Matching (Tracking Mode) algorithm 
 sim_log.MILS.sm_data.LIS_redundancy = true; % Star-Matching (Lost-in-Space redundancy)
-sim_log.MILS.es_data.algo = "Default Block"; % Estimation algorithm
+sim_log.MILS.es_data.algo = "QUEST1"; % Estimation algorithm
 
  
 % Load Inputs & Constants
@@ -341,7 +343,8 @@ if sim_log.MILS.sm_data.preprocessing == 0
 elseif sim_log.MILS.sm_data.preprocessing == 1
     tic
     fprintf(MILS_logFile,'## Preprocessing - Details\n\n');
-    fprintf(MILS_logFile,'**Mode|Status|Time_Taken - (mm:ss.SS)**\n');
+    fprintf(MILS_logFile,'|Mode|Status|Time_Taken - (mm:ss.SS)|\n');
+    fprintf(MILS_logFile, '|:---:|:---:|:---:|\n');
     
     %%% Run Lost-in-Space Mode Preprocessing
     sim_log.PP_LIS_T1 = datetime(); % Time at which preprocessing starts
@@ -354,7 +357,7 @@ elseif sim_log.MILS.sm_data.preprocessing == 1
     save(sim_log.MILS.PP_LIS_outputFileName, 'sm_PP_LIS_output', 'sim_log'); % Save .mat file     
     
     % Write log-entry
-    fprintf(MILS_logFile,'LIS|Done|%s\n', sim_log.PP_LIS_dt);
+    fprintf(MILS_logFile,'|LIS|Done|%s|\n', sim_log.PP_LIS_dt);
     
     
     
@@ -374,7 +377,7 @@ elseif sim_log.MILS.sm_data.preprocessing == 1
     save(sim_log.MILS.PP_TM_outputFileName, 'sm_PP_TM_output', 'sim_log'); % Save .mat file     
     
     % Write log-entry
-    fprintf(MILS_logFile,'TM|Done|%s\n\n', sim_log.PP_TM_dt);
+    fprintf(MILS_logFile,'|TM|Done|%s|\n\n', sim_log.PP_TM_dt);
     toc
 end
 
@@ -386,7 +389,8 @@ disp("Done: Star-Matching - Preprocessing");
 
 % Simulation Details
 fprintf(MILS_logFile,'## Simulation - Details\n\n');
-fprintf(MILS_logFile,'**Iter|FE-Status|SM-Status|SM-Mode|SM-Iter|ES-Status|Time_Taken - (mm:ss.SS)**\n');
+fprintf(MILS_logFile,'|Iter|FE-Status|SM-Status|SM-Mode|SM-Iter|ES-Status|Time_Taken - (mm:ss.SS)|\n');
+fprintf(MILS_logFile, '|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n');
 % *Run Model-in-Loop Simulation*
 
 tic
@@ -417,7 +421,7 @@ try
         % Load the input file
         load(iter_info.inputFileName, 'sis_output');
         
-        fprintf(MILS_logFile,'%d|', round(iter_info.i)); % Write log file entry    
+        fprintf(MILS_logFile,'|%d|', round(iter_info.i)); % Write log file entry    
         %% Run Model-in-Loop Simulation on single input
         
         
@@ -521,10 +525,10 @@ catch ME %MException struct
     close(ProgBar); % Progress-bar GUI    
     disp('Stopped: Model-in-Loop Simulation');
     fprintf(MILS_logFile, '\n\n## ErrorFound!\n');
-    fprintf(MILS_logFile, '---------------------------------------------\n');
-    fprintf(MILS_logFile, '**Error Identifier**:  *%s*\n', ME.identifier);
-    fprintf(MILS_logFile, '**Error Message**: *%s*\n', ME.message);
-    fprintf(MILS_logFile, '---------------------------------------------\n\n\n');
+    fprintf(MILS_logFile, '---\n');
+    fprintf(MILS_logFile, '|Error Identifier|*%s*|\n', ME.identifier);
+    fprintf(MILS_logFile, '|:---:|:---:|\n');
+    fprintf(MILS_logFile, '|Error Message|*%s*|\n\n\n', ME.message);
     
     sim_log.dt = duration(datetime() - sim_log.T1, "Format","mm:ss.SS");
     save(sim_log.path + "\error_vars.mat");
