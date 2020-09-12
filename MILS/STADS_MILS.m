@@ -242,9 +242,9 @@ end
 if ~exist('sim_log', 'var')
     error("SimulationError: Simulation Details Not Loaded! Re-load the details!")
 end
-sim_log.MILS.fe_data.algo = "Default Block"; % Feature Extraction algorithm
+sim_log.MILS.fe_data.algo = "Region Growth"; % Feature Extraction algorithm
 sim_log.MILS.sm_data.preprocessing = false; % Enable pre-processing of SIS
-sim_log.MILS.sm_data.LIS_algo = "Default Block"; % Star-Matching (Lost-in-Space Mode) algorithm 
+sim_log.MILS.sm_data.LIS_algo = "4-Star Matching"; % Star-Matching (Lost-in-Space Mode) algorithm 
 sim_log.MILS.sm_data.TM_algo =  "NONE"; % Star-Matching (Tracking Mode) algorithm 
 sim_log.MILS.sm_data.LIS_redundancy = true; % Star-Matching (Lost-in-Space redundancy)
 sim_log.MILS.es_data.algo = "Default Block"; % Estimation algorithm
@@ -522,13 +522,14 @@ catch ME %MException struct
     disp('Stopped: Model-in-Loop Simulation');
     fprintf(MILS_logFile, '\n\n## ErrorFound!\n');
     fprintf(MILS_logFile, '---------------------------------------------\n');
-    fprintf(MILS_logFile, 'Error Identifier:  %s\n', ME.identifier);
-    fprintf(MILS_logFile, 'Error Message: %s\n', ME.message);
+    fprintf(MILS_logFile, '**Error Identifier**:  *%s*\n', ME.identifier);
+    fprintf(MILS_logFile, '**Error Message**: *%s*\n', ME.message);
     fprintf(MILS_logFile, '---------------------------------------------\n\n\n');
     
     sim_log.dt = duration(datetime() - sim_log.T1, "Format","mm:ss.SS");
     save(sim_log.path + "\error_vars.mat");
     fprintf(MILS_logFile, '## Saved workspace variables for debugging!\n');
+    fprintf(MILS_logFile, '* **Saved at**: %s\n', sim_log.path + "\error_vars.mat")
     fprintf(MILS_logFile,'\n**Total Time Taken:** %s\n', sim_log.dt);
 
     % Close log file
