@@ -35,7 +35,7 @@ if ~exist('sim_log', 'var')
 end
 
 sim_log.SIS.preprocessing = true; % Enable pre-processing of SIS
-sim_log.SIS.version = "Default Block"; % Version of SIS
+sim_log.SIS.version = "NONE"; % Version of SIS
 
  
 % *Load Inputs & Constants*
@@ -107,10 +107,10 @@ else
 
     SIS_logFile = fopen(sim_log.path + "\SIS_log.md",'w');
     fprintf(SIS_logFile,'# Star Image Simulation - Log File\n\n');
-    fprintf(SIS_logFile,'## Simulation ID: %s\n\n', sim_log.sim_ID);
+    fprintf(SIS_logFile,'### Simulation ID: %s\n\n', sim_log.sim_ID);
     
     % Simulation Details
-    fprintf(SIS_logFile,'## Simulation - Details\n');
+    fprintf(SIS_logFile,'### Simulation - Details\n');
     fprintf(SIS_logFile,'* **Operator**: %s\n', sim_log.operator);
     fprintf(SIS_logFile,'* **Operator ID**: %s\n', sim_log.operator_ID);
     fprintf(SIS_logFile, '* **Date**: %s\n', sim_log.date);
@@ -119,7 +119,7 @@ else
     fprintf(SIS_logFile, '* **User**: %s\n\n', sim_log.userName);
     
     % Star Image Simulation Details
-    fprintf(SIS_logFile,'## Star Image Simulation - Details\n');
+    fprintf(SIS_logFile,'### Star Image Simulation - Details\n');
     fprintf(SIS_logFile,'* **Version**: %s\n', sim_log.SIS.version);
     if sim_log.SIS.preprocessing == 1
         fprintf(SIS_logFile,'* **Preprocessing**: Enabled\n\n');
@@ -140,14 +140,14 @@ else
     sim_log.SIS.PP_outputFileName = sim_log.PP_output_path + '\SIS_preprocessed_data.mat';
     
     if sim_log.SIS.preprocessing == 0
-        fprintf(SIS_logFile,'## Preprocessing - Details\n\n');
+        fprintf(SIS_logFile,'### Preprocessing - Details\n\n');
         fprintf(SIS_logFile, "Preprocessing Skipped!\n\n");
         
         disp("Star Image Simulation - Preprocessing - Skipped!")
     
     elseif sim_log.SIS.preprocessing == 1
         tic
-        fprintf(SIS_logFile,'## Preprocessing - Details\n\n');
+        fprintf(SIS_logFile,'### Preprocessing - Details\n\n');
         fprintf(SIS_logFile,'|Status|Time_Taken - (mm:ss.SS)\n');
         fprintf(SIS_logFile, '|:---:|:---:|\n');
         
@@ -167,7 +167,7 @@ else
     end
     
     % Simulation Details
-    fprintf(SIS_logFile,'## Simulation - Details\n\n');
+    fprintf(SIS_logFile,'### Simulation - Details\n\n');
     fprintf(SIS_logFile,'|Iter|Status|Time_Taken - (mm:ss.SS)|\n');
     fprintf(SIS_logFile, '|:---:|:---:|:---:|\n');
     
@@ -223,6 +223,7 @@ else
     sim_log.dt = duration(datetime() - sim_log.T1, "Format","mm:ss.SS");   % Time taken to excute entire SIS simulation
     
     % Write log-entry
+    fprintf(SIS_logFile, '\n---\n');
     fprintf(SIS_logFile,'\n**Total Time Taken:** %s\n', sim_log.dt);
     
     % Close log file
@@ -245,7 +246,7 @@ if ~exist('sim_log', 'var')
     error("SimulationError: Simulation Details Not Loaded! Re-load the details!")
 end
 sim_log.MILS.fe_data.algo = "Default Block"; % Feature Extraction algorithm
-sim_log.MILS.sm_data.preprocessing = false; % Enable pre-processing of SIS
+sim_log.MILS.sm_data.preprocessing = true; % Enable pre-processing of SIS
 sim_log.MILS.sm_data.LIS_algo = "Default Block"; % Star-Matching (Lost-in-Space Mode) algorithm 
 sim_log.MILS.sm_data.TM_algo =  "NONE"; % Star-Matching (Tracking Mode) algorithm 
 sim_log.MILS.sm_data.LIS_redundancy = true; % Star-Matching (Lost-in-Space redundancy)
@@ -304,10 +305,10 @@ end
 
 MILS_logFile = fopen(sim_log.path + "\MILS_log.md",'w');
 fprintf(MILS_logFile,'# Model-in-Loop Simulation - Log File\n');
-fprintf(MILS_logFile,'\n## Simulation ID: %s\n', sim_log.sim_ID);
+fprintf(MILS_logFile,'\n### Simulation ID: %s\n', sim_log.sim_ID);
 
 % Simulation Details
-fprintf(MILS_logFile,'\n## Simulation - Details\n');
+fprintf(MILS_logFile,'\n### Simulation - Details\n');
 fprintf(MILS_logFile,'* **Operator**: %s\n', sim_log.operator);
 fprintf(MILS_logFile,'* **Operator ID**: %s\n', sim_log.operator_ID);
 fprintf(MILS_logFile, '* **Date**: %s\n', sim_log.date);
@@ -316,7 +317,7 @@ fprintf(MILS_logFile, '* **Computer**: %s\n', sim_log.computerName);
 fprintf(MILS_logFile, '* **User**: %s\n', sim_log.userName);
 
 % Model-in-Loop Simulation Details
-fprintf(MILS_logFile,'\n## Model-in-Loop Simulation - Details\n');
+fprintf(MILS_logFile,'\n### Model-in-Loop Simulation - Details\n');
 fprintf(MILS_logFile,'* **Feature Extraction - Algorithm**: %s\n', sim_log.MILS.fe_data.algo);
 fprintf(MILS_logFile,'* **Star-Matching - (Lost-in-Space Mode) Algorithm**: %s\n', sim_log.MILS.sm_data.LIS_algo);
 fprintf(MILS_logFile,'* **Star-Matching - (Tracking Mode) Algorithm**: %s\n', sim_log.MILS.sm_data.TM_algo);
@@ -334,7 +335,7 @@ disp("Done: Generate MILS_log.md");
 % Run Star-Matching - Preprocessing
 
 if sim_log.MILS.sm_data.preprocessing == 0
-    fprintf(MILS_logFile,'## Preprocessing - Details\n\n');
+    fprintf(MILS_logFile,'### Preprocessing - Details\n\n');
     fprintf(MILS_logFile, "Lost-in-Space Mode - Preprocessing: Skipped!\n");
     fprintf(MILS_logFile, "Tracking Mode - Preprocessing: Skipped!\n\n");
     
@@ -342,7 +343,7 @@ if sim_log.MILS.sm_data.preprocessing == 0
 
 elseif sim_log.MILS.sm_data.preprocessing == 1
     tic
-    fprintf(MILS_logFile,'## Preprocessing - Details\n\n');
+    fprintf(MILS_logFile,'### Preprocessing - Details\n\n');
     fprintf(MILS_logFile,'|Mode|Status|Time_Taken - (mm:ss.SS)|\n');
     fprintf(MILS_logFile, '|:---:|:---:|:---:|\n');
     
@@ -388,7 +389,7 @@ load(sim_log.MILS.PP_TM_outputFileName, 'sm_PP_TM_output');
 disp("Done: Star-Matching - Preprocessing");
 
 % Simulation Details
-fprintf(MILS_logFile,'## Simulation - Details\n\n');
+fprintf(MILS_logFile,'### Simulation - Details\n\n');
 fprintf(MILS_logFile,'|Iter|FE-Status|SM-Status|SM-Mode|SM-Iter|ES-Status|Time_Taken - (mm:ss.SS)|\n');
 fprintf(MILS_logFile, '|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n');
 % *Run Model-in-Loop Simulation*
@@ -524,16 +525,17 @@ catch ME %MException struct
     
     close(ProgBar); % Progress-bar GUI    
     disp('Stopped: Model-in-Loop Simulation');
-    fprintf(MILS_logFile, '\n\n## ErrorFound!\n');
-    fprintf(MILS_logFile, '---\n');
-    fprintf(MILS_logFile, '|Error Identifier|*%s*|\n', ME.identifier);
+    fprintf(MILS_logFile, '\n\n---\n');
+    fprintf(MILS_logFile, '\n\n## ErrorFound!\n');    
+    fprintf(MILS_logFile, '\n|Error Identifier|*%s*|\n', ME.identifier);
     fprintf(MILS_logFile, '|:---:|:---:|\n');
     fprintf(MILS_logFile, '|Error Message|*%s*|\n\n\n', ME.message);
     
     sim_log.dt = duration(datetime() - sim_log.T1, "Format","mm:ss.SS");
     save(sim_log.path + "\error_vars.mat");
     fprintf(MILS_logFile, '## Saved workspace variables for debugging!\n');
-    fprintf(MILS_logFile, '* **Saved at**: %s\n', sim_log.path + "\error_vars.mat")
+    fprintf(MILS_logFile, '* **Saved at**: %s\n', sim_log.path + "\error_vars.mat");
+    fprintf(MILS_logFile, '\n---\n');
     fprintf(MILS_logFile,'\n**Total Time Taken:** %s\n', sim_log.dt);
 
     % Close log file
