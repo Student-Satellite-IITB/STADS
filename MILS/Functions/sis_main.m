@@ -10,7 +10,6 @@ function sis_output = sis_main(sis_input, SIS_const, sis_pp_output, version)
         se_op = SIS_const.op;
         
         % Attitude
-        %se_boresight_inputs_mat = readmatrix('se_boresight_inputs.xlsx','Range', strcat('B2:D', num2str(SIS_const.in.No_Boresight_Inputs + 1)));
         se_bo = array2table(sis_input.attitude, "VariableNames", ["RA", "Dec", "Roll"]);
         se_bo.se_r0 = [cosd(se_bo.Dec) .* cosd(se_bo.RA), cosd(se_bo.Dec) .* sind(se_bo.RA), sind(se_bo.Dec)];
 
@@ -25,10 +24,9 @@ function sis_output = sis_main(sis_input, SIS_const, sis_pp_output, version)
         sis_output.attitude = sis_input.attitude;
         sis_output.image = sis_Image_Mat;
         sis_output.data_table = se_T;    
-        sis_output.status = "Done";
-        
+        sis_output.status = "Done";        
         
     elseif version == "Version - 3"
-        Code here
+        % Code here
     end    
 end
