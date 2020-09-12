@@ -1,20 +1,17 @@
-# STADS
-This repository contains codes for open- and closed- loops for STADS (Star Tracker based Attitude Determination System)
+[<img src="https://www.aero.iitb.ac.in/satlab/images/IITBSSP2019.png" width="150"/>](image.png) 
+
+## Student Satellite Project - Indian Institude of Technology, Bombay
+
+### Star Tracker-based Attitude Determination System (STADS)
+
+This repository contains codes for the open-loop simulations for STADS.
+
 
 ## Note
+ 1. Always run from the root folder - `.\`
+ >   * Type `pwd` in the command window of MATLAB.
+  >  *  `ans = ".....\STADS"`
 
-1. Always run from the root folder - .\
-    * You can verify this by typing **pwd** in the command window of MATLAB.
-    * The **ans** should read - *.....\STADS*
-
-1. Run the command:
-    **addpath(genpath(' .\ '));**
-    * This will add directories and sub-directories to MATLAB's search path - *This is a one-time command, to be performed before you run any code!*
-    * Any function/script can now be called easily across the whole repository
-    
-OR
-
-2. Load the Project file:
-   **STADSMatlab.prj**
-   * This will load all the directories added to the project path previously into the path.
-   * In case a directory is not added to path, go to the **Projects** tab and add the folders to path.
+2. Load `STADSMatlab.prj`, before writing/updating any of the codes:
+> * This loads all the previously added directories to the project path
+> * In case a directory is not added to path, go to the `Projects` tab and add the required directories to path

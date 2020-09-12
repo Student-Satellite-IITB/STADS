@@ -1,8 +1,11 @@
-# Student Satellite Project - Indian Institude of Technology, Bombay
+[<img src="https://www.aero.iitb.ac.in/satlab/images/IITBSSP2019.png" width="150"/>](image.png) 
 
-## Star Tracker-based Attitude Determination System (STADS)
+## Student Satellite Project - Indian Institude of Technology, Bombay
 
-### Author - KT Prajwal Prathiksh
+### Star Tracker-based Attitude Determination System (STADS)
+
+
+#### Author - K T Prajwal Prathiksh
 
 This algorithm is based on the *Brightness Independent 4-Star Matching Algorithm*, developed by the Tsinghua University.
 
