@@ -14,10 +14,10 @@
 Add about here
 
 >**`STADS_MILS.mlx`** -- *Live Script (GUI-based)*
-> Add details here
+> This is the live script of the MILS. It is GUI based and user-friendly. It enters the simulation details and sets the SIS version, preprocessing requirements, and which MILS algorithms need to be run in that simulation and nuances as such. Appropriate comments are also outputted after each step is successfully executed, so that the user knows what the pogram is running at every point in time.
 
 >**`STADS_MILS.m`** -- *Standard MATLAB Script (text-based)*
-> Add details here
+> This is the standard MATLAB format script for the live script described above. It performs the same functions as above except it is not GUI-based, hence not as easy to be run for the operator. In case the live script is taking excess time to load on an operator's desktop, he can choose to go with this script instead.
 
 ## Features
 
