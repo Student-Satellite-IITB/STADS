@@ -20,7 +20,7 @@ function [fe_output, SM_const] = fe_main(sis_output, FE_const, SM_const, algo)
         fe_output.N = height(fe_output.centroids); % The units of the centroids need to be in (mm) make sure of that, else SM-LIS won't work
         fe_output.status = "Done";
         
-    elseif algo=="Tagging"
+    elseif algo == "Tagging"
         line_ans = fe_centroiding_2(sis_output, FE_const);
         fe_output.centroids = line_ans(1);
         fe_output.N = line_ans(2);

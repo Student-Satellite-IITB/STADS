@@ -1,3 +1,5 @@
+[<img src="https://www.aero.iitb.ac.in/satlab/images/IITBSSP2019.png" width="125"/>](image.png)
+
 # Star Image Simulation - Log File
 
 ### Simulation ID: 10
@@ -5,8 +7,8 @@
 ### Simulation - Details
 * **Operator**: K T Prajwal Prathiksh
 * **Operator ID**: KTPP
-* **Date**: 12/09/2020
-* **Time**: 20:37:44.203
+* **Date**: 13/09/2020
+* **Time**: 02:50:16.880
 * **Computer**: DESKTOP-644IPSL
 * **User**: prajw
 
@@ -20,23 +22,23 @@
 
 |Status|Time_Taken - (mm:ss.SS)
 |:---:|:---:|
-|Done|00:00.92|
+|Done|00:00.72|
 
 ### Simulation - Details
 
 |Iter|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|1|Done|00:01.46|
-|2|Done|00:01.23|
-|3|Done|00:01.51|
-|4|Done|00:01.45|
-|5|Done|00:01.70|
-|6|Done|00:01.02|
-|7|Done|00:00.93|
-|8|Done|00:01.92|
-|9|Done|00:02.04|
-|10|Done|00:02.41|
+|1|Done|00:01.41|
+|2|Done|00:01.25|
+|3|Done|00:01.49|
+|4|Done|00:01.46|
+|5|Done|00:01.56|
+|6|Done|00:01.08|
+|7|Done|00:00.99|
+|8|Done|00:01.66|
+|9|Done|00:01.81|
+|10|Done|00:01.99|
 
 ---
 
-**Total Time Taken:** 00:18.55
+**Total Time Taken:** 00:17.43

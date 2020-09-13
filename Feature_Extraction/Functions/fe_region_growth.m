@@ -1,19 +1,19 @@
 function centroids_st = fe_region_growth(sis_output, FE_const)
     %% pad and get constants
     % load all constants
-    %load('fe_constants_region_growth.mat');
+    % load('fe_constants_region_growth.mat');
     % put a padding of zeroes all around
-    arr_in_img=sis_output.image;
-    MAX_STARS=FE_const.MAX_STARS;
-    SKIP_PIXELS=FE_const.SKIP_PIXELS;
-    PIXEL_WIDTH=FE_const.PIXEL_WIDTH;
-    STAR_MIN_PIXEL=FE_const.STAR_MIN_PIXEL;
-    STAR_MAX_PIXEL=FE_const.STAR_MAX_PIXEL;
-    THRESHOLD=FE_const.THRESHOLD;
+    arr_in_img = sis_output.image;
+    MAX_STARS = FE_const.MAX_STARS;
+    SKIP_PIXELS = FE_const.SKIP_PIXELS;
+    PIXEL_WIDTH = FE_const.PIXEL_WIDTH;
+    STAR_MIN_PIXEL = FE_const.STAR_MIN_PIXEL;
+    STAR_MAX_PIXEL = FE_const.STAR_MAX_PIXEL;
+    THRESHOLD = FE_const.THRESHOLD;
     
-    %SKIP_PIXELS,THRESHOLD,STAR_MIN_PIXEL,STAR_MAX_PIXEL
-    %arr_out_img = padarray(arr_in_img, [1, 1], 0, 'both');% SEtD A CODE
-    %SNIPPET TO CORRECT THIS,WHICH IS AS FOLLOWS:
+    % SKIP_PIXELS,THRESHOLD,STAR_MIN_PIXEL,STAR_MAX_PIXEL
+    % arr_out_img = padarray(arr_in_img, [1, 1], 0, 'both');% SEtD A CODE
+    % SNIPPET TO CORRECT THIS,WHICH IS AS FOLLOWS:
     % put a padding of zeroes all around
     arr_out_img = zeros(1024+2, 1280+2, 2, 'int32');
     arr_out_img(2:1024+1, 2:1280+1, 1) = arr_in_img;

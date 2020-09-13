@@ -12,7 +12,7 @@ clc
 sim_log.operator = "K T Prajwal Prathiksh"; % Enter Simulation Operator's Full Name
 sim_log.operator_ID = "KTPP"; % Enter Operator ID
 sim_log.sim_ID = "10"; % Enter Simulation Number
-sim_log.path = "E:\IIT Bombay\SatLab\Star Tracker\Star Matching\STADS\MILS\Simulation_1"; % Enter Path of Simulation Folder
+sim_log.path = "C:\Users\prajw\OneDrive\Desktop\Simulation_10"; % Enter Path of Simulation Folder
 
 % Automated Entry
 sim_log.date = datestr(now, 'dd/mm/yyyy'); % Date of simulation
@@ -106,6 +106,7 @@ else
     %% Create SIS_log.txt file
 
     SIS_logFile = fopen(sim_log.path + "\SIS_log.md",'w');
+    fprintf(SIS_logFile, '[<img src="https://www.aero.iitb.ac.in/satlab/images/IITBSSP2019.png" width="125"/>](image.png)\n\n');
     fprintf(SIS_logFile,'# Star Image Simulation - Log File\n\n');
     fprintf(SIS_logFile,'### Simulation ID: %s\n\n', sim_log.sim_ID);
     
@@ -135,7 +136,7 @@ end
 % Run Star Image Simulation - Preprocessing
 
 if sim_log.SIS.version == "NONE"
-    disp("Star Image Simulation - Skipped!")
+    disp("Star Image Simulation - Skipped")
 else
     sim_log.SIS.PP_outputFileName = sim_log.PP_output_path + '\SIS_preprocessed_data.mat';
     
@@ -224,6 +225,9 @@ else
     
     % Write log-entry
     fprintf(SIS_logFile, '\n---\n');
+    if sim_log.SIS.preprocessing == 1
+        sim_log.dt = sim_log.dt + sim_log.PP_dt;
+    end
     fprintf(SIS_logFile,'\n**Total Time Taken:** %s\n', sim_log.dt);
     
     % Close log file
@@ -245,12 +249,12 @@ end
 if ~exist('sim_log', 'var')
     error("SimulationError: Simulation Details Not Loaded! Re-load the details!")
 end
-sim_log.MILS.fe_data.algo = "Default Block"; % Feature Extraction algorithm
-sim_log.MILS.sm_data.preprocessing = true; % Enable pre-processing of SIS
-sim_log.MILS.sm_data.LIS_algo = "Default Block"; % Star-Matching (Lost-in-Space Mode) algorithm 
-sim_log.MILS.sm_data.TM_algo =  "NONE"; % Star-Matching (Tracking Mode) algorithm 
+sim_log.MILS.fe_data.algo = "Tagging"; % Feature Extraction algorithm
+sim_log.MILS.sm_data.preprocessing = false; % Enable pre-processing of SIS
+sim_log.MILS.sm_data.LIS_algo = "4-Star Matching"; % Star-Matching (Lost-in-Space Mode) algorithm 
+sim_log.MILS.sm_data.TM_algo =  "Unnamed-1"; % Star-Matching (Tracking Mode) algorithm 
 sim_log.MILS.sm_data.LIS_redundancy = true; % Star-Matching (Lost-in-Space redundancy)
-sim_log.MILS.es_data.algo = "QUEST1"; % Estimation algorithm
+sim_log.MILS.es_data.algo = "QUEST2"; % Estimation algorithm
 
  
 % Load Inputs & Constants
@@ -288,7 +292,7 @@ else
     sim_log.N_Iter = SIS_log.N_Iter;
 end
 disp("Done: Load Inputs & Simulation Constants");
-% Generate Model-in-Loop Simulation - Log file
+% Generate Model-in-Loop Simulation - Log file    
 
 %%% Read MILS-data files
 
@@ -304,6 +308,7 @@ end
 %% Create MILS_log.md file
 
 MILS_logFile = fopen(sim_log.path + "\MILS_log.md",'w');
+fprintf(MILS_logFile, '[<img src="https://www.aero.iitb.ac.in/satlab/images/IITBSSP2019.png" width="125"/>](image.png)\n\n');
 fprintf(MILS_logFile,'# Model-in-Loop Simulation - Log File\n');
 fprintf(MILS_logFile,'\n### Simulation ID: %s\n', sim_log.sim_ID);
 
@@ -322,9 +327,9 @@ fprintf(MILS_logFile,'* **Feature Extraction - Algorithm**: %s\n', sim_log.MILS.
 fprintf(MILS_logFile,'* **Star-Matching - (Lost-in-Space Mode) Algorithm**: %s\n', sim_log.MILS.sm_data.LIS_algo);
 fprintf(MILS_logFile,'* **Star-Matching - (Tracking Mode) Algorithm**: %s\n', sim_log.MILS.sm_data.TM_algo);
 if sim_log.MILS.sm_data.LIS_redundancy 
-    fprintf(MILS_logFile,'* **Star-Matching - Lost-in-Space Redundancy**: Enabled!\n');
+    fprintf(MILS_logFile,'* **Star-Matching - Lost-in-Space Redundancy**: Enabled\n');
 else
-    fprintf(MILS_logFile,'* **Star-Matching - Lost-in-Space Redundancy**: Disabled!\n');
+    fprintf(MILS_logFile,'* **Star-Matching - Lost-in-Space Redundancy**: Disabled\n');
 end
 fprintf(MILS_logFile,'* **Estimation - Algorithm**: %s\n\n', sim_log.MILS.es_data.algo);
 %%%%%% Print additional MILS details
@@ -332,12 +337,12 @@ fprintf(MILS_logFile,'---\n\n');
 
 disp("Done: Generate MILS_log.md");
 
-% Run Star-Matching - Preprocessing
+% Run Star-Matching - Preprocessing   
 
 if sim_log.MILS.sm_data.preprocessing == 0
     fprintf(MILS_logFile,'### Preprocessing - Details\n\n');
-    fprintf(MILS_logFile, "Lost-in-Space Mode - Preprocessing: Skipped!\n");
-    fprintf(MILS_logFile, "Tracking Mode - Preprocessing: Skipped!\n\n");
+    fprintf(MILS_logFile, "* Lost-in-Space Mode - Preprocessing: Skipped\n");
+    fprintf(MILS_logFile, "* Tracking Mode - Preprocessing: Skipped\n\n");
     
     disp("Star Image Simulation - Preprocessing - Skipped!")
 
@@ -526,16 +531,23 @@ catch ME %MException struct
     close(ProgBar); % Progress-bar GUI    
     disp('Stopped: Model-in-Loop Simulation');
     fprintf(MILS_logFile, '\n\n---\n');
-    fprintf(MILS_logFile, '\n\n## ErrorFound!\n');    
-    fprintf(MILS_logFile, '\n|Error Identifier|*%s*|\n', ME.identifier);
+    fprintf(MILS_logFile, '\n\n### Error Thrown\n');    
+    fprintf(MILS_logFile, '\n|Error Identifier|%s|\n', ME.identifier);
     fprintf(MILS_logFile, '|:---:|:---:|\n');
-    fprintf(MILS_logFile, '|Error Message|*%s*|\n\n\n', ME.message);
+    fprintf(MILS_logFile, '|**Error Message**|%s|\n', ME.message);
+    temp = ME.stack.file; 
+    fprintf(MILS_logFile, '|**Error File**|%s|\n', temp);
+    temp = ME.stack.line;
+    fprintf(MILS_logFile, '|**Line Number**|%d|\n', temp);
     
     sim_log.dt = duration(datetime() - sim_log.T1, "Format","mm:ss.SS");
     save(sim_log.path + "\error_vars.mat");
-    fprintf(MILS_logFile, '## Saved workspace variables for debugging!\n');
+    fprintf(MILS_logFile, '### Saved workspace variables for debugging\n');
     fprintf(MILS_logFile, '* **Saved at**: %s\n', sim_log.path + "\error_vars.mat");
     fprintf(MILS_logFile, '\n---\n');
+    if sim_log.MILS.sm_data.preprocessing == 1
+        sim_log.dt = sim_log.dt + sim_log.PP_LIS_dt + sim_log.PP_TM_dt;
+    end
     fprintf(MILS_logFile,'\n**Total Time Taken:** %s\n', sim_log.dt);
 
     % Close log file
@@ -552,6 +564,10 @@ disp('Done: Model-in-Loop Simulation');
 sim_log.dt = duration(datetime() - sim_log.T1, "Format","mm:ss.SS"); % Time taken to excute entire MILS simulation
 
 % Write log-entry
+fprintf(MILS_logFile, '\n---\n');
+if sim_log.MILS.sm_data.preprocessing == 1
+    sim_log.dt = sim_log.dt + sim_log.PP_LIS_dt + sim_log.PP_TM_dt;
+end
 fprintf(MILS_logFile,'\n**Total Time Taken:** %s\n', sim_log.dt);
 
 % Close log file
