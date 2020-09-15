@@ -4,7 +4,7 @@ function [es_output] = es_main(sis_output, sm_output, ES_const, algo)
 %% Code
     if algo == "Default Block"        
         % Check this!!
-        q = eul2quat([deg2rad(sis_output.attitude(1)),deg2rad(-sis_output.attitude(2)),deg2rad(-sis_output.attitude(3))],'ZYX');
+        q = eul2quat([deg2rad(-sis_output.attitude(1)),deg2rad(sis_output.attitude(2)),deg2rad(sis_output.attitude(3))],'ZYX')';
         temp = q(1);
         q(1) = q(2);
         q(2) = q(3);
