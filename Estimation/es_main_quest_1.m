@@ -13,15 +13,15 @@ v_a = ones(N, 1);
 %first column of st_op_bi are the feature extraction IDs and the first
 %column of st_op_ri are the corresponding SSP-ID of the matched stars. This
 %information is not used for during estimation.
-st_op_bi_reduced = op_bi(:,2:4);
-st_op_ri_reduced = op_ri(:,2:4);
+sm_op_bi_reduced = op_bi(:,2:4);
+sm_op_ri_reduced = op_ri(:,2:4);
 
 %input epsilon(measure accepted value of Lost function)
 epsilon = readmatrix('.\Estimation\Input\es_epsilon');
 
 %%algorithm Quest1
 %Common part for QuEST
-[m_B, v_z, lamnot] = es_quest_common(st_op_bi_reduced, st_op_ri_reduced , v_a);
+[m_B, v_z, lamnot] = es_quest_common(sm_op_bi_reduced, sm_op_ri_reduced , v_a);
 
 %finding largest eigenvalue
 lam = es_quest_newton(m_B, v_z, lamnot, epsilon);
@@ -32,7 +32,7 @@ q_bi = es_quest_1_final(m_B, v_z, lam);
 %if the value of the returned quaternion is [-1;-1;-1;-1] then quest has 
 %failed and we must use sequential rotation 
 if q_bi == [-1;-1;-1;-1]
-    q_bi = es_quest_1_seq_rot(st_op_bi_reduced, st_op_ri_reduced , v_a);
+    q_bi = es_quest_1_seq_rot(sm_op_bi_reduced, sm_op_ri_reduced , v_a);
 end
 
 %saving the quaternion in the input folder also for the case when the 
