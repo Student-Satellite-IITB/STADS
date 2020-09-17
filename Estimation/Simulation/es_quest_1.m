@@ -10,9 +10,11 @@ function q_bi = es_quest_1(sm_output,es_const)
 %% Code
 
 %extracting different variables form the star matching output
+%column of sm_ouput are the corresponding SSP-ID of the matched stars. This
+%information is not used for during estimation.
 sm_N_Match = sm_output.N;
-sm_op_bi   = table2array(sm_output.op_bi);
-sm_op_ri   = table2array(sm_output.op_ri);
+sm_op_bi_reduced = [sm_output.op_bi.X,sm_output.op_bi.Y,sm_output.op_bi.Z];
+sm_op_ri_reduced = [sm_output.op_ri.X,sm_output.op_ri.Y,sm_output.op_ri.Z];
 
 
 %weights(currently taken each as 1)
@@ -20,12 +22,6 @@ sm_op_ri   = table2array(sm_output.op_ri);
 %bi and ri
 v_a = ones(sm_N_Match, 1);
 
-%%removing the first column in st_op_bi and st_op_ri
-%first column of st_op_bi are the feature extraction IDs and the first
-%column of st_op_ri are the corresponding SSP-ID of the matched stars. This
-%information is not used for during estimation.
-sm_op_bi_reduced = sm_op_bi(:,2:4);
-sm_op_ri_reduced = sm_op_ri(:,2:4);
 
 %input epsilon(measure accepted value of Lost function)and mimimum accepted
 %value of check_value for sequential rotation
