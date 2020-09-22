@@ -13,16 +13,16 @@ v_a = ones(N, 1);
 %first column of st_op_bi are the feature extraction IDs and the first
 %column of st_op_ri are the corresponding SSP-ID of the matched stars. This
 %information is not used for during estimation.
-st_op_bi_reduced = op_bi(:,2:4);
-st_op_ri_reduced = op_ri(:,2:4);
+sm_op_bi_reduced = op_bi(:,2:4);
+sm_op_ri_reduced = op_ri(:,2:4);
 
 %%algorithm q-Davenport
-q_bi = es_qdp(st_op_bi_reduced, st_op_ri_reduced , v_a);
+q_bi = es_qdp(sm_op_bi_reduced, sm_op_ri_reduced , v_a);
 
 %if the value of the returned quaternion is [-1;-1;-1;-1] then quest has 
 %failed and we must use sequential rotation 
 if q_bi == [-1;-1;-1;-1]
-    q_bi = es_qdp_seq_rot(st_op_bi_reduced, st_op_ri_reduced , v_a);
+    q_bi = es_qdp_seq_rot(sm_op_bi_reduced, sm_op_ri_reduced , v_a);
 end
 
 %saving the quaternion in the input folder also for the case when the 
