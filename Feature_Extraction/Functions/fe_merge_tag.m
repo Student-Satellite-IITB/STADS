@@ -10,14 +10,18 @@ input consisting of
 6. Count of number of final tags
 %}
 
-function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags, fe_const)
+function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags,FE_const)
     
-    % load('constants_feature_extraction_2.mat', "LENGTH", "BREADTH", "STAR_MIN_PIXEL", "STAR_MAX_PIXEL");    %loading constants
-    LENGTH = fe_const.LENGTH;
-    BREADTH = fe_const.BREADTH;
-    STAR_MIN_PIXEL = fe_const.STAR_MIN_PIXEL;
-    STAR_MAX_PIXEL = fe_const.STAR_MAX_PIXEL;
+     % load('constants_feature_extraction_2.mat', "MIN_PIXELS", "MAX_PIXELS", "LENGTH", "BREADTH");    %loading constants
+    MIN_PIXELS = FE_const.MIN_PIXELS;
+    MAX_PIXELS = FE_const.MAX_PIXELS;
+    STAR_MIN_PIXEL=FE_const.STAR_MIN_PIXEL;
+    STAR_MAX_PIXEL=FE_const.STAR_MAX_PIXEL;
+    LENGTH = FE_const.LENGTH;
+    BREADTH = FE_const.BREADTH;
     %correcting values
+    num_tags = num_tags - 1;
+    num_final_tags = num_final_tags - 1;%correcting values
     num_tags = num_tags - 1;
     num_final_tags = num_final_tags - 1;
     
@@ -48,8 +52,9 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
                 continue;   %skip this iteration of loop
             end
             %incrementing number of stars and single tagged stars by 1
-            num_single_tag_stars = num_single_tag_stars + 1;
-            num_stars = num_stars + 1;
+            num_single_tag_stars = num_single_tag_stars + 1
+            num_stars = num_stars + 1
+            disp(num_final_tags)
             %updating values of centroid
             arr_star_coordinates(num_final_tags + num_single_tag_stars, 1) = (arr_sum_x(i_centroids_single)/arr_weights(i_centroids_single) - 1) - (LENGTH/2 + 0.5);
             arr_star_coordinates(num_final_tags + num_single_tag_stars, 2) = -1*((arr_sum_y(i_centroids_single)/arr_weights(i_centroids_single) - 1) - (BREADTH/2 + 0.5));

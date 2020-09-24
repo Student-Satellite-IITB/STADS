@@ -1,11 +1,10 @@
-function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, final_tag_num] = fe_tag_2(arr_in_img, fe_const)
+function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, final_tag_num] = fe_tag_2(arr_in_img, FE_const)
     
-
-    % load('constants_feature_extraction_2.mat', "NUM_FINAL_TAGS", "NUM_TAGS_PER_REGION", "NUM_REGIONS", "THRESHOLD");    % Loading constants
-    NUM_FINAL_TAGS = fe_const.NUM_FINAL_TAGS;
-    NUM_TAGS_PER_REGION = fe_const.NUM_TAGS_PER_REGION;
-    NUM_REGIONS = fe_const.NUM_REGIONS;
-    THRESHOLD = fe_const.THRESHOLD;
+% load('constants_feature_extraction_2.mat', "THRESHOLD", "NUM_FINAL_TAGS", "NUM_TAGS_PER_REGION", "NUM_REGIONS");    % Loading constants
+    THRESHOLD = FE_const.THRESHOLD;
+    NUM_FINAL_TAGS = FE_const.NUM_FINAL_TAGS;
+    NUM_TAGS_PER_REGION = FE_const.NUM_TAGS_PER_REGION;
+    NUM_REGIONS = FE_const.NUM_REGIONS;
     [rows,columns] = size(arr_in_img);
     
     % setting the "output" array with two layers, one for the tag, one for the oriiginal image, padding it to the left, right and top
@@ -153,6 +152,7 @@ function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, fina
                                             arr_final_tags(final_tag_num, 2:3) = [tag_above, tag_left];
                                             arr_sums(tag_above, 5) = final_tag_num;
                                             arr_sums(tag_left, 5) = final_tag_num;
+                                            
                                             final_tag_num = final_tag_num+1;
                                         end
                                     end
@@ -209,4 +209,6 @@ function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, fina
     arr_sums_y  = arr_sums(:, 2);
     arr_weights = arr_sums(:, 3);
     arr_num = arr_sums(:, 4);
+    
+    disp("final tag num="+final_tag_num);
 end
