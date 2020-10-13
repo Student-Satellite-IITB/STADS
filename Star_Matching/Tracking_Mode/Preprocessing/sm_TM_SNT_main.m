@@ -6,10 +6,10 @@
 %% Read Star Catalogues
 
 % Read - Guide Star Catalogue
-sm_GD_SC = readmatrix('./Star_Matching/Star_Matching_Catalogues/Catalogues/st_Guide_Star_Catalogue.csv');
+sm_GD_SC = readmatrix('./Star_Matching/Star_Matching_Catalogues/Catalogues/sm_Guide_Star_Catalogue.csv');
 
 % Read - Preprocessed Star Catalogue (which contains the star pairs)
-sm_PP_SC = readmatrix('./Star_Matching/Star_Matching_Catalogues/Catalogues/st_Preprocessed_Star_Catalogue.csv');
+sm_PP_SC = readmatrix('./Star_Matching/Star_Matching_Catalogues/Catalogues/sm_Preprocessed_Star_Catalogue.csv');
 
 
 %% Construct the Star Neighbourhood Table 
