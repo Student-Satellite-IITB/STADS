@@ -8,9 +8,11 @@
 * **Operator**: K T Prajwal Prathiksh
 * **Operator ID**: KTPP
 * **Date**: 24/10/2020
-* **Time**: 20:34:43.097
+* **Time**: 21:13:01.714
 * **Computer**: HOPE
+* **Operating System**: Windows
 * **User**: prajw
+
 
 ### Model-in-Loop Simulation - Details
 * **Feature Extraction - Algorithm**: Region Growth
@@ -23,10 +25,8 @@
 
 ### Preprocessing - Details
 
-|Mode|Status|Time_Taken - (mm:ss.SS)|
-|:---:|:---:|:---:|
-|LIS|Done|00:23.19|
-|TM|Done|00:00.00|
+* Lost-in-Space Mode - Preprocessing: Skipped
+* Tracking Mode - Preprocessing: Skipped
 
 ### Simulation - Details
 
@@ -48,5 +48,3 @@
 * **Saved at**: E:\IIT Bombay - Miscellaneous\Satlab\STADS\MILS\Simulation_1\error_vars.mat
 
 ---
-
-**Total Time Taken:** 00:23.47
