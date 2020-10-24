@@ -7,16 +7,16 @@
 ### Simulation - Details
 * **Operator**: K T Prajwal Prathiksh
 * **Operator ID**: KTPP
-* **Date**: 22/10/2020
-* **Time**: 15:48:50.170
+* **Date**: 24/10/2020
+* **Time**: 20:34:43.097
 * **Computer**: HOPE
 * **User**: prajw
 
 ### Model-in-Loop Simulation - Details
 * **Feature Extraction - Algorithm**: Region Growth
 * **Star-Matching - (Lost-in-Space Mode) Algorithm**: 4-Star Matching
-* **Star-Matching - (Tracking Mode) Algorithm**: Unnamed-1
-* **Star-Matching - Lost-in-Space Redundancy**: Enabled
+* **Star-Matching - (Tracking Mode) Algorithm**: NONE
+* **Star-Matching - Lost-in-Space Redundancy**: Disabled
 * **Estimation - Algorithm**: QUEST2
 
 ---
@@ -25,7 +25,7 @@
 
 |Mode|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|LIS|Done|00:21.88|
+|LIS|Done|00:23.19|
 |TM|Done|00:00.00|
 
 ### Simulation - Details
@@ -49,4 +49,4 @@
 
 ---
 
-**Total Time Taken:** 00:22.32
+**Total Time Taken:** 00:23.47
