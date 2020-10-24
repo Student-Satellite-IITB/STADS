@@ -8,7 +8,7 @@
 * **Operator**: K T Prajwal Prathiksh
 * **Operator ID**: KTPP
 * **Date**: 24/10/2020
-* **Time**: 21:11:03.391
+* **Time**: 21:37:25.861
 * **Computer**: HOPE
 * **Operating System**: Windows
 * **User**: prajw
@@ -23,23 +23,23 @@
 
 |Status|Time_Taken - (mm:ss.SS)
 |:---:|:---:|
-|Done|00:01.00|
+|Done|00:01.17|
 
 ### Simulation - Details
 
 |Iter|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|1|Done|00:01.15|
-|2|Done|00:01.24|
-|3|Done|00:01.41|
-|4|Done|00:01.29|
-|5|Done|00:01.42|
-|6|Done|00:00.98|
-|7|Done|00:00.94|
-|8|Done|00:01.45|
-|9|Done|00:01.60|
-|10|Done|00:01.81|
+|1|Done|00:01.21|
+|2|Done|00:01.15|
+|3|Done|00:01.47|
+|4|Done|00:01.37|
+|5|Done|00:01.46|
+|6|Done|00:01.03|
+|7|Done|00:00.88|
+|8|Done|00:01.53|
+|9|Done|00:01.64|
+|10|Done|00:01.93|
 
 ---
 
-**Total Time Taken:** 00:15.62
+**Total Time Taken:** 00:16.47

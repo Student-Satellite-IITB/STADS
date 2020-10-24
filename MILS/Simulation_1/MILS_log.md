@@ -8,7 +8,7 @@
 * **Operator**: K T Prajwal Prathiksh
 * **Operator ID**: KTPP
 * **Date**: 24/10/2020
-* **Time**: 21:13:01.714
+* **Time**: 21:37:56.488
 * **Computer**: HOPE
 * **Operating System**: Windows
 * **User**: prajw
@@ -25,8 +25,10 @@
 
 ### Preprocessing - Details
 
-* Lost-in-Space Mode - Preprocessing: Skipped
-* Tracking Mode - Preprocessing: Skipped
+|Mode|Status|Time_Taken - (mm:ss.SS)|
+|:---:|:---:|:---:|
+|LIS|Done|00:30.10|
+|TM|Done|00:00.00|
 
 ### Simulation - Details
 
@@ -48,3 +50,5 @@
 * **Saved at**: E:\IIT Bombay - Miscellaneous\Satlab\STADS\MILS\Simulation_1\error_vars.mat
 
 ---
+
+**Total Time Taken:** 00:30.42

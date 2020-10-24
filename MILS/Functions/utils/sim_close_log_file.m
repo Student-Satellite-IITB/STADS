@@ -31,17 +31,15 @@ function sim_close_log_file(ME, sim_log, log_fname, mode)
     % structure
     if isfield(sim_log,'T1')  
         sim_log.dt = duration(datetime() - sim_log.T1, "Format","mm:ss.SS");
-        if sim_log.SIS.preprocessing == 1
-            if mode == "SIS" 
-                sim_log.dt = sim_log.dt + sim_log.PP_dt;
-            elseif mode == "MILS"
-                sim_log.dt = sim_log.dt + sim_log.PP_LIS_dt + sim_log.PP_TM_dt;
-            end
+        
+        if mode == "SIS" && sim_log.SIS.preprocessing == 1 
+            sim_log.dt = sim_log.dt + sim_log.PP_dt; 
+        elseif mode == "MILS" && sim_log.MILS.sm_data.preprocessing == 1
+            sim_log.dt = sim_log.dt + sim_log.PP_LIS_dt + sim_log.PP_TM_dt;
         end
-        fprintf(log_fname,'\n**Total Time Taken:** %s\n', sim_log.dt);
-    end
-    
-    fclose(log_fname); % Close log file
 
+        fprintf(log_fname,'\n**Total Time Taken:** %s\n', sim_log.dt);
+    end    
+    fclose(log_fname); % Close log file
     rethrow(ME); % Rethrow error
 end
