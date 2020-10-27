@@ -7,9 +7,10 @@
 ### Simulation - Details
 * **Operator**: K T Prajwal Prathiksh
 * **Operator ID**: KTPP
-* **Date**: 13/09/2020
-* **Time**: 02:50:16.880
-* **Computer**: DESKTOP-644IPSL
+* **Date**: 23/10/2020
+* **Time**: 00:33:48.741
+* **Computer**: HOPE
+* **Operating System**: Windows
 * **User**: prajw
 
 ### Star Image Simulation - Details
@@ -22,23 +23,23 @@
 
 |Status|Time_Taken - (mm:ss.SS)
 |:---:|:---:|
-|Done|00:00.72|
+|Done|00:01.06|
 
 ### Simulation - Details
 
 |Iter|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|1|Done|00:01.41|
-|2|Done|00:01.25|
-|3|Done|00:01.49|
-|4|Done|00:01.46|
-|5|Done|00:01.56|
-|6|Done|00:01.08|
-|7|Done|00:00.99|
-|8|Done|00:01.66|
-|9|Done|00:01.81|
-|10|Done|00:01.99|
+|1|Done|00:01.13|
+|2|Done|00:01.08|
+|3|Done|00:01.39|
+|4|Done|00:01.30|
+|5|Done|00:01.36|
+|6|Done|00:00.91|
+|7|Done|00:00.86|
+|8|Done|00:01.57|
+|9|Done|00:01.54|
+|10|Done|00:01.91|
 
 ---
 
-**Total Time Taken:** 00:17.43
+**Total Time Taken:** 00:15.52

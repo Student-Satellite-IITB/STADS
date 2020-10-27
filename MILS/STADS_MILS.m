@@ -1,6 +1,6 @@
 %% *IIT Bomaby, Student Satellite Program*
 %% *Star Tracker-based Attitude Determination System (STADS)*
-% %% *Model-in-Loop Simulation Framework*
+%% *Model-in-Loop Simulation Framework*
 %% *Version - 1.0*
 
  
@@ -12,21 +12,16 @@ clc
 sim_log.operator = "K T Prajwal Prathiksh"; % Enter Simulation Operator's Full Name
 sim_log.operator_ID = "KTPP"; % Enter Operator ID
 sim_log.sim_ID = "10"; % Enter Simulation Number
-sim_log.path = "C:\Users\prajw\OneDrive\Desktop\Simulation_10"; % Enter Path of Simulation Folder
+sim_log.path = "E:\IIT Bombay - Miscellaneous\Satlab\STADS\MILS\Simulation_1"; % Enter Path of Simulation Folder
 
 % Automated Entry
-sim_log.date = datestr(now, 'dd/mm/yyyy'); % Date of simulation
-sim_log.time = datestr(now, 'HH:MM:SS.FFF'); % Time of simulation
-sim_log.computerName = getenv('computername'); % Computer on which simulation is being run
-sim_log.userName= getenv('username'); % User for the simulation
-sim_log.output_path = sim_log.path + '\Output'; % Output path where the simulation results will be dumped
-sim_log.PP_output_path = sim_log.path + '\Preprocessing'; % Output path where the preprocessed results will be dumped
+sim_log = sim_log_additional_details(sim_log);
 
  
 %% Star Image Simulation (SIS)
 % Model
 %% 
-% # *Version == NONE *$\rightarrow$ Will not run SIS
+% # *Version == NONE* $\rightarrow$ Will not run SIS
 % # If SIS is run, the Simulation Details will have to be re-loaded for MILS 
 % to run
 
@@ -35,7 +30,7 @@ if ~exist('sim_log', 'var')
 end
 
 sim_log.SIS.preprocessing = true; % Enable pre-processing of SIS
-sim_log.SIS.version = "NONE"; % Version of SIS
+sim_log.SIS.version = "Default Block"; % Version of SIS
 
  
 % *Load Inputs & Constants*
@@ -48,25 +43,15 @@ else
     addpath(genpath(sim_log.path));
     
     %% Load Inputs & Constants File
+    sim_check_required_files(sim_log, "SIS"); % Check whether required files exit
     
-    % Check whether the inputs.csv, simulation_constants.m, simulation_constants.mat file are in
-    % the simulation folder
-    if isfile(sim_log.path + "\inputs.csv") == 0
-        error('FileNotFoundError: inputs.csv file - missing!');
-    elseif isfile(sim_log.path + "\simulation_constants.m") == 0
-        error('FileNotFoundError: simulation_constants.m file -  missing!');
-    elseif isfile(sim_log.path + "\simulation_constants.mat") == 0
-        error('FileNotFoundError: simulation_constants.mat file - missing!');
-    elseif isfolder(sim_log.PP_output_path) == 0 && sim_log.SIS.preprocessing == 0
-        error('PreprocessingError: Preprocessing needs to be enabled!')
-    else
-        % Load constants.mat file, and input.csv file
-        load(sim_log.path + "\simulation_constants.mat");
-        INPUT = readtable(sim_log.path + "\inputs.csv");   
-        
-        % Total number of iterations to be performed in the simulation
-        sim_log.N_Iter = INPUT.Sl_No(end); 
-    end
+    % Load constants.mat file, and input.csv file
+    load( fullfile(sim_log.path, "simulation_constants.mat") );
+    INPUT = readtable( fullfile(sim_log.path, "inputs.csv") );   
+    
+    % Total number of iterations to be performed in the simulation
+    sim_log.N_Iter = INPUT.Sl_No(end); 
+    
     disp("Done: Load Inputs & Simulation Constants");
     
 end
@@ -93,8 +78,7 @@ else
     
     
     %% Make Preprocessing Folder
-    if sim_log.SIS.preprocessing == 1 && isfolder(sim_log.PP_output_path) == 1
-        
+    if sim_log.SIS.preprocessing == 1 && isfolder(sim_log.PP_output_path) == 1    
         % Remove ".\Output" from the simulation folder
         [~,~] = rmdir(sim_log.PP_output_path, 's'); 
     end 
@@ -104,8 +88,7 @@ else
     end  
     
     %% Create SIS_log.txt file
-
-    SIS_logFile = fopen(sim_log.path + "\SIS_log.md",'w');
+    SIS_logFile = fopen(fullfile(sim_log.path, "SIS_log.md"),'w');
     fprintf(SIS_logFile, '[<img src="https://www.aero.iitb.ac.in/satlab/images/IITBSSP2019.png" width="125"/>](image.png)\n\n');
     fprintf(SIS_logFile,'# Star Image Simulation - Log File\n\n');
     fprintf(SIS_logFile,'### Simulation ID: %s\n\n', sim_log.sim_ID);
@@ -117,6 +100,7 @@ else
     fprintf(SIS_logFile, '* **Date**: %s\n', sim_log.date);
     fprintf(SIS_logFile, '* **Time**: %s\n', sim_log.time);
     fprintf(SIS_logFile, '* **Computer**: %s\n', sim_log.computerName);
+    fprintf(SIS_logFile, '* **Operating System**: %s\n', sim_log.os);
     fprintf(SIS_logFile, '* **User**: %s\n\n', sim_log.userName);
     
     % Star Image Simulation Details
@@ -138,7 +122,7 @@ end
 if sim_log.SIS.version == "NONE"
     disp("Star Image Simulation - Skipped")
 else
-    sim_log.SIS.PP_outputFileName = sim_log.PP_output_path + '\SIS_preprocessed_data.mat';
+    sim_log.SIS.PP_outputFileName = fullfile(sim_log.PP_output_path, "SIS_preprocessed_data.mat");
     
     if sim_log.SIS.preprocessing == 0
         fprintf(SIS_logFile,'### Preprocessing - Details\n\n');
@@ -206,7 +190,7 @@ else
         
         % Output filename in which the output data of the current iteration
         % is stored
-        iter_info.outputFileName = sim_log.output_path + "\SIS_iter_" + string(iter_info.i) + ".mat";
+        iter_info.outputFileName = fullfile(sim_log.output_path, "SIS_iter_" + string(iter_info.i) + ".mat");
         
         % Time taken to excute current iteration
         iter_info.dt = duration(datetime() - iter_info.t1, "Format","mm:ss.SS");  
@@ -235,7 +219,7 @@ else
     
     % Save SIS_log.mat
     SIS_log = sim_log;
-    save(sim_log.output_path + "\SIS_log.mat", 'SIS_log');
+    save(fullfile(sim_log.output_path, "SIS_log.mat"), 'SIS_log');
     
     % Clear redundant variables
     toc
@@ -249,8 +233,8 @@ end
 if ~exist('sim_log', 'var')
     error("SimulationError: Simulation Details Not Loaded! Re-load the details!")
 end
-sim_log.MILS.fe_data.algo = "Tagging"; % Feature Extraction algorithm
-sim_log.MILS.sm_data.preprocessing = false; % Enable pre-processing of SIS
+sim_log.MILS.fe_data.algo = "Region Growth"; % Feature Extraction algorithm
+sim_log.MILS.sm_data.preprocessing = true; % Enable pre-processing of SIS
 sim_log.MILS.sm_data.LIS_algo = "4-Star Matching"; % Star-Matching (Lost-in-Space Mode) algorithm 
 sim_log.MILS.sm_data.TM_algo =  "Unnamed-1"; % Star-Matching (Tracking Mode) algorithm 
 sim_log.MILS.sm_data.LIS_redundancy = true; % Star-Matching (Lost-in-Space redundancy)
