@@ -22,4 +22,3 @@ function sim_log = sim_log_additional_details(sim_log)
     sim_log.PP_output_path = fullfile(sim_log.path, "Preprocessing"); % Output path where the preprocessed results will be dumped
 
 end
-
