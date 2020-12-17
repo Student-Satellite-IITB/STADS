@@ -5,20 +5,20 @@
 ### Simulation ID: 10
 
 ### Simulation - Details
-* **Operator**: K T Prajwal Prathiksh
-* **Operator ID**: KTPP
-* **Date**: 24/10/2020
-* **Time**: 21:37:56.488
-* **Computer**: HOPE
+* **Operator**: Shashank Singh
+* **Operator ID**: SS
+* **Date**: 18/12/2020
+* **Time**: 00:29:32.257
+* **Computer**: SHASHANK
 * **Operating System**: Windows
-* **User**: prajw
+* **User**: Shashank
 
 
 ### Model-in-Loop Simulation - Details
 * **Feature Extraction - Algorithm**: Region Growth
 * **Star-Matching - (Lost-in-Space Mode) Algorithm**: 4-Star Matching
 * **Star-Matching - (Tracking Mode) Algorithm**: NONE
-* **Star-Matching - Lost-in-Space Redundancy**: Disabled
+* **Star-Matching - Lost-in-Space Redundancy**: Enabled
 * **Estimation - Algorithm**: QUEST2
 
 ---
@@ -27,7 +27,7 @@
 
 |Mode|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|LIS|Done|00:30.10|
+|LIS|Done|00:17.67|
 |TM|Done|00:00.00|
 
 ### Simulation - Details
@@ -44,11 +44,11 @@
 |Error Identifier|MATLAB:structRefFromNonStruct|
 |:---:|:---:|
 |**Error Message**|Dot indexing is not supported for variables of this type.|
-|**Error File**|E:\IIT Bombay - Miscellaneous\Satlab\STADS\Feature_Extraction\Functions\fe_region_growth.m|
+|**Error File**|C:\Users\Shashank\Documents\GitHub\STADS\Feature_Extraction\Functions\fe_region_growth.m|
 |**Line Number**|6|
 ### Saved workspace variables for debugging
-* **Saved at**: E:\IIT Bombay - Miscellaneous\Satlab\STADS\MILS\Simulation_1\error_vars.mat
+* **Saved at**: C:\Users\Shashank\Documents\GitHub\STADS\MILS\Simulation_1\error_vars.mat
 
 ---
 
-**Total Time Taken:** 00:30.42
+**Total Time Taken:** 00:17.94
