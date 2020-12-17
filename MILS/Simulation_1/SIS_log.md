@@ -5,13 +5,13 @@
 ### Simulation ID: 10
 
 ### Simulation - Details
-* **Operator**: K T Prajwal Prathiksh
-* **Operator ID**: KTPP
-* **Date**: 24/10/2020
-* **Time**: 21:37:25.861
-* **Computer**: HOPE
+* **Operator**: Shashank Singh
+* **Operator ID**: SS
+* **Date**: 17/12/2020
+* **Time**: 22:38:51.944
+* **Computer**: SHASHANK
 * **Operating System**: Windows
-* **User**: prajw
+* **User**: Shashank
 
 ### Star Image Simulation - Details
 * **Version**: Default Block
@@ -23,23 +23,23 @@
 
 |Status|Time_Taken - (mm:ss.SS)
 |:---:|:---:|
-|Done|00:01.17|
+|Done|00:00.62|
 
 ### Simulation - Details
 
 |Iter|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|1|Done|00:01.21|
-|2|Done|00:01.15|
-|3|Done|00:01.47|
-|4|Done|00:01.37|
-|5|Done|00:01.46|
-|6|Done|00:01.03|
-|7|Done|00:00.88|
-|8|Done|00:01.53|
-|9|Done|00:01.64|
-|10|Done|00:01.93|
+|1|Done|00:01.12|
+|2|Done|00:01.05|
+|3|Done|00:01.24|
+|4|Done|00:01.14|
+|5|Done|00:01.27|
+|6|Done|00:00.91|
+|7|Done|00:00.72|
+|8|Done|00:01.22|
+|9|Done|00:01.38|
+|10|Done|00:01.63|
 
 ---
 
-**Total Time Taken:** 00:16.47
+**Total Time Taken:** 00:13.33
