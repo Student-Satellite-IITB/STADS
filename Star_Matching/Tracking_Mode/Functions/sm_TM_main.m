@@ -3,14 +3,20 @@
 function [sm_output] = sm_TM_main(fe_output, sm_output_curr, sm_output_prev, sm_consts_TM)
  
 % check if there are at least 2 common stars
-[sm_TM_CP_prevmat, sm_TM_CP_currmat, is_two] = sm_TM_main_comm(sm_output_curr, sm_output_prev);
+n_comm = find(sm_output_curr(:,3)==sm_output_prev(:,3));
 
-if (is_two == false)
+% keep only the common entries (without star IDs)
+sm_TM_CP_prevmat = sm_output_prev(n_comm,:); 
+sm_TM_CP_currmat = sm_output_curr(n_comm,:); 
+
+if (length(n_comm) < 2)
     return; % terminates the TMA if less than 2 common stars
 else
-    sm_TM_CP_predmat = sm_TM_CP_main(sm_TM_CP_prevmat, sm_TM_CP_currmat, sm_consts_TM.sm_TM_CP_F);
+    sm_TM_CP_predmat = sm_TM_CP_main(sm_TM_CP_prevmat(:,1:2), sm_TM_CP_currmat(:,1:2), sm_consts_TM.sm_TM_CP_F);
 end
-    
+
+sm_TM_CP_predmat = [sm_TM_CP_predmat sm_TM_CP_currmat(:,3)]; % appending star IDs with the predicted centroids
+
 % remove predicted centroids which lie outside the sensor FOV
 for i=1:size(sm_TM_CP_predmat,1)
     if (abs(sm_TM_CP_predmat(i,1))>sm_consts_TM.sm_TM_FOV_l) || (abs(sm_TM_CP_predmat(i,2))>sm_consts_TM.sm_TM_FOV_b)
@@ -26,7 +32,13 @@ end
 is_dx = true; % if True : predicted and true centroids are sorted according to their x-coordinates
 sort_before_match = true; % if True : Implement sorting before matching optimisation
 
-sm_TM_RBM_matchmat = sm_TM_RBM_main(sm_TM_CP_predmat, fe_output, sm_consts_TM.sm_TM_RBM_R, is_dx, sort_before_match);
+sm_TM_RBM_matchmat = sm_TM_RBM_main(sm_TM_CP_predmat(:,1:2), fe_output, sm_consts_TM.sm_TM_RBM_R, is_dx, sort_before_match);
+
+% append the star-ids of the matched predicted centroids
+for i = 1:size(sm_TM_RBM_matchmat,1)
+    star_id = sm_TM_CP_predmat(ismember(sm_TM_CP_predmat(:,1:2), sm_TM_RBM_matchmat(i,1:2),'rows'),3);
+    sm_TM_RBM_matchmat = [sm_TM_RBM_matchmat star_id];
+end
 
 % Now, if number of matched centroids is greater than equal to N_th, then TMA is ended. Otherwise SNT is used to find more stars.
 
@@ -34,9 +46,8 @@ if (size(sm_TM_RBM_matchmat,1) > sm_consts_TM.sm_TM_Nth)
     sm_output = sm_TM_RBM_matchmat(:,5); % the fifth column contains the star IDs of the final matched centroids
     return;
 else
-    if (size(sm_TM_RBM_matchmat,1)>size(sm_TM_CP_predmat,1)) % checks if there are any new stars in the FOV which were not included in the predicted centroids
-        sm_TM_SNT_output = sm_TM_SNT_match(sm_TM_RBM_matchmat, sm_TM_CP_predmat); % calls the SNT match function to identify the unmatched centroids using the matched stars
-        
+    if (size(fe_output,1)>size(sm_TM_CP_predmat,1)) % checks if there are extra stars in the feature extraction output which were not included in the predicted centroids
+        sm_TM_SNT_output = sm_TM_SNT_match(sm_TM_RBM_matchmat, fe_output); % calls the SNT match function to identify the unmatched centroids using the matched stars   
     else
         return; % no new stars, terminate TMA and perform LISA in the current frame
     end
