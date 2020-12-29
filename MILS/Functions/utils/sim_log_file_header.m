@@ -23,7 +23,8 @@ function sim_log_file_header(sim_log, log_fname, mode)
     fprintf(log_fname, '* **Time**: %s\n', sim_log.time);
     fprintf(log_fname, '* **Computer**: %s\n', sim_log.computerName);
     fprintf(log_fname, '* **Operating System**: %s\n', sim_log.os);
-    fprintf(log_fname, '* **User**: %s\n\n', sim_log.userName);
+    fprintf(log_fname, '* **User**: %s\n', sim_log.userName);
+    fprintf(log_fname, '* **SIS Folder Path**: %s\n\n',sim_log.SIS_path);
 
     %% Write Mode-specifc Model Info
     
