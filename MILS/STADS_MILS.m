@@ -19,24 +19,24 @@ sim_log = sim_log_additional_details(sim_log);
 
 %% Copying the Star Image Simulation Data
 % checking if the SIS data is stored in the SIS folder
-if ~isfile(strcat(sim_log.SIS_path,"\SIS_log.md"))
-    error("SimulationError: SIS_log.md doesnt exist in the SIS Folder")
+if ~isfile(fullfile(sim_log.SIS_path,"SIS_log.md"))
+    error("SimulationError: SIS_log.md does not exist in the SIS Folder")
 else
     source = fullfile(sim_log.SIS_path,"SIS_log.md");
     destination = fullfile(sim_log.path,"SIS_log.md");
     copyfile(source,destination);
 end
 
-if ~isfolder(strcat(sim_log.SIS_path,"\Output"))
-    error("SimulationError: Output doesnt exist in the SIS Folder")
+if ~isfolder(fullfile(sim_log.SIS_path,"Output"))
+    error("SimulationError: Output does not exist in the SIS Folder")
 else
     source = fullfile(sim_log.SIS_path,"Output");
     destination = fullfile(sim_log.path,"Output");
     copyfile(source,destination);
 end
 
-if ~isfolder(strcat(sim_log.SIS_path,"\Preprocessing"))
-    error("SimulationError: Preprocessing doesnt exist in the SIS Folder")
+if ~isfolder(fullfile(sim_log.SIS_path,"Preprocessing"))
+    error("SimulationError: Preprocessing does not exist in the SIS Folder")
 else
     source = fullfile(sim_log.SIS_path,"Preprocessing");
     destination = fullfile(sim_log.path,"Preprocessing");
