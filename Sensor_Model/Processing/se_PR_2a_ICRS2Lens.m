@@ -64,7 +64,7 @@ function se_T = se_PR_2a_ICRS2Lens(se_T, se_bo, se_in)
     if (se_in.Debug_Run == 1); disp('ICRS to Lens: 3rd Euler Rotation Performed'); end
 
     % Display Sucess
-    fprintf('ICRS to Lens: Success \n \n');
+    if (se_in.Debug_Run == 1); fprintf('ICRS to Lens: Success \n \n'); end
 end
 
     

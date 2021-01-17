@@ -57,7 +57,7 @@ function se_T = se_PR_3_Lens2Sensor(se_T, se_op, se_in)
     
     
     % Display Sucess
-    fprintf('Lens to Sensor: Success \n \n');
+    if (se_in.Debug_Run == 1); fprintf('Lens to Sensor: Success \n \n'); end
 end
 
 function y = Lens2Sensor_y(r3, Adjusted_Focal_Length)

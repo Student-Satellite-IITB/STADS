@@ -63,7 +63,7 @@ function se_T = se_PR_1_Trim2FOV(se_T, se_bo, se_op, se_in)
 
     
     % Display Sucess
-    fprintf('Trim to FOV: Success \n \n');
+    if (se_in.Debug_Run == 1); fprintf('Trim to FOV: Success \n \n'); end
 end
 
 function ang_dist = se_ang_dist(se_r0, r0)

@@ -49,6 +49,6 @@ function se_T = se_PR_4_Trim2Sensor(se_T, se_op, se_in)
     if (se_in.Debug_Run == 1); disp('Trim to Sensor: Table Modified'); end
     
     % Display Sucess
-    fprintf('Trim to Sensor: Success \n \n');
+    if (se_in.Debug_Run == 1); fprintf('Trim to Sensor: Success \n \n'); end
 end
 
