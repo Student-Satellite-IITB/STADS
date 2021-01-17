@@ -1,6 +1,6 @@
 % There will be another script which can call both LISA or TMA depending on the number of iterations already run and 
 % the number of matched stars (greater than N_th for two consecutive iterations
-function [sm_output] = sm_TM_main(fe_output, sm_output_curr, sm_output_prev, sm_consts_TM)
+function [sm_output] = sm_TM_main(fe_output, sm_output_curr, sm_output_prev, sm_consts_TM, sm_TM_SNT)
  
 % check if there are at least 2 common stars
 n_comm = find(sm_output_curr(:,3)==sm_output_prev(:,3));
@@ -47,7 +47,7 @@ if (size(sm_TM_RBM_matchmat,1) > sm_consts_TM.sm_TM_Nth)
     return;
 else
     if (size(fe_output,1)>size(sm_TM_CP_predmat,1)) % checks if there are extra stars in the feature extraction output which were not included in the predicted centroids
-        sm_TM_SNT_output = sm_TM_SNT_match(sm_TM_RBM_matchmat, fe_output); % calls the SNT match function to identify the unmatched centroids using the matched stars   
+        sm_TM_SNT_output = sm_TM_SNT_match(sm_TM_RBM_matchmat, fe_output, sm_TM_SNT); % calls the SNT match function to identify the unmatched centroids using the matched stars   
     else
         return; % no new stars, terminate TMA and perform LISA in the current frame
     end
