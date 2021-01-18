@@ -1,6 +1,6 @@
 % There will be another script which can call both LISA or TMA depending on the number of iterations already run and 
 % the number of matched stars (greater than N_th for two consecutive iterations
-function [sm_output] = sm_TM_main(fe_output, sm_output_curr, sm_output_prev, sm_consts_TM, sm_TM_SNT)
+function [sm_output] = sm_TM_main(fe_output, sm_output_curr, sm_output_prev, sm_consts_TM, sm_TM_SNT, sm_catalogues)
  
 % check if there are at least 2 common stars
 n_comm = find(sm_output_curr(:,3)==sm_output_prev(:,3));
@@ -42,12 +42,20 @@ end
 
 % Now, if number of matched centroids is greater than equal to N_th, then TMA is ended. Otherwise SNT is used to find more stars.
 
-if (size(sm_TM_RBM_matchmat,1) > sm_consts_TM.sm_TM_Nth)
-    sm_output = sm_TM_RBM_matchmat(:,5); % the fifth column contains the star IDs of the final matched centroids
-    return;
-else
-    if (size(fe_output,1)>size(sm_TM_CP_predmat,1)) % checks if there are extra stars in the feature extraction output which were not included in the predicted centroids
-        sm_TM_SNT_output = sm_TM_SNT_match(sm_TM_RBM_matchmat, fe_output, sm_TM_SNT); % calls the SNT match function to identify the unmatched centroids using the matched stars   
+    if (size(sm_TM_RBM_matchmat,1) > sm_consts_TM.sm_TM_Nth)
+        for i=1:size(sm_TM_RBM_matchmat,1)
+            sm_output = [sm_output; sm_catalogues.sm_GD_SC(sm_TM_RBM_matchmat(i,5))]; % outputs the star unit vector of the star ids from the Guide catalogue
+        end
+        return;
+
+    elseif (size(fe_output,1)>size(sm_TM_CP_predmat,1)) % checks if there are extra stars in the feature extraction output which were not included in the predicted centroids
+        sm_TM_SNT_output = sm_TM_SNT_match (sm_TM_RBM_matchmat, fe_output, sm_TM_SNT, sm_catalogues.sm_GD_SC, sm_consts_TM.sm_TM_CP_F, sm_consts_TM.sm_TM_Nth); % calls the SNT match function to identify the unmatched centroids using the matched stars    
+        for i=1:size(sm_TM_RBM_matchmat,1)
+            sm_output = [sm_output; sm_catalogues.sm_GD_SC(sm_TM_RBM_matchmat(i,5))]; % outputs the star unit vector of the star ids from the Guide catalogue
+        end
+        for i=1:size(sm_TM_SNT_output,1)
+            sm_output = [sm_output; sm_catalogues.sm_GD_SC(sm_TM_SNT_output(i))]; % outputs the star unit vector of the star ids from the Guide catalogue
+        end
     else
         return; % no new stars, terminate TMA and perform LISA in the current frame
     end
