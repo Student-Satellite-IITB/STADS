@@ -24,7 +24,7 @@ function sim_check_required_files(sim_log, mode)
         elseif isfile( fullfile(sim_log.output_path, "SIS_log.mat") ) == 0
             error('FileNotFoundError: SIS_log.mat - missing!');
         elseif isfile( fullfile(sim_log.path, "SIS_log.md") ) == 0
-            error('FileNotFoundError: SIS.md file - missing!');
+            error('FileNotFoundError: SIS_log.md file - missing!');
         elseif isfile( fullfile(sim_log.path, "simulation_constants.mat") ) == 0
             error('FileNotFoundError: simulation_constants.mat file - missing!');
         elseif isfile( fullfile(sim_log.path, "inputs.csv") ) == 0
