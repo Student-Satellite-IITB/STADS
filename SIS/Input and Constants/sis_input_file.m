@@ -60,9 +60,12 @@ sis_input.lls.Gauss_Sigma =   (sis_input.lls.Pixel_Spread * sqrt(2)) / 3;
 sis_input.lls.C_1 = 3640 * 1.51e7 * 0.16 * (sis_input.lls.Exposure_Time/sis_input.gen.N_sub_im) * (pi * sis_input.lls.Lens.Diameter ^ 2 / 4) * sis_input.lls.MTF * sis_input.lls.Lens_Eff;
 sis_input.lls.C_2 = 100 ^ 0.2;
 
-%Calculating Backgrounf Noise
+%Calculating Background Noise
 % code
-sis_input.lls.BN = 0;
+syms lam
+f = 5e10 * (sis_input.lls.Exposure_Time/sis_input.gen.N_sub_im) * sis_input.lls.CMOS.Pixel_Size^2 * A * Tau(lam) * P(lam) ;
+sis_input.lls.BN = sym2poly(int(f,500,700));
+
 if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Lens, Light and Sensor Inputs Read'); end
 
 
@@ -87,7 +90,7 @@ if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Noise Inputs Read'); end
 % This section saves all the concerned structures SIS/Input and
 % Constants/sis_input.mat
 save('./SIS/Input and Constants', "sis_input");
-clearvars("sis_bo_mat","sis_general_mat", "se_inputs_mat", "sis_lls_mat", "sis_noice_mat");
+clearvars("sis_bo_mat","sis_general_mat", "se_inputs_mat", "sis_lls_mat", "sis_noice_mat","lam");
 if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Inputs Saved'); end
 fprintf('\n');
 

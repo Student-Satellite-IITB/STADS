@@ -1,5 +1,6 @@
 function sis_T = sis_light_main(sis_T,sis_bo, sis_input)
     
+    sis_bo = array2table(sis_bo, "VariableNames", ["RA", "Dec", "Roll", "sis_r0"]);
     % Add the broadcasted boresight input to the table
     sis_T = [sis_T repmat(sis_bo(1,4), size(sis_T.RA))];
 
