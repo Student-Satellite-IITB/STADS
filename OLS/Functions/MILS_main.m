@@ -1,6 +1,9 @@
 function sim_log = MILS_main(sim_log,ES_const,FE_const,SM_const,ProgBar, MILS_logFile)
 % This is the main function to run Model In-Loop Simulation
 
+% Load Star-Matching - Preprocessed Data
+load(sim_log.MILS.PP_LIS_outputFileName, 'sm_PP_LIS_output');
+load(sim_log.MILS.PP_TM_outputFileName, 'sm_PP_TM_output');
 
 tic
 sim_log.T1 = datetime(); % Time at which simulation starts

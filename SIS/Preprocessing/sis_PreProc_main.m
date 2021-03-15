@@ -27,7 +27,7 @@ if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Converted to Cartesian C
 
 % Save Star Catalogue - Save the preprocessed catalogue in sis_SKY2000.mat 
 % in Inputs Folder and a copy in the csv format for debugging (Temporary)
-save('./Sensor_Model/Preprocessed_Catalogue/sis_SKY2000.mat', 'sis_T');
+save('./SIS/Preprocessing/sis_SKY2000.mat', 'sis_T');
 if (sis_input.gen.Debug_Run == 1); writetable(sis_T, './Sensor_Model/Preprocessed_Catalogue/sis_SKY2000.csv'); end
 
 fprintf('Preprocessing: Success \n \n');

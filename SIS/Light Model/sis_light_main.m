@@ -1,12 +1,12 @@
 function sis_T = sis_light_main(sis_T,sis_bo, sis_input)
     
-    sis_bo = array2table(sis_bo, "VariableNames", ["RA", "Dec", "Roll", "sis_r0"]);
+    sis_bo = array2table(sis_bo, "VariableNames", ["RA", "Dec", "Roll", "sis_r0_1", "sis_r0_2", "sis_r0_3"]);
     % Add the broadcasted boresight input to the table
-    sis_T = [sis_T repmat(sis_bo(1,4), size(sis_T.RA))];
+    sis_T = [sis_T repmat(sis_bo(1,4:6), size(sis_T.RA))];
 
     % Add the Angular_Distance Column using the function sis_ang_dist
-    sis_T = [sis_T rowfun(@sis_ang_dist, sis_T, 'InputVariables', {'sis_r0' 'r0'}, 'OutputVariableName', 'Angular_Distance')];
-    sis_T = removevars(sis_T, {'sis_r0'});
+    sis_T = [sis_T rowfun(@sis_ang_dist, sis_T, 'InputVariables', {'sis_r0_1', 'sis_r0_2', 'sis_r0_3', 'r0'}, 'OutputVariableName', 'Angular_Distance')];
+    sis_T = removevars(sis_T, {'sis_r0_1', 'sis_r0_2', 'sis_r0_3'});
     if (sis_input.gen.Debug_Run == 1); disp('Trim to FOV: Angular Distances Added'); end
 
     % Retain only the stars with Angular Distance less than FOV
@@ -49,10 +49,11 @@ function sis_T = sis_light_main(sis_T,sis_bo, sis_input)
 end
 
 
-function ang_dist = sis_ang_dist(sis_r0, r0)
+function ang_dist = sis_ang_dist(sis_r0_1, sis_r0_2, sis_r0_3, r0)
     %% 
     % Calculates the Angular Distance
     % This function calculates the Angular Distance between 2 vectors.
+    sis_r0 = [sis_r0_1, sis_r0_2, sis_r0_3];
     
     ang_dist = rad2deg(atan2(norm(cross(sis_r0,r0)), dot(sis_r0,r0)));
 end
