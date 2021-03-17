@@ -1,5 +1,7 @@
 %% Load Constants and the Star Catalogue
 se_PP_1_Load_Constants; 
+se_in.Debug_Run = 0;
+se_in.Magnitude_Limit = 5.5;
 se_PP_2_Catalogue; 
 
 % Paramaters
