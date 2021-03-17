@@ -53,7 +53,7 @@ function [op_sky_coverage_T, op_sky_coverage_val] = ...
         se_r0 = table2array(op_sky_coverage_T(idx,:));
 
         % Calculate RA-DE from Cartesian Vectors
-        [RA, Dec] = ca_CartVect_2_RA_DE(se_r0(2), se_r0(2), se_r0(3));
+        [RA, Dec] = ca_CartVect_2_RA_DE(se_r0(1), se_r0(2), se_r0(3));
         Roll = 0; % Set a junk value for roll
 
         % Create a template for the input table required by the sensor model
