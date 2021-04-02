@@ -38,13 +38,17 @@ startidx_TM = 1;
                 end
                 n_less_r_TM = n_less_r_TM + 1; 
                 if dist_y_TM < sm_TM_RBM_R
-                    if ismember(sorted_predmat(i_rw, :), sm_TM_RBM_matchmat(:, 1:2)) ~= [1,1]
+                    if isempty(sm_TM_RBM_matchmat)==1
                         sm_TM_RBM_matchmat = [sm_TM_RBM_matchmat ; sorted_predmat(i_rw, :) sorted_truemat(j_rw,:)];
                     else
-                        disp('More than one match for a single predicted centroid, abort!');
-                        break;
+                        if ismember(sorted_predmat(i_rw, :), sm_TM_RBM_matchmat(:, 1:2)) ~= [1,1]
+                            sm_TM_RBM_matchmat = [sm_TM_RBM_matchmat ; sorted_predmat(i_rw, :) sorted_truemat(j_rw,:)];
+                        else
+                            disp('More than one match for a single predicted centroid, abort!');
+                            break;
+                        end
                     end
-                end
+                 end
             elseif dist_x_TM > sm_TM_RBM_R
                 if diff_x_TM > 0
                     if n_less_r_TM==0 % denotes no occurence of dist_x_TM < sm_TM_RBM_R
