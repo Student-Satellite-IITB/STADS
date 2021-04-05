@@ -23,7 +23,7 @@ function [sm_output] = sm_TM_main(fe_output, sm_output_curr, sm_output_prev, sm_
 
     % remove predicted centroids which lie outside the sensor FOV
     for i = 1 : size(sm_TM_CP_predmat,1)
-        if (abs(sm_TM_CP_predmat(i,1)) > sm_consts_TM.sm_TM_FOV_l) || (abs(sm_TM_CP_predmat(i,2)) > sm_consts_TM.sm_TM_FOV_b)
+        if (abs(sm_TM_CP_predmat(i,1)) > sm_consts_TM.sm_TM_FOV_x) || (abs(sm_TM_CP_predmat(i,2)) > sm_consts_TM.sm_TM_FOV_y)
             sm_TM_CP_predmat(i,:) = []; % removes the predicted centroid which lies outside the sensor FOV
         end
     end
