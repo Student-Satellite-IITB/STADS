@@ -1,4 +1,5 @@
 function sis_T = sis_light_main(sis_T,sis_bo, sis_input)
+    %% Trim to FOV
     
     sis_bo = array2table(sis_bo, "VariableNames", ["RA", "Dec", "Roll", "sis_r0_1", "sis_r0_2", "sis_r0_3"]);
     % Add the broadcasted boresight input to the table
@@ -16,7 +17,7 @@ function sis_T = sis_light_main(sis_T,sis_bo, sis_input)
 
     
     % Display Sucess
-    fprintf('Trim to FOV: Success \n \n');
+    if (sis_input.gen.Debug_Run == 1); fprintf('Trim to FOV: Success \n \n'); end
     
     
     
@@ -43,7 +44,7 @@ function sis_T = sis_light_main(sis_T,sis_bo, sis_input)
     if (sis_input.gen.Debug_Run == 1); disp('ICRS to Lens: 3rd Euler Rotation Performed'); end
 
     % Display Sucess
-    fprintf('ICRS to Lens: Success \n \n');
+    if (sis_input.gen.Debug_Run == 1); fprintf('ICRS to Lens: Success \n \n'); end
 
 
 end

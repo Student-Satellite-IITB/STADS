@@ -30,5 +30,5 @@ if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Converted to Cartesian C
 save('./SIS/Preprocessing/sis_SKY2000.mat', 'sis_T');
 if (sis_input.gen.Debug_Run == 1); writetable(sis_T, './Sensor_Model/Preprocessed_Catalogue/sis_SKY2000.csv'); end
 
-fprintf('Preprocessing: Success \n \n');
+if (sis_input.gen.Debug_Run == 1); fprintf('Preprocessing: Success \n \n');end
 

@@ -9,16 +9,17 @@
 sis_general_mat = readmatrix('sis_in_general.xlsx','Range','B2:B6');
 sis_input.gen.Debug_Run =              sis_general_mat(1); % Debug Run or Silent Run
 sis_input.gen.Magnitude_Limit =        sis_general_mat(2); % Sensor Model Star Magnitude Limit
-sis_input.gen.N_bo =                   sis_general_mat(3); % Number of Boresight and angular velocity inputs in sis_in_bo.xlsx
+sis_input.gen.N_bo =                   sis_general_mat(3); % Number of images to be created
 sis_input.gen.N_sub_im =               sis_general_mat(4); % Number of sub images for each image
 sis_input.gen.sim_N =                  sis_general_mat(5); % The simulation Number
+sis_input.gen.J = readmatrix('sis_in_general.xlsx','Range', strcat('B7:D9')) * 1.0e-9; %Moment of Inertia Matrix in the SI Units
 if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: General Inputs Read'); end
 
 %% -------------------------------------------------------------
 % Part 2 - Loading the Boresight and Angular Velocity Inputs:
 % -------------------------------------------------------------
 
-sis_bo_mat = readmatrix('sis_in_bo.xlsx','Range', strcat('B2:G', num2str(sis_input.gen.N_bo + 1)));
+sis_bo_mat = readmatrix('sis_in_bo.xlsx','Range', strcat('B2:G2'));
 sis_input.bo = array2table(sis_bo_mat, "VariableNames", ["RA", "Dec", "Roll", "Ang_1", "Ang_2", "Ang_3"]);
 sis_input.bo.sis_r0 = [cosd(sis_input.bo.Dec) .* cosd(sis_input.bo.RA), cosd(sis_input.bo.Dec) .* sind(sis_input.bo.RA), sind(sis_input.bo.Dec)];
 if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Boresight and Angular Velocity Inputs Read'); end

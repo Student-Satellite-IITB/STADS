@@ -21,7 +21,8 @@ function sis_Pixel_Val_Mat = sis_nm_main(sis_photoelec_prof,sis_input)
     sis_photoelec_prof =sis_photoelec_prof - (randn(size(sis_photoelec_prof))*PSNL*t_readout);
   
     % Add the PLS
-    sis_photoelec_prof =sis_photoelec_prof*(1+ 1/PLS*(Area_1/Area_2));
+    %sis_photoelec_prof =sis_photoelec_prof*(1+ 1/PLS*(Area_1/Area_2));
+    sis_photoelec_prof =sis_photoelec_prof*(1+ PLS*(Area_1/Area_2));
     %Applying a poisson distribution on the whole f the noises
     sis_photoelec_prof=poissrnd(sis_photoelec_prof,size(sis_photoelec_prof));
     %Multiplying by the Gain to get the matrix of pixel values for each

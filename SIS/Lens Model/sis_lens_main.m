@@ -13,7 +13,7 @@ function [sis_photon_profile] = sis_lens_main(sis_T, sis_input)
     
     
     % Display Sucess
-    fprintf('Lens to Sensor: Success \n \n');
+    if (sis_input.gen.Debug_Run == 1); fprintf('Lens to Sensor: Success \n \n'); end
     
     
     %% Trim to Sensor
@@ -26,7 +26,7 @@ function [sis_photon_profile] = sis_lens_main(sis_T, sis_input)
     if (sis_input.gen.Debug_Run == 1); disp('Trim to Sensor: Table Modified'); end
     
     % Display Sucess
-    fprintf('Trim to Sensor: Success \n \n');
+    if (sis_input.gen.Debug_Run == 1); fprintf('Trim to Sensor: Success \n \n'); end
     
     
     %% Gaussian Modelling
@@ -72,7 +72,7 @@ function [sis_photon_profile] = sis_lens_main(sis_T, sis_input)
     if (sis_input.gen.Debug_Run == 1); disp('Image Generation: Image Matrix Generated'); end
     
     % Display Sucess
-    fprintf('Image Generation: Success \n \n');
+    if (sis_input.gen.Debug_Run == 1); fprintf('Image Generation: Success \n \n'); end
 end
 
 
