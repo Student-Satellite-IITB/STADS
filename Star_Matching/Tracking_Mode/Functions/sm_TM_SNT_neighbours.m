@@ -1,4 +1,4 @@
-function [sm_TM_SNT_vec] = sm_TM_SNT_neighbours (sm_star_ID, sm_consts_TM, is_degree )
+function [sm_TM_SNT_vec] = sm_TM_SNT_neighbours (sm_star_ID, sm_catalogues, sm_consts_TM, is_degree )
     %% Finds the Star Neighbours around st_star_id within a radius of st_TM_SNT_R
     % Parameters:
     % ---------------
@@ -15,8 +15,8 @@ function [sm_TM_SNT_vec] = sm_TM_SNT_neighbours (sm_star_ID, sm_consts_TM, is_de
     %     The star neighbours of sm_star_ID
 
     %% Finding the star id in the preprocessed star catalogue
-    tmp_neighbours_1 = sm_consts_TM.sm_PP_SC(find(sm_consts_TM.sm_PP_SC(:,1) == sm_star_ID),:); % Star IDs in the 1st column of st_PP_SC
-    tmp_neighbours_2 = sm_consts_TM.sm_PP_SC(find(sm_consts_TM.sm_PP_SC(:,2) == sm_star_ID),:); % Star IDs in the 2nd column of st_PP_SC
+    tmp_neighbours_1 = sm_catalogues.sm_PP_SC(find(sm_catalogues.sm_PP_SC(:,1) == sm_star_ID),:); % Star IDs in the 1st column of st_PP_SC
+    tmp_neighbours_2 = sm_catalogues.sm_PP_SC(find(sm_catalogues.sm_PP_SC(:,2) == sm_star_ID),:); % Star IDs in the 2nd column of st_PP_SC
 
     %% Initialise st_TM_SNT_star_ID with st_star_ID
     sm_TM_SNT_vec = [sm_star_ID];
