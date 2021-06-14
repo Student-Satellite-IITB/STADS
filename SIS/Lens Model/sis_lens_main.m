@@ -1,4 +1,4 @@
-function [sis_photon_profile] = sis_lens_main(sis_T, sis_input)
+function [sis_photon_profile,sis_T] = sis_lens_main(sis_T, sis_input)
     %% Lens to Sensor Frame
     
     

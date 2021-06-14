@@ -96,7 +96,7 @@ if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Noise Inputs Read'); end
 %% Save the Inputs to a mat file
 % This section saves all the concerned structures SIS/Input and
 % Constants/sis_input.mat
-save('./SIS/Input and Constants', "sis_input");
+save('./SIS/Input and Constants/sis_input', "sis_input");
 clearvars("sis_bo_mat","sis_general_mat", "se_inputs_mat", "sis_lls_mat", "sis_noice_mat","lam");
 if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Inputs Saved'); end
 fprintf('\n');

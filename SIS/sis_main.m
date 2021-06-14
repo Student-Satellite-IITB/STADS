@@ -3,7 +3,7 @@
 
 % Creating input file
 sis_gnrt_input_file;
-load('./SIS/Input and Constants', "sis_input");
+load('./SIS/Input and Constants/sis_input', "sis_input");
 % This also loads sis_input object
 
 %Preprocessing
@@ -25,7 +25,7 @@ for i = 1:3 %sis_input.gen.N_bo %%%%%%
         sis_trim_T = sis_light_main(sis_T,sis_input.bo(j,:,i),sis_input);
         % Lens Model
         % Take case of the output
-        sis_photon_prof = sis_lens_main(sis_trim_T, sis_input);
+        [sis_photon_prof,sis_trim_T] = sis_lens_main(sis_trim_T, sis_input);
         % Sensor Model
         sis_photoelec_prof( :, :, j) = sis_sm_main(sis_photon_prof,sis_input);
         disp(strcat('Simulation of--',num2str(j),'--th sub-image Completed'))

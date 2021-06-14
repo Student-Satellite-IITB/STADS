@@ -15,8 +15,8 @@ function sis_Pixel_Val_Mat = sis_nm_main(sis_photoelec_prof,sis_input)
     
     
     %step 1: adding all the means of the noises
-    sis_photoelec_prof= sis_photoelec_prof + (PRNU + DTN + (DS * t_exposure) ) * ones(size(sis_photoelec_prof));
-    %PSNL can be added or subtracted too
+    sis_photoelec_prof= sis_photoelec_prof + (PRNU/100)*sis_photoelec_prof + (DTN + (DS * t_exposure) ) * ones(size(sis_photoelec_prof));
+    %PSNL is added
     %sis_photoelec_prof =sis_photoelec_prof + 2*randn(PSNL*t_readout)-(PSNL*t_readout);
     sis_photoelec_prof =sis_photoelec_prof - (randn(size(sis_photoelec_prof))*PSNL*t_readout);
   

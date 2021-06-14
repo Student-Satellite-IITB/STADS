@@ -10,7 +10,7 @@ clc
 sim_log.operator = "Shashank Singh"; % Enter Simulation Operator's Full Name
 sim_log.operator_ID = "SS"; % Enter Operator ID
 sim_log.sim_ID = "10"; % Enter Simulation Number
-sim_log.path = "C:\Users\Shashank\Documents\GitHub\STADS\MILS\SIS\SIS_run1"; % Enter Path of Simulation Folder
+sim_log.path = "C:\Users\Shashank\Desktop\College\IITBSSP\STADS\OLS\SIS\SIS_run1"; % Enter Path of Simulation Folder
 
 % Automated Entry
 sim_log = sim_log_additional_details(sim_log);
