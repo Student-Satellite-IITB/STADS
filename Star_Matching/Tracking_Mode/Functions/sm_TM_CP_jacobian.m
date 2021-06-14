@@ -12,17 +12,20 @@ function m_A = sm_TM_CP_jacobian (n_centroid, sm_TM_CP_F, m_centroids)
 % Returns 
 % -------------
 % m_A : (2N,3) - Matrix
-%   Jacobian Matrix constructed using the Focal Length and the u,v coordinates from the set of centroids
+%   Jacobian Matrix constructed using the Focal Length and the x,y coordinates from the set of centroids
 
 %% Code
 
     % Initialise the Jacobian Matrix
-    m_A = [];
+%     m_A = [];
+    m_A = zeros (2*n_centroid, 3);
     for i = 1 : n_centroid
         u = m_centroids(i,1);
         v = m_centroids(i,2);
-        rw_1 = [(u*v)/sm_TM_CP_F -sm_TM_CP_F-(u^2/sm_TM_CP_F) v];
-        rw_2 = [sm_TM_CP_F+(v^2/sm_TM_CP_F) -u*v/sm_TM_CP_F -u];
-        m_A = [m_A; rw_1; rw_2];
+        rw_1 = [(u*v)/sm_TM_CP_F, -sm_TM_CP_F-(u^2/sm_TM_CP_F), v];
+        rw_2 = [sm_TM_CP_F+(v^2/sm_TM_CP_F), -u*v/sm_TM_CP_F, -u];
+%         m_A = [m_A; rw_1; rw_2];
+        m_A (2*i - 1,:) = rw_1;
+        m_A (2*i,:) = rw_2;
     end
 end

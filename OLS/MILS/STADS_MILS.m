@@ -9,11 +9,11 @@ clc
 %% *Simuation Details*
 
 % Manual Entry
-sim_log.operator = "Shashank Singh"; % Enter Simulation Operator's Full Name
-sim_log.operator_ID = "SS"; % Enter Operator ID
-sim_log.sim_ID = "10"; % Enter Simulation Number
-sim_log.path = "C:\Users\Shashank\Documents\GitHub\STADS\OLS\MILS\Simulation_1"; % Enter Path of Simulation Folder
-sim_log.SIS_path = "C:\Users\Shashank\Documents\GitHub\STADS\OLS\SIS\SIS_run1"; % Enter Path of the SIS Folder
+sim_log.operator = "Pranjal Gupta"; % Enter Simulation Operator's Full Name
+sim_log.operator_ID = "PG"; % Enter Operator ID
+sim_log.sim_ID = "11"; % Enter Simulation Number
+sim_log.path = "/Users/pranjalgupta/Documents/Satlab/STADS/OLS/MILS/Simulation_3"; % Enter Path of Simulation Folder
+sim_log.SIS_path = "/Users/pranjalgupta/Documents/Satlab/STADS/OLS/SIS/SIS_run1"; % Enter Path of the SIS Folder
 % Automated Entry
 sim_log = sim_log_additional_details(sim_log);
 
