@@ -7,8 +7,8 @@
 ### Simulation - Details
 * **Operator**: Pranjal Gupta
 * **Operator ID**: PG
-* **Date**: 17/02/2021
-* **Time**: 00:00:29.926
+* **Date**: 14/06/2021
+* **Time**: 15:22:26.328
 * **Computer**: 
 * **Operating System**: MacOS
 * **User**: 
@@ -28,6 +28,13 @@
 
 |Mode|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
+|LIS|Done|00:25.06|
+|TM|Done|00:00.00|
+
+### Simulation - Details
+
+|Iter|FE-Status|SM-Status|SM-Mode|SM-Iter|ES-Status|Time_Taken - (mm:ss.SS)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 
 
 ---
@@ -35,11 +42,11 @@
 
 ### Error Thrown
 
-|Error Identifier|MATLAB:readtable:OpenFailed|
+|Error Identifier|MATLAB:load:unableToReadMatFile|
 |:---:|:---:|
-|**Error Message**|Unable to open file '.\Catalogue\SKY2000\Catalogues\SSP_Star_Catalogue.csv'.|
-|**Error File**|/Applications/MATLAB_R2019b.app/toolbox/matlab/iofun/readtable.m|
-|**Line Number**|223|
+|**Error Message**|Unable to read MAT-file /Users/pranjalgupta/Documents/Satlab/STADS/OLS/MILS/Simulation_3/Output/SIS_iter_1.mat. File might be corrupt.|
+|**Error File**|/Users/pranjalgupta/Documents/Satlab/STADS/OLS/Functions/MILS_main.m|
+|**Line Number**|30|
 ### Saved workspace variables for debugging
 * **Saved at**: /Users/pranjalgupta/Documents/Satlab/STADS/OLS/MILS/Simulation_3\error_vars.mat
 

@@ -9,7 +9,7 @@ function sm_gnrt_catalogues(SM_const, write_path)
     end
     
     %% Read SSP Star Catalogue
-    SSP_SC = readtable('.\Catalogue\SKY2000\Catalogues\SSP_Star_Catalogue.csv');
+    SSP_SC = readtable('./Catalogue/SKY2000/Catalogues/SSP_Star_Catalogue.csv');
 
     %% Create Guide Star Catalogue
     % Extract stars brighter than Limiting Magnitude
