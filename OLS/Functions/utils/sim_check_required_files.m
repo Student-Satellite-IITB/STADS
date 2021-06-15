@@ -35,8 +35,8 @@ function sim_check_required_files(sim_log, mode)
             error('FileNotFoundError: SIS_log.md file - missing!');
         elseif isfile( fullfile(sim_log.path, "simulation_constants.mat") ) == 0
             error('FileNotFoundError: simulation_constants.mat file - missing!');
-        elseif isfile( fullfile(sim_log.path, "inputs.csv") ) == 0
-            error('FileNotFoundError: inputs.csv file - missing!');
+        %elseif isfile( fullfile(sim_log.path, "inputs.csv") ) == 0
+            %error('FileNotFoundError: inputs.csv file - missing!');
         elseif sim_log.MILS.sm_data.preprocessing == 0 && (~isfile(sim_log.MILS.PP_LIS_outputFileName) || ~isfile(sim_log.MILS.PP_TM_outputFileName) )
             error('PreprocessingError: Preprocessing needs to be enabled!')
         end        

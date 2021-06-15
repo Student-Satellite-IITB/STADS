@@ -8,7 +8,7 @@
 * **Operator**: Shashank Singh
 * **Operator ID**: SS
 * **Date**: 14/06/2021
-* **Time**: 18:44:17.698
+* **Time**: 21:22:25.712
 * **Computer**: SHASHANK
 * **Operating System**: Windows
 * **User**: Shashank
@@ -24,16 +24,16 @@
 
 |Status|Time_Taken - (mm:ss.SS)
 |:---:|:---:|
-|Done|00:00.94|
+|Done|00:02.21|
 
 ### Simulation - Details
 
 |Iter|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|1|Done|00:25.13|
-|2|Done|00:20.13|
-|3|Done|00:19.98|
+|1|Done|00:21.14|
+|2|Done|00:18.36|
+|3|Done|00:19.38|
 
 ---
 
-**Total Time Taken:** 01:08.88
+**Total Time Taken:** 01:02.87

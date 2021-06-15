@@ -28,13 +28,13 @@ m_r = m_r*m_rot;
 
 %%applying algorithm Quest1
 %Common part for QuEST
-[m_B, v_z, lamnot] = es_quest_common(b_m, m_r, v_a);
+[m_B, v_z, lamnot] = es_quest_common_sim(b_m, m_r, v_a);
 
 %finding largest eigenvalue
-lam = es_quest_newton(m_B, v_z, lamnot, epsilon);
+lam = es_quest_newton_sim(m_B, v_z, lamnot, epsilon);
 
 %finding the quaternion using the calculated eigenvalue
-q_bi = es_quest_1_final(m_B, v_z, lam, es_seq_error);
+q_bi = es_quest_1_final_sim(m_B, v_z, lam, es_seq_error);
 
 %if the value of the returned quaternion is [-1;-1;-1;-1] then QUEST-1 has 
 %failed again and we must use new sequential rotation 
@@ -57,13 +57,13 @@ if q_bi == [-1;-1;-1;-1]
 
     %%applying algorithm Quest1 again
     %Common part for QuEST
-    [m_B, v_z, lamnot] = es_quest_common(b_m, m_r, v_a);
+    [m_B, v_z, lamnot] = es_quest_common_sim(b_m, m_r, v_a);
 
     %finding largest eigenvalue
-    lam = es_quest_newton(m_B, v_z, lamnot, epsilon);
+    lam = es_quest_newton_sim(m_B, v_z, lamnot, epsilon);
 
     %finding the quaternion using the calculated eigenvalue
-    q_bi = es_quest_1_final(m_B, v_z, lam, es_seq_error);
+    q_bi = es_quest_1_final_sim(m_B, v_z, lam, es_seq_error);
     
     %if the value of the returned quaternion is [-1;-1;-1;-1] then QUEST-1 has 
     %failed again and we must use new sequential rotation 
@@ -85,13 +85,13 @@ if q_bi == [-1;-1;-1;-1]
 
         %%algorithm Quest1
         %Common part for QuEST
-        [m_B, v_z, lamnot] = es_quest_common(b_m, m_r, v_a);
+        [m_B, v_z, lamnot] = es_quest_common_sim(b_m, m_r, v_a);
         
         %finding largest eigenvalue
-        lam = es_quest_newton(m_B, v_z, lamnot, epsilon);
+        lam = es_quest_newton_sim(m_B, v_z, lamnot, epsilon);
         
         %finding the quaternion using the calculated eigenvalue
-        q_bi = es_quest_1_final(m_B, v_z, lam, es_seq_error);
+        q_bi = es_quest_1_final_sim(m_B, v_z, lam, es_seq_error);
         
         %since sequential rotation cannot fail in all three frames
         %we don't have to check the if q = [-1;-1;-1;-1] third time
