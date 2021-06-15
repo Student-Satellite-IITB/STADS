@@ -1,2 +1,4 @@
 * text=auto
 * text eol=lf
+*.pdf binary
+*.xml linguist-generated=true
