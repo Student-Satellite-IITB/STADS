@@ -66,8 +66,8 @@ sis_input.lls.C_2 = 100 ^ 0.2;
 %syms lam
 %f = 5e10 * (sis_input.lls.Exposure_Time/sis_input.gen.N_sub_im) * sis_input.lls.CMOS.Pixel_Size^2 * A * Tau(lam) * P(lam) ;
 %sis_input.lls.BN = sym2poly(int(f,500,700));
-% Place holder
-sis_input.lls.BN = 1;
+
+sis_input.lls.BN = 1; % Place holder
 
 if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Lens, Light and Sensor Inputs Read'); end
 
@@ -88,7 +88,7 @@ sis_input.noise.rng_Seed =    sis_noice_mat(9);        % NA
 sis_input.noise.Read_Rate =   sis_noice_mat(10) * 1e6; % Mbps -> bps
 sis_input.noise.Area_SN =     sis_noice_mat(11);       %Area of the Storage Node
 sis_input.noise.Area_MN =     sis_noice_mat(12);       %Area of the Memory Node
-%Check the following expression again
+
 sis_input.noise.t_readout = sis_input.lls.CMOS.Length_Pix * sis_input.lls.CMOS.Width_Pix * 10 / sis_input.noise.Read_Rate;
 if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Noise Inputs Read'); end
 
