@@ -2,17 +2,17 @@
 
 # Model-in-Loop Simulation - Log File
 
-### Simulation ID: 11
+### Simulation ID: 12
 
 ### Simulation - Details
-* **Operator**: Pranjal Gupta
-* **Operator ID**: PG
-* **Date**: 14/06/2021
-* **Time**: 15:22:26.328
-* **Computer**: 
-* **Operating System**: MacOS
-* **User**: 
-* **SIS Folder Path**: /Users/pranjalgupta/Documents/Satlab/STADS/OLS/SIS/SIS_run1
+* **Operator**: Shashank Singh
+* **Operator ID**: SS
+* **Date**: 21/08/2021
+* **Time**: 14:53:08.120
+* **Computer**: SHASHANK
+* **Operating System**: Windows
+* **User**: Shashank
+* **SIS Folder Path**: C:\Users\Shashank\Desktop\College\IITBSSP\STADS\OLS\SIS\SIS_run3
 
 
 ### Model-in-Loop Simulation - Details
@@ -28,7 +28,7 @@
 
 |Mode|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|LIS|Done|00:25.06|
+|LIS|Done|00:20.20|
 |TM|Done|00:00.00|
 
 ### Simulation - Details
@@ -42,12 +42,12 @@
 
 ### Error Thrown
 
-|Error Identifier|MATLAB:load:unableToReadMatFile|
+|Error Identifier|MATLAB:minrhs|
 |:---:|:---:|
-|**Error Message**|Unable to read MAT-file /Users/pranjalgupta/Documents/Satlab/STADS/OLS/MILS/Simulation_3/Output/SIS_iter_1.mat. File might be corrupt.|
-|**Error File**|/Users/pranjalgupta/Documents/Satlab/STADS/OLS/Functions/MILS_main.m|
-|**Line Number**|30|
+|**Error Message**|Not enough input arguments.|
+|**Error File**|C:\Users\Shashank\Desktop\College\IITBSSP\STADS\OLS\Functions\MILS_main.m|
+|**Line Number**|35|
 ### Saved workspace variables for debugging
-* **Saved at**: /Users/pranjalgupta/Documents/Satlab/STADS/OLS/MILS/Simulation_3\error_vars.mat
+* **Saved at**: C:\Users\Shashank\Desktop\College\IITBSSP\STADS\OLS\MILS\Simulation_3\error_vars.mat
 
 ---
