@@ -67,7 +67,7 @@ sis_input.lls.C_2 = 100 ^ 0.2;
 %f = 5e10 * (sis_input.lls.Exposure_Time/sis_input.gen.N_sub_im) * sis_input.lls.CMOS.Pixel_Size^2 * A * Tau(lam) * P(lam) ;
 %sis_input.lls.BN = sym2poly(int(f,500,700));
 % Place holder
-sis_input.lls.BN = 1;
+sis_input.lls.BN = 2;
 
 if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Lens, Light and Sensor Inputs Read'); end
 
