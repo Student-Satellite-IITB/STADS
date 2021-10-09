@@ -7,15 +7,14 @@
 ### Simulation - Details
 * **Operator**: Shashank Singh
 * **Operator ID**: SS
-* **Date**: 21/08/2021
-* **Time**: 16:33:50.219
+* **Date**: 17/12/2020
+* **Time**: 22:38:51.944
 * **Computer**: SHASHANK
 * **Operating System**: Windows
 * **User**: Shashank
-* **SIS Folder Path**: C:\Users\Shashank\Desktop\College\IITBSSP\STADS\OLS\SIS\SIS_run4
 
 ### Star Image Simulation - Details
-* **Version**: Version - 3
+* **Version**: Default Block
 * **Preprocessing**: Enabled
 
 ---
@@ -24,23 +23,23 @@
 
 |Status|Time_Taken - (mm:ss.SS)
 |:---:|:---:|
-|Done|00:01.05|
+|Done|00:00.62|
 
 ### Simulation - Details
 
 |Iter|Status|Time_Taken - (mm:ss.SS)|
 |:---:|:---:|:---:|
-|1|Done|00:21.24|
-|2|Done|00:15.29|
-|3|Done|00:15.83|
-|4|Done|00:15.51|
-|5|Done|00:15.20|
-|6|Done|00:15.91|
-|7|Done|00:15.65|
-|8|Done|00:14.94|
-|9|Done|00:15.66|
-|10|Done|00:15.15|
+|1|Done|00:01.12|
+|2|Done|00:01.05|
+|3|Done|00:01.24|
+|4|Done|00:01.14|
+|5|Done|00:01.27|
+|6|Done|00:00.91|
+|7|Done|00:00.72|
+|8|Done|00:01.22|
+|9|Done|00:01.38|
+|10|Done|00:01.63|
 
 ---
 
-**Total Time Taken:** 02:44.11
+**Total Time Taken:** 00:13.33
