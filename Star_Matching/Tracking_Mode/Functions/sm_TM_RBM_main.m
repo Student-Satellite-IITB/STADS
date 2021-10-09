@@ -1,4 +1,4 @@
-function [sm_TM_RBM_matchmat] = sm_TM_RBM_main (sm_TM_RBM_predmat, sm_TM_RBM_truemat, sm_TM_RBM_R, is_dx, sort_before_match)
+function [sm_TM_RBM_matchmat] = sm_TM_RBM_main (sm_TM_RBM_predmat, sm_TM_RBM_truemat, sm_TM_RBM_R, sort_dx, sort_before_match)
 %% Matches the Predicted centroids with the True centroids
 % Parameters
 %---------------
@@ -8,7 +8,7 @@ function [sm_TM_RBM_matchmat] = sm_TM_RBM_main (sm_TM_RBM_predmat, sm_TM_RBM_tru
 %   The matrix of true centroids obtained from full frame centroiding at the current time instant
 % sm_TM_RBM_R : double
 %   The radius value to be used for carrying out Radius based matching between predicted and true centroids
-% is_dx : Boolean
+% sort_dx : Boolean
 %   if True : predicted and true centroids are sorted according to their x-coordinates
 % sort_before_match : Boolean
 %   if True : Implement sorting before matching optimisation
@@ -19,8 +19,8 @@ function [sm_TM_RBM_matchmat] = sm_TM_RBM_main (sm_TM_RBM_predmat, sm_TM_RBM_tru
 %     The matrix of matched true and predicted centroids
 
 %% Code
-    % sort the predicted and true centroids according to is_dx
-    [sorted_predmat, sorted_truemat] = sm_TM_RBM_sortmat (sm_TM_RBM_predmat, sm_TM_RBM_truemat, is_dx);
+    % sort the predicted and true centroids according to sort_dx
+    [sorted_predmat, sorted_truemat] = sm_TM_RBM_sortmat (sm_TM_RBM_predmat, sm_TM_RBM_truemat, sort_dx);
 
     if sort_before_match == true
         % Radius based matching with sorted before matching

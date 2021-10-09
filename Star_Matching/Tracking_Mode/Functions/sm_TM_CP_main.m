@@ -20,11 +20,14 @@ function sm_TM_CP_predmat = sm_TM_CP_main (sm_TM_CP_prevmat, sm_TM_CP_currmat, s
     n_centroid = size(sm_TM_CP_prevmat, 1);
 
     % Compute the difference in u and v coordinates for each centroid in k-1th and kth frames
-    m_delta_old = [];
+%     m_delta_old = [];  - OLD IMPLEMENTATION
+    m_delta_old = zeros(2 * n_centroid, 1);
     for i_rw = 1 : n_centroid
         delta_u = sm_TM_CP_currmat(i_rw,1) - sm_TM_CP_prevmat(i_rw,1);
         delta_v = sm_TM_CP_currmat(i_rw,2) - sm_TM_CP_prevmat(i_rw,2);
-        m_delta_old = [m_delta_old ; delta_u ; delta_v];
+%         m_delta_old = [m_delta_old ; delta_u ; delta_v];
+        m_delta_old(2 * i_rw - 1, :) =  delta_u;
+        m_delta_old(2 * i_rw , :) =  delta_v;
     end
 
     % Construct the Jacobian matrix using the centroids from the (k-1)th frame and the Star Sensor focal length
@@ -34,7 +37,8 @@ function sm_TM_CP_predmat = sm_TM_CP_main (sm_TM_CP_prevmat, sm_TM_CP_currmat, s
 
     m_M = transpose(m_A_old) * m_A_old;
 
-    v_slew = (m_M \ transpose(m_A_old)) * m_delta_old; % Slew rate vector with the Roll, Pitch and Yaw of the Star Tracker between the (k-1)th and (k)th frames
+    v_slew = (m_M \ transpose(m_A_old)) * m_delta_old; % Slew rate vector with the Roll, Pitch and Yaw ... 
+    % of the Star Tracker between the (k-1)th and (k)th frames
 
     % Construct the Jacobian matrix using the centroids from the (k)th frame and the Star Sensor focal length
     m_A_new = sm_TM_CP_jacobian (n_centroid, sm_TM_CP_F, sm_TM_CP_currmat);
@@ -42,14 +46,17 @@ function sm_TM_CP_predmat = sm_TM_CP_main (sm_TM_CP_prevmat, sm_TM_CP_currmat, s
     % Compute the difference in u and v coordinates for each centroid in kth and (k+1)th frames
     m_delta_new = m_A_new * v_slew;
 
-    % Compute the matrix of predicted centroids in the (k+1)th frame by adding the new delta matrix to the centroids in (k)th frame
+    % Compute the matrix of predicted centroids in the (k+1)th frame by adding the new delta matrix ... 
+    % to the centroids in (k)th frame
 
-    sm_TM_CP_predmat = [];
+%      sm_TM_CP_predmat = [];
+    sm_TM_CP_predmat = zeros (n_centroid, 2);
 
     for i_rw = 1 : n_centroid
         u_pred = sm_TM_CP_currmat(i_rw,1) + m_delta_new((2*i_rw)-1);
         v_pred = sm_TM_CP_currmat(i_rw,2) + m_delta_new(2*i_rw);
-        sm_TM_CP_predmat = [sm_TM_CP_predmat; u_pred v_pred];
+%         sm_TM_CP_predmat = [sm_TM_CP_predmat; u_pred v_pred];
+        sm_TM_CP_predmat(i_rw,:) = [u_pred, v_pred];
     end
 
 end
