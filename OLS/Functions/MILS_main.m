@@ -117,11 +117,16 @@ for i = 1:sim_log.N_Iter
         iter_info.es_status = "Fail!"; % Store iteration status
         es_output = 0; % Create dummy variable
     end
+    
+    
             
     % Write log file & Estimation output        
     save(iter_info.outputFileName, "es_output", "iter_info", "-append"); % Append ES output to .mat file   
     fprintf(MILS_logFile,'%s|', iter_info.es_status); % Write log file entry - ES
         
+    %% Finding Error in the output
+    sim_err = sim_error(sis_output.attitude, es_output);
+    save(iter_info.outputFileName, "sim_err", "iter_info", "-append"); % Append sim_error to .mat file
         
     % Time taken to excute current iteration
     iter_info.dt = duration(datetime() - iter_info.t1, "Format","mm:ss.SS");
