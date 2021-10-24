@@ -24,11 +24,12 @@ function sim_log_file_header(sim_log, log_fname, mode)
     fprintf(log_fname, '* **Computer**: %s\n', sim_log.computerName);
     fprintf(log_fname, '* **Operating System**: %s\n', sim_log.os);
     fprintf(log_fname, '* **User**: %s\n', sim_log.userName);
-    fprintf(log_fname, '* **SIS Folder Path**: %s\n\n',sim_log.SIS_path);
+    
 
     %% Write Mode-specifc Model Info
     
     if mode == "SIS"
+        fprintf(log_fname, '* **SIS Folder Path**: %s\n\n',sim_log.path);
         % Star Image Simulation Details
         fprintf(log_fname,'### Star Image Simulation - Details\n');
         fprintf(log_fname,'* **Version**: %s\n', sim_log.SIS.version);
@@ -43,6 +44,7 @@ function sim_log_file_header(sim_log, log_fname, mode)
         
     elseif mode == "MILS"
         % Model-in-Loop Simulation Details
+        fprintf(log_fname, '* **SIS Folder Path**: %s\n\n',sim_log.SIS_path);
         fprintf(log_fname,'\n### Model-in-Loop Simulation - Details\n');
         fprintf(log_fname,'* **Feature Extraction - Algorithm**: %s\n', sim_log.MILS.fe_data.algo);
         fprintf(log_fname,'* **Star-Matching - (Lost-in-Space Mode) Algorithm**: %s\n', sim_log.MILS.sm_data.LIS_algo);

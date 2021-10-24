@@ -13,7 +13,8 @@ sm_PP_SC = readmatrix('./Star_Matching/Star_Matching_Catalogues/Catalogues/sm_Pr
 
 
 %% Construct the Star Neighbourhood Table 
-sm_TM_SNT =  sm_TM_gnrt_SNT (sm_consts_TM.sm_TM_SNT_R, true , sm_GD_SC, sm_PP_SC);
+% sm_TM_SNT =  sm_TM_gnrt_SNT (sm_consts_TM.sm_TM_SNT_R, true , sm_GD_SC, sm_PP_SC);
+sm_TM_SNT =  sm_TM_gnrt_SNT (sm_consts_TM, sm_catalogues, true);
 
 % Create Table
 sm_TM_SNT_table = array2table(sm_TM_SNT);

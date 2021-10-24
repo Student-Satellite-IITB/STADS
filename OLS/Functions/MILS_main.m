@@ -1,11 +1,14 @@
-function sim_log = MILS_main(sim_log,ES_const,FE_const,SM_const,ProgBar, MILS_logFile)
+function sim_log = MILS_main(sim_log,ES_const,FE_const,SM_const, MILS_logFile)
 % This is the main function to run Model In-Loop Simulation
 
+% Load Star-Matching - Preprocessed Data
+load(sim_log.MILS.PP_LIS_outputFileName, 'sm_PP_LIS_output');
+load(sim_log.MILS.PP_TM_outputFileName, 'sm_PP_TM_output');
 
 tic
 sim_log.T1 = datetime(); % Time at which simulation starts
 disp('Start: Model-in-Loop Simulation');
-% ProgBar = waitbar(0,'Starting simulation...'); % Progress-bar GUI
+ProgBar = waitbar(0,'Starting simulation...'); % Progress-bar GUI
     
 iter_info.sm_iter = 0; % Star-Matching Iteration Number
     
@@ -107,15 +110,23 @@ for i = 1:sim_log.N_Iter
     if iter_info.sm_status == "Done"
         es_output = es_main(sis_output, sm_output, ES_const, sim_log.MILS.es_data.algo);  %Execute ES           
         iter_info.es_status = es_output.status; % Store iteration status
+        %{
+        es_output.accuracy = es_accuracy(sis_output,es_output.q_bi);
+        %}
     else
         iter_info.es_status = "Fail!"; % Store iteration status
         es_output = 0; % Create dummy variable
     end
+    
+    
             
     % Write log file & Estimation output        
     save(iter_info.outputFileName, "es_output", "iter_info", "-append"); % Append ES output to .mat file   
     fprintf(MILS_logFile,'%s|', iter_info.es_status); % Write log file entry - ES
         
+    %% Finding Error in the output
+    sim_err = sim_error(sis_output.attitude, es_output);
+    save(iter_info.outputFileName, "sim_err", "iter_info", "-append"); % Append sim_error to .mat file
         
     % Time taken to excute current iteration
     iter_info.dt = duration(datetime() - iter_info.t1, "Format","mm:ss.SS");
@@ -150,6 +161,7 @@ save(fullfile(sim_log.output_path, "MILS_log.mat"), "MILS_log");
 % Clear redundant variables
 toc
 clear
+
     
 end
 
