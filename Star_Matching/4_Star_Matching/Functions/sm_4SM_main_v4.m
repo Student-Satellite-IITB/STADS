@@ -3,6 +3,7 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
     %% Code
 
     % Generate body-frame vectors of stars 
+
     sm_bi = sm_gnrt_bi(fe_output, SM_const); 
     
     %% 4-Star Matching Alogorithm
@@ -23,11 +24,9 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
 
     % Initialize sm_NotMatched
     sm_NotMatched = sm_bi;
-
     % Intialize counter variables
     sm_counter.N_Matched = 0; % Number of matched stars
     sm_counter.N_NotMatched = fe_output.N; % Number of unmatched stars
-
     %%
     sm_counter.flag_circshift = 0;
     for i_iter = 1:SM_const.LIS.CONST_4SM.ITER_MAX 
@@ -43,6 +42,14 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
             if sm_N_match == 0 
                 % If no stars were matched, shift the rows of Non_Match matrix
                 % downward by one unit
+                sz = size(sm_NotMatched,1);
+                if sz>=5
+                    temp = sm_NotMatched(1,:);
+                    for i=1:sz-1
+                        sm_NotMatched(i,:) = sm_NotMatched(i+1,:);
+                    end
+                    sm_NotMatched(sz,:) = temp;
+                end
                 	
 
                 sm_counter.flag_circshift = sm_counter.flag_circshift + 1; % Update flag
@@ -59,6 +66,7 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
                 % Update Match Matrices
                 [sm_Matched, sm_NotMatched, sm_counter.N_Matched, sm_counter.N_NotMatched] = ...
                 sm_update_match_matrix(sm_result, sm_Matched, sm_NotMatched, sm_counter.N_Matched, sm_counter.N_NotMatched);
+                disp(sm_NotMatched);
             end
 
         elseif (sm_counter.N_Matched >= SM_const.N_TH) || (sm_counter.N_NotMatched == 0)
@@ -121,7 +129,8 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
     end
 
     %% Verification Step
-    % Trim Match Matrix to remove redundant zero rows
+    %disp('number: '+sm_counter.N_Matched);
+    %%Trim Match Matrix to remove redundant zero rows
     sm_Matched = sm_Matched(1:sm_counter.N_Matched, :);
     [sm_counter.N_Verified, sm_Verified, sm_counter.N_Failed, sm_Failed] = ...
         sm_verify_4SM(sm_Matched, sm_counter.N_Matched, SM_const, sm_PP_LIS_output);
@@ -134,12 +143,18 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
     sm_output.Matched = sm_Matched;
     sm_output.NotMatched = sm_NotMatched;
     sm_output.counters = sm_counter;
-    sm_output.Verified = sm_Verified;
-    sm_output.Failed = sm_Failed;
+    sm_output.Verified = sm_Verified; %
+    sm_output.Failed = sm_Failed; %
+    %sm_output.Verified = sm_Matched;
+    %sm_output.Failed = 0;
     
     sm_output.N = sm_counter.N_Verified;
     sm_output.op_bi = sm_PP_LIS_output.CONST_4SM.sm_GD_SC(sm_Verified.SSP_ID(:),:);
     sm_output.op_ri = sm_Verified(:, {'FE_ID', 'X', 'Y', 'Z'});
+    %sm_output.N = sm_counter.N_Matched;
+    %sm_Matched.SSP_ID(:) = [1745;4655;70;6136;6542;1129;1500;2436;31;4530;2377;7059];
+    %sm_output.op_bi = sm_PP_LIS_output.CONST_4SM.sm_GD_SC(sm_Matched.SSP_ID(:),:);
+    %sm_output.op_ri = sm_Matched(:, {'FE_ID', 'X', 'Y', 'Z'});
     
     sm_output.status = 'Done';
 end

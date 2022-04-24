@@ -20,9 +20,11 @@ function sm_PP_LIS_output = sm_gnrt_LIS_catalogues(SM_const, write_path)
     
     %% Create Reference Star Catalogue
     % Construct the K-Vector
+
     sm_M_EPS = SM_const.LIS.CONST_4SM.M_EPS;
+
     [K_Vec, sm_M, sm_Q, ~] = sm_gnrt_K_Vec(c_AngDst_cos, sm_M_EPS, true); 
-    
+
     sm_RF_SC = [sm_PP_SC(:, 1:2) , K_Vec]; % Append columns to Reference Star Catalogue
 
     % Create Table

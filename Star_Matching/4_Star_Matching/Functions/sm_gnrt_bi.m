@@ -21,22 +21,28 @@ function sm_bi = sm_gnrt_bi(fe_output, SM_const)
     %   $2^{nd}, 3^{rd}, 4^{th}$ columns - $(X,Y,Z)$ unit vector
 
     %% Code
-    sm_bi = zeros(fe_output.N, 4); % Initialize input variable    
 
+    sm_bi = zeros(fe_output.N, 4); % Initialize input variable    
     for i_idx = 1:fe_output.N
         %% Calculate Body-Frame Vectors
+
         id = fe_output.centroids.FE_ID(i_idx); % ID of identified star in fe_output
         
         % Extract (x,y) coordinates
         x = fe_output.centroids.X(i_idx); 
+
         y = fe_output.centroids.Y(i_idx);
+
         
         bi = [x, y, SM_const.FOCAL_LENGTH]; % Initialize Body-frame vector
+
         bi = bi / norm(bi); % Normalize Body-frame vector
+
 
         tmp = [id, bi]; % Initialize (i-th) row of st_bi
 
         sm_bi(i_idx, :) = tmp; % Append row
+
     end
     
     % Cycliclically shift body-frame vectors to get proper axes

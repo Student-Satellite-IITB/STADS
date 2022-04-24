@@ -18,9 +18,9 @@ elseif sim_log.MILS.sm_data.preprocessing == 1
     %%% Run Lost-in-Space Mode Preprocessing
     waitbar(0.2, ProgBar, 'Running LIS preprocessing...'); % Progress-bar GUI
     sim_log.PP_LIS_T1 = datetime(); % Time at which preprocessing starts
-      
+    
     sm_PP_LIS_output = sm_PP_LIS_main(SM_const, sim_log);
-        
+    
     sim_log.PP_LIS_dt = duration(datetime() - sim_log.PP_LIS_T1, "Format","mm:ss.SS"); % Time taken to excute SIS Preprocessing
         
     % Save the output file
