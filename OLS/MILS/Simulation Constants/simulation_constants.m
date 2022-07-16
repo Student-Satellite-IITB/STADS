@@ -11,11 +11,11 @@ SIS_const.in.Magnitude_Limit = 6.5; % Sensor Model Star Magnitude Limit
 SIS_const.in.No_Boresight_Inputs = 15; % Number of Boresight Inputs in se_boresight_inputs.xlsx
 
 
-SIS_const.op.CMOS.Length_Pix = 1280;        % Pixels
-SIS_const.op.CMOS.Width_Pix =  1024;        % Pixels
+SIS_const.op.CMOS.Length_Pix = 808;        % Pixels
+SIS_const.op.CMOS.Width_Pix =  608;        % Pixels
 SIS_const.op.CMOS.Pixel_Size =   4.8000e-06 ; % mm -> m
 SIS_const.op.CMOS.Defocus =      0; % mm -> m
-SIS_const.op.Lens.Focal_Length =  0.036; % mm -> m
+SIS_const.op.Lens.Focal_Length =  0.010; % mm -> m
 SIS_const.op.Lens.Diameter =     0.015  ; % mm -> m
 SIS_const.op.CMOS.Length =     SIS_const.op.CMOS.Length_Pix * SIS_const.op.CMOS.Pixel_Size;      % m
 SIS_const.op.CMOS.Width =      SIS_const.op.CMOS.Width_Pix * SIS_const.op.CMOS.Pixel_Size;       % m
