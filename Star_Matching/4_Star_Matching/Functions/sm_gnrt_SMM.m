@@ -58,7 +58,7 @@
                          0, 0, 1, 0, 1, 1]; % Check conditions
 
     % Stores the indices of the rows that match the (i-th) condition
-    sm_match_idx = boolean(zeros(sm_PP_LIS_output.CONST_4SM.sm_n_GC, 1)); 
+    sm_match_idx = zeros(sm_PP_LIS_output.CONST_4SM.sm_n_GC, 1); 
     
     sm_MatchedRows = {0; 0; 0; 0}; % Initialize variable
     %% Iterate

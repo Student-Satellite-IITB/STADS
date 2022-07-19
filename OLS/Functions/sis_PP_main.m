@@ -1,4 +1,4 @@
-function sis_pp_output = sis_PP_main(SIS_const,version)
+function sis_pp_output = sis_PP_main(SIS_const,version,write_path)
     % Main function that runs the Preprocessing for Star Image Simulation block
     
     if version == "Default Block" 
@@ -31,6 +31,7 @@ function sis_pp_output = sis_PP_main(SIS_const,version)
         sis_input = SIS_const;
         
         sis_T = readtable('.\Catalogue\SKY2000\Catalogues\SSP_Star_Catalogue.csv');
+        SSP_SC = sis_T;
         if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Catalogue Successfully Read'); end
         
         % Remove the following columns - 'SKY2000_ID'
@@ -52,8 +53,22 @@ function sis_pp_output = sis_PP_main(SIS_const,version)
         sis_T.r0 = [cosd(sis_T.Dec) .* cosd(sis_T.RA), cosd(sis_T.Dec) .* sind(sis_T.RA), sind(sis_T.Dec)];
         if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Converted to Cartesian Coordinates'); end
         
+        %Storing the guide stare catalogues
+        MAG_LIMIT = sis_input.gen.Magnitude_Limit;
+        cond = SSP_SC.Vmag <= MAG_LIMIT; % Set up condition
+        tmp = SSP_SC(cond , :); 
         
+        % Generate cartesian unit vectors
+        unit_vect = rowfun(@ca_RA_DE_2_CartVect, tmp, 'InputVariables', ...
+            {'RA', 'DE'}, 'OutputVariableNames', {'X', 'Y', 'Z'});
+        sm_GD_SC = [tmp(:, 1), unit_vect]; % Append Columns
+        sm_SSP = [tmp, unit_vect]; % Append Columns
         
+        % Write Table
+        write_path2 = erase(write_path,"\SIS_preprocessed_data.mat");
+        writetable(sm_GD_SC, write_path2 + '\sm_Guide_Star_Catalogue.csv');
+        writetable(sm_SSP, write_path2 + '\sm_SSP_Star_Catalogue.csv');
+            
         sis_pp_output.sis_SKY2000 = sis_T; 
     end
 

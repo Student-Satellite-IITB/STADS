@@ -23,7 +23,12 @@ function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, fina
     
     % initialising the array containing final tags and tags associated with them
     arr_final_tags = zeros(NUM_FINAL_TAGS, NUM_TAGS_PER_REGION, 'int32');
-    
+    %disp('row:')
+    %disp(rows)
+    %disp('column')
+    %disp(columns)
+    %count_pixel1 = 0;
+    %count_pixel2 = 0;
     % looping over the input image
     for j_set_tags = 2:rows+1
         for i_set_tags = 2:columns+1
@@ -41,11 +46,13 @@ function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, fina
                         
                         % sequence to be followed if the pixel to the left is bright
                         if i_left>THRESHOLD
+                            
                             % set "tag_left" as the tag of the pixel to the left
                             tag_left = arr_out_img(j_set_tags, i_set_tags-1, 2);
                             
                             % if the pixel above is also bright
                             if i_above>THRESHOLD
+                                
                                 % set "tag_above" as the tag of the pixel above
                                 tag_above = arr_out_img(j_set_tags-1, i_set_tags, 2);
                                 
@@ -181,6 +188,7 @@ function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, fina
                                 
                                 % if the pixel to the right and the one to the right and above are bright
                                 if arr_out_img(j_set_tags, i_set_tags+1, 1)>THRESHOLD && arr_out_img(j_set_tags-1, i_set_tags+1, 1)>THRESHOLD
+                                    %count_pixel1 = count_pixel1 + 1;
                                     % update the data corresponding to the
                                     % tag of the pixel above the pixel to
                                     % the right
@@ -192,9 +200,10 @@ function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, fina
                                 % generate a new tag, update the
                                 % corresponding data
                                 else
-                                arr_sums(tag_num, :) = [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
-                                arr_out_img(j_set_tags, i_set_tags, 2) = tag_num;
-                                tag_num = tag_num +1;
+                                    %count_pixel2 = count_pixel2 + 1;
+                                    arr_sums(tag_num, :) = [intensity*i_set_tags, intensity*j_set_tags, intensity, 1, 0];
+                                    arr_out_img(j_set_tags, i_set_tags, 2) = tag_num;
+                                    tag_num = tag_num +1;
                                 end
                             end
                         end
@@ -209,6 +218,10 @@ function [arr_sums_x, arr_sums_y, arr_weights, arr_num, arr_flags, tag_num, fina
     arr_sums_y  = arr_sums(:, 2);
     arr_weights = arr_sums(:, 3);
     arr_num = arr_sums(:, 4);
+    %disp('it is here');
+    %disp(count_pixel1);
+    %disp('hear again');
+    %disp(tag_num);
     
     disp("final tag num="+final_tag_num);
 end

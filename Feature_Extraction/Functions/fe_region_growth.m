@@ -6,22 +6,22 @@ function centroids_st = fe_region_growth(sis_output, FE_const)
     arr_in_img = sis_output.image;
     MAX_STARS = FE_const.MAX_STARS;
     SKIP_PIXELS = FE_const.SKIP_PIXELS;
-    PIXEL_WIDTH = FE_const.PIXEL_WIDTH;
+    PIXEL_WIDTH = FE_const.PIXEL_SIZE;
     STAR_MIN_PIXEL = FE_const.STAR_MIN_PIXEL;
     STAR_MAX_PIXEL = FE_const.STAR_MAX_PIXEL;
     THRESHOLD = FE_const.THRESHOLD;
-    
+    LENGTH = FE_const.LENGTH;
+    BREADTH = FE_const.BREADTH;
     % SKIP_PIXELS,THRESHOLD,STAR_MIN_PIXEL,STAR_MAX_PIXEL
     % arr_out_img = padarray(arr_in_img, [1, 1], 0, 'both');% SEtD A CODE
     % SNIPPET TO CORRECT THIS,WHICH IS AS FOLLOWS:
     % put a padding of zeroes all around
-    arr_out_img = zeros(1024+2, 1280+2, 2, 'int32');
-    arr_out_img(2:1024+1, 2:1280+1, 1) = arr_in_img;
+    arr_out_img = zeros(BREADTH+2, LENGTH+2, 2, 'int32');
+    arr_out_img(2:BREADTH+1, 2:LENGTH+1, 1) = arr_in_img;
     % get the x and y sizes respectively for iterating across the image
     arr_shape = size(arr_out_img);
     y_size = arr_shape(1);
     x_size = arr_shape(2);
-
     %% initialization to zeroes
     % creating a matrix that will contain the centroid data sums
     % order of columns is [x_sum, y_sum, pixel_sum, num_pixels]
@@ -37,7 +37,6 @@ function centroids_st = fe_region_growth(sis_output, FE_const)
             end
         end
     end
-
     %% getting the final required data
     mask = (centroid_data_st(:, 4) <= STAR_MIN_PIXEL) | (centroid_data_st(:, 4) > STAR_MAX_PIXEL);
     centroid_data_st(mask, :) = [];

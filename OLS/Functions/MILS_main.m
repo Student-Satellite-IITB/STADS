@@ -1,4 +1,4 @@
-function sim_log = MILS_main(sim_log,ES_const,FE_const,SM_const, MILS_logFile)
+function MILS_log = MILS_main(sim_log,ES_const,FE_const,SM_const, MILS_logFile)
 % This is the main function to run Model In-Loop Simulation
 
 % Load Star-Matching - Preprocessed Data
@@ -37,8 +37,8 @@ for i = 1:sim_log.N_Iter
     %% Run Model-in-Loop Simulation on single input
         
     %% Run Feature Extraction Block
-    [fe_output, SM_const] = fe_main(sis_output, FE_const, SM_const, sim_log.MILS.fe_data.algo); % Execute FE
-        
+    
+    [fe_output, SM_const] = fe_main(sis_output, FE_const, SM_const, sim_log.MILS.fe_data.algo); % Execute FE 
     % Write log file & Feature Extraction output
     iter_info.fe_status = fe_output.status; % Store iteration status
     save(iter_info.outputFileName, "fe_output", "iter_info"); % Save FE output to .mat file   
@@ -47,8 +47,10 @@ for i = 1:sim_log.N_Iter
         
     %% Run Star-Matching Block
     if sim_log.MILS.sm_data.TM_algo == "NONE" || iter_info.sm_iter <= 1
+        save('variables', 'fe_output','SM_const','sm_PP_LIS_output');
         sm_output = sm_LIS_main(sis_output, fe_output, SM_const, sm_PP_LIS_output, sim_log.MILS.sm_data.LIS_algo); %Execute SM (LIS)
-                    
+        disp('ran SM');
+        disp(height(sm_output.Matched));  
         % Store iteration details
         iter_info.sm_mode = "LIS"; % Store operational mode
         iter_info.sm_status = sm_output.status; % Store iteration status
