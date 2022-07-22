@@ -81,5 +81,5 @@ disp(sorted_truemat); % delete
             break;
         end
     end
-    disp(sm_TM_RBM_matchmat); % delete
+disp(sm_TM_RBM_matchmat); % delete
 end

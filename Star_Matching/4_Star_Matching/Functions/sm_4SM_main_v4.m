@@ -157,4 +157,5 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
     %sm_output.op_ri = sm_Matched(:, {'FE_ID', 'X', 'Y', 'Z'});
     
     sm_output.status = 'Done';
+    sm_output.TM_input = [fe_output.centroids.X(sm_Verified.FE_ID) fe_output.centroids.Y(sm_Verified.FE_ID) sm_Verified.SSP_ID];
 end

@@ -55,18 +55,24 @@ for i = 1:sim_log.N_Iter
         iter_info.sm_mode = "LIS"; % Store operational mode
         iter_info.sm_status = sm_output.status; % Store iteration status
             
+        if iter_info.sm_iter == 0
+            iter_info.sm_output_curr = 0;
+        end
         % Increment/Reset sm_iter
         if iter_info.sm_status == "Done"
             iter_info.sm_iter = iter_info.sm_iter + 1; % Increment sm_iter
         elseif iter_info.sm_status == "Fail!"
             iter_info.sm_iter = 0; % Reset sm_iter
         end
+     
+        iter_info.sm_output_prev = iter_info.sm_output_curr;
+        iter_info.sm_output_curr = sm_output.TM_input;
         
     elseif iter_info.sm_iter >= 2
-        %sm_output = sm_TM_main(fe_output, SM_const, sim_log.MILS.sm_data.TM_algo); %Execute SM (TM)
+        sm_output = sm_TM_main(fe_output,iter_info.sm_output_curr, iter_info.sm_output_prev,SM_const, sim_log.MILS.sm_data.TM_algo,sm_PP_TM_output); %Execute SM (TM)
         %-------Dummy Variables-------%
-        sm_output.test1 = [1,2,3,4,5];
-        sm_output.test2 = [-10,-20,-30,-40,-50];   
+%         sm_output.test1 = [1,2,3,4,5];
+%         sm_output.test2 = [-10,-20,-30,-40,-50];   
         sm_output.status = "Done";
         %-----------------------------%
             
