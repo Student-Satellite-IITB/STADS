@@ -5,7 +5,10 @@ function [sm_Matched, sm_NotMatched, sm_N_Matched, sm_N_NotMatched] = ...
     
     %% Code
     for i = 1:4
-        sm_ssp_id = sm_result.FE_ID(i); % Matched SSP-ID
+        %sm_ssp_id = sm_result.FE_ID(i);
+        %disp(sm_result.FE_ID);
+        %disp(sm_result.SSP_ID);
+        sm_ssp_id = sm_result.SSP_ID(i); % Matched SSP-ID
         
         %% Matrix updation
         if sm_ssp_id == 0

@@ -12,7 +12,7 @@ input consisting of
 
 function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, arr_weights, arr_num_pixels, arr_final_tag, num_tags, num_final_tags,FE_const)
     
-     % load('constants_feature_extraction_2.mat', "MIN_PIXELS", "MAX_PIXELS", "LENGTH", "BREADTH");    %loading constants
+    % load('constants_feature_extraction_2.mat', "MIN_PIXELS", "MAX_PIXELS", "LENGTH", "BREADTH");    %loading constants
     MIN_PIXELS = FE_const.MIN_PIXELS;
     MAX_PIXELS = FE_const.MAX_PIXELS;
     STAR_MIN_PIXEL=FE_const.STAR_MIN_PIXEL;
@@ -22,8 +22,8 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
     %correcting values
     num_tags = num_tags - 1;
     num_final_tags = num_final_tags - 1;%correcting values
-    num_tags = num_tags - 1;
-    num_final_tags = num_final_tags - 1;
+    %num_tags = num_tags - 1;
+    %num_final_tags = num_final_tags - 1;
     
     %an array defined to contain the position of centroids of a star
     arr_star_coordinates = zeros(num_tags, 2);    %(k, 1)=pos_x  (k, 2)=pos_y
@@ -39,6 +39,7 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
 
     %array of variables to sum the values of different tagged regions of the same star ("summation variables")
     arr_tot_sum_x = zeros(num_final_tags, 1);
+    disp("check1:"+string(num_final_tags));
     arr_tot_sum_y = zeros(num_final_tags, 1);
     arr_tot_weights = zeros(num_final_tags, 1);
     arr_tot_pixels = zeros(num_final_tags, 1);
@@ -46,6 +47,7 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
     %loop to find position of centroids of stars with single tagged region and update values of summation variables for multi tagged stars
     for i_centroids_single=1:num_tags
         %if region is singly tagged
+        % Update 2.4.22: if region is singly final tagged
         if (arr_final_tag(i_centroids_single) == 0)
             %if number of pixels in region is out of range
             if (arr_num_pixels(i_centroids_single) <= STAR_MIN_PIXEL || arr_num_pixels(i_centroids_single) >= STAR_MAX_PIXEL)
@@ -56,11 +58,28 @@ function [arr_star_coordinates, num_stars] = fe_merge_tag(arr_sum_x, arr_sum_y, 
             num_stars = num_stars + 1
             disp(num_final_tags)
             %updating values of centroid
+            disp('letsee1');
+            disp(num_final_tags + num_single_tag_stars);
+            disp('letsee2');
+            disp(size(arr_star_coordinates));
+            disp(arr_weights(i_centroids_single));
+            
+            
             arr_star_coordinates(num_final_tags + num_single_tag_stars, 1) = (arr_sum_x(i_centroids_single)/arr_weights(i_centroids_single) - 1) - (LENGTH/2 + 0.5);
             arr_star_coordinates(num_final_tags + num_single_tag_stars, 2) = -1*((arr_sum_y(i_centroids_single)/arr_weights(i_centroids_single) - 1) - (BREADTH/2 + 0.5));
         %if region has multiple tags
         else
             %update summation variables
+            disp('first');
+            disp(size(i_centroids_single));
+            disp('second');
+            disp(i_centroids_single);
+            disp('third');
+            disp(size(arr_final_tag));
+            disp('fourth');
+            disp(arr_final_tag(i_centroids_single));
+            disp('fifth');
+            disp(arr_tot_sum_x);
             arr_tot_sum_x(arr_final_tag(i_centroids_single)) = arr_tot_sum_x(arr_final_tag(i_centroids_single)) + arr_sum_x(i_centroids_single);
             arr_tot_sum_y(arr_final_tag(i_centroids_single)) = arr_tot_sum_y(arr_final_tag(i_centroids_single)) + arr_sum_y(i_centroids_single);
             arr_tot_weights(arr_final_tag(i_centroids_single)) = arr_tot_weights(arr_final_tag(i_centroids_single)) + arr_weights(i_centroids_single);

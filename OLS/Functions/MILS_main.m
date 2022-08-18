@@ -1,4 +1,4 @@
-function sim_log = MILS_main(sim_log,ES_const,FE_const,SM_const, MILS_logFile)
+function MILS_log = MILS_main(sim_log,ES_const,FE_const,SM_const, MILS_logFile)
 % This is the main function to run Model In-Loop Simulation
 
 % Load Star-Matching - Preprocessed Data
@@ -37,8 +37,8 @@ for i = 1:sim_log.N_Iter
     %% Run Model-in-Loop Simulation on single input
         
     %% Run Feature Extraction Block
-    [fe_output, SM_const] = fe_main(sis_output, FE_const, SM_const, sim_log.MILS.fe_data.algo); % Execute FE
-        
+    
+    [fe_output, SM_const] = fe_main(sis_output, FE_const, SM_const, sim_log.MILS.fe_data.algo); % Execute FE 
     % Write log file & Feature Extraction output
     iter_info.fe_status = fe_output.status; % Store iteration status
     save(iter_info.outputFileName, "fe_output", "iter_info"); % Save FE output to .mat file   
@@ -47,24 +47,32 @@ for i = 1:sim_log.N_Iter
         
     %% Run Star-Matching Block
     if sim_log.MILS.sm_data.TM_algo == "NONE" || iter_info.sm_iter <= 1
+        save('variables', 'fe_output','SM_const','sm_PP_LIS_output');
         sm_output = sm_LIS_main(sis_output, fe_output, SM_const, sm_PP_LIS_output, sim_log.MILS.sm_data.LIS_algo); %Execute SM (LIS)
-                    
+        disp('ran SM');
+        disp(height(sm_output.Matched));  
         % Store iteration details
         iter_info.sm_mode = "LIS"; % Store operational mode
         iter_info.sm_status = sm_output.status; % Store iteration status
             
+        if iter_info.sm_iter == 0
+            iter_info.sm_output_curr = 0;
+        end
         % Increment/Reset sm_iter
         if iter_info.sm_status == "Done"
             iter_info.sm_iter = iter_info.sm_iter + 1; % Increment sm_iter
         elseif iter_info.sm_status == "Fail!"
             iter_info.sm_iter = 0; % Reset sm_iter
         end
+     
+        iter_info.sm_output_prev = iter_info.sm_output_curr;
+        iter_info.sm_output_curr = sm_output.TM_input;
         
     elseif iter_info.sm_iter >= 2
-        %sm_output = sm_TM_main(fe_output, SM_const, sim_log.MILS.sm_data.TM_algo); %Execute SM (TM)
+        sm_output = sm_TM_main(fe_output,iter_info.sm_output_curr, iter_info.sm_output_prev,SM_const, sim_log.MILS.sm_data.TM_algo,sm_PP_TM_output); %Execute SM (TM)
         %-------Dummy Variables-------%
-        sm_output.test1 = [1,2,3,4,5];
-        sm_output.test2 = [-10,-20,-30,-40,-50];   
+%         sm_output.test1 = [1,2,3,4,5];
+%         sm_output.test2 = [-10,-20,-30,-40,-50];   
         sm_output.status = "Done";
         %-----------------------------%
             

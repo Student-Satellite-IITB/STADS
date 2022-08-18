@@ -63,6 +63,8 @@ function [sis_photon_profile,sis_T] = sis_lens_main(sis_T, sis_input)
     %%%% Want to discuss the formula
     %photon_values = sis_input.lls.Gain * sis_input.lls.C_1 * sis_input.lls.C_2 .^ (-m_c) / (sis_input.lls.Gauss_Sigma * sqrt(2 * pi)) .* exp(-((Y - y_c) .^2 + (Z - z_c) .^ 2) / (2 * sis_input.lls.Gauss_Sigma ^ 2));
     sigma  = sqrt(2) * sis_input.lls.Pixel_Spread / 3 ;
+    % 10 multiplied only for debugging purposes. It is not part of the
+    % formula
     photon_values = sis_input.lls.C_1 * sis_input.lls.C_2 .^ (-m_c) / (pi * sigma^2 ) .* exp(-((Y - y_c) .^2 + (Z - z_c) .^ 2)/(sigma^2));
     if (sis_input.gen.Debug_Run == 1); disp('Image Generation: Pixel Values Calculated'); end
     
