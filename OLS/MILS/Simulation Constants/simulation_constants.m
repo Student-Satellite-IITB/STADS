@@ -72,9 +72,9 @@ SM_const.MAG_LIMIT = SIS_const.in.Magnitude_Limit; % Limiting Magnitude
 SM_const.FOCAL_LENGTH = SIS_const.op.Lens.Focal_Length;  % Focal Length of optics system - in mm
 
 
-SM_const.LIS.CONST_4SM.DELTA = 2.9e-5; % Value of Delta Constant
+SM_const.LIS.CONST_4SM.DELTA = 3e-5; % Value of Delta Constant
 SM_const.LIS.CONST_4SM.M_EPS = 2.22*10e-15; % Machine epsilon
-SM_const.LIS.CONST_4SM.VERIFY_TOL = 0.05; % Verification Step - Tolerance Value (in percentage)
+SM_const.LIS.CONST_4SM.VERIFY_TOL = 0.0001; % Verification Step - Tolerance Value (in percentage)
 
 SM_const.TM.sm_TM_SNT_R = 1.5; % Radius for star neighbourhood table (in degrees)
 SM_const.TM.sm_TM_RBM_R = 0.0015; % Radius for Radius based matching algorithm (in degrees)
