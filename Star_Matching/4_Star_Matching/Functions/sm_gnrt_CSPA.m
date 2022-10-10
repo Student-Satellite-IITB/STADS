@@ -25,7 +25,7 @@ function  [sm_CSPA, sm_INDEX] = sm_gnrt_CSPA(sm_AngDst, SM_const, sm_PP_LIS_outp
     sm_DELTA = SM_const.LIS.CONST_4SM.DELTA;
     sm_Q = sm_PP_LIS_output.CONST_4SM.sm_Q;
     sm_M = sm_PP_LIS_output.CONST_4SM.sm_M;
-    sm_n_RC = sm_PP_LIS_output.CONST_4SM.sm_n_RC;
+    sm_n_RC = sm_PP_LIS_output.CONST_4SM.sm_n_RC;%no. of reference star pairsa 
     
     % Calculate sin(theta) value of the given angular distance 
     tmp = sqrt( 1- sm_AngDst^2 );

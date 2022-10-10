@@ -1,14 +1,19 @@
 function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
     
+%sm_PP_LIS_output:preprocessing output->ref star catalogue, guide star catalogue, m, c of k vector line
+%fe_output->FE_ID, X , Y of identified centroids
+%SM_const -> includes delta, verif tol. and others, defined in simulation_constants.mat -> MILS folder
     %% Code
 
     % Generate body-frame vectors of stars 
 
     sm_bi = sm_gnrt_bi(fe_output, SM_const); 
+    %sm_bi is N*4 matrix -> format: FE_ID  X  Y  Z ; cyclically rotated so that X is largest
     
     %% 4-Star Matching Alogorithm
 
     % Initialize sm_Matched
+    %matched stars
     sm_Matched = array2table( ...
         zeros(fe_output.N, 5), 'VariableNames', ...
         {'FE_ID', 'X', 'Y', 'Z', 'SSP_ID'} ...
@@ -22,7 +27,7 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
         'Matched SSP ID' ...
     };
 
-    % Initialize sm_NotMatched
+    % Initialize sm_NotMatched -> stars not matched
     sm_NotMatched = sm_bi;
     % Intialize counter variables
     sm_counter.N_Matched = 0; % Number of matched stars
@@ -38,7 +43,11 @@ function [sm_output] = sm_4SM_main_v4(fe_output, SM_const, sm_PP_LIS_output)
 
             % Run 4-Star Matching Alogrithm on 4 Stars
             [sm_N_match, sm_result] = sm_4SM(sm_4SM_input, SM_const, sm_PP_LIS_output);
-
+            %sm_4SM_input: defined above, any 4 stars i.e. rows among not matched stars
+            %output-->
+            %sm_N_match->no. of matched stars
+            %sm_result->(4,2) matrix: FE_ID  matched SSP_ID
+            %calls some other functions
             if sm_N_match == 0 
                 % If no stars were matched, shift the rows of Non_Match matrix
                 % downward by one unit
