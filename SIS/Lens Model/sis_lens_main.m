@@ -11,12 +11,12 @@ coeffs(1,22) = -0.00000190;
 
 % In mm
 %function [D, lam, pix, f, size, Rpupil] = Const
-D = 20;             %diameteR of the apeRtuRe (in mm)
+D = sis_input.lls.Lens.Diameter;             %diameteR of the apeRtuRe (in mm)
 lam = 550*10^(-6); %wavelength of obseRvation
-pix = 0.0048;        %plate scale
-f = 25;            %effective focal length      
-size_y = 808;        %size of detectoR in pixels
-size_z = 608;
+pix = sis_input.lls.CMOS.Pixel_Size;        %plate scale
+f = sis_input.lls.Lens.Focal_Length;            %effective focal length      
+size_y = sis_input.lls.CMOS.Length_Pix;        %size of detectoR in pixels
+size_z = sis_input.lls.CMOS.Width_Pix;
 rpupil = 50; %make a pupil_size function
 %end
 
