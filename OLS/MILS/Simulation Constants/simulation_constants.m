@@ -45,7 +45,7 @@ FE_const.STAR_MIN_PIXEL = 3;
 FE_const.STAR_MAX_PIXEL = 150;
 
 FE_const.MAX_STARS = 100;%region growth
-FE_const.SKIP_PIXELS = 2;%this will be changed for testing
+FE_const.SKIP_PIXELS = 1;%this will be changed for testing
 FE_const.NUM_REGIONS = 50;
 
 FE_const.LENGTH = 808;
@@ -73,8 +73,8 @@ SM_const.FOCAL_LENGTH = SIS_const.op.Lens.Focal_Length;  % Focal Length of optic
 
 
 SM_const.LIS.CONST_4SM.DELTA = 1e-4; % Value of Delta Constant
-SM_const.LIS.CONST_4SM.M_EPS = 2.22*10e-16; % Machine epsilon
-SM_const.LIS.CONST_4SM.VERIFY_TOL = 2; % Verification Step - Tolerance Value (in percentage)
+SM_const.LIS.CONST_4SM.M_EPS = 2.22*10e-15; % Machine epsilon
+SM_const.LIS.CONST_4SM.VERIFY_TOL = 5; % Verification Step - Tolerance Value (in percentage)
 
 SM_const.TM.sm_TM_SNT_R = 1.5; % Radius for star neighbourhood table (in degrees)
 SM_const.TM.sm_TM_RBM_R = 0.0015; % Radius for Radius based matching algorithm (in degrees)
@@ -85,7 +85,7 @@ SM_const.TM.sm_TM_Nth = 8; % Minimum number of stars required for reasonable acc
 
 % Number of body and inertial frame vectors required by Estimation block to
 % provide attitude with the required accuracy
-SM_const.N_TH = 30;
+SM_const.N_TH = 8;
 
 % Total number of iterations allowed for Star-Matching
 SM_const.LIS.CONST_4SM.ITER_MAX = 200;

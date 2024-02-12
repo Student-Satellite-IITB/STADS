@@ -27,7 +27,9 @@ function sm_SIM = sm_gnrt_SIM(sm_c_img_AngDst, SM_const, sm_PP_LIS_output)
              
         % Determine candidate star pair array
         [sm_CSPA, ~] = sm_gnrt_CSPA(sm_AngDst, SM_const, sm_PP_LIS_output);
-        
+        %sm_CSPA:size(x,1)-> possible matches(SSP-IDs) for given angular distance; CSPA
+        %sm_INDEX:start, stop indices of possible matches
+
         if isempty(sm_CSPA) == 0        
             for i_idx = 1:length(sm_CSPA)
                 SSP_ID = sm_CSPA(i_idx); % Possible SSP_ID

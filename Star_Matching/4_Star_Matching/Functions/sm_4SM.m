@@ -1,4 +1,4 @@
-function [sm_n_match, sm_result] = sm_4SM(sm_4SM_input, SM_const, sm_PP_LIS_output)
+ function [sm_n_match, sm_result] = sm_4SM(sm_4SM_input, SM_const, sm_PP_LIS_output)
     % This function runs the 4-Star Matching Algorithm on four-stars only. 
     % It executes the algorithm to match stars, and returns the result.
     % Parameters:
@@ -21,9 +21,13 @@ function [sm_n_match, sm_result] = sm_4SM(sm_4SM_input, SM_const, sm_PP_LIS_outp
     
     % Generate input in the format required by 4-Star Matching Algorithm
     [sm_c_img_AngDst, sm_c_fe_ID] = sm_gnrt_ip_4SM(sm_4SM_input);
-    
+    %sm_c_img_AngDst->Star Pair Array-> d12,d13, d14.... d34; size:(1,6)
+    %sm_c_fe_ID->4 FE_IDs--id1,.., id4; size:(1,4)
+    %generates Star Pair Array for 4 input stars
+
     % Caluculate Star Identification Matrix
     sm_SIM = sm_gnrt_SIM(sm_c_img_AngDst, SM_const, sm_PP_LIS_output); 
+    %sm_SIM-> SIM; size:(no.of guide stars,6)
 
     % Evaluate SIM to find the Star Matched Matrix
     [sm_SMM, ~]  = sm_gnrt_SMM(sm_SIM, sm_c_fe_ID, sm_PP_LIS_output);

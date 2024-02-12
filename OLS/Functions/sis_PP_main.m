@@ -30,7 +30,7 @@ function sis_pp_output = sis_PP_main(SIS_const,version,write_path)
     elseif version == "Version - 3"
         sis_input = SIS_const;
         
-        sis_T = readtable('.\Catalogue\SKY2000\Catalogues\SSP_Star_Catalogue.csv');
+        sis_T = readtable('STADS\Catalogue\SKY2000\Catalogues\SSP_Star_Catalogue.csv');
         SSP_SC = sis_T;
         if (sis_input.gen.Debug_Run == 1); disp('Preprocessing: Catalogue Successfully Read'); end
         
